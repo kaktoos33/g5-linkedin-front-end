@@ -8,7 +8,7 @@ interface AppProps {
 }
  
 interface AppState {
-  token:boolean;
+  
   
 }
  
