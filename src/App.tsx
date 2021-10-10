@@ -1,6 +1,7 @@
 import React from 'react'
 import { Switch, Route } from "react-router-dom";
 import Login from './components/Login';
+import Register from './components/Register';
 
 
 interface AppProps {
@@ -21,8 +22,8 @@ class App extends React.Component<AppProps, AppState> {
         <Switch>
           
           <Route exact path="/login" component={Login} />
-            {/* <Route exact path={["/", "/home"]} component={Home} />
-            <Route exact path="/login" component={Login} />
+          <Route exact path={["/register"]} component={Register} />
+            {/*<Route exact path="/login" component={Login} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/profile" component={Profile} /> */}
             
