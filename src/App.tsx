@@ -12,7 +12,7 @@ interface AppState {}
 class App extends React.Component<AppProps, AppState> {
   render() {
     return (
-      <div dir="rtl" className="container mt-3">
+      <div dir="rtl" className="">
         <NavBar></NavBar>
         <Switch>
           <Route exact path="/" component={Home} />

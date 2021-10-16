@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import logo from "../LinkedIn_Logo_2019.svg";
+import logo from "../resources/LinkedIn_Logo_2019.svg";
 import { faLock, faHome, faUsers } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "@fortawesome/fontawesome-free/css/all.min.css";
