@@ -1,37 +1,26 @@
-import React from 'react'
+import React from "react";
 import { Switch, Route } from "react-router-dom";
-import Login from './components/Login';
-import Register from './components/Register';
+import Login from "./components/Login";
+import Register from "./components/Register";
 
+interface AppProps {}
 
-interface AppProps {
-  
-}
- 
-interface AppState {
-  
-  
-}
- 
+interface AppState {}
+
 class App extends React.Component<AppProps, AppState> {
- 
-  
-  render() { 
-    return ( 
-      <div className="container mt-3">
+  render() {
+    return (
+      <div dir="rtl" className="container mt-3">
         <Switch>
-          
           <Route exact path="/login" component={Login} />
           <Route exact path={["/register"]} component={Register} />
-            {/*<Route exact path="/login" component={Login} />
+          {/*<Route exact path="/login" component={Login} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/profile" component={Profile} /> */}
-            
-          </Switch>
-        </div>
-
-     );
+        </Switch>
+      </div>
+    );
   }
 }
- 
+
 export default App;
