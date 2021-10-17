@@ -1,20 +1,34 @@
-import React from 'react';
-//import { ReactComponent as Userimg } from 'G:\Rahnama Collage\LinkedIn\g5-linkedin-front-end\src\Rectangle 17.svg';
-import ReactLogo from './Rectangle 17.svg';
-import CreatePost from './components/CreatePost';
+import React from 'react'
+import { Switch, Route } from "react-router-dom";
+import Login from './components/Login';
+import Register from './components/Register';
+import Home from './components/Home';
 
-type AppState = {
-  post?: string[];
+
+interface AppProps {
+
 }
-class App extends React.Component {
-  state: AppState = { post: ["چیزی بنویس..."] };
+
+interface AppState {
+
+}
+
+class App extends React.Component<AppProps, AppState> {
+
   render() {
     return (
-      <CreatePost header={
-        <img src={ReactLogo} alt="UserPic" />
-      } />
+      <div dir="rtl" className="">
+        <Switch>
 
-    )
+          <Route exact path="/login" component={Login} />
+          <Route exact path={["/register"]} component={Register} />
+          <Route exact path={["/home"]} component={Home}>
+            <Home />
+          </Route>
+        </Switch>
+      </div>
+
+    );
   }
 }
 
