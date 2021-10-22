@@ -1,9 +1,9 @@
 import React from "react";
-// import './header.style.scss';
+import './Header.style.scss';
 
 export const Header = () => {
     return (
-        <div className="max-w-md w-full mx-auto">
+        <div className="w-full mx-auto text-center">
             <h1 className="register-header-name">
                 ثبت نام
             </h1>
