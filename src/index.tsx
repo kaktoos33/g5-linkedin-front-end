@@ -6,7 +6,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import ApolloClient from 'apollo-boost';
 import {ApolloProvider} from 'react-apollo';
-import { start } from 'repl';
+// import { start } from 'repl';
 
 const client = new ApolloClient({ uri: 'http://localhost:8080/auth'});
 
