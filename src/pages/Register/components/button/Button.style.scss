@@ -3,6 +3,8 @@
 
 .register-button .button-primary{
   //display: block;
+  font-family: $font;
+  font-size: 14px;
   margin-top: 50px;
   width: 370px;
   height: 40px;
@@ -13,7 +15,9 @@
 
 .register-button .button-secondary{
   //display: block;
-  margin-top: 50px;
+  font-family: $font;
+  font-size: 14px;
+  margin-top: 15px;
   width: 370px;
   height: 40px;
   background-color: $whiteColor;
@@ -25,7 +29,8 @@
 
 .register-button .button-secondary:hover{
   color: $whiteColor;
-  background-color: $blueColor;
+  background-color: $blueColorHover;
+  border-color: $blueColorHover;
 }
 
 .register-button .button-primary:hover{

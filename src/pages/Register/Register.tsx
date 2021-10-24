@@ -16,7 +16,12 @@ export const Register : FunctionComponent = () => {
                 <EmailInput />
                 <PassInput />
                 <CheckBoxInput />
+
+
                 <ButtonPrimary />
+                <div className={"register_redirect_login"}>
+                    <a href="https://www.google.com/">عضو هستم</a>
+                </div>
                 <ButtonSecondary />
             </Cart>
             {/*<MyForm />*/}
