@@ -42,40 +42,56 @@
 .register_email_input input:focus{
   border-color: #343434;
 }
-//.input-container {
-//  display: -ms-flexbox; /* IE10 */
-//  display: flex;
-//  width: 100%;
-//  margin-bottom: 15px;
-//}
+
+// ------------------------------------ Password style
 
 
-//.register_email_input:focus {
-//  border-color: rgb(34,34,34);
-//}
-  //max-width: 358px;
-  //max-height: 40px;
-  //width: 75%;
+.register_pass_input{
+  height: 40px;
+  width: 370px;
+  align-items: center;
+  display: flex;
+  position: relative;
+  //border: 1px solid #61dafb;
+  margin: 10px auto;
   //margin: 10px auto;
-  //outline: none;
+  //display: flex;
+}
+.register_pass_input .eyeIcon{
+  right: 0;
+  padding-right: 12px;
+  position: absolute;
+  font-size: 15px;
+  color: $grayColor;
+}
+.register_pass_input .lockIcon{
+  //height: 100%;
+  //text-align: center;
+  left: 0;
+  padding: 3px;
+  position: absolute;
+  font-size: 20px;
+  color: $grayColor;
+}
+.register_pass_input input{
+  padding-left: 40px;
+  height: 100%;
+  width: 100%;
+  outline: none;
+  text-align: left;
+  border: 1px solid #D0D0D0;
+  box-sizing: border-box;
+  border-radius: 8px;
+  font-family: sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  transition: all 0.3s ease;
+  //border: none;
+  //width: 90%;
+  //box-sizing: border-box;
+  //box-sizing: border-box
 
-//}
-//.register_email_input * {
-//  box-sizing: border-box;
-//}
-
-//.register_email_input i{
-//  text-align: center;
-//  font-size: 17.76px;
-//  height: 5.89px;
-//
-//}
-
-
-
-
-//.register_email_input input[type="text"]{
-//  height: 100%;
-//  box-sizing: border-box
-//
-//}
+}
+.register_pass_input input:focus{
+  border-color: #343434;
+}

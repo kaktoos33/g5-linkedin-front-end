@@ -2,6 +2,7 @@ import React from "react";
 import './Input.style.scss';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEnvelope} from "@fortawesome/free-regular-svg-icons";
+import {faLock, faEye, faEyeSlash} from "@fortawesome/free-solid-svg-icons";
 
 
 export const Input = (labelProp: { input_holder: string }) => {
@@ -18,7 +19,7 @@ export const EmailInput = () => {
         // <div className={"w-5/6 p-2 register_email_input"}>
         <div className={"register_email_input"}>
             {/*<label htmlFor="" className="text-sm font-bold text-grey-600 block">Email</label>*/}
-            <i className="mx-2 text-gray-400">
+            <i className="mx-2">
                 <FontAwesomeIcon icon={faEnvelope}></FontAwesomeIcon>
             </i>
 
@@ -29,6 +30,26 @@ export const EmailInput = () => {
             {/*    </i>*/}
 
             {/*</label>*/}
+        </div>
+    );
+};
+
+export const PassInput = () => {
+    const visible = false;
+    return (
+        // <div className={"w-5/6 p-2 register_email_input"}>
+        <div className={"register_pass_input"}>
+
+            <i className="mx-2 lockIcon">
+                <FontAwesomeIcon icon={faLock}></FontAwesomeIcon>
+            </i>
+
+            <input type="text" dir={"ltr"}  placeholder={"Password"} id={"password"} name={"password"}/>
+
+            <i className="eyeIcon">
+                <FontAwesomeIcon icon={visible ? faEye:faEyeSlash}></FontAwesomeIcon>
+            </i>
+
         </div>
     );
 };
