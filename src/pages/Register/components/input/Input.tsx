@@ -44,11 +44,26 @@ export const PassInput = () => {
                 <FontAwesomeIcon icon={faLock}></FontAwesomeIcon>
             </i>
 
-            <input type="text" dir={"ltr"}  placeholder={"Password"} id={"password"} name={"password"}/>
+            <input type="password" dir={"ltr"}  placeholder={"Password"} id={"password"} name={"password"}/>
 
             <i className="eyeIcon">
                 <FontAwesomeIcon icon={visible ? faEye:faEyeSlash}></FontAwesomeIcon>
             </i>
+
+        </div>
+    );
+};
+
+export const CheckBoxInput = () => {
+
+    return (
+        // <div className={"w-5/6 p-2 register_email_input"}>
+        <div className={"register_checkbox_input"}>
+
+            <label htmlFor={"is_vendor"}>
+                <input type="checkbox"  id={"is_vendor"} name={"is_vendor"} />
+                <span>اکانت شرکتی</span>
+            </label>
 
         </div>
     );

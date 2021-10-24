@@ -93,6 +93,66 @@
   //box-sizing: border-box
 
 }
+// is vendor checkbox
+
+.register_checkbox_input{
+  text-align: center;
+  display: flex;
+  position: relative;
+  padding-top: 10px;
+}
+
+.register_checkbox_input input[type=checkbox] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  //position: absolute;
+  //left: 50%;
+  width: 29px;
+  height: 29px;
+  border: 1px solid #D0D0D0;
+  border-radius: 8px;
+  position: absolute;
+  right: 65px;
+}
+
+.register_checkbox_input input[type=checkbox]:checked {
+  background-color: $blueColor;
+}
+
+input[type=checkbox]:checked:after {
+  //margin-left: 100px;
+  margin-right: 7px;
+  //margin-left: 10mm;
+  //margin-top: -4mm;
+  margin-top: 1px;
+  //margin-top: -0.4mm;
+  width: 3mm;
+  height: 5mm;
+  border: solid white;
+  border-width: 0 4px 4px 0;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  content: "";
+  display: inline-block;
+}
+
+.register_checkbox_input span{
+  color: $grayColor;
+  font-family: $fontM;
+  font-weight: 500;
+  font-size: 14px;
+  padding-right: 20px;
+  position: absolute;
+  right: 85px;
+  margin-top: 7px;
+
+}
+
+
+
+// focus
 .register_pass_input:focus-within i{
   color: $blueColor;
 }
