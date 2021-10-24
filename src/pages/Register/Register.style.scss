@@ -1,5 +1,7 @@
+@import "./src/variables/variables.scss";
+
 .register{
-  background: #F6F6F6;
+  background: $backGroundColor;
   display: flex;
   justify-content: center;
   align-items: center;
