@@ -1,8 +1,9 @@
+@import "./src/variables/variables.scss";
+
 .register-header-name{
-  font-family: IRANSans;
-  font-style: normal;
+  font-family: $fontM;
   font-weight: 500;
   font-size: 24px;
   line-height: 38px;
-  color: #343434;
+  color: $blackColor;
 }

@@ -6,6 +6,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import ApolloClient from 'apollo-boost';
 import {ApolloProvider} from 'react-apollo';
+// import './fonts/IRANSans.ttf';
 // import { start } from 'repl';
 
 const client = new ApolloClient({ uri: 'http://localhost:8080/auth'});

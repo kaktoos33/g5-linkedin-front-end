@@ -5,7 +5,7 @@ import "./Cart.style.scss";
 
 export const Cart : FunctionComponent = CartProps => {
     return (
-        <div className="register-cart">
+        <div className="register-cart h-5/6">
             { CartProps.children }
         </div>
     );
