@@ -39,9 +39,9 @@
   //box-sizing: border-box
 
 }
-.register_email_input input:focus{
-  border-color: #343434;
-}
+//.register_email_input input:focus{
+//  border-color: #343434;
+//}
 
 // ------------------------------------ Password style
 
@@ -72,6 +72,7 @@
   position: absolute;
   font-size: 20px;
   color: $grayColor;
+  //color: $blueColor;
 }
 .register_pass_input input{
   padding-left: 40px;
@@ -92,6 +93,34 @@
   //box-sizing: border-box
 
 }
-.register_pass_input input:focus{
-  border-color: #343434;
+.register_pass_input:focus-within i{
+  color: $blueColor;
 }
+.register_email_input:focus-within i{
+  color: $blueColor;
+}
+input:focus {
+  border-color: $blueColor;
+}
+//.register_pass_input input:focus{
+//  border-color: $blueColor;
+//  color: $blueColor;
+//  //color: $blueColor;
+//
+//}
+//input:focus{
+//  border-color: $blueColor;
+//  //color: $blueColor;
+//  //color: $blueColor;
+//
+//}
+//input:focus + i{
+//  border-color: $blueColor;
+//  color: $blueColor;
+//
+//}
+
+//.register_pass_input .lockIcon:focus{
+//  color: $blueColor;
+//
+//}
