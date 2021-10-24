@@ -2,25 +2,14 @@
 
 
 .register-cart{
-  //position: absolute;
+  margin-top: 20px;
   width: 498px;
-  //height: 743px;
-  //padding-top: 25px;
-  //margin: auto;
-  //margin: 50px auto 0 auto;
-  //border: 3px #61dafb solid;
-  //display: flex;
-  //align-items: center;
-  //justify-content: center;
-  //left: 472px;
-  //top: 140px;
-
   background: $whiteColor;
-  //background: red;
-  //backdrop-filter: blur(24px);
-  /* Note: backdrop-filter has minimal browser support */
-
   border-radius: 0 24px 24px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
 
 
 }
