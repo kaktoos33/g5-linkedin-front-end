@@ -1,9 +1,9 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 import Home from "./components/Home";
-import Login from "./components/Login";
+import Login from "./pages/Login/Login";
 // import NavBar from "./components/NavBar";
-import {Register} from "./pages/Register/Register";
+import { Register } from "./pages/Register/Register";
 // import Register from "./components/Register";
 
 interface AppProps {}
