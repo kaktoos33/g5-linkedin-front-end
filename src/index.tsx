@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter} from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import ApolloClient from 'apollo-boost';
+<<<<<<< HEAD
 import {ApolloProvider} from 'react-apollo';
 <<<<<<< HEAD
 import './fonts/Iranian_Sans.ttf'
@@ -13,15 +14,19 @@ import './fonts/Iranian_Sans.ttf'
 // import './fonts/IRANSans.ttf';
 // import { start } from 'repl';
 >>>>>>> d9759584644e94799cbb8d088048f5fc45932343
+=======
+import { ApolloProvider } from 'react-apollo';
+import './fonts/Iranian_Sans.ttf'
+>>>>>>> feature/create-post
 
-const client = new ApolloClient({ uri: 'http://localhost:8080/auth'});
+const client = new ApolloClient({ uri: 'http://localhost:8080/auth' });
 
 ReactDOM.render(
-  <ApolloProvider client= {client}>
+  <ApolloProvider client={client}>
     <BrowserRouter>
       <App />
     </BrowserRouter>
-    </ApolloProvider>,
+  </ApolloProvider>,
   document.getElementById('root')
 );
 
