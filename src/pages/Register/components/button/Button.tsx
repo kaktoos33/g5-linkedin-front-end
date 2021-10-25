@@ -4,7 +4,7 @@ import './Button.style.scss';
 export const ButtonPrimary = () => {
     return (
         <div className="w-full mx-auto text-center register-button">
-            <button className="button button-primary">ثبت نام</button>
+            <button className="button button-primary" type="submit" >ثبت نام</button>
 
         </div>
     );

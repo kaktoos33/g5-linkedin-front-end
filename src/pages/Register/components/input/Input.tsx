@@ -3,6 +3,7 @@ import './Input.style.scss';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEnvelope} from "@fortawesome/free-regular-svg-icons";
 import {faLock, faEye, faEyeSlash} from "@fortawesome/free-solid-svg-icons";
+import {Field} from 'formik';
 
 
 export const Input = (labelProp: { input_holder: string }) => {
@@ -23,7 +24,7 @@ export const EmailInput = () => {
                 <FontAwesomeIcon icon={faEnvelope}></FontAwesomeIcon>
             </i>
 
-            <input type="text" dir={"ltr"}  placeholder={"Email"} id={"email"} name={"email"}/>
+            <Field type="text" dir={"ltr"}  placeholder={"Email"} id={"email"} name={"email"}/>
             {/*<label htmlFor={"email"}>*/}
             {/*    <i className="mx-2 text-gray-400">*/}
             {/*        <FontAwesomeIcon icon={faEnvelope}></FontAwesomeIcon>*/}
@@ -44,7 +45,7 @@ export const PassInput = () => {
                 <FontAwesomeIcon icon={faLock}></FontAwesomeIcon>
             </i>
 
-            <input type="password" dir={"ltr"}  placeholder={"Password"} id={"password"} name={"password"}/>
+            <Field type="password" dir={"ltr"}  placeholder={"Password"} id={"password"} name={"password"}/>
 
             <i className="eyeIcon">
                 <FontAwesomeIcon icon={visible ? faEye:faEyeSlash}></FontAwesomeIcon>
@@ -61,7 +62,7 @@ export const CheckBoxInput = () => {
         <div className={"register_checkbox_input"}>
 
             <label htmlFor={"is_vendor"}>
-                <input type="checkbox"  id={"is_vendor"} name={"is_vendor"} />
+                <Field type="checkbox"  id={"is_vendor"} name={"is_vendor"} />
                 <span>اکانت شرکتی</span>
             </label>
 
