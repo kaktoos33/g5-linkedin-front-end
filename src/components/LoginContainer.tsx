@@ -24,7 +24,7 @@ interface LoginContainerProps {
 const LoginContainer: FunctionComponent<LoginContainerProps> = (props) => {
   const { formState, setFormState, onSubmit } = props;
   return (
-    <div className="container flex flex-col items-center justify-center min-h-screen mx-auto flex-column p2">
+    <div className="container flex flex-col items-center justify-center min-h-screen mx-auto flex-column p2 bg-white">
       <h1 className="flex flex-row items-center content-center justify-center w-1/3 px-2 py-1 pb-12 font-semibold rounded text-black-600">
         ورود
       </h1>
@@ -64,14 +64,14 @@ const LoginContainer: FunctionComponent<LoginContainerProps> = (props) => {
       </div>
       <div className="flex flex-col items-end w-1/3 pb-10">
         <Link to="/">
-          <p className="w-full font-semibold text-blue-600 uppercase rounded ">
+          <p className="w-full font-semibold text-blue-400 uppercase rounded ">
             فراموشی رمز عبور
           </p>
         </Link>
       </div>
       <div className="flex items-center w-1/3 pb-0 ">
         <button
-          className="w-full h-12 font-bold text-blue-500 uppercase transition-all duration-150 ease-linear bg-transparent border border-blue-500 border-solid rounded-full outline-none w-fullh-12 hover:bg-blue-500 hover:text-white active:bg-blue-600 focus:outline-none"
+          className="w-full h-12 font-bold text-blue-400 uppercase transition-all duration-150 ease-linear bg-transparent border border-blue-400 border-solid rounded-full outline-none w-fullh-12 hover:bg-blue-500 hover:text-white active:bg-blue-600 focus:outline-none"
           type="submit"
           onClick={onSubmit}
         >
@@ -85,7 +85,7 @@ const LoginContainer: FunctionComponent<LoginContainerProps> = (props) => {
       </label>
       <div className="flex items-center w-1/3 pb-0">
         <button
-          className="w-full h-12 mb-1 mr-1 font-bold text-blue-500 uppercase transition-all duration-150 ease-linear bg-transparent border border-blue-500 border-solid rounded-full outline-none hover:bg-blue-500 hover:text-white active:bg-blue-600 focus:outline-none"
+          className="w-full h-12 mb-1 mr-1 font-bold text-blue-400 uppercase transition-all duration-150 ease-linear bg-transparent border border-blue-400 border-solid rounded-full outline-none hover:bg-blue-500 hover:text-white active:bg-blue-600 focus:outline-none"
           type="submit"
         >
           ثبت نام

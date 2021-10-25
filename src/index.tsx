@@ -1,22 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter} from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import ApolloClient from 'apollo-boost';
-import {ApolloProvider} from 'react-apollo';
+import { ApolloProvider } from 'react-apollo';
 import './fonts/Iranian_Sans.ttf'
-//import { start } from 'repl';
 
-const client = new ApolloClient({ uri: 'http://localhost:8080/auth'});
+const client = new ApolloClient({ uri: 'http://localhost:8080/auth' });
 
 ReactDOM.render(
-  <ApolloProvider client= {client}>
+  <ApolloProvider client={client}>
     <BrowserRouter>
       <App />
     </BrowserRouter>
-    </ApolloProvider>,
+  </ApolloProvider>,
   document.getElementById('root')
 );
 
