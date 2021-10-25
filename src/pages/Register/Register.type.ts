@@ -1,4 +1,8 @@
 
 
-// @ts-ignore
-type RegisterType = string;
+
+export interface RegisterFormInput {
+    password: string;
+    email: string;
+    is_vendor: boolean;
+}
