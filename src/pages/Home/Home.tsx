@@ -7,6 +7,7 @@ import { useQuery } from "react-apollo";
 import { gql } from "apollo-boost";
 import { User } from './types/User.types';
 import "./Home.style.scss"
+import {GET_POSTS } from "./graphql/query";
 
 
 interface HomeProps {
@@ -45,21 +46,12 @@ const fetechedPost: Array<Post> = [
     },
 ];
 
-const GET_Posts = gql`
-  query GetPosts {
-    post {
-      user
-      body
-      likes
-    }
-  }
-`;
 export const Home: FunctionComponent<HomeProps> = () => {
     const user = fetechedUser;
     const posts= React.useMemo(() => fetechedPost.map((a) =>
         <UserPost post={a} status={false} />), [fetechedPost]);
 
-    // const { loading, error, data } = useQuery<Array<Post>>(GET_Posts);
+    // const { loading, error, data } = useQuery<Array<Post>>(GET_POSTS);
 
     // const posts = React.useMemo(
     //     () => !loading && data && data.map((a) => <UserPost post={a} />),

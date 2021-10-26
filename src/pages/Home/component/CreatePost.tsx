@@ -5,18 +5,19 @@ import { useFormik } from 'formik';
 import { User } from '../types/User.types';
 import { CREATE_POST_MUTATION } from "../graphql/mutations";
 //import { Uploader } from './Uploader';
+import { Header } from "./header/Header";
 
 interface CreatePostProps {
     user: User;
 
 }
 
-const Header = ({ user: { name, role, img } }: { user: User }) => (
-    <div className="user">
-        <img className="h-auto max-w-full align-middle border-none rounded-full cursor-pointer" src={img}
-            alt="userimage" />
-    </div>
-);
+// const Header = ({ user: { name, role, img } }: { user: User }) => (
+//     <div className="user">
+//         <img className="h-auto max-w-full align-middle border-none rounded-full cursor-pointer" src={img}
+//             alt="userimage" />
+//     </div>
+// );
 
 export const CreatePost = ({ user }: CreatePostProps) => {
     const [createpost, { data, loading, error }] = useMutation(CREATE_POST_MUTATION);
@@ -27,7 +28,7 @@ export const CreatePost = ({ user }: CreatePostProps) => {
             photo: '',
             video: ''
         },
-        onSubmit: values => {
+        onSubmit: () => {
             addpost();
         },
     });
@@ -48,7 +49,7 @@ export const CreatePost = ({ user }: CreatePostProps) => {
         <form onSubmit={formpost.handleSubmit}>
             <div className="container grid w-1/2 h-auto m-auto bg-white grid-row-3 rounded-xl ">
                 <div className="mt-6 mr-6"  >
-                    <Header user={user} />
+                    <Header user={user} page={"createpost"} />
                 </div>
                 <div className="relative flex flex-wrap items-stretch mt-6 mb-3 mr-6">
                     <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 mr-2 text-gray-400 transition duration-100 "

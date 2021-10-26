@@ -5,6 +5,7 @@ import { useQuery , useMutation } from 'react-apollo';
 import { Post } from '../types/Post.type';
 import { User } from '../types/User.types';
 import Usericon from '../../../images/Usericon.jpg'
+import { Header } from "./header/Header";
 
 
 interface UserPostProps {
@@ -12,21 +13,6 @@ interface UserPostProps {
     status: boolean;
 
 }
-
-const Header = ({ user: { name, role, img } }: { user: User }) => (
-    <div className="flex mb-6">
-        {img && <div ><img src={img}
-            className="h-auto max-w-full align-middle border-none rounded-full cursor-pointer"
-            alt="" /></div>}
-        {!img && <div><img src={Usericon}
-            className="h-auto max-w-full align-middle border-none rounded-full cursor-pointer"
-            alt="" /></div>}
-        <div className="mr-2">
-            <div className="font-sans text-base font-semibold cursor-pointer hover:underline" >{name}</div>
-            <div className="font-sans text-sm text-gray-400 cursor-pointer" >{role}</div>
-        </div>
-    </div>
-);
 
 const likeFromBack = () =>
     new Promise<number>((resolve, reject) => {
@@ -70,7 +56,7 @@ export const UserPost = ({ post, status }: UserPostProps) => {
     return (
         <div className="grid w-1/2 h-auto m-auto mt-5 bg-white rounded-xl">
             <div className="mt-6 mr-6"  >
-                < Header user={user} />
+                < Header user={user} page={"userpost"} />
             </div >
             <div className="mx-6 text-sm font-medium">{body.text}</div>
             <div className="mx-8 my-4 bg-gray-100 border-1 rounded-xl">
