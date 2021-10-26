@@ -14,7 +14,7 @@ interface AppState {}
 class App extends React.Component<AppProps, AppState> {
   render() {
     return (
-      <div dir="rtl">
+      <div dir="rtl" className="bg-primary">
         {/*<NavBar></NavBar>*/}
         <Switch>
           <Route exact path="/" component={Home} />

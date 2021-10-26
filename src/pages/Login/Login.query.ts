@@ -10,6 +10,8 @@ interface QueryProps {
 const LOGIN_MUTATION = gql`
   mutation LoginMutation($email: String!, $password: String!) {
     login(loginRequest: { email: $email, password: $password }) {
+      success
+      message
       accessToken
       refreshToken
     }
