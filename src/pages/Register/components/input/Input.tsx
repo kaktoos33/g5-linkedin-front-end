@@ -3,7 +3,7 @@ import './Input.style.scss';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEnvelope} from "@fortawesome/free-regular-svg-icons";
 import {faLock, faEye, faEyeSlash} from "@fortawesome/free-solid-svg-icons";
-import {Field} from 'formik';
+import {ErrorMessage, Field} from 'formik';
 
 
 export const Input = (labelProp: { input_holder: string }) => {
@@ -24,13 +24,15 @@ export const EmailInput = () => {
                 <FontAwesomeIcon icon={faEnvelope}></FontAwesomeIcon>
             </i>
 
-            <Field type="text" dir={"ltr"}  placeholder={"Email"} id={"email"} name={"email"}/>
+            <Field type="text" dir={"ltr"}  placeholder={"Email"}
+                   id={"email"} name={"email"} />
             {/*<label htmlFor={"email"}>*/}
             {/*    <i className="mx-2 text-gray-400">*/}
             {/*        <FontAwesomeIcon icon={faEnvelope}></FontAwesomeIcon>*/}
             {/*    </i>*/}
 
             {/*</label>*/}
+            {/*<ErrorMessage name={"email"}/>*/}
         </div>
     );
 };
@@ -50,6 +52,8 @@ export const PassInput = () => {
             <i className="eyeIcon">
                 <FontAwesomeIcon icon={visible ? faEye:faEyeSlash}></FontAwesomeIcon>
             </i>
+
+            {/*<ErrorMessage name={"password"}/>*/}
 
         </div>
     );

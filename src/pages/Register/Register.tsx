@@ -7,9 +7,11 @@ import {ButtonPrimary, ButtonSecondary} from "./components/button/Button";
 import "./Register.style.scss"
 import { Formik, Field, Form , FormikHelpers} from 'formik';
 import {RegisterFormInput} from './Register.type';
+import {registerValidateSchema} from "./Register.validation";
 
 
 export const Register : FunctionComponent = () => {
+    const validation = registerValidateSchema()
     return (
 
         <div className="h-screen register">
@@ -21,6 +23,7 @@ export const Register : FunctionComponent = () => {
                         email: '',
                         is_vendor: false,
                     }}
+                    validationSchema={validation}
                     onSubmit={(
                         values: RegisterFormInput,
                         { setSubmitting }: FormikHelpers<RegisterFormInput>
