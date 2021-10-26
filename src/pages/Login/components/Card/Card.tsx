@@ -1,13 +1,21 @@
-import { FC } from "react";
+import { FC, HTMLProps } from "react";
 
-interface CardProps {
+interface CardProps extends HTMLProps<HTMLDivElement> {
   children?: React.ReactNode;
 }
 
-export const Card: FC<CardProps> = ({ children }: CardProps) => {
-  return (
-    <div className="container flex flex-col items-center justify-center mx-auto p2">
-      {children}
-    </div>
-  );
+export const Card: FC<CardProps> = (props: CardProps) => {
+  return <div {...props}>{props.children}</div>;
+};
+
+export const CardAction: FC<CardProps> = (props: CardProps) => {
+  return <div {...props}>{props.children}</div>;
+};
+
+export const CardContent: FC<CardProps> = (props: CardProps) => {
+  return <div {...props}>{props.children}</div>;
+};
+
+export const CardHeader: FC<CardProps> = (props: CardProps) => {
+  return <div {...props}>{props.children}</div>;
 };
