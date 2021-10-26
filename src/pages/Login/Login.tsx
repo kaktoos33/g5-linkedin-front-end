@@ -51,11 +51,14 @@ const Login: FC<LoginProps> = () => {
         history.push("/home");
         // history.replace("/home");
       } else {
+        alert("Email Or Password is incorrect!");
         history.push("/login");
       }
     },
     onError: (error) => {
       console.log(error.message);
+      alert(error.message);
+      history.push("/login");
     },
   });
   return (
