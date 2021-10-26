@@ -6,6 +6,7 @@ import { Post } from './types/Post.type';
 import { useQuery } from "react-apollo";
 import { gql } from "apollo-boost";
 import { User } from './types/User.types';
+import "./Home.style.scss"
 
 
 interface HomeProps {
@@ -65,7 +66,7 @@ export const Home: FunctionComponent<HomeProps> = () => {
     //     [loading, data]
     // );
     return (
-        <div>
+        <div className="home">
             <CreatePost user={user} />
             {posts}
         </div>

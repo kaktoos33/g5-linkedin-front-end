@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { FunctionComponent } from 'react';
 import { gql } from 'apollo-boost';
-import { useQuery } from 'react-apollo';
+import { useQuery , useMutation } from 'react-apollo';
 import { Post } from '../types/Post.type';
 import { User } from '../types/User.types';
 import Usericon from '../../../images/Usericon.jpg'
@@ -22,7 +22,7 @@ const Header = ({ user: { name, role, img } }: { user: User }) => (
             className="h-auto max-w-full align-middle border-none rounded-full cursor-pointer"
             alt="" /></div>}
         <div className="mr-2">
-            <div className="font-sans text-base font-semibold cursor-pointer hover:text-blue-600 hover:underline" >{name}</div>
+            <div className="font-sans text-base font-semibold cursor-pointer hover:underline" >{name}</div>
             <div className="font-sans text-sm text-gray-400 cursor-pointer" >{role}</div>
         </div>
     </div>
@@ -68,7 +68,7 @@ export const UserPost = ({ post, status }: UserPostProps) => {
     }, [currentLike]);
 
     return (
-        <div className="grid w-1/2 h-auto m-auto my-5 bg-white rounded-xl">
+        <div className="grid w-1/2 h-auto m-auto mt-5 bg-white rounded-xl">
             <div className="mt-6 mr-6"  >
                 < Header user={user} />
             </div >
@@ -78,9 +78,9 @@ export const UserPost = ({ post, status }: UserPostProps) => {
             </div>
             <div className="grid p-5 justify-items-end">
 
-                <label className="px-2 mx-6 text-xs text-white bg-blue-400 rounded-full">{currentLike}+</label>
-                <svg id="like" xmlns="http://www.w3.org/2000/svg" onClick={onLikeClick} className="w-6 h-6 cursor-pointer hover:text-blue-400 focus:text-blue-400"
-                    fill="black" viewBox="0 0 24 24" stroke="currentColor">
+                <label className="px-2 mx-6 text-xs text-white rounded-full like-box">{currentLike}+</label>
+                <svg id="like" xmlns="http://www.w3.org/2000/svg" onClick={onLikeClick} className="w-6 h-6 cursor-pointer like-svg"
+                    fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M19.504 9.96977V17.4846H16.171L16.0027
                     17.5035C12.9084 18.1923 10.858 18.689 9.83607 18.9966C8.47867 19.4051 7.97267 19.5048 7.05197
                     19.5636C6.36337 19.6088 5.58127 19.3557 5.22487 19.0092C5.02797 18.8181 4.88057 18.4254 4.82227 

@@ -1,18 +1,11 @@
 import "../../../variables/variables.scss";
 import { useMutation } from 'react-apollo';
 import { gql } from 'apollo-boost';
-import { FunctionComponent } from 'react';
 import { useFormik } from 'formik';
 import { User } from '../types/User.types';
+import { CREATE_POST_MUTATION } from "../graphql/mutations";
 //import { Uploader } from './Uploader';
 
-// const Post_MUTATION = gql`
-//   mutation Post_MUTATION(
-//     $id: String!
-//     $body: String!
-//   ) 
-//   }
-// `;
 interface CreatePostProps {
     user: User;
 
@@ -20,33 +13,47 @@ interface CreatePostProps {
 
 const Header = ({ user: { name, role, img } }: { user: User }) => (
     <div className="user">
-         <img className="h-auto max-w-full align-middle border-none rounded-full cursor-pointer" src={img}
-            alt="userimage" /> 
+        <img className="h-auto max-w-full align-middle border-none rounded-full cursor-pointer" src={img}
+            alt="userimage" />
     </div>
 );
 
 export const CreatePost = ({ user }: CreatePostProps) => {
+    const [createpost, { data, loading, error }] = useMutation(CREATE_POST_MUTATION);
 
-    const formik = useFormik({
+    const formpost = useFormik({
         initialValues: {
             text: '',
             photo: '',
             video: ''
         },
         onSubmit: values => {
-            alert(JSON.stringify("لطفا چیزی بنویسید...", null, 2));
+            addpost();
         },
     });
+    const addpost = () => {
+        createpost({
+            variables: {
+                text: formpost.values.text,
+                like : 0
+            }
+        });
+        console.log(`this is text ${formpost.values.text}`)
+        if (error) {
+            console.log(error);
+        }
+
+    };
     return (
-        <form onSubmit={formik.handleSubmit}>
-            <div className="container grid w-1/2 h-auto m-auto mt-5 bg-white grid-row-3 rounded-xl ">
+        <form onSubmit={formpost.handleSubmit}>
+            <div className="container grid w-1/2 h-auto m-auto bg-white grid-row-3 rounded-xl ">
                 <div className="mt-6 mr-6"  >
                     <Header user={user} />
                 </div>
                 <div className="relative flex flex-wrap items-stretch mt-6 mb-3 mr-6">
-                    <span className="absolute z-10 items-center justify-center w-8 h-full py-1 pl-2 mr-2 text-base font-normal leading-snug text-center text-gray-400 bg-transparent rounded">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 pl-2 text-gray-600 transition duration-100 " fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M16.5812 16.2089C16.9135 16.2089 
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 mr-2 text-gray-400 transition duration-100 "
+                        fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.5812 16.2089C16.9135 16.2089 
                             17.1828 16.498 17.1828 16.8545C17.1828 17.1813 16.9565 17.4514 16.6629 17.4941L16.5812 
                             17.5H10.3053C9.9731 17.5 9.70378 17.211 9.70378 16.8545C9.70378 16.5277 9.93008 16.2576 
                             10.2237 16.2148L10.3053 16.2089H16.5812ZM10.4773 1.41662C11.6162 0.194461 13.4634 0.194461 
@@ -58,18 +65,17 @@ export const CreatePost = ({ user }: CreatePostProps) => {
                             15.8317L6.04705 15.7357L13.3965 7.849L9.78923 3.979ZM13.7516 2.32953C13.0825 1.61156 11.997
                             1.61156 11.328 2.32953L10.6406 3.066L14.2469 6.936L14.9339 6.19909C15.5658 5.52101 15.6009
                             4.44433 15.0392 3.72195L14.9339 3.59831L13.7516 2.32953Z" />
-                        </svg>
-                    </span>
+                    </svg>
                     <textarea id="text"
                         name="text"
-                        onChange={formik.handleChange}
-                        value={formik.values.text} className="flex-grow h-20 py-1 pl-2 mr-8 text-sm text-gray-900 outline-none resize-none focus:text-black-600" placeholder="چیزی بنویس ..." />
+                        onChange={formpost.handleChange}
+                        value={formpost.values.text} className="w-5/6 h-20 mr-4 text-black outline-none resize-none focus:text-black-600" placeholder="چیزی بنویس ..." />
                 </div>
-                <div dir="ltr" className="bg-indigo-100 rounded-b-xl">
-                    <button type="submit" className="p-2 pl-5 pr-5 m-2 ml-6 text-xs font-medium text-blue-300 bg-transparent bg-white border-2 border-blue-300 rounded-lg hover:bg-blue-300 hover:text-gray-100 focus:border-4 focus:border-blue-300">
+                <div dir="ltr" className="rounded-b-xl send-box">
+                    <button type="submit" className="p-2 pl-5 pr-5 m-2 ml-6 send-but hover:text-white">
                         ارسال</button>
 
-                    <label className="inline-flex items-center float-right px-8 py-2 m-2 font-medium text-gray-600 bg-indigo-100 rounded cursor-pointer hover:bg-gray-300">
+                    <label className="inline-flex items-center float-right px-8 py-2 m-2 font-medium text-gray-600 rounded cursor-pointer hover:bg-gray-200">
                         <svg className="w-6 h-6 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                             <path d="M10.4852 0.499817C12.6978 0.499817 14.2381 2.03379 14.4022 4.28415L16.8203 
                            3.2019C17.8666 2.73455 19.0082 3.52863 19.0913 4.7353L19.0961 4.87632V11.5153C19.0961 
@@ -85,10 +91,10 @@ export const CreatePost = ({ user }: CreatePostProps) => {
                         <span>Video</span>
                         <input id="video"
                             name="Video"
-                            onChange={formik.handleChange}
-                            value={formik.values.video} type='file' accept="video/mp4" className="hidden" />
+                            onChange={formpost.handleChange}
+                            value={formpost.values.video} type='file' accept="video/mp4" className="hidden" />
                     </label>
-                    <label className="inline-flex items-center float-right px-8 py-2 m-2 font-medium text-gray-600 bg-indigo-100 rounded cursor-pointer hover:bg-gray-300">
+                    <label className="inline-flex items-center float-right px-8 py-2 m-2 font-medium text-gray-600 rounded cursor-pointer hover:bg-gray-200">
                         <svg className="w-6 h-6 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                             <path d="M13.9156 0C17.0243 0 19.0961 2.42887 19.0961 5.91408V14.0849C19.0961 17.5703
                     17.0242 20 13.9156 20H5.9983C2.89111 20 0.826904 17.5722 0.826904 14.0849V5.91408C0.826904 2.43059
@@ -111,8 +117,8 @@ export const CreatePost = ({ user }: CreatePostProps) => {
                         <span>Photo</span>
                         <input id="photo"
                             name="Photo"
-                            onChange={formik.handleChange}
-                            value={formik.values.photo} type='file' accept="image/png , image/jpeg" className="hidden" />
+                            onChange={formpost.handleChange}
+                            value={formpost.values.photo} type='file' accept="image/png , image/jpeg" className="hidden" />
                     </label>
                     {/* <Uploader id="video"
                         name=""
@@ -125,6 +131,5 @@ export const CreatePost = ({ user }: CreatePostProps) => {
                 </div>
             </div>
         </form>
-
     )
 }
