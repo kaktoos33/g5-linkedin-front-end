@@ -40,7 +40,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav dir="rtl" className="bg-white">
+    <nav dir="rtl" className="w-full bg-white h-19">
       <div className="px-3"></div>
       <nav className="">
         <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
