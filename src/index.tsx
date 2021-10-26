@@ -33,7 +33,7 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
     graphQLErrors.map(({ message, locations, path }) => {
       if (message === "Unauthorized") {
         // every 401/unauthorized error will be caught here and update the global local state
-        localStorage.removeItem("authToken");
+        localStorage.removeItem("accessToken");
         localStorage.setItem("loginState", "loggedOut");
         console.log("khataye barname");
       }

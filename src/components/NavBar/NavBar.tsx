@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import logo from "../resources/LinkedIn_Logo_2019.svg";
+import logo from "../../resources/LinkedIn_Logo_2019.svg";
 import { faLock, faHome, faUsers } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -40,7 +40,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav dir="rtl" className="">
+    <nav dir="rtl" className="bg-white">
       <div className="px-3"></div>
       <nav className="">
         <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">

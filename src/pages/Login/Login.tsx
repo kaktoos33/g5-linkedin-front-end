@@ -12,11 +12,11 @@ import { EmailInput, PasswordlInput } from "./components/Input/Input";
 import { PrimaryButton, SecondaryButton } from "./components/Button/Button";
 import { gql } from "apollo-boost";
 import { useMutation } from "react-apollo";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 interface LoginProps {
-  email: string;
-  password: string;
+  email?: string;
+  password?: string;
 }
 const LOGIN_MUTATION = gql`
   mutation LoginMutation($email: String!, $password: String!) {
@@ -42,10 +42,17 @@ const Login: FC<LoginProps> = () => {
       password: formState.password,
     },
     onCompleted: ({ login }) => {
-      sessionStorage.setItem("accessTtoken", login.accessToken);
-      sessionStorage.setItem("refreshToken", login.refreshToken);
-      sessionStorage.setItem("loginState", "loggedIn");
-      history.push("/home");
+      if (login.success) {
+        sessionStorage.setItem("accessTtoken", login.accessToken);
+        sessionStorage.setItem("refreshToken", login.refreshToken);
+        sessionStorage.setItem("loginState", "loggedIn");
+        console.log(login);
+        window.location.reload();
+        history.push("/home");
+        // history.replace("/home");
+      } else {
+        history.push("/");
+      }
     },
     onError: (error) => {
       console.log(error.message);
@@ -65,7 +72,7 @@ const Login: FC<LoginProps> = () => {
             password: "",
           }}
           onSubmit={(values, actions) => {
-            alert(JSON.stringify(values, null, 2));
+            // alert(JSON.stringify(values, null, 2));
             console.log(values);
             setFormState({ email: values.email, password: values.password });
             login();
@@ -96,7 +103,7 @@ const Login: FC<LoginProps> = () => {
               <PrimaryButton></PrimaryButton>
               <label className="flex items-center pb-0">
                 <p className="flex flex-row justify-center w-full pt-5 pb-3">
-                  عضو نیستید؟
+                  <Link to="/register">عضو نیستید؟</Link>
                 </p>
               </label>
               <SecondaryButton></SecondaryButton>

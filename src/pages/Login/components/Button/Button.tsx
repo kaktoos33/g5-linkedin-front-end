@@ -15,7 +15,7 @@ export const PrimaryButton: FC<ButtonProps> = (props: ButtonProps) => {
     <div className="flex items-center pb-2">
       <button
         {...props}
-        className="w-full h-12 font-bold text-blue-500 uppercase transition-all duration-150 ease-linear bg-transparent border border-blue-500 border-solid rounded-full outline-none w-fullh-12 hover:bg-blue-500 hover:text-white active:bg-blue-600 focus:outline-none"
+        className="w-full h-12 font-bold uppercase transition-all duration-150 ease-linear bg-transparent bg-blue-600 border border-blue-300 border-solid rounded-full outline-none :text-white w-fullh-12 hover:bg-blue-500 hover:text-white active:bg-blue-600 focus:outline-none"
         type="submit"
       >
         ورود
