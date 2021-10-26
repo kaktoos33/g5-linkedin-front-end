@@ -51,7 +51,7 @@ const Login: FC<LoginProps> = () => {
         history.push("/home");
         // history.replace("/home");
       } else {
-        history.push("/");
+        history.push("/login");
       }
     },
     onError: (error) => {
