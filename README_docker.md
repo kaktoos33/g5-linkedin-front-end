@@ -44,6 +44,8 @@ $ docker run -itd --rm -p 1337:80 rahama_front_nginx:prod
 ```
 rm -r package-lock.json node_modules
 npm install
+npm ci --production
+npm run build
 ```
 2. build app
 ```
