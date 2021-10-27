@@ -10,8 +10,9 @@ import {RegisterFormInput} from './Register.type';
 import {registerValidateSchema} from "./Register.validation";
 import {useHistory} from "react-router-dom";
 import {useMutation} from "react-apollo";
+import {ErrorHandel} from "./components/error/Error";
 import {gql} from "apollo-boost";
-
+import {ErrorMessage, useField} from "formik";
 
 interface RegisterQueryProps {
     email: string;
@@ -76,7 +77,18 @@ export const Register : FunctionComponent = () => {
                         <EmailInput />
                         <PassInput />
                         <CheckBoxInput />
+                        <ErrorHandel>
+                            <p>
+                                <ErrorMessage name={"email"} />
+                            </p>
+                            <p>
+                                <ErrorMessage name={"password"} />
+                            </p>
+
+                            {/*<ErrorMessage name={"password"} />*/}
+                        </ErrorHandel>
                         <ButtonPrimary />
+
                     </Form>
                 </Formik>
                 <div className={"register_redirect_login"}>
