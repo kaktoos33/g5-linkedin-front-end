@@ -58,7 +58,7 @@ const Login: FC<LoginProps> = () => {
     onError: (error) => {
       console.log(error.message);
       alert(error.message);
-      history.push("/login");
+      // history.push("/login");
     },
   });
   return (
