@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import './Input.style.scss';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEnvelope} from "@fortawesome/free-regular-svg-icons";
@@ -36,9 +36,22 @@ export const EmailInput = () => {
         </div>
     );
 };
+const usePasswordToggle = () =>{
+    const [visible, setVisibility] = useState(false);
+    const Icon = (
+        <FontAwesomeIcon icon={visible ? faEye:faEyeSlash}
+                         onClick={() => setVisibility(visible => !visible)}
+        ></FontAwesomeIcon>
 
+    )
+    const InputType = visible ? "text": "password";
+    return [InputType, Icon]
+
+}
 export const PassInput = () => {
-    const visible = false;
+
+    const [PasswordInputType, ToggleIcon] = usePasswordToggle();
+
     return (
         // <div className={"w-5/6 p-2 register_email_input"}>
         <div className={"register_pass_input"}>
@@ -47,10 +60,11 @@ export const PassInput = () => {
                 <FontAwesomeIcon icon={faLock}></FontAwesomeIcon>
             </i>
 
-            <Field type="password" dir={"ltr"}  placeholder={"Password"} id={"password"} name={"password"}/>
+            <Field type={PasswordInputType} dir={"ltr"}  placeholder={"Password"} id={"password"} name={"password"}/>
 
             <i className="eyeIcon">
-                <FontAwesomeIcon icon={visible ? faEye:faEyeSlash}></FontAwesomeIcon>
+                {ToggleIcon}
+                {/*<FontAwesomeIcon icon={visible ? faEye:faEyeSlash}></FontAwesomeIcon>*/}
             </i>
 
             {/*<ErrorMessage name={"password"}/>*/}

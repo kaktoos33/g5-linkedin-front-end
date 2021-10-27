@@ -164,6 +164,9 @@ input[type=checkbox]:checked:after {
 input:focus {
   border-color: $blueColor;
 }
+.eyeIcon{
+  cursor: pointer;
+}
 //.register_pass_input input:focus{
 //  border-color: $blueColor;
 //  color: $blueColor;
