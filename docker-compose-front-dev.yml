@@ -9,3 +9,7 @@ services:
       dockerfile: Dockerfile.prod
     ports:
       - '80:80'
+
+networks:
+  g5_default:
+    external: true
