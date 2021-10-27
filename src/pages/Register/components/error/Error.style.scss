@@ -1,0 +1,18 @@
+@import "./src/variables/variables.scss";
+
+
+.error_handel_register{
+  display: block;
+  font-family: $font;
+  font-weight: 300;
+  font-size: 14px;
+  outline: none;
+  text-decoration: none;
+  color: red;
+  text-align: center;
+  padding-top: 50px;
+  //padding-top: 20px;
+  //margin-top: 50px;
+  //margin: 10px auto;
+
+}

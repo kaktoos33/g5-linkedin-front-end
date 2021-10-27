@@ -1,3 +1,5 @@
+
+import './fonts/Iranian_Sans.ttf'
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
@@ -48,8 +50,9 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+
 ReactDOM.render(
-  <ApolloProvider client={client}>
+  <ApolloProvider client= {client}>
     <BrowserRouter>
       <App />
     </BrowserRouter>
