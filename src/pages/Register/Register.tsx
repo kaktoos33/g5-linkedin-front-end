@@ -80,7 +80,7 @@ export const Register : FunctionComponent = () => {
                     </Form>
                 </Formik>
                 <div className={"register_redirect_login"}>
-                    <a href="https://www.google.com/">عضو هستم</a>
+                    <p>عضو هستم</p>
                 </div>
                 <ButtonSecondary />
             </Cart>
