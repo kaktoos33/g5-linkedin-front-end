@@ -39,39 +39,44 @@ $ docker run -itd --rm -p 1337:80 rahama_front_nginx:prod
 ```
 
 ###  docker in production 
-- build app
+
+1. clean
+```
+rm -r package-lock.json node_modules
+npm install
+```
+2. build app
 ```
 npm ci --production
 ```
 ```
 npm run build
 ```
-- build image
+3. build image
 ```
 docker build -t docker.abrman.ir/g5_front:latest .
 ```
-- run
-```
-docker run -itd --rm -p 80:80 docker.abrman.ir/g5_front:latest
-```
-- clean
-```
-rm -r package-lock.json node_modules
-npm install
-```
-- login
+4. login
 ```
 docker login https://docker.abrman.ir/
 user: abb
 pass :  xTbpwSAg9MtmPtJPEoW3mXuiPVpoa2
 
 ```
-- see repo
+5. PUSH
+```
+docker push  docker.abrman.ir/g5_front:latest 
+```
+6. see repo
 ```
 https://repo.abrman.ir/#browse/browse:abrman-repository
 https://repo.abrman.ir/
 ```
-- PUSH
+7. run
 ```
-docker push  docker.abrman.ir/g5_front:latest 
+docker run -itd --rm -p 80:80 docker.abrman.ir/g5_front:latest
+```
+8. PULL
+```
+docker pull  docker.abrman.ir/g5_front:latest 
 ```
