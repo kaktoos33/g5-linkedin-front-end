@@ -8,3 +8,12 @@ mutation createpost( $text:String! $like: number){
     }
 }
 `
+
+export const UPDATE_LIKE_MUTATION=gql`
+mutation updatelike($like: number!){
+    updatelike(like: $like){
+        like
+    }
+
+}
+`

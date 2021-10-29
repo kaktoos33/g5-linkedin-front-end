@@ -1,13 +1,14 @@
 import * as React from 'react';
 import { FunctionComponent } from 'react';
-import { CreatePost } from './component/CreatePost';
-import { UserPost } from './component/UserPost';
+import { CreatePost } from './components/CreatePost';
+import { UserPost } from './components/UserPost';
 import { Post } from './types/Post.type';
 import { useQuery } from "react-apollo";
 import { gql } from "apollo-boost";
 import { User } from './types/User.types';
 import "./Home.style.scss"
 import {GET_POSTS } from "./graphql/query";
+import { UserProfile } from "./components/UserProfile";
 
 
 interface HomeProps {
@@ -24,7 +25,7 @@ const fetechedPost: Array<Post> = [
     {
         body: {
             text: "طبیعت گردی ...",
-            media: "https://picsum.photos/id/1003/400/400",
+            media: "https://picsum.photos/id/1003/516/307",
         },
         likes: 34,
         user: {
@@ -36,7 +37,7 @@ const fetechedPost: Array<Post> = [
     {
         body: {
             text: "نظرتون رو واسم بنویسید",
-            media: "https://picsum.photos/400/400",
+            media: "https://picsum.photos/516/307",
         },
         likes: 10,
         user: {
@@ -58,9 +59,13 @@ export const Home: FunctionComponent<HomeProps> = () => {
     //     [loading, data]
     // );
     return (
-        <div className="home">
+        <div className="">
+           
+            {/* <UserProfile />  */}
             <CreatePost user={user} />
+            {/* <UserProfile /> */}
             {posts}
+            
         </div>
     );
 }

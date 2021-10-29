@@ -1,5 +1,5 @@
 import { User } from '../../types/User.types';
-import Usericon from '../../../../images/Usericon.jpg'
+import Usericon from '../../../../images/Usericon.svg'
 
 export const Header = (props:
     {
@@ -10,27 +10,27 @@ export const Header = (props:
     const { name, role, img } = props.user;
     if (props.page === "createpost") 
         return (
-            <div className="user">
+            <div className="mt-5 mr-7" >
                 {img && <div ><img src={img}
-                    className="h-auto max-w-full align-middle border-none rounded-full cursor-pointer"
+                    className="border-none cursor-pointer rounded-2xl"
                     alt="" /></div>}
                 {!img && <div><img src={Usericon}
-                    className="h-auto max-w-full align-middle border-none rounded-full cursor-pointer"
+                    className="border-none cursor-pointer rounded-2xl"
                     alt="" /></div>}
             </div>
         )
     
     if (props.page === "userpost") {
         return (
-            <div className="flex mb-6">
+            <div className="flex mt-6 mb-4 mr-9">
                 {img && <div ><img src={img}
-                    className="h-auto max-w-full align-middle border-none rounded-full cursor-pointer"
+                    className="border-none cursor-pointer rounded-2xl"
                     alt="" /></div>}
                 {!img && <div><img src={Usericon}
-                    className="h-auto max-w-full align-middle border-none rounded-full cursor-pointer"
+                    className="border-none cursor-pointer rounded-2xl"
                     alt="" /></div>}
-                <div className="mr-2">
-                    <div className="font-sans text-base font-semibold cursor-pointer hover:underline" >{name}</div>
+                <div className="mr-3.5">
+                    <div className="font-sans text-base font-semibold cursor-pointer name-hover" >{name}</div>
                     <div className="font-sans text-sm text-gray-400 cursor-pointer" >{role}</div>
                 </div>
             </div>
