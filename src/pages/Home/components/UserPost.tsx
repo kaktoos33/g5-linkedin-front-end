@@ -5,7 +5,7 @@ import { useQuery, useMutation } from 'react-apollo';
 import { Post } from '../types/Post.type';
 import { User } from '../types/User.types';
 import Usericon from '../../../images/Usericon.jpg'
-import { Header } from "./Header/Header";
+import { UserInfo } from "../../../components/UserInfo/UserInfo";
 import { UPDATE_LIKE_MUTATION } from "../graphql/mutations";
 import { ReactComponent as ImportedSVG } from "../../../images/like.svg";
 import { SvgIcon } from '@material-ui/core';
@@ -66,7 +66,7 @@ export const UserPost = ({ post, status }: UserPostProps) => {
     return (
 
         <Card classname="post" >
-                < Header user={user} page={"userpost"} />
+                < UserInfo user={user} page={"userpost"} />
 
                 <div className="text-sm font-sm mx-9">{body.text}</div>
                 <div className="my-4 bg-gray-100 mx-9 border-1 rounded-3xl">

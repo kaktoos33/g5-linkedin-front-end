@@ -7,9 +7,9 @@ export function Card(props: {
     children?: ReactNode | undefined;
 }) {
     return (
-         <div className={`container grid bg-white grid-row-3 rounded-3xl ${props.classname || ""}`}>
-                {props.children}
-            </div>
+        <div className={`container grid bg-white grid-row-3 rounded-3xl ${props.classname || ""}`}>
+            {props.children}
+        </div>
 
     )
 }

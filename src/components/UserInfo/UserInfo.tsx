@@ -1,8 +1,8 @@
-import { User } from '../../types/User.types';
-import Usericon from '../../../../images/Usericon.svg'
+import { User } from '../../pages/Home/types/User.types';
+import Usericon from '../../images/Usericon.svg'
 import { UserPic } from "./UserPic";
 
-export const Header = (props:
+export const UserInfo = (props:
     {
         user: User;
         page: string;

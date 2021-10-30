@@ -5,7 +5,7 @@ import { useFormik } from 'formik';
 import { User } from '../types/User.types';
 import { CREATE_POST_MUTATION } from "../graphql/mutations";
 import { Uploader } from './Uploader';
-import { Header } from "./Header/Header";
+import { UserInfo } from "../../../components/UserInfo/UserInfo";
 import { render } from 'react-dom';
 import { Formik } from "formik";
 import yup from "yup";
@@ -70,7 +70,7 @@ export const CreatePost = ({ user }: CreatePostProps) => {
         <form onSubmit={formpost.handleSubmit}>
             <Card classname="createpost">
 
-                <Header user={user} page={"createpost"} />
+                <UserInfo user={user} page={"createpost"} />
                 
                 <div className="flex mt-2 mr-9">
                     <img src={EditIcon} alt="" />
