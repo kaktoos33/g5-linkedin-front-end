@@ -1,11 +1,10 @@
 import React from 'react'
-import { Card } from "./card/Card";
+import { Card } from "./Card/Card";
 
 export const UserProfile = () => {
     return (
         <div>
-            <Card classname="user"></Card>
-
+            <Card classname="userInfo" />
 
         </div>
     )

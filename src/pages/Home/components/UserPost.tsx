@@ -5,11 +5,11 @@ import { useQuery, useMutation } from 'react-apollo';
 import { Post } from '../types/Post.type';
 import { User } from '../types/User.types';
 import Usericon from '../../../images/Usericon.jpg'
-import { Header } from "./header/Header";
+import { Header } from "./Header/Header";
 import { UPDATE_LIKE_MUTATION } from "../graphql/mutations";
 import { ReactComponent as ImportedSVG } from "../../../images/like.svg";
 import { SvgIcon } from '@material-ui/core';
-import { Card } from "../components/card/Card";
+import { Card } from "../../../components/Card/Card";
 
 
 interface UserPostProps {
@@ -29,8 +29,11 @@ interface UserPostProps {
 
 export const UserPost = ({ post, status }: UserPostProps) => {
     const { user, body, likes } = post;
+
     const [updatelike, { data, loading, error }] = useMutation(UPDATE_LIKE_MUTATION);
+
     const [currentLike, setCurrentLike] = useState(likes);
+
     const [isliked, setisliked] = useState(status);
 
 
@@ -39,10 +42,7 @@ export const UserPost = ({ post, status }: UserPostProps) => {
         if (isliked === false) {
             setCurrentLike(() => currentLike + 1);
             setisliked(() => true);
-            updatelike({ variables: { like: currentLike } });
-            console.log(`success1 ${currentLike} , ${isliked} `)
-
-            updatelike().catch((x) => {
+            updatelike({ variables: { like: currentLike } }).catch((x) => {
                 setCurrentLike((currentLike) => currentLike - 1);
                 setisliked(() => false);
                 console.log(`failed1 ${currentLike} , ${isliked} `)
@@ -52,10 +52,7 @@ export const UserPost = ({ post, status }: UserPostProps) => {
         else if (isliked === true) {
             setCurrentLike(() => currentLike - 1);
             setisliked(() => false);
-            updatelike({ variables: { like: currentLike } });
-            console.log(`success2 ${currentLike} , ${isliked} `)
-
-            updatelike().catch((x) => {
+            updatelike({ variables: { like: currentLike } }).catch((x) => {
                 setCurrentLike((currentLike) => currentLike + 1);
                 setisliked(() => true);
                 console.log(`failed2 ${currentLike} , ${isliked} `)
@@ -64,12 +61,11 @@ export const UserPost = ({ post, status }: UserPostProps) => {
             );
         }
 
-    }, [currentLike]);
+    }, [currentLike , updatelike]);
 
     return (
 
-        <div >
-            <Card classname="post">
+        <Card classname="post" >
                 < Header user={user} page={"userpost"} />
 
                 <div className="text-sm font-sm mx-9">{body.text}</div>
@@ -81,8 +77,6 @@ export const UserPost = ({ post, status }: UserPostProps) => {
                     <label className="px-2 py-1 ml-4 text-xs text-white rounded-full like-box">{currentLike}+</label>
                     <SvgIcon component={ImportedSVG} id="like" onClick={onLikeClick} className="w-5 h-5 cursor-pointer image-svg" />
                 </div>
-            </Card>
-
-        </div >
+        </Card >
     )
 }

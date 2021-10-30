@@ -4,15 +4,15 @@ import { gql } from 'apollo-boost';
 import { useFormik } from 'formik';
 import { User } from '../types/User.types';
 import { CREATE_POST_MUTATION } from "../graphql/mutations";
-//import { Uploader } from './Uploader';
-import { Header } from "./header/Header";
+import { Uploader } from './Uploader';
+import { Header } from "./Header/Header";
 import { render } from 'react-dom';
 import { Formik } from "formik";
 import yup from "yup";
 import PhotoIcon from "../../../images/pic.svg"
 import VideoIcon from "../../../images/video.svg"
 import EditIcon from "../../../images/Vector.svg"
-import { Card } from "../components/card/Card";
+import { Card } from "../../../components/Card/Card";
 
 interface CreatePostProps {
     user: User;
@@ -66,50 +66,34 @@ export const CreatePost = ({ user }: CreatePostProps) => {
 
 
     return (
+
         <form onSubmit={formpost.handleSubmit}>
-            <div>
-                <Card classname="post">
-                    <Header user={user} page={"createpost"} />
+            <Card classname="createpost">
 
-                    <div className="flex mt-2 mr-9">
-                        <img src={EditIcon} alt="" />
-                        <textarea id="text"
-                            name="text"
-                            onChange={formpost.handleChange}
-                            value={formpost.values.text} className="w-full mt-6 ml-2 mr-3 text-base text-black outline-none resize-none focus:text-black-600" placeholder="چیزی بنویس ..." />
-                    </div>
+                <Header user={user} page={"createpost"} />
+                
+                <div className="flex mt-2 mr-9">
+                    <img src={EditIcon} alt="" />
+                    <textarea id="text"
+                        name="text"
+                        onChange={formpost.handleChange}
+                        value={formpost.values.text} className="w-full mt-6 ml-2 mr-3 text-base text-black outline-none resize-none focus:text-black-600" placeholder="چیزی بنویس ..." />
+                </div>
 
-                    <div dir="ltr" className=" rounded-b-3xl send-box">
+                <div dir="ltr" className=" rounded-b-3xl send-box">
 
-                        <label className="inline-flex float-right p-2 m-2 mr-6 font-medium text-gray-600 cursor-pointer rounded-xl hover:bg-gray-200 ">
-                            <img src={VideoIcon} className="w-6 h-6 mr-1" alt="" />
-                            <span>Video</span>
-                            <input id="video"
-                                name="Video"
-                                onChange={formpost.handleChange}
-                                value={formpost.values.video} type='file' accept="video/*" className="hidden" />
-                        </label>
+                    <Uploader formpost={formpost} icon={VideoIcon} name="Video" typeacc="video/*" />
 
-                        <label className="inline-flex float-right p-2 m-2 font-medium text-gray-600 cursor-pointer rounded-xl hover:bg-gray-200 ">
-                            <img src={PhotoIcon} className="w-6 h-6 mr-1" alt="" />
-                            <span>Photo</span>
-                            <input id="photo"
-                                name="Photo"
-                                onChange={formpost.handleChange}
-                                value={formpost.values.video}
-                                // onChange={(event) => {//@ts-ignore
-                                //     setFieldValue("photo1", event.target.files[0]);
-                                // }}
-                                type='file' accept="image/*" className="hidden" />
-                        </label>
+                    <Uploader formpost={formpost} icon={PhotoIcon} name="Photo" typeacc="image/*" />
 
-                        <button type="submit" className="mt-3 ml-6 send-but hover:text-white">
-                            ارسال</button>
-                    </div>
-                </Card>
+                    <button type="submit" className="mt-3 ml-6 send-but hover:text-white">
+                        ارسال</button>
+                </div>
+            </Card>
 
-            </div>
         </form>
+
+
     )
 }
 
