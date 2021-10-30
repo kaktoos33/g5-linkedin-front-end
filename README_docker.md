@@ -82,3 +82,8 @@ docker run -itd --rm -p 80:80 docker.abrman.ir/g5_front:latest
 ```
 docker pull  docker.abrman.ir/g5_front:latest 
 ```
+
+```
+docker tag nginx:1.17.8-alpine docker.abrman.ir/g5/nginx:1.17.8-alpine
+docker push docker.abrman.ir/g5/nginx:1.17.8-alpine 
+```
