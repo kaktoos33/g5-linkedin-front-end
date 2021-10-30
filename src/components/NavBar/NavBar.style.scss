@@ -1,0 +1,41 @@
+@import "./src/variables/variables.scss";
+
+.navbar {
+  background: #ffffff;
+  width: 1440px;
+  height: 76px;
+  position: relative;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+}
+
+.logo {
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.vl {
+  border: 1px solid rgba(0, 0, 0, 0.28);
+  height: 45px;
+}
+.icon {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+}
+.hoverItem:hover {
+  color: $blueColorHover;
+}
+
+.blueColor {
+  color: $blueColor;
+}
+.grayColor {
+  color: $grayColor;
+}
