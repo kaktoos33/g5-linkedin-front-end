@@ -8,24 +8,6 @@ import { Icon, Logo } from "./components/NavBarIcon";
 import "./NavBar.style.scss";
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-  const handleScroll = () => {
-    const offset = window.scrollY;
-    if (offset > 200) {
-      setScrolled(true);
-    } else {
-      setScrolled(false);
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-  });
-  let navbarClasses = "navbar";
-  if (scrolled) {
-    navbarClasses = "navbarScrolled";
-  }
-
   const [formState, setFormState] = useState({
     homeSelected: true,
     alarmSelected: false,
