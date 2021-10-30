@@ -15,7 +15,7 @@ export default function Navbar() {
   });
 
   return (
-    <div className={navbarClasses}>
+    <div className="navbar">
       <Logo className="logo"></Logo>
 
       <div className="vl"></div>
