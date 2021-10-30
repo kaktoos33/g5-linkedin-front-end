@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../../resources/LinkedIn_Logo_2019.svg";
 import { faLock, faHome, faUsers } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -8,6 +8,24 @@ import { Icon, Logo } from "./components/NavBarIcon";
 import "./NavBar.style.scss";
 
 export default function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+  const handleScroll = () => {
+    const offset = window.scrollY;
+    if (offset > 200) {
+      setScrolled(true);
+    } else {
+      setScrolled(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+  });
+  let navbarClasses = "navbar";
+  if (scrolled) {
+    navbarClasses = "navbarScrolled";
+  }
+
   const [formState, setFormState] = useState({
     homeSelected: true,
     alarmSelected: false,
@@ -15,7 +33,7 @@ export default function Navbar() {
   });
 
   return (
-    <div className=" navbar">
+    <div className={navbarClasses}>
       <Logo className="logo"></Logo>
 
       <div className="vl"></div>
