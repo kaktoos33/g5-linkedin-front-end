@@ -106,7 +106,7 @@ export default function Navbar() {
           onMouseLeave={() => {
             setNotificationState("hidden");
           }}
-          // className={notificationState}
+          className={notificationState}
         >
           <Message message={message1}></Message>
           <Message message={message1}></Message>
