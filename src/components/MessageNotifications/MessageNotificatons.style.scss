@@ -9,6 +9,8 @@
   padding-top: 24px;
   height: 174px;
   overflow-y: scroll;
+  scroll-behavior: smooth;
+  white-space: nowrap;
   background-color: white;
   border-radius: 20px;
 }

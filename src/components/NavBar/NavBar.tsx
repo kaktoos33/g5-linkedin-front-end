@@ -5,7 +5,15 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import { Icon, Logo } from "./components/NavBarIcon";
 import "./NavBar.style.scss";
 import { MessageNotifications } from "../MessageNotifications/MessageNotifications";
-import { Message } from "../MessageNotifications/Message";
+// import { Message } from "../MessageNotifications/Message";
+import { Message } from "./../MessageNotifications/Message";
+
+type message = {
+  id: number;
+  title: string;
+  body: string;
+  date: string;
+};
 
 export default function Navbar() {
   const [formState, setFormState] = useState({
@@ -15,6 +23,13 @@ export default function Navbar() {
   });
   const [notificationState, setNotificationState] = useState("hidden");
   const [notificationNumber, setNotificationNumber] = useState(5);
+
+  const message1: message = {
+    id: 1,
+    title: "title1",
+    body: "body1",
+    date: "new Date()",
+  };
 
   return (
     <div className="navbar">
@@ -93,10 +108,10 @@ export default function Navbar() {
           }}
           className={notificationState}
         >
+          <Message payam={message1}></Message>
+          {/* <Message></Message>
           <Message></Message>
-          <Message></Message>
-          <Message></Message>
-          <Message></Message>
+          <Message></Message> */}
         </MessageNotifications>
       </div>
     </div>
