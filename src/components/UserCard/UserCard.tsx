@@ -36,8 +36,8 @@ export const UserCard = (props:
             </div>
         )
     }
-
-    else {
+    else if (props.page === "connect") 
+    {
         return (
             <div className={outerdivclass}>
                 <div className="w-1/3">
@@ -49,10 +49,21 @@ export const UserCard = (props:
                         innerdivclass={innerdivclass} />
                 </div>
 
+            </div>
+        )
+    }
 
-
-
-
+    else {
+        return (
+            <div className={outerdivclass}>
+                <div>
+                    {img && <UserPic pic={img} />}
+                    {!img && <UserPic pic={Usericon} />}
+                </div>
+                <div>
+                    <UserInfo name={name} role={role} nameclass={nameclass} roleclass={roleclass}
+                        innerdivclass={innerdivclass} />
+                </div>
 
             </div>
         )

@@ -43,7 +43,7 @@
 }
 
 .connectinnerdivclass {
-    margin-right: 0.875rem;
+    //margin-right: 0.875rem;
 }
 
 .connectname {
@@ -52,6 +52,7 @@
     font-weight: 500;
     font-size: 15px;
     line-height: 19px;
+    word-wrap: break-word;
     color: #212121;
     cursor: pointer;
     &:hover {

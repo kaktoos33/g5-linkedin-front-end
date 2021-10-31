@@ -9,8 +9,9 @@ import { User } from '../../components/UserCard/types/User.types';
 import "./Home.style.scss"
 import { GET_POSTS } from "./graphql/query";
 import { UserProfile } from "../../components/UserProfile";
-import { Connect } from "../../components/Connect";
+import { Connect } from "../../components/Connect/Connect";
 import { Tag } from "../../components/Tag";
+import '../../components/Responsive.Style.scss';
 
 
 
@@ -27,9 +28,9 @@ const fetechedUser: User =
 
 const fetechedConnectReq: Array<User> = [
     {
-        name: "AmirBahador AmirBahador",
+        name: "AmirBahador",
         role: "Devops",
-        img: "https://picsum.photos/id/1005/40"
+        img: "https://picsum.photos/id/2/40"
     },
     {
         name: "Mehdi",
@@ -39,22 +40,22 @@ const fetechedConnectReq: Array<User> = [
     {
         name: "Sina",
         role: "BackEnd Developer",
-        img: "https://picsum.photos/id/1005/40"
+        img: "https://picsum.photos/id/175/40"
     },
     {
         name: "Mehrdad",
         role: "SEO",
-        img: "https://picsum.photos/id/1005/40"
+        img: "https://picsum.photos/id/250/40"
     },
     {
         name: "Neda",
         role: "Manager",
-        img: "https://picsum.photos/id/1005/40"
+        img: ""
     },
     {
         name: "Mahour",
         role: "UI/UX Designer",
-        img: ""
+        img: "https://picsum.photos/id/1014/40"
     }
 
 ]
@@ -62,7 +63,7 @@ const fetechedPost: Array<Post> = [
     {
         body: {
             text: "طبیعت گردی ...",
-            media: "https://picsum.photos/id/1003/516/307",
+            media: "https://picsum.photos/id/1018/516/307",
         },
         likes: 34,
         user: {
@@ -106,15 +107,15 @@ export const Home: FunctionComponent<HomeProps> = () => {
     return (
         
         <div className="flex justify-center home">
-            <div className="w-1/5 max-w-xs ">
+            <div id="right" className="w-1/5 max-w-xs ">
                 <UserProfile />
                 <Connect connecetlist={fetechedConnectReq} />
             </div>
-            <div className="w-3/5 max-w-xl mx-3.5">
+            <div id="post" className="w-3/5 max-w-xl mx-3.5">
                 <CreatePost user={user} />
                 {posts}
             </div>
-            <div className="w-1/5 max-w-xs">
+            <div id="left" className="w-1/5 max-w-xs">
                 <Tag />
             </div>
         </div>
