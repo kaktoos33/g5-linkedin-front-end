@@ -25,9 +25,9 @@ export const Icon: FC<IconProps> = (props: IconProps) => {
     <div className="iconItem">
       <a
         {...props}
-        {...(props.selected
-          ? { className: "selected" }
-          : { className: "notSelected" })}
+        // {...(props.selected
+        //   ? { className: "selected" }
+        //   : { className: "notSelected" })}
       >
         {props.children}
       </a>

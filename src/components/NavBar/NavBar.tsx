@@ -22,6 +22,9 @@ export default function Navbar() {
 
       <div className="icon">
         <Icon
+          {...(formState.homeSelected
+            ? { className: "selected" }
+            : { className: "notSelected" })}
           onClick={() => {
             setFormState({
               homeSelected: true,
@@ -35,6 +38,9 @@ export default function Navbar() {
         </Icon>
 
         <Icon
+          {...(formState.alarmSelected
+            ? { className: "alarmSelected" }
+            : { className: "alarmNotSelected" })}
           onClick={() => {
             setFormState({
               homeSelected: false,
@@ -44,10 +50,17 @@ export default function Navbar() {
           }}
           selected={formState.alarmSelected}
         >
-          <FontAwesomeIcon className="fas fa-2x hoverItem" icon={faBell} />
+          <FontAwesomeIcon
+            className="far fa-2x hoverItem alarm"
+            icon={faBell}
+          />
+          <span className="badge">+5</span>
         </Icon>
 
         <Icon
+          {...(formState.userSelected
+            ? { className: "selected" }
+            : { className: "notSelected" })}
           onClick={() => {
             setFormState({
               homeSelected: false,
