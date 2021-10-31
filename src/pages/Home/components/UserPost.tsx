@@ -3,13 +3,15 @@ import { FunctionComponent } from 'react';
 import { gql } from 'apollo-boost';
 import { useQuery, useMutation } from 'react-apollo';
 import { Post } from '../types/Post.type';
-import { User } from '../types/User.types';
+import { User } from '../../../components/UserCard/types/User.types';
 import Usericon from '../../../images/Usericon.jpg'
-import { UserInfo } from "../../../components/UserInfo/UserInfo";
+import { UserCard } from "../../../components/UserCard/UserCard";
 import { UPDATE_LIKE_MUTATION } from "../graphql/mutations";
 import { ReactComponent as ImportedSVG } from "../../../images/like.svg";
 import { SvgIcon } from '@material-ui/core';
 import { Card } from "../../../components/Card/Card";
+import { UserClass } from "../../../components/UserCard/types/UserCalss.type";
+import { ReadMore } from "../../../components/MoreLink/ReadMore";
 
 
 interface UserPostProps {
@@ -36,6 +38,13 @@ export const UserPost = ({ post, status }: UserPostProps) => {
 
     const [isliked, setisliked] = useState(status);
 
+    const classname: UserClass = {
+        nameclass: "username",
+        roleclass: "userrole",
+        outerdivclass: "userouterdivclass",
+        innerdivclass: "userinnerdivclass"
+    }
+
 
 
     const onLikeClick = React.useCallback(() => {
@@ -61,22 +70,22 @@ export const UserPost = ({ post, status }: UserPostProps) => {
             );
         }
 
-    }, [currentLike , updatelike]);
+    }, [currentLike, updatelike]);
 
     return (
 
         <Card classname="post" >
-                < UserInfo user={user} page={"userpost"} />
+            < UserCard user={user} page={"userpost"} calssnames={classname} />
 
-                <div className="text-sm font-sm mx-9">{body.text}</div>
-                <div className="my-4 bg-gray-100 mx-9 border-1 rounded-3xl">
-                    {body.media && <img className="w-full h-full rounded-3xl" src={body.media} alt={"sth"} />}
-                </div>
+            <div><ReadMore text={body.text} /></div>
+            <div className="my-4 bg-gray-100 mx-9 border-1 rounded-3xl">
+                {body.media && <img className="w-full h-full rounded-3xl" src={body.media} alt={"sth"} />}
+            </div>
 
-                <div className="grid mb-5 ml-5 justify-items-end">
-                    <label className="px-2 py-1 ml-4 text-xs text-white rounded-full like-box">{currentLike}+</label>
-                    <SvgIcon component={ImportedSVG} id="like" onClick={onLikeClick} className="w-5 h-5 cursor-pointer image-svg" />
-                </div>
+            <div className="grid mb-5 ml-5 justify-items-end">
+                <label className="px-2 py-1 ml-4 text-xs text-white rounded-full like-box">{currentLike}+</label>
+                <SvgIcon component={ImportedSVG} id="like" onClick={onLikeClick} className="w-5 h-5 cursor-pointer image-svg" />
+            </div>
         </Card >
     )
 }

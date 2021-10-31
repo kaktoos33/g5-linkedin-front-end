@@ -5,11 +5,11 @@ import { UserPost } from './components/UserPost';
 import { Post } from './types/Post.type';
 import { useQuery } from "react-apollo";
 import { gql } from "apollo-boost";
-import { User } from './types/User.types';
+import { User } from '../../components/UserCard/types/User.types';
 import "./Home.style.scss"
 import { GET_POSTS } from "./graphql/query";
 import { UserProfile } from "../../components/UserProfile";
-import { Follow } from "../../components/Follow";
+import { Connect } from "../../components/Connect";
 import { Tag } from "../../components/Tag";
 
 
@@ -25,9 +25,9 @@ const fetechedUser: User =
     img: "https://picsum.photos/id/1005/40"
 }
 
-const fetechedfollowerreq: Array<User> = [
+const fetechedConnectReq: Array<User> = [
     {
-        name: "AmirBahador",
+        name: "AmirBahador AmirBahador",
         role: "Devops",
         img: "https://picsum.photos/id/1005/40"
     },
@@ -96,7 +96,6 @@ export const Home: FunctionComponent<HomeProps> = () => {
     const user = fetechedUser;
     const posts = React.useMemo(() => fetechedPost.map((a) =>
         <UserPost post={a} status={false} />), [fetechedPost]);
-        const followers= fetechedfollowerreq;
 
     // const { loading, error, data } = useQuery<Array<Post>>(GET_POSTS);
 
@@ -109,7 +108,7 @@ export const Home: FunctionComponent<HomeProps> = () => {
         <div className="flex justify-center home">
             <div className="w-1/5 max-w-xs ">
                 <UserProfile />
-                <Follow followers={followers} />
+                <Connect connecetlist={fetechedConnectReq} />
             </div>
             <div className="w-3/5 max-w-xl mx-3.5">
                 <CreatePost user={user} />

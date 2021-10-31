@@ -8,24 +8,6 @@
             background: #D2F0FF69;
         }
         
-        .send-but {
-            border: 1px solid $blueColor;
-            box-sizing: border-box;
-            border-radius: 8px;
-            background-color: white;
-            font-style: normal;
-            font-weight: 500;
-            font-size: 12px;
-            line-height: 19px;
-            color: #00ACFF;
-            text-align: center;
-            width: 64.93px;
-            height: 32px;
-            &:hover {
-                background-color: $blueColor;
-            }
-        }
-        
         .like-box {
             background: $blueColor;
             border: 2px solid #FFFFFF;
