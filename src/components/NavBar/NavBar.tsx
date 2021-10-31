@@ -32,7 +32,7 @@ export default function Navbar() {
           }}
           selected={formState.homeSelected}
         >
-          <FontAwesomeIcon className="far fa-2x hoverItem" icon={faHome} />
+          <FontAwesomeIcon className="far homeIcon hoverItem" icon={faHome} />
         </Icon>
 
         <Icon
@@ -68,7 +68,7 @@ export default function Navbar() {
           }}
           selected={formState.userSelected}
         >
-          <FontAwesomeIcon className="far fa-2x hoverItem" icon={faUsers} />
+          <FontAwesomeIcon className="far userIcon hoverItem" icon={faUsers} />
         </Icon>
       </div>
     </div>
