@@ -24,6 +24,7 @@ const fetechedUser: User =
     role: "Developer",
     img: "https://picsum.photos/id/1005/40"
 }
+
 const fetechedfollowerreq: Array<User> = [
     {
         name: "AmirBahador",
@@ -33,7 +34,7 @@ const fetechedfollowerreq: Array<User> = [
     {
         name: "Mehdi",
         role: "FrontEnd Developer",
-        img: "https://picsum.photos/id/1005/40"
+        img: ""
     },
     {
         name: "Sina",
@@ -53,7 +54,7 @@ const fetechedfollowerreq: Array<User> = [
     {
         name: "Mahour",
         role: "UI/UX Designer",
-        img: "https://picsum.photos/id/1005/40"
+        img: ""
     }
 
 ]
@@ -65,7 +66,7 @@ const fetechedPost: Array<Post> = [
         },
         likes: 34,
         user: {
-            name: "Ali",
+            name: "Karim",
             role: "ui/ux",
             img: "https://picsum.photos/id/1/40"
         },
@@ -95,6 +96,7 @@ export const Home: FunctionComponent<HomeProps> = () => {
     const user = fetechedUser;
     const posts = React.useMemo(() => fetechedPost.map((a) =>
         <UserPost post={a} status={false} />), [fetechedPost]);
+        const followers= fetechedfollowerreq;
 
     // const { loading, error, data } = useQuery<Array<Post>>(GET_POSTS);
 
@@ -103,18 +105,11 @@ export const Home: FunctionComponent<HomeProps> = () => {
     //     [loading, data]
     // );
     return (
-        // <div>
-        //     <CardContainer>
-        //         <UserProfile />
-        //         <CreatePost user={user} />
-        //         {posts}
-        //     </CardContainer>
-        // </div>
-
+        
         <div className="flex justify-center home">
             <div className="w-1/5 max-w-xs ">
                 <UserProfile />
-                <Follow />
+                <Follow followers={followers} />
             </div>
             <div className="w-3/5 max-w-xl mx-3.5">
                 <CreatePost user={user} />

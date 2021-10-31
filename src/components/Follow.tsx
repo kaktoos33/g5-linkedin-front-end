@@ -1,14 +1,23 @@
 import React from 'react'
 import { Card } from "./Card/Card";
+import { User } from "../pages/Home/types/User.types";
 
-const Header = () =>{
-    
+interface FollowProps {
+    followers: Array<User>;
 }
 
-export const Follow = () => {
+export const Follow = ({ followers }: FollowProps) => {
+    
     return (
         <div>
-            <Card classname="follow" ></Card>
+            <Card classname="follow" >
+                <div className="flex justify-center">ارتباطات خود را گسترش دهید</div>
+                <div>
+
+
+                </div>
+                <div></div>
+            </Card>
         </div>
     )
 }
