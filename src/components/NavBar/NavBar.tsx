@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { Icon, Logo } from "./components/NavBarIcon";
 import "./NavBar.style.scss";
+import { MessageNotifications } from "../MessageNotifications/MessageNotifications";
 
 export default function Navbar() {
   const [formState, setFormState] = useState({
@@ -11,6 +12,8 @@ export default function Navbar() {
     alarmSelected: false,
     userSelected: false,
   });
+  const [notificationState, setNotificationState] = useState("hidden");
+  const [notificationNumber, setNotificationNumber] = useState(5);
 
   return (
     <div className="navbar">
@@ -36,6 +39,14 @@ export default function Navbar() {
         </Icon>
 
         <Icon
+          onMouseEnter={() => {
+            if (notificationNumber > 0) {
+              setNotificationState("");
+            }
+          }}
+          onMouseLeave={() => {
+            setNotificationState("hidden");
+          }}
           {...(formState.alarmSelected
             ? { className: "alarmSelected" }
             : { className: "alarmNotSelected" })}
@@ -52,7 +63,9 @@ export default function Navbar() {
             className="far fa-2x hoverItem alarm"
             icon={faBell}
           />
-          <span className="badge">+5</span>
+          <span className={notificationNumber === 0 ? "hidden-badge" : "badge"}>
+            +{notificationNumber}
+          </span>
         </Icon>
 
         <Icon
@@ -70,6 +83,17 @@ export default function Navbar() {
         >
           <FontAwesomeIcon className="far userIcon hoverItem" icon={faUsers} />
         </Icon>
+        <MessageNotifications
+          onMouseEnter={() => {
+            setNotificationState("");
+          }}
+          onMouseLeave={() => {
+            setNotificationState("hidden");
+          }}
+          className={notificationState}
+        >
+          test
+        </MessageNotifications>
       </div>
     </div>
   );
