@@ -2,7 +2,7 @@ import { FC } from "react";
 import "./Message.style.scss";
 
 interface MessageProps {
-  payam: {
+  message: {
     id: number;
     title: string;
     body: string;
@@ -10,14 +10,14 @@ interface MessageProps {
   };
 }
 
-export const Message: FC<MessageProps> = (payam: MessageProps) => {
+export const Message: FC<MessageProps> = (message: MessageProps) => {
   return (
     <div className="message ">
       <div className="messageBody">
-        <div className="messageTitle">{payam.payam.title}</div>
-        <div className="messageContent">{payam.payam.body}</div>
+        <div className="messageTitle">{message.message.title}</div>
+        <div className="messageContent">{message.message.body}</div>
       </div>
-      <div className="messageDate">{payam.payam.date}</div>
+      <div className="messageDate">{message.message.date}</div>
     </div>
   );
 };

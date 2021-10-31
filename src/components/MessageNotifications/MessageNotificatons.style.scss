@@ -23,3 +23,38 @@
   border-right: 15px solid transparent;
   border-bottom: 20px solid white;
 }
+
+// ::-webkit-scrollbar {
+//   width: 8 px;
+// }
+// ::-webkit-scrollbar-thumb {
+//   background: #cfcfcf;
+//   border-radius: 10 px;
+//   width: 2 px;
+// }
+// ::-webkit-scrollbar-track {
+//   margin: 20 px;
+// }
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  padding: 20px;
+  //   margin: 60 px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #cfcfcf;
+  border-radius: 20 px;
+  width: 2 px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

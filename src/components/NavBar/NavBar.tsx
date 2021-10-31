@@ -108,10 +108,10 @@ export default function Navbar() {
           }}
           className={notificationState}
         >
-          <Message payam={message1}></Message>
-          {/* <Message></Message>
-          <Message></Message>
-          <Message></Message> */}
+          <Message message={message1}></Message>
+          <Message message={message1}></Message>
+          <Message message={message1}></Message>
+          <Message message={message1}></Message>
         </MessageNotifications>
       </div>
     </div>
