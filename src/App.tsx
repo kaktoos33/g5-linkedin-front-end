@@ -8,6 +8,7 @@ import { Register } from "./pages/Register/Register";
 import { Form } from "formik";
 import NavBar from "./components/NavBar/NavBar";
 import { createBrowserHistory } from "history";
+import { NotificationPage } from "./pages/Notification/NotificationPage";
 
 interface AppProps {}
 
@@ -31,18 +32,21 @@ class App extends React.Component<AppProps, AppState> {
     );
 
     return (
-      <div dir="rtl" className="bg-primary">
+      <div dir="rtl">
         {/* {loggedin ? <NavBar /> : ""} */}
-        <Switch>
+        <NavBar />
+        <Route path="/notification" component={NotificationPage} />
+        {/* <Switch>
           <Route exact path="/" component={!loggedin ? Login : HomeContainer} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
           <NavBar />
-          <Route exact path="/home" component={Home} />
-          {/*<Route exact path="/login" component={Login} />
+          <Route path="/home" component={Home} />
+          <Route path="/notification" component={NotificationPage} /> */}
+        {/*<Route exact path="/login" component={Login} />
             <Route exact path="/Register" component={Register} />
             <Route exact path="/profile" component={Profile} /> */}
-        </Switch>
+        {/* </Switch> */}
       </div>
     );
   }

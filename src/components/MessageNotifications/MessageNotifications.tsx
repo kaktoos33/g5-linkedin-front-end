@@ -9,9 +9,11 @@ export const MessageNotifications: FC<MessageNotificationsProps> = (
   props: MessageNotificationsProps
 ) => {
   return (
-    <div {...props} className={`card  ${props.className || ""}`}>
+    <div {...props} className={`card ${props.className || ""}`}>
       <div className="polygon"></div>
-      <div className="cardMessage">{props.children}</div>
+      <div className="cardMessageWrapper">
+        <div className="cardMessage">{props.children}</div>
+      </div>
     </div>
   );
 };
