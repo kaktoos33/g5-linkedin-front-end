@@ -5,6 +5,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import { Icon, Logo } from "./components/NavBarIcon";
 import "./NavBar.style.scss";
 import { MessageNotifications } from "../MessageNotifications/MessageNotifications";
+import { Message } from "../MessageNotifications/Message";
 
 export default function Navbar() {
   const [formState, setFormState] = useState({
@@ -92,7 +93,10 @@ export default function Navbar() {
           }}
           className={notificationState}
         >
-          test
+          <Message></Message>
+          <Message></Message>
+          <Message></Message>
+          <Message></Message>
         </MessageNotifications>
       </div>
     </div>
