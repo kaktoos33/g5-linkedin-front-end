@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
-import logo from "../../resources/LinkedIn_Logo_2019.svg";
-import { faLock, faHome, faUsers } from "@fortawesome/free-solid-svg-icons";
+import { faBell, faHome, faUsers } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import { faBell } from "@fortawesome/free-solid-svg-icons";
 import { Icon, Logo } from "./components/NavBarIcon";
 import "./NavBar.style.scss";
 
