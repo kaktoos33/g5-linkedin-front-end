@@ -101,7 +101,7 @@ export default function Navbar() {
         </Icon>
         <MessageNotifications
           onMouseEnter={() => {
-            setNotificationState("");
+            if (notificationNumber > 0) setNotificationState("");
           }}
           onMouseLeave={() => {
             setNotificationState("hidden");
