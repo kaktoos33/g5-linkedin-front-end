@@ -63,9 +63,5 @@
         "postcss": "^7.0.39",
         "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.16"
     },
-<<<<<<< HEAD
-    "proxy": "http://g5.stagement.ir:8080"
-=======
     "proxy": "http://localhost:8080.com/"
->>>>>>> c94fc9809099c83ccea0eac6a094506ed7f98cb7
 }
