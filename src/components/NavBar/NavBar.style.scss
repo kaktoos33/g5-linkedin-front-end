@@ -1,0 +1,127 @@
+@import "./src/variables/variables.scss";
+
+.navbar {
+  background: #ffffff;
+  width: 1440px;
+  height: 76px;
+  position: relative;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+}
+
+.navbarScrolled {
+  background: #ffffff;
+  width: 1440px;
+  height: 76px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+}
+
+.logo {
+  width: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.vl {
+  border: 1px solid rgba(0, 0, 0, 0.28);
+  height: 45px;
+}
+.icon {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+}
+.hoverItem:hover {
+  color: $blueColorHover;
+}
+
+.badge {
+  position: relative;
+  top: -25px;
+  right: -10px;
+  border-radius: 100%;
+  background-color: red;
+  color: white;
+  border: 2px solid white;
+  font-size: 11px;
+  font-family: "Times New Roman", Times, serif;
+}
+.hidden-badge {
+  position: relative;
+  top: -25px;
+  right: -25px;
+  border-radius: 100%;
+  background-color: white;
+  color: white;
+  border: 2px solid white;
+  font-size: 11px;
+  font-family: "Times New Roman", Times, serif;
+}
+.alarm {
+  position: relative;
+  top: 11px;
+  font-size: 25px;
+  //   margin: 3px;
+}
+
+.selected {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  border-bottom: 3px solid $blueColor;
+  padding: 23px;
+  width: 65px;
+  color: $blueColor;
+}
+
+.notSelected {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  border-bottom: 3px solid $whiteColor;
+  padding: 23px;
+  width: 65px;
+  color: $grayColor;
+}
+.alarmSelected {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  border-bottom: 3px solid $blueColor;
+  padding: 13px;
+  width: 65px;
+  color: $blueColor;
+}
+
+.alarmNotSelected {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  border-bottom: 3px solid $whiteColor;
+  padding: 13px;
+  width: 65px;
+  color: $grayColor;
+}
+
+.homeIcon {
+  font-size: 25px;
+}
+
+.userIcon {
+  font-size: 25px;
+}

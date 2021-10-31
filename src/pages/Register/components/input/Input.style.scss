@@ -7,7 +7,7 @@
   display: flex;
   position: relative;
   //border: 1px solid #61dafb;
-  margin: 10px auto;
+  margin: 15px auto;
   //margin: 10px auto;
   //display: flex;
 }
@@ -163,6 +163,9 @@ input[type=checkbox]:checked:after {
 }
 input:focus {
   border-color: $blueColor;
+}
+.eyeIcon{
+  cursor: pointer;
 }
 //.register_pass_input input:focus{
 //  border-color: $blueColor;

@@ -1,17 +1,17 @@
-# stage1 - build react app first
-FROM node:12.16.1-alpine3.9 as build
-WORKDIR /app
-ENV PATH /app/node_modules/.bin:$PATH
-COPY ./package.json /app/
-COPY ./yarn.lock /app/
-RUN yarn --silent
-COPY . /app
-RUN yarn build
 
-# stage 2 - build the final image and copy the react build files
-FROM nginx:1.17.8-alpine
-COPY --from=build /app/build /usr/share/nginx/html
-RUN rm /etc/nginx/conf.d/default.conf
-COPY nginx/nginx.conf /etc/nginx/conf.d
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+# Install dependencies only when needed
+FROM node:14.18.0-alpine AS deps
+# Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
+RUN apk add --no-cache libc6-compat
+WORKDIR /frontend
+COPY package.json yarn.lock ./
+RUN yarn install --frozen-lockfile
+
+
+
+# Rebuild the source code only when needed
+FROM node:14.18.0-alpine AS builder
+WORKDIR /frontend
+COPY . .
+COPY --from=deps /frontend/node_modules ./node_modules
+RUN yarn build

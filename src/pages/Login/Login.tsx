@@ -1,5 +1,5 @@
 import { Form, Formik } from "formik";
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import {
   Card,
   CardAction,
@@ -31,6 +31,13 @@ const LOGIN_MUTATION = gql`
 
 const Login: FC<LoginProps> = () => {
   const history = useHistory();
+  useEffect(() => {
+    const loginState = sessionStorage.getItem("loginState");
+    if (loginState === "loggedIn") {
+      history.push("/");
+    }
+  });
+
   const [formState, setFormState] = useState<LoginProps>({
     email: "",
     password: "",
@@ -51,11 +58,14 @@ const Login: FC<LoginProps> = () => {
         history.push("/home");
         // history.replace("/home");
       } else {
-        history.push("/");
+        alert("Email or password is incorrect!");
+        //history.push("/login");
       }
     },
     onError: (error) => {
       console.log(error.message);
+      alert(error.message);
+      // history.push("/login");
     },
   });
   return (
@@ -106,7 +116,9 @@ const Login: FC<LoginProps> = () => {
                   <Link to="/register">عضو نیستید؟</Link>
                 </p>
               </label>
-              <SecondaryButton></SecondaryButton>
+              <Link to="/register">
+                <SecondaryButton></SecondaryButton>
+              </Link>
             </CardAction>
           </Form>
         </Formik>
