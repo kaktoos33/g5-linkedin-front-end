@@ -33,7 +33,6 @@ class App extends React.Component<AppProps, AppState> {
     return (
       <div dir="rtl" className="bg-primary">
         {/* {loggedin ? <NavBar /> : ""} */}
-        <NavBar />
         <Switch>
           <Route exact path="/" component={!loggedin ? Login : HomeContainer} />
           <Route exact path="/login" component={Login} />
