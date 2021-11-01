@@ -40,7 +40,7 @@ export const UserCard = (props:
     {
         return (
             <div className={outerdivclass}>
-                <div className="w-1/3">
+                <div className="w-1/3 ml-2">
                     {img && <UserPic pic={img} />}
                     {!img && <UserPic pic={Usericon} />}
                 </div>

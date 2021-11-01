@@ -1,8 +1,11 @@
 @import "../../variables/variables.scss";
 .readmore {
     cursor: pointer;
-    color: $blueColor;
+    color: $grayColor;
     font-style: normal;
     font-weight: 500;
     font-size: 12px;
+    &:hover {
+        color: $blueColor;
+    }
 }

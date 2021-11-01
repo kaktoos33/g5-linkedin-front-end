@@ -20,12 +20,12 @@ const classname: UserClass = {
 export const Connect = ({ connecetlist }: ConnectProps) => {
     const [readMore, setReadMore] = useState(false);
 
-    const connect = React.useMemo(() => connecetlist.slice(0, 3).map((a) =>
+    const connect = React.useMemo(() => connecetlist.slice(0, 3).map((req) =>
 
-        <ConnectCard a={a} classname={classname} />), [connecetlist]);
+        <ConnectCard req={req} classname={classname} />), [connecetlist]);
 
-    const extraConnect = React.useMemo(() => connecetlist.slice(3, 6).map((a) =>
-        <ConnectCard a={a} classname={classname} />), [connecetlist]);
+    const extraConnect = React.useMemo(() => connecetlist.slice(3, 6).map((req) =>
+        <ConnectCard req={req} classname={classname} />), [connecetlist]);
 
     const linkName = readMore ? "کمتر" : "بیشتر"
 
@@ -33,8 +33,8 @@ export const Connect = ({ connecetlist }: ConnectProps) => {
     return (
         <div className="overflow-hidden">
             <Card classname="connect" >
-                <div>
-                    <label className="flex justify-center mt-5 mb-6">ارتباطات خود را گسترش دهید</label>
+                <div className="flex justify-center mt-5 mb-6">
+                    ارتباطات خود را گسترش دهید
                 </div>
 
                 {connect}

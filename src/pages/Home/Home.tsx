@@ -10,7 +10,7 @@ import "./Home.style.scss"
 import { GET_POSTS } from "./graphql/query";
 import { UserProfile } from "../../components/UserProfile";
 import { Connect } from "../../components/Connect/Connect";
-import { Tag } from "../../components/Tag";
+import { Tag } from "../../components/Tag/Tag";
 import '../../components/Responsive.Style.scss';
 
 

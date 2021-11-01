@@ -11,7 +11,7 @@ export const ReadMore = (props: { text :string }) => {
             {isReadMore ? text.slice(0, 300) : text}
             {text.length > 300 &&
                 <a className="readmore" onClick={toggleReadMore}>
-                    {isReadMore ? ' بیشتر...' : ' کمتر...'}
+                    {isReadMore ? ' بیشتر...' : ' '}
                 </a>
             }
         </p>
