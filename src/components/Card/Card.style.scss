@@ -1,0 +1,32 @@
+@import "../../variables/variables.scss";
+.createpost {
+    margin-top: 38px;
+    height: auto;
+}
+
+.post {
+    margin-top: 20px;
+    height: auto;
+}
+
+.userInfo {
+    margin-top: 38px;
+    height: 168px;
+}
+
+.connect {
+    margin-top: 24px;
+    height: auto;
+    background-color: $blueGrayColor;
+    font-family: $fontM;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22px;
+    color: #212121;
+}
+
+.tag {
+    margin-top: 38px;
+    height: 188px;
+}
