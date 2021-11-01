@@ -1,3 +1,17 @@
+### DevMode
+-clean
+```
+rm -r package-lock.json node_modules yarn.lock
+yarn install
+```
+- build
+```
+docker build -t docker.abrman.ir/g5/dev_frontend:latest .
+```
+- push
+```
+docker push docker.abrman.ir/g5/dev_frontend:latest 
+```
 ###  docker in development 
 
 - build
