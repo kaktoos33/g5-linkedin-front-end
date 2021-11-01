@@ -1,6 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "variables/variables";
+
 @font-face {
     font-family: "IRANSansWeb";
     src: url("fonts/IRANSans/eot/IRANSansWeb.eot");
@@ -74,4 +76,8 @@
 @font-face {
     font-family: "Roboto-Thin";
     src: local('Roboto-Thin'), url(./fonts/Roboto/Roboto-Thin.ttf) format('truetype');
+}
+
+* {
+    font-family: $font;
 }
