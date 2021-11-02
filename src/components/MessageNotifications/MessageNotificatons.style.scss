@@ -44,25 +44,25 @@
 
 // *************
 /* width */
-::-webkit-scrollbar {
+.cardMessage::-webkit-scrollbar {
   width: 8px;
 }
 
 /* Track */
-::-webkit-scrollbar-track {
+.cardMessage::-webkit-scrollbar-track {
   background: #f1f1f1;
   padding: 20px;
   //   margin: 60 px;
 }
 
 /* Handle */
-::-webkit-scrollbar-thumb {
+.cardMessage::-webkit-scrollbar-thumb {
   background: #cfcfcf;
   border-radius: 20 px;
   width: 2 px;
 }
 
 /* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
+.cardMessage::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
