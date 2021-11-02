@@ -11,7 +11,7 @@ export const ConnectCard = ({ req, classname }: { req: User, classname: UserClas
                 <UserCard user={req} page="connect" calssnames={classname} />
             </div>
 
-            <div className="w-1/3 pr-2 ml-2">
+            <div dir="ltr" className="w-1/3 connect_innerdiv_class">
                 <PrimaryButtun name="Connect" type="submit" />
             </div>
 

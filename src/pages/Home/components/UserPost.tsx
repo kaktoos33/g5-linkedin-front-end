@@ -7,7 +7,7 @@ import { User } from '../../../components/UserCard/types/User.types';
 import Usericon from '../../../images/Usericon.jpg'
 import { UserCard } from "../../../components/UserCard/UserCard";
 import { UPDATE_LIKE_MUTATION } from "../graphql/mutations";
-import { ReactComponent as ImportedSVG } from "../../../images/like.svg";
+import { ReactComponent as LikeSVG } from "../../../images/like.svg";
 import { SvgIcon } from '@material-ui/core';
 import { Card } from "../../../components/Card/Card";
 import { UserClass } from "../../../components/UserCard/types/UserCalss.type";
@@ -39,10 +39,10 @@ export const UserPost = ({ post, status }: UserPostProps) => {
     const [isliked, setisliked] = useState(status);
 
     const classname: UserClass = {
-        nameclass: "username",
-        roleclass: "userrole",
-        outerdivclass: "userouterdivclass",
-        innerdivclass: "userinnerdivclass"
+        nameclass: "user_name",
+        roleclass: "user_role",
+        outerdivclass: "user_outerdiv_class",
+        innerdivclass: "user_innerdiv_class"
     }
 
 
@@ -84,7 +84,7 @@ export const UserPost = ({ post, status }: UserPostProps) => {
 
             <div className="grid mb-5 ml-5 justify-items-end">
                 <label className="px-2 py-1 ml-4 text-xs text-white rounded-full like-box">{currentLike}+</label>
-                <SvgIcon component={ImportedSVG} id="like" onClick={onLikeClick} className="w-5 h-5 cursor-pointer image-svg" />
+                <LikeSVG id="like" onClick={onLikeClick} className="w-5 h-5 cursor-pointer image-svg" />
             </div>
         </Card >
     )

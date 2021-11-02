@@ -11,10 +11,10 @@ interface ConnectProps {
 }
 
 const classname: UserClass = {
-    nameclass: "connectname",
-    roleclass: "connectrole",
-    outerdivclass: "connectouterdivclass",
-    innerdivclass: "connectinnerdivclass"
+    nameclass: "connect_name",
+    roleclass: "connect_role",
+    outerdivclass: "connect_outerdiv_class",
+    innerdivclass: "connect_innerdiv_class"
 }
 
 export const Connect = ({ connecetlist }: ConnectProps) => {

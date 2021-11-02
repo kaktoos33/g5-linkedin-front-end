@@ -11,7 +11,9 @@
 
 .userInfo {
     margin-top: 38px;
-    height: 168px;
+    height: 194px;
+    background-image: linear-gradient(top, $lightBlue, $lightBlue 45%, transparent 45%, transparent 100%);
+    background-image: -webkit-linear-gradient(top, $lightBlue, $lightBlue 45%, transparent 45%, transparent 100%)
 }
 
 .connect {
@@ -31,18 +33,10 @@
     height: auto;
     min-height: 188px;
     background-color: $blueGrayColor;
-    font-family: $efontR;
+    font-family: $efontM;
     font-style: normal;
     font-weight: normal;
     font-size: 12px;
     line-height: 150%;
     color: #181818;
-}
-
-.tag div label:first-child {
-    font-family: $fontL;
-    font-style: normal;
-    font-weight: 300;
-    font-size: 12px;
-    line-height: 19px;
 }

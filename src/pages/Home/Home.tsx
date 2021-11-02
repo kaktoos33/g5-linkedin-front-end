@@ -8,10 +8,13 @@ import { gql } from "apollo-boost";
 import { User } from '../../components/UserCard/types/User.types';
 import "./Home.style.scss"
 import { GET_POSTS } from "./graphql/query";
-import { UserProfile } from "../../components/UserProfile";
+import { UserProfile } from "../../components/UserProfile/UserProfile";
 import { Connect } from "../../components/Connect/Connect";
-import { Tag } from "../../components/Tag/Tag";
+import { Tags } from "../../components/Tag/Tags";
 import '../../components/Responsive.Style.scss';
+import { Tag } from "../../components/Tag/Tag.types";
+
+
 
 
 
@@ -92,6 +95,10 @@ const fetechedPost: Array<Post> = [
     },
 ];
 
+const fetechedTag: Array<Tag> = [
+    { name: "work" }, { name: "business" }, { name: "hr" }, { name: "userinterface" }, { name: "digital" }, { name: "userexperience" }, { name: "ux" }, { name: "ui" }, { name: "freelance" }
+]
+
 
 export const Home: FunctionComponent<HomeProps> = () => {
     const user = fetechedUser;
@@ -105,10 +112,10 @@ export const Home: FunctionComponent<HomeProps> = () => {
     //     [loading, data]
     // );
     return (
-        
+
         <div className="flex justify-center home">
             <div id="right" className="w-1/5 max-w-xs ">
-                <UserProfile />
+                <UserProfile user={user} page="userprofile" />
                 <Connect connecetlist={fetechedConnectReq} />
             </div>
             <div id="post" className="w-3/5 max-w-xl mx-3.5">
@@ -116,7 +123,7 @@ export const Home: FunctionComponent<HomeProps> = () => {
                 {posts}
             </div>
             <div id="left" className="w-1/5 max-w-xs">
-                <Tag />
+                <Tags Taglist={fetechedTag} />
             </div>
         </div>
     );

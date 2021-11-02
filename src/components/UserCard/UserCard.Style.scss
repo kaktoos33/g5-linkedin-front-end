@@ -1,5 +1,5 @@
 @import "../../variables/variables.scss";
-.userouterdivclass {
+.user_outerdiv_class {
     display: flex;
     margin-top: 1.5rem/* 24px */
     ;
@@ -9,11 +9,11 @@
     ;
 }
 
-.userinnerdivclass {
+.user_innerdiv_class {
     margin-right: 0.875rem;
 }
 
-.username {
+.user_name {
     font-family: $efontM;
     font-style: normal;
     font-weight: normal;
@@ -26,7 +26,7 @@
     }
 }
 
-.userrole {
+.user_role {
     font-family: $efontR;
     font-style: normal;
     font-weight: normal;
@@ -36,17 +36,18 @@
     cursor: pointer;
 }
 
-.connectouterdivclass {
+.connect_outerdiv_class {
     display: flex;
     margin-bottom: 23px;
     margin-right: 15.42px;
 }
 
-.connectinnerdivclass {
-    //margin-right: 0.875rem;
+.connect_innerdiv_class {
+    padding-left: 13px;
+    margin-left: 2px;
 }
 
-.connectname {
+.connect_name {
     font-family: $efontM;
     font-style: normal;
     font-weight: 500;
@@ -61,12 +62,36 @@
     }
 }
 
-.connectrole {
+.connect_role {
     font-family: $efontL;
     font-style: normal;
     font-weight: 300;
     font-size: 11px;
     line-height: 13px;
     color: #212121;
+    cursor: pointer;
+}
+
+.profile_name {
+    font-family: $efontM;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    color: #000000;
+    cursor: pointer;
+    &:hover {
+        color: $blueColor;
+        text-decoration: underline;
+    }
+}
+
+.profile_role {
+    font-family: $efontR;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 12px;
+    color: rgba(0, 0, 0, 0.46);
     cursor: pointer;
 }
