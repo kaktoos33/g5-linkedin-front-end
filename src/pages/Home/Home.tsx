@@ -9,7 +9,7 @@ import { User } from '../../components/UserCard/types/User.types';
 import "./Home.style.scss"
 import { GET_POSTS } from "./graphql/query";
 import { UserProfile } from "../../components/UserProfile/UserProfile";
-import { Connect } from "../../components/Connect/Connect";
+import { FollowReq } from "../../components/FollowReq/FollowReq";
 import { Tags } from "../../components/Tag/Tags";
 import '../../components/Responsive.Style.scss';
 import { Tag } from "../../components/Tag/Tag.types";
@@ -113,12 +113,12 @@ export const Home: FunctionComponent<HomeProps> = () => {
     // );
     return (
 
-        <div className="flex justify-center home">
+        <div className="flex justify-center main">
             <div id="right" className="w-1/5 max-w-xs ">
                 <UserProfile user={user} page="userprofile" />
-                <Connect connecetlist={fetechedConnectReq} />
+                <FollowReq connecetlist={fetechedConnectReq} title="ارتباطات خود را گسترش دهید" type="connect" butname="Connect" />
             </div>
-            <div id="post" className="w-3/5 max-w-xl mx-3.5">
+            <div id="center" className="w-3/5 max-w-xl mx-3.5">
                 <CreatePost user={user} />
                 {posts}
             </div>

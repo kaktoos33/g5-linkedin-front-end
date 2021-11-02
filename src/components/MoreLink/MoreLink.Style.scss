@@ -9,3 +9,14 @@
         color: $blueColor;
     }
 }
+
+.seemore {
+    cursor: pointer;
+    color: $blueColor;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    &:hover {
+        text-decoration: underline;
+    }
+}

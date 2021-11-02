@@ -3,43 +3,50 @@ import { Card } from "../Card/Card";
 import { User } from "../UserCard/types/User.types";
 import { UserClass } from '../UserCard/types/UserCalss.type';
 import { SeeMore } from "../MoreLink/SeeMore";
-import { ConnectCard } from "./ConnectCard";
+import { FollowCard } from "./FollowCard";
 import '../Responsive.Style.scss';
+import './Follow.style.scss'
 
 interface ConnectProps {
     connecetlist: Array<User>;
+    title:string;
+    type:string;
+    butname:string;
 }
 
-const classname: UserClass = {
-    nameclass: "connect_name",
-    roleclass: "connect_role",
-    outerdivclass: "connect_outerdiv_class",
-    innerdivclass: "connect_innerdiv_class"
-}
 
-export const Connect = ({ connecetlist }: ConnectProps) => {
+
+export const FollowReq = ({ connecetlist , title , type , butname }: ConnectProps) => {
     const [readMore, setReadMore] = useState(false);
 
+    const classname: UserClass = {
+        nameclass: `${type}_name`,
+        roleclass: `${type}_role`,
+        outerdivclass: `${type}_outerdiv_class`,
+        innerdivclass: `${type}_innerdiv_class`
+    }
+    
     const connect = React.useMemo(() => connecetlist.slice(0, 3).map((req) =>
 
-        <ConnectCard req={req} classname={classname} />), [connecetlist]);
+        <FollowCard req={req} classname={classname} page={type} butname={butname}  />), [connecetlist]);
 
     const extraConnect = React.useMemo(() => connecetlist.slice(3, 6).map((req) =>
-        <ConnectCard req={req} classname={classname} />), [connecetlist]);
+        <FollowCard req={req} classname={classname} page={type} butname={butname} />), [connecetlist]);
 
     const linkName = readMore ? "کمتر" : "بیشتر"
 
     const onclick = () => { setReadMore(!readMore) }
     return (
         <div className="overflow-hidden">
-            <Card classname="connect" >
-                <div className="flex justify-center mt-5 mb-6">
-                    ارتباطات خود را گسترش دهید
+            <Card classname={`${type}`} >
+                <div className={`flex mb-6 ${type}-title`}>
+                    {title}
                 </div>
 
                 {connect}
 
                 {readMore && extraConnect}
+                
                 <SeeMore linkName={linkName} onclick={onclick} />
             </Card>
         </div>

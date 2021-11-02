@@ -6,6 +6,7 @@
 
 .post {
     margin-top: 20px;
+    margin-bottom: 20px;
     height: auto;
 }
 
@@ -26,6 +27,18 @@
     font-size: 14px;
     line-height: 22px;
     color: #212121;
+}
+
+.follow {
+    height: auto;
+    background-color: $blueGrayColor;
+    font-family: $fontM;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22px;
+    color: #212121;
+    margin-bottom: 16px;
 }
 
 .tag {

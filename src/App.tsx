@@ -2,6 +2,7 @@ import React from "react";
 import { Switch, Route, Redirect, useHistory } from "react-router-dom";
 import { Home } from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
+import { Follow } from "./pages/Follow/Follow";
 // import NavBar from "./components/NavBar";
 import { Register } from "./pages/Register/Register";
 // import Register from "./components/Register";
@@ -9,6 +10,7 @@ import { Form } from "formik";
 import NavBar from "./components/NavBar/NavBar";
 import { createBrowserHistory } from "history";
 import { NotificationPage } from "./pages/Notification/NotificationPage";
+
 
 interface AppProps {}
 
@@ -53,6 +55,8 @@ class App extends React.Component<AppProps, AppState> {
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
           <PrivateRoute exact path="/home" component={Home} />
+          <PrivateRoute exact path="/follow" component={Follow} />
+
           <PrivateRoute
             exact
             path="/notification"
