@@ -13,7 +13,7 @@ import { PrimaryButton, SecondaryButton } from "./components/Button/Button";
 import { gql } from "apollo-boost";
 import { useMutation } from "react-apollo";
 import { Link, useHistory } from "react-router-dom";
-
+import "./Login.style.scss";
 interface LoginProps {
   email?: string;
   password?: string;
@@ -69,10 +69,11 @@ const Login: FC<LoginProps> = () => {
     },
   });
   return (
-    <div className="container flex flex-col items-center justify-around min-h-screen bg-primary">
+    <div className="h-screen login">
+    {/*<div className="container flex flex-col items-center justify-around min-h-screen bg-primary login">*/}
       <Card className="flex flex-col items-center justify-center w-1/3 mx-auto mt-5 bg-white rounded-xl">
         <CardHeader className="px-10 ">
-          <h1 className="flex flex-row items-center content-center justify-center px-2 py-1 pb-12 font-semibold rounded text-black-600">
+          <h1 className="flex flex-row items-center content-center justify-center px-2 py-1 pb-12 font-semibold rounded text-black-600 mt-10">
             ورود
           </h1>
         </CardHeader>
@@ -110,7 +111,7 @@ const Login: FC<LoginProps> = () => {
               </div>
             </CardContent>
             <CardAction className="pt-12 pb-5">
-              <PrimaryButton></PrimaryButton>
+              <PrimaryButton />
               <label className="flex items-center pb-0">
                 <p className="flex flex-row justify-center w-full pt-5 pb-3">
                   <Link to="/register">عضو نیستید؟</Link>

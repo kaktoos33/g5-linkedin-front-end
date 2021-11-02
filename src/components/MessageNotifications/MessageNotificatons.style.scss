@@ -2,17 +2,23 @@
   position: absolute;
   width: 320px;
   height: 174px;
-  top: 65px;
+  top: 60px;
+  // background-color: white;
+}
+.cardMessageWrapper {
+  background-color: white;
+  border-radius: 20px;
+  padding: 5px;
 }
 
 .cardMessage {
   padding-top: 24px;
-  height: 174px;
+  margin: 5px;
+  height: 154px;
   overflow-y: scroll;
   scroll-behavior: smooth;
   white-space: nowrap;
   background-color: white;
-  border-radius: 20px;
 }
 
 .polygon {
@@ -35,26 +41,28 @@
 // ::-webkit-scrollbar-track {
 //   margin: 20 px;
 // }
+
+// *************
 /* width */
-::-webkit-scrollbar {
+.cardMessage::-webkit-scrollbar {
   width: 8px;
 }
 
 /* Track */
-::-webkit-scrollbar-track {
+.cardMessage::-webkit-scrollbar-track {
   background: #f1f1f1;
   padding: 20px;
   //   margin: 60 px;
 }
 
 /* Handle */
-::-webkit-scrollbar-thumb {
+.cardMessage::-webkit-scrollbar-thumb {
   background: #cfcfcf;
   border-radius: 20 px;
   width: 2 px;
 }
 
 /* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
+.cardMessage::-webkit-scrollbar-thumb:hover {
   background: #555;
 }

@@ -1,0 +1,38 @@
+@import "./src/variables/variables.scss";
+
+
+.register-button .button-primary{
+  //display: block;
+  font-family: $font;
+  font-size: 14px;
+  margin-top: 20%;
+  width: 370px;
+  height: 40px;
+  color: $whiteColor;
+  background-color: $blueColor;
+  border-radius: 40px;
+}
+
+.register-button .button-secondary{
+  //display: block;
+  font-family: $font;
+  font-size: 14px;
+  margin-top: 15px;
+  width: 370px;
+  height: 40px;
+  background-color: $whiteColor;
+  color: $blueColor;
+  border: 1px solid $blueColor;
+  border-radius: 40px;
+}
+
+
+.register-button .button-secondary:hover{
+  color: $whiteColor;
+  background-color: $blueColorHover;
+  border-color: $blueColorHover;
+}
+
+.register-button .button-primary:hover{
+  background-color: $blueColorHover;
+}

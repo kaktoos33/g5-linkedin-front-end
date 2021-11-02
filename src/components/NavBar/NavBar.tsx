@@ -7,6 +7,7 @@ import "./NavBar.style.scss";
 import { MessageNotifications } from "../MessageNotifications/MessageNotifications";
 // import { Message } from "../MessageNotifications/Message";
 import { Message } from "./../MessageNotifications/Message";
+import { useHistory } from "react-router-dom";
 
 type message = {
   id: number;
@@ -16,6 +17,7 @@ type message = {
 };
 
 export default function Navbar() {
+  const history = useHistory();
   const [formState, setFormState] = useState({
     homeSelected: true,
     alarmSelected: false,
@@ -48,6 +50,7 @@ export default function Navbar() {
               alarmSelected: false,
               userSelected: false,
             });
+            history.push("/home");
           }}
           selected={formState.homeSelected}
         >
@@ -72,6 +75,7 @@ export default function Navbar() {
               alarmSelected: true,
               userSelected: false,
             });
+            history.push("/notification");
           }}
           selected={formState.alarmSelected}
         >
@@ -101,7 +105,7 @@ export default function Navbar() {
         </Icon>
         <MessageNotifications
           onMouseEnter={() => {
-            setNotificationState("");
+            if (notificationNumber > 0) setNotificationState("");
           }}
           onMouseLeave={() => {
             setNotificationState("hidden");
