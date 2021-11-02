@@ -3,7 +3,7 @@ import { Card } from "../Card/Card";
 import './UserProfile.style.scss'
 import { UserCard } from "../UserCard/UserCard";
 import { User } from '../UserCard/types/User.types';
-import { UserClass } from '../UserCard/types/UserCalss.type';
+import { UserClass } from '../UserCard/types/UserClass.type';
 import { ReactComponent as VectorSvg } from "../../images/Vector.svg";
 
 interface UserProfileProps {

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Card } from "../Card/Card";
 import { User } from "../UserCard/types/User.types";
-import { UserClass } from '../UserCard/types/UserCalss.type';
+import { UserClass } from '../UserCard/types/UserClass.type';
 import { SeeMore } from "../MoreLink/SeeMore";
 import { FollowCard } from "./FollowCard";
 import '../Responsive.Style.scss';

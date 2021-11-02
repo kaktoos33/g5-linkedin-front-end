@@ -3,14 +3,11 @@ import { FunctionComponent } from 'react';
 import { gql } from 'apollo-boost';
 import { useQuery, useMutation } from 'react-apollo';
 import { Post } from '../types/Post.type';
-import { User } from '../../../components/UserCard/types/User.types';
-import Usericon from '../../../images/Usericon.jpg'
 import { UserCard } from "../../../components/UserCard/UserCard";
 import { UPDATE_LIKE_MUTATION } from "../graphql/mutations";
 import { ReactComponent as LikeSVG } from "../../../images/like.svg";
-import { SvgIcon } from '@material-ui/core';
 import { Card } from "../../../components/Card/Card";
-import { UserClass } from "../../../components/UserCard/types/UserCalss.type";
+import { UserClass } from "../../../components/UserCard/types/UserClass.type";
 import { ReadMore } from "../../../components/MoreLink/ReadMore";
 
 

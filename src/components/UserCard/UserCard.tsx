@@ -1,5 +1,5 @@
 import { User } from './types/User.types';
-import { UserClass } from './types/UserCalss.type'
+import { UserClass } from './types/UserClass.type'
 import Usericon from '../../images/Usericon.svg'
 import { UserPic } from "./UserPic";
 import { UserInfo } from "./UserInfo";

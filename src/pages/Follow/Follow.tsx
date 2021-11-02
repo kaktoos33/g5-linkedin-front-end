@@ -5,8 +5,7 @@ import { User } from '../../components/UserCard/types/User.types'
 import { UserProfile } from '../../components/UserProfile/UserProfile'
 import "../Home/Home.style.scss"
 import { FollowReq } from "../../components/FollowReq/FollowReq";
-import { FollowCard } from '../../components/FollowReq/FollowCard'
-import { UserClass } from '../../components/UserCard/types/UserCalss.type'
+import { UserClass } from '../../components/UserCard/types/UserClass.type'
 import '../../components/FollowReq/Follow.style.scss'
 
 interface FollowReqProps {

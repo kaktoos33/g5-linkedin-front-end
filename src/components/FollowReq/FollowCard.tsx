@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { PrimaryButtun } from '../Buttun/PrimaryButtun'
 import { User } from '../UserCard/types/User.types'
-import { UserClass } from '../UserCard/types/UserCalss.type'
+import { UserClass } from '../UserCard/types/UserClass.type'
 import { UserCard } from '../UserCard/UserCard'
 
 export const FollowCard = ({ req, classname, page, butname }: { req: User, classname: UserClass, page: string, butname: string }) => {
