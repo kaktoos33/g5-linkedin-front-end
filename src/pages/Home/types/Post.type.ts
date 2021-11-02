@@ -1,4 +1,4 @@
-import { User } from "./User.types";
+import { User } from "../../../components/UserCard/types/User.types";
 
 export type Post = {
   user: User;

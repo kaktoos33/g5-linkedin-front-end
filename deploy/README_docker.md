@@ -1,3 +1,17 @@
+### DevMode
+-clean
+```
+rm -r package-lock.json node_modules yarn.lock
+yarn install
+```
+- build
+```
+docker build -t docker.abrman.ir/g5/dev_frontend:latest .
+```
+- push
+```
+docker push docker.abrman.ir/g5/dev_frontend:latest 
+```
 ###  docker in development 
 
 - build
@@ -56,7 +70,7 @@ npm run build
 ```
 3. build image
 ```
-docker build -t docker.abrman.ir/g5_front:latest .
+docker build -t docker.abrman.ir/g5/frontend:1215 .
 ```
 4. login
 ```
@@ -89,4 +103,15 @@ git log -1 --pretty=%h
 ```
 docker tag nginx:1.17.8-alpine docker.abrman.ir/g5/nginx:1.17.8-alpine
 docker push docker.abrman.ir/g5/nginx:1.17.8-alpine 
+```
+
+delete image with all tags
+```
+
+https://medium.com/rahasak/delete-docker-image-with-all-tags-c631f6049530
+
+docker images | grep g5_front | tr -s ' ' | cut -d ' ' -f 2 | xargs -I {} echo docker.abrman.ir/g5_front:{}
+
+docker images | grep g5_front | tr -s ' ' | cut -d ' ' -f 2 | xargs -I {} docker rmi docker.abrman.ir/g5_front:{}
+
 ```

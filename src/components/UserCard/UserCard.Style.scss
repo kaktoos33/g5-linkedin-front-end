@@ -1,0 +1,72 @@
+@import "../../variables/variables.scss";
+.userouterdivclass {
+    display: flex;
+    margin-top: 1.5rem/* 24px */
+    ;
+    margin-bottom: 1rem/* 16px */
+    ;
+    margin-right: 2.25rem/* 36px */
+    ;
+}
+
+.userinnerdivclass {
+    margin-right: 0.875rem;
+}
+
+.username {
+    font-family: $efontM;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 14px;
+    cursor: pointer;
+    &:hover {
+        color: $blueColor;
+        text-decoration: underline;
+    }
+}
+
+.userrole {
+    font-family: $efontR;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 11px;
+    line-height: 12px;
+    color: rgba(0, 0, 0, 0.46);
+    cursor: pointer;
+}
+
+.connectouterdivclass {
+    display: flex;
+    margin-bottom: 23px;
+    margin-right: 15.42px;
+}
+
+.connectinnerdivclass {
+    //margin-right: 0.875rem;
+}
+
+.connectname {
+    font-family: $efontM;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 19px;
+    word-wrap: break-word;
+    color: #212121;
+    cursor: pointer;
+    &:hover {
+        color: $blueColor;
+        text-decoration: underline;
+    }
+}
+
+.connectrole {
+    font-family: $efontL;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 11px;
+    line-height: 13px;
+    color: #212121;
+    cursor: pointer;
+}
