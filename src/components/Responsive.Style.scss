@@ -1,0 +1,17 @@
+@media only screen and (max-width: 1026px) {
+    #right {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    #left {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 1026px) {
+    #post {
+        width: 80%;
+    }
+}

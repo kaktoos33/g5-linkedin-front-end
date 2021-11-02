@@ -1,0 +1,8 @@
+@import "./src/variables/variables.scss";
+
+.login{
+  background: $backGroundColor;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

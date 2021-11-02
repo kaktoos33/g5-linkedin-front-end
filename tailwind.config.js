@@ -10,7 +10,7 @@ module.exports = {
             'blackColor': '#343434',
             'grayColor': '#828282',
             'whiteColor': '#FFFFFF',
-            'backGroundColor': '#F6F6F6',
+            'backGroundColor': '#E5E5E5',
         }),
         extend: {},
     },
