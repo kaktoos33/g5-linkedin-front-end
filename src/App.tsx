@@ -2,6 +2,7 @@ import React from "react";
 import { Switch, Route, Redirect, useHistory } from "react-router-dom";
 import { Home } from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
+import { Follow } from "./pages/Follow/Follow";
 // import NavBar from "./components/NavBar";
 import { Register } from "./pages/Register/Register";
 // import Register from "./components/Register";
@@ -54,6 +55,8 @@ class App extends React.Component<AppProps, AppState> {
           <Route exact path="/register" component={Register} />
           <PrivateRoute exact path="/home" component={Home} />
           <PrivateRoute exact path="/message" component={MessagePage} />
+          <PrivateRoute exact path="/follow" component={Follow} />
+
           {/*
             <Route exact path="/profile" component={Profile} /> */}
         </Switch>
