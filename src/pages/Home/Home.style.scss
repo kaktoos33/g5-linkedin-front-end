@@ -1,9 +1,4 @@
         @import "./src/variables/variables.scss";
-        .home {
-            background: $backGroundColor;
-            font-family: $font;
-        }
-        
         .send-box {
             background: #D2F0FF69;
         }
@@ -16,5 +11,11 @@
         .image-svg {
             path:hover {
                 fill: $blueColor;
+            }
+        }
+        
+        .uploder {
+            &:hover {
+                color: $blueColor;
             }
         }

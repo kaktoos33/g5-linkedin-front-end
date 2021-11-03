@@ -1,46 +1,68 @@
 import React from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route, Redirect, useHistory } from "react-router-dom";
 import { Home } from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
+import { Follow } from "./pages/Follow/Follow";
 // import NavBar from "./components/NavBar";
 import { Register } from "./pages/Register/Register";
 // import Register from "./components/Register";
 import { Form } from "formik";
 import NavBar from "./components/NavBar/NavBar";
 import { createBrowserHistory } from "history";
+import { NotificationPage } from "./pages/Notification/NotificationPage";
+
 
 interface AppProps {}
 
 interface AppState {}
 let loggedin: boolean;
 
+export const PrivateRoute: React.FC<{
+  component: React.FC;
+  path: string;
+  exact: boolean;
+}> = (props) => {
+  const loginState = sessionStorage.getItem("loginState");
+  let condition = false;
+  if (loginState === "loggedIn") {
+    condition = true;
+  } else if (props.path === "/") {
+    return <Route path={props.path} exact={props.exact} component={Login} />;
+  } else {
+    condition = false;
+  }
+
+  return condition ? (
+    <>
+      <NavBar />
+      <Route
+        path={props.path}
+        exact={props.exact}
+        component={props.component}
+      />
+    </>
+  ) : (
+    <Route path={props.path} exact={props.exact} component={props.component} />
+  );
+};
+
 class App extends React.Component<AppProps, AppState> {
   render() {
-    const loginState = sessionStorage.getItem("loginState");
-    if (loginState === "loggedIn") {
-      loggedin = true;
-    } else {
-      loggedin = false;
-    }
-    console.log(loggedin);
-    const HomeContainer = () => (
-      <div>
-        <NavBar />
-        <Route path="/" component={Home} />
-      </div>
-    );
-
     return (
-      <div dir="rtl" className="bg-primary">
-        {/* {loggedin ? <NavBar /> : ""} */}
+      <div dir="rtl" className="bg-backGroundColor">
         <Switch>
-          <Route exact path="/" component={!loggedin ? Login : HomeContainer} />
+          <PrivateRoute exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
-          <NavBar />
-          <Route exact path="/home" component={Home} />
-          {/*<Route exact path="/login" component={Login} />
-            <Route exact path="/Register" component={Register} />
+          <PrivateRoute exact path="/home" component={Home} />
+          <PrivateRoute exact path="/follow" component={Follow} />
+
+          <PrivateRoute
+            exact
+            path="/notification"
+            component={NotificationPage}
+          />
+          {/*
             <Route exact path="/profile" component={Profile} /> */}
         </Switch>
       </div>

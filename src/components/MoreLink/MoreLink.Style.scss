@@ -1,8 +1,22 @@
 @import "../../variables/variables.scss";
 .readmore {
     cursor: pointer;
+    color: $grayColor;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    &:hover {
+        color: $blueColor;
+    }
+}
+
+.seemore {
+    cursor: pointer;
     color: $blueColor;
     font-style: normal;
     font-weight: 500;
     font-size: 12px;
+    &:hover {
+        text-decoration: underline;
+    }
 }
