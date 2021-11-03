@@ -8,7 +8,7 @@ import { Register } from "./pages/Register/Register";
 import { Form } from "formik";
 import NavBar from "./components/NavBar/NavBar";
 import { createBrowserHistory } from "history";
-import { NotificationPage } from "./pages/Notification/NotificationPage";
+import { MessagePage } from "./pages/Notification/MessagePage";
 
 interface AppProps {}
 
@@ -53,11 +53,7 @@ class App extends React.Component<AppProps, AppState> {
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
           <PrivateRoute exact path="/home" component={Home} />
-          <PrivateRoute
-            exact
-            path="/notification"
-            component={NotificationPage}
-          />
+          <PrivateRoute exact path="/message" component={MessagePage} />
           {/*
             <Route exact path="/profile" component={Profile} /> */}
         </Switch>
