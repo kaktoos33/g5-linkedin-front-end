@@ -19,7 +19,7 @@ services:
 
   frontend:
     container_name: frontend
-    image: docker.abrman.ir/g5/dev_frontend:latest
+    image: docker.abrman.ir/g5/frontend:55d6966
     volumes:
       - frontend:/frontend/build
 
