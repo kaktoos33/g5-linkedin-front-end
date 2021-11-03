@@ -16,8 +16,16 @@ type message = {
   date: string;
 };
 
+const saveCurPage = (curPage: string) => {
+  localStorage.setItem("curPage", curPage);
+};
+const loadCurPage = () => {
+  return localStorage.getItem("curPage");
+};
+
 export default function Navbar() {
   const history = useHistory();
+
   const [formState, setFormState] = useState({
     homeSelected: true,
     alarmSelected: false,
@@ -25,6 +33,25 @@ export default function Navbar() {
   });
   const [notificationState, setNotificationState] = useState("hidden");
   const [notificationNumber, setNotificationNumber] = useState(5);
+
+  useEffect(() => {
+    let lastCurPage = String(loadCurPage());
+    console.log(lastCurPage);
+    if (lastCurPage === "/home" || lastCurPage === "null") {
+      setFormState({
+        homeSelected: true,
+        alarmSelected: false,
+        userSelected: false,
+      });
+    } else if (lastCurPage === "/message") {
+      setFormState({
+        homeSelected: false,
+        alarmSelected: true,
+        userSelected: false,
+      });
+    }
+    history.push(lastCurPage);
+  }, []);
 
   const message1: message = {
     id: 1,
@@ -50,6 +77,7 @@ export default function Navbar() {
               alarmSelected: false,
               userSelected: false,
             });
+            saveCurPage("/home");
             history.push("/home");
           }}
           selected={formState.homeSelected}
@@ -75,7 +103,8 @@ export default function Navbar() {
               alarmSelected: true,
               userSelected: false,
             });
-            history.push("/notification");
+            saveCurPage("/message");
+            history.push("/message");
           }}
           selected={formState.alarmSelected}
         >
@@ -112,10 +141,10 @@ export default function Navbar() {
           }}
           className={notificationState}
         >
-          <Message message={message1}></Message>
-          <Message message={message1}></Message>
-          <Message message={message1}></Message>
-          <Message message={message1}></Message>
+          <Message key="1" message={message1}></Message>
+          <Message key="2" message={message1}></Message>
+          <Message key="3" message={message1}></Message>
+          <Message key="4" message={message1}></Message>
         </MessageNotifications>
       </div>
     </div>
