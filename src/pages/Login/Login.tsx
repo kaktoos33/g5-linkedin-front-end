@@ -70,10 +70,10 @@ const Login: FC<LoginProps> = () => {
   });
   return (
     <div className="h-screen login">
-    {/*<div className="container flex flex-col items-center justify-around min-h-screen bg-primary login">*/}
+      {/*<div className="container flex flex-col items-center justify-around min-h-screen bg-primary login">*/}
       <Card className="flex flex-col items-center justify-center w-1/3 mx-auto mt-5 bg-white rounded-xl">
         <CardHeader className="px-10 ">
-          <h1 className="flex flex-row items-center content-center justify-center px-2 py-1 pb-12 font-semibold rounded text-black-600 mt-10">
+          <h1 className="flex flex-row items-center content-center justify-center px-2 py-1 pb-12 mt-10 font-semibold rounded text-black-600">
             ورود
           </h1>
         </CardHeader>
@@ -87,6 +87,9 @@ const Login: FC<LoginProps> = () => {
             console.log(values);
             setFormState({ email: values.email, password: values.password });
             login();
+            // sessionStorage.setItem("loginState", "loggedIn");
+            // window.location.reload();
+            // history.push("/home");
             //LoginQuery(values);
           }}
         >
