@@ -1,0 +1,27 @@
+@import "../../variables/variables.scss";
+.follow-title {
+    margin-right: 17px;
+    margin-top: 26px;
+    margin-bottom: 21px;
+}
+
+.connect-title {
+    justify-content: center;
+    margin-top: 22px;
+    margin-bottom: 25px;
+}
+
+.ignore-label {
+    font-family: $efontM;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: center;
+    color: $blueColor;
+    margin-left: 22px;
+    cursor: pointer;
+    &:hover {
+        text-decoration: underline;
+    }
+}

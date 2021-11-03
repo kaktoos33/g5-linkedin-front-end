@@ -13,7 +13,7 @@ import PhotoIcon from "../../../images/pic.svg"
 import VideoIcon from "../../../images/video.svg"
 import EditIcon from "../../../images/Vector.svg"
 import { Card } from "../../../components/Card/Card";
-import { UserClass } from "../../../components/UserCard/types/UserCalss.type";
+import { UserClass } from "../../../components/UserCard/types/UserClass.type";
 import { PrimaryButtun } from "../../../components/Buttun/PrimaryButtun";
 
 interface CreatePostProps {
