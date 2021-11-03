@@ -1,11 +1,18 @@
 import { FC } from "react";
-import { UserProfile } from "../../components/UserProfile";
-import { Connect } from "../../components/Connect/Connect";
+import { UserProfile } from "../../components/UserProfile/UserProfile";
+
 import { User } from "../../components/UserCard/types/User.types";
 import { UserMessages } from "./components/UserMessages";
 import { UserMessage } from "./components/UserMessage/UserMessage";
+import { FollowReq } from "../../components/FollowReq/FollowReq";
 
 interface MessagePageProps {}
+const fetechedUser: User = {
+  name: "farzaneh",
+  role: "Developer",
+  img: "https://picsum.photos/id/1005/40",
+};
+
 const fetechedConnectReq: Array<User> = [
   {
     name: "AmirBahador",
@@ -40,11 +47,17 @@ const fetechedConnectReq: Array<User> = [
 ];
 
 export const MessagePage: FC<MessagePageProps> = () => {
+  const user = fetechedUser;
   return (
     <div className="flex justify-center bg-backGroundColor mt-9 ">
       <div className="w-1/5 max-w-xs ">
-        <UserProfile />
-        <Connect connecetlist={fetechedConnectReq} />
+        <UserProfile user={user} page="userprofile" />
+        <FollowReq
+          connecetlist={fetechedConnectReq}
+          title="ارتباطات خود را گسترش دهید"
+          type="connect"
+          butname="Connect"
+        />
       </div>
       <div className="w-3/5 max-w-xl mx-3.5 ">
         <UserMessages>

@@ -9,7 +9,7 @@ import { Register } from "./pages/Register/Register";
 import { Form } from "formik";
 import NavBar from "./components/NavBar/NavBar";
 import { createBrowserHistory } from "history";
-import { MessagePage } from "./pages/Notification/MessagePage";
+import { MessagePage } from "./pages/Message/MessagePage";
 
 interface AppProps {}
 
