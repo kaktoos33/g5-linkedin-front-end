@@ -31,15 +31,15 @@ export const Tags = ({ Taglist }: TagProps) => {
             <div className="flex items-center border-b mx-7">
                 <div className="w-3/4 mb-2 mt-3.5 tag-title">
                     {
-                        visible && <label id="title"> هشتگ هایی که دنبال میکنید</label>
+                        visible && <label onClick={toggleshow} > هشتگ هایی که دنبال میکنید</label>
                     }
                     {
-                        !visible && <input id="tag" name="tag" type="text" className="border-b outline-none"
+                        !visible && <input name="tag" type="text" placeholder="بنویسید ..." className="bg-transparent outline-none"
                             onKeyDown={(e) => addtag(e)} />
                     }
                 </div>
-                <div dir="ltr" className="w-1/4">
-                    <PlusSvg className="plus" onClick={toggleshow} />
+                <div dir="ltr" className="w-1/4 container_plus">
+                    <PlusSvg id="plus_svg" className="plus"  onClick={toggleshow} />
                 </div>
             </div>
             <div dir="ltr" className="mt-3.5 mb-5 mx-7">

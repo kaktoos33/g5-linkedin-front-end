@@ -1,3 +1,4 @@
+import React from "react";
 import "../../../variables/variables.scss";
 import { useMutation } from 'react-apollo';
 import { gql } from 'apollo-boost';
@@ -9,12 +10,11 @@ import { UserCard } from "../../../components/UserCard/UserCard";
 import { render } from 'react-dom';
 import { Formik } from "formik";
 import yup from "yup";
-import PhotoIcon from "../../../images/pic.svg"
-import VideoIcon from "../../../images/video.svg"
 import EditIcon from "../../../images/Vector.svg"
 import { Card } from "../../../components/Card/Card";
 import { UserClass } from "../../../components/UserCard/types/UserClass.type";
 import { PrimaryButtun } from "../../../components/Buttun/PrimaryButtun";
+
 
 interface CreatePostProps {
     user: User;
@@ -72,35 +72,36 @@ export const CreatePost = ({ user }: CreatePostProps) => {
     //         .then((response) => response.json())
     //         .catch((error) => console.log(error));
     // };
+    // const add_media = (event) => {
+    //     setFieldValue("file", event.currentTarget.files[0]);
+
+        return (
+
+            <form onSubmit={formpost.handleSubmit}>
+                <Card classname="createpost">
+
+                    <UserCard user={user} page={"createpost"} calssnames={classname} />
+
+                    <div className="flex mt-2 mr-9">
+                        <img src={EditIcon} alt="" />
+                        <textarea id="text"
+                            name="text"
+                            onChange={formpost.handleChange}
+                            value={formpost.values.text} className="w-full mt-6 ml-2 mr-3 text-base text-black outline-none resize-none focus:text-black-600" placeholder="چیزی بنویس ..." />
+                    </div>
+
+                    <div dir="ltr" className="py-2.5 px-7 rounded-b-3xl send-box">
+
+                        <PrimaryButtun name="ارسال" lang="fa" />
+                        <Uploader formpost={formpost} name="Video" typeacc="video/*" />
+                        <Uploader formpost={formpost} name="Photo" typeacc="image/*" />
+
+                    </div>
+                </Card>
+
+            </form>
 
 
-    return (
-
-        <form onSubmit={formpost.handleSubmit}>
-            <Card classname="createpost">
-
-                <UserCard user={user} page={"createpost"} calssnames={classname} />
-
-                <div className="flex mt-2 mr-9">
-                    <img src={EditIcon} alt="" />
-                    <textarea id="text"
-                        name="text"
-                        onChange={formpost.handleChange}
-                        value={formpost.values.text} className="w-full mt-6 ml-2 mr-3 text-base text-black outline-none resize-none focus:text-black-600" placeholder="چیزی بنویس ..." />
-                </div>
-
-                <div dir="ltr" className="py-2.5 px-7 rounded-b-3xl send-box">
-                    
-                     <PrimaryButtun type="submit" name="ارسال" />
-                      <Uploader formpost={formpost} icon={VideoIcon} name="Video" typeacc="video/*" />
-                     <Uploader formpost={formpost} icon={PhotoIcon} name="Photo" typeacc="image/*" />
-
-                </div>
-            </Card>
-
-        </form>
-
-
-    )
-}
+        )
+    }
 

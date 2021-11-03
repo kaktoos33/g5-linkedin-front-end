@@ -8,9 +8,9 @@
     color: $blueColor;
 }
 
-.edit {
+.container_vector:hover>#vector_svg {
     cursor: pointer;
-    path:hover {
+    path {
         fill: $blueColor;
     }
 }

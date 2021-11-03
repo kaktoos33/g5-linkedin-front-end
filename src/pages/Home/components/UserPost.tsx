@@ -78,11 +78,13 @@ export const UserPost = ({ post, status }: UserPostProps) => {
             <div className="my-4 bg-gray-100 mx-9 border-1 rounded-3xl">
                 {body.media && <img className="w-full h-full rounded-3xl" src={body.media} alt={"sth"} />}
             </div>
-
-            <div className="grid mb-5 ml-5 justify-items-end">
-                <label className="px-2 py-1 ml-4 text-xs text-white rounded-full like-box">{currentLike}+</label>
-                <LikeSVG id="like" onClick={onLikeClick} className="w-5 h-5 cursor-pointer image-svg" />
+            <div className="flex justify-end">
+                <div className="grid mb-5 ml-5 justify-items-end container_like">
+                    <label className="px-2 py-0.25 ml-3 text-xs text-white rounded-full like-box">{currentLike}+</label>
+                    <LikeSVG id="like_svg" onClick={onLikeClick} className="w-5 h-5 cursor-pointer" />
+                </div>
             </div>
+
         </Card >
     )
 }
