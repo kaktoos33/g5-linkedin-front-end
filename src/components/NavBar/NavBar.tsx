@@ -6,7 +6,7 @@ import { Icon, Logo } from "./components/NavBarIcon";
 import "./NavBar.style.scss";
 import { MessageNotifications } from "../MessageNotifications/MessageNotifications";
 // import { Message } from "../MessageNotifications/Message";
-import { Message } from "./../MessageNotifications/Message";
+import { NotificationMessage } from "../MessageNotifications/NotificationMessage";
 import { useHistory } from "react-router-dom";
 
 type message = {
@@ -20,7 +20,9 @@ const saveCurPage = (curPage: string) => {
   localStorage.setItem("curPage", curPage);
 };
 const loadCurPage = () => {
-  return localStorage.getItem("curPage");
+  return localStorage.getItem("curPage") === "null"
+    ? "/home"
+    : localStorage.getItem("curPage");
 };
 
 export default function Navbar() {
@@ -49,7 +51,14 @@ export default function Navbar() {
         alarmSelected: true,
         userSelected: false,
       });
+    } else if (lastCurPage === "/follow") {
+      setFormState({
+        homeSelected: false,
+        alarmSelected: false,
+        userSelected: true,
+      });
     }
+    console.log(window.location.href);
     history.push(lastCurPage);
   }, []);
 
@@ -127,6 +136,8 @@ export default function Navbar() {
               alarmSelected: false,
               userSelected: true,
             });
+            saveCurPage("/follow");
+            history.push("/follow");
           }}
           selected={formState.userSelected}
         >
@@ -141,10 +152,10 @@ export default function Navbar() {
           }}
           className={notificationState}
         >
-          <Message key="1" message={message1}></Message>
-          <Message key="2" message={message1}></Message>
-          <Message key="3" message={message1}></Message>
-          <Message key="4" message={message1}></Message>
+          <NotificationMessage key="1" message={message1}></NotificationMessage>
+          <NotificationMessage key="2" message={message1}></NotificationMessage>
+          <NotificationMessage key="3" message={message1}></NotificationMessage>
+          <NotificationMessage key="4" message={message1}></NotificationMessage>
         </MessageNotifications>
       </div>
     </div>

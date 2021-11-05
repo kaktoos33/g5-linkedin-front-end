@@ -58,7 +58,25 @@ export const UserCard = (props: {
         </div>
       </div>
     );
-  } else {
+  } else if (props.page === "follow") {
+    return (
+      <div className={outerdivclass}>
+        <div>
+          {img && <UserPic width="w-11" height="44px" pic={img} />}
+          {!img && <UserPic width="w-11" height="44px" pic={Usericon} />}
+        </div>
+        <div>
+          <UserInfo
+            name={name}
+            role={role}
+            nameclass={nameclass}
+            roleclass={roleclass}
+            innerdivclass={innerdivclass}
+          />
+        </div>
+      </div>
+    );
+  } else if (props.page === "message") {
     return (
       <div className={outerdivclass}>
         <div>

@@ -1,6 +1,6 @@
 @import "./src/variables/variables.scss";
 
-.message {
+.notificationMessage {
   display: flex;
   flex-direction: row;
   border-bottom: 2px solid $grayColor;
@@ -8,19 +8,19 @@
   margin-right: 16px;
   margin-bottom: 9px;
 }
-.messageBody {
+.notificationMessageBody {
   display: flex;
   flex-direction: column;
 
   width: 66%;
 }
-.messageTitle {
+.notificationMessageTitle {
   padding-right: 18px;
 }
-.messageContent {
+.notificationMessageContent {
   padding-right: 14px;
 }
-.messageDate {
+.notificationMessageDate {
   display: flex;
   width: 34%;
   justify-content: left;

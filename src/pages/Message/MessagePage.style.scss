@@ -1,0 +1,10 @@
+@import "./src/variables/variables.scss";
+.messagePageBody {
+  display: flex;
+  flex-direction: column;
+
+  background-color: white;
+  width: auto;
+  min-height: 451px;
+  margin-top: 38px;
+}

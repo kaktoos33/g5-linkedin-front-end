@@ -1,14 +1,10 @@
 import React from "react";
-import { Switch, Route, Redirect, useHistory } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import { Home } from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import { Follow } from "./pages/Follow/Follow";
-// import NavBar from "./components/NavBar";
 import { Register } from "./pages/Register/Register";
-// import Register from "./components/Register";
-import { Form } from "formik";
 import NavBar from "./components/NavBar/NavBar";
-import { createBrowserHistory } from "history";
 import { MessagePage } from "./pages/Message/MessagePage";
 
 interface AppProps {}
