@@ -16,18 +16,11 @@ export const PrivateRoute: React.FC<{
   component: React.FC;
   path: string;
   exact: boolean;
+  private?: boolean;
 }> = (props) => {
   const loginState = sessionStorage.getItem("loginState");
-  let condition = false;
-  if (loginState === "loggedIn") {
-    condition = true;
-  } else if (props.path === "/") {
-    return <Route path={props.path} exact={props.exact} component={Login} />;
-  } else {
-    condition = false;
-  }
 
-  return condition ? (
+  return loginState === "loggedIn" ? (
     <>
       <NavBar />
       <Route
@@ -36,6 +29,8 @@ export const PrivateRoute: React.FC<{
         component={props.component}
       />
     </>
+  ) : props.private ? (
+    <Route path={props.path} exact={props.exact} component={Login} />
   ) : (
     <Route path={props.path} exact={props.exact} component={props.component} />
   );
@@ -46,7 +41,7 @@ class App extends React.Component<AppProps, AppState> {
     return (
       <div dir="rtl" className="bg-backGroundColor">
         <Switch>
-          <PrivateRoute exact path="/" component={Home} />
+          <PrivateRoute private exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
           <PrivateRoute exact path="/home" component={Home} />
