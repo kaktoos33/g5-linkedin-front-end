@@ -3,7 +3,6 @@ import { Card } from "../Card/Card";
 import { ReactComponent as PlusSvg } from "../../images/Plus.svg"
 import './Tag.style.scss'
 import { Tag } from './Tag.types';
-import { IndexKind } from 'typescript';
 
 interface TagProps {
     Taglist: Array<Tag>
