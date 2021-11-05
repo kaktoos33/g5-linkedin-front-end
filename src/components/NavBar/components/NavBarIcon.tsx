@@ -41,7 +41,7 @@ interface LogoProps extends HTMLProps<HTMLDivElement> {
 export const Logo: FC<LogoProps> = (props: LogoProps) => {
   return (
     <div {...props}>
-      <img src={logo} style={{ height: 40, width: 148 }} />
+      <img src={logo} alt="" style={{ height: 40, width: 148 }} />
     </div>
   );
 };

@@ -60,7 +60,7 @@ export default function Navbar() {
     }
     console.log(window.location.href);
     history.push(lastCurPage);
-  }, []);
+  }, [history]);
 
   const message1: message = {
     id: 1,
@@ -70,12 +70,12 @@ export default function Navbar() {
   };
 
   return (
-    <div className="navbar">
-      <Logo className="logo"></Logo>
-
-      <div className="vl"></div>
-
-      <div className="icon">
+    <div className="navbar ">
+      <div className="flex flex-row w-1/5 max-w-xs ">
+        <Logo className="flex items-center align-middle logo"></Logo>
+        <div className=" vl"></div>
+      </div>
+      <div className="w-3/5 max-w-xl mx-3.5 flex items-center align-middle">
         <Icon
           {...(formState.homeSelected
             ? { className: "selected" }
@@ -143,21 +143,23 @@ export default function Navbar() {
         >
           <FontAwesomeIcon className="far userIcon hoverItem" icon={faUsers} />
         </Icon>
-        <MessageNotifications
-          onMouseEnter={() => {
-            if (notificationNumber > 0) setNotificationState("");
-          }}
-          onMouseLeave={() => {
-            setNotificationState("hidden");
-          }}
-          className={notificationState}
-        >
-          <NotificationMessage key="1" message={message1}></NotificationMessage>
-          <NotificationMessage key="2" message={message1}></NotificationMessage>
-          <NotificationMessage key="3" message={message1}></NotificationMessage>
-          <NotificationMessage key="4" message={message1}></NotificationMessage>
-        </MessageNotifications>
       </div>
+      <div className="w-1/5 max-w-xs"></div>
+
+      <MessageNotifications
+        onMouseEnter={() => {
+          if (notificationNumber > 0) setNotificationState("");
+        }}
+        onMouseLeave={() => {
+          setNotificationState("hidden");
+        }}
+        className={notificationState}
+      >
+        <NotificationMessage key="1" message={message1}></NotificationMessage>
+        <NotificationMessage key="2" message={message1}></NotificationMessage>
+        <NotificationMessage key="3" message={message1}></NotificationMessage>
+        <NotificationMessage key="4" message={message1}></NotificationMessage>
+      </MessageNotifications>
     </div>
   );
 }
