@@ -102,8 +102,8 @@ const fetechedTag: Array<Tag> = [
 
 export const Home: FunctionComponent<HomeProps> = () => {
     const user = fetechedUser;
-    const posts = React.useMemo(() => fetechedPost.map((a) =>
-        <UserPost post={a} status={false} />), [fetechedPost]);
+    const posts = React.useMemo(() => fetechedPost.map((a ,index) =>
+        <UserPost key={index.toString()} post={a} status={false} />), [fetechedPost]);
 
     // const { loading, error, data } = useQuery<Array<Post>>(GET_POSTS);
 

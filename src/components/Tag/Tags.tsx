@@ -3,6 +3,7 @@ import { Card } from "../Card/Card";
 import { ReactComponent as PlusSvg } from "../../images/Plus.svg"
 import './Tag.style.scss'
 import { Tag } from './Tag.types';
+import { IndexKind } from 'typescript';
 
 interface TagProps {
     Taglist: Array<Tag>
@@ -15,15 +16,15 @@ export const Tags = ({ Taglist }: TagProps) => {
 
 
     const addtag = (event: any) => {
-        
+
         if (event.keyCode === 13) {
             console.log('enter')
         }
     }
 
-    const tag = React.useMemo(() => Taglist.map((a) =>
+    const tag = React.useMemo(() => Taglist.map((a, index) =>
 
-        <span className="inline-block tag-span mx-1 my-1 px-3 py-0.5">#{a.name}</span>
+        <span key={index.toString()} className="inline-block tag-span mx-1 my-1 px-3 py-0.5">#{a.name}</span>
     ), [Taglist]);
 
     return (
@@ -38,9 +39,12 @@ export const Tags = ({ Taglist }: TagProps) => {
                             onKeyDown={(e) => addtag(e)} />
                     }
                 </div>
-                <div dir="ltr" className="w-1/4 container_plus">
-                    <PlusSvg id="plus_svg" className="plus"  onClick={toggleshow} />
+                <div dir="ltr" className="w-1/4">
+                    <div  className="w-5 h-5 container_plus">
+                        <PlusSvg id="plus_svg" className="plus" onClick={toggleshow} />
+                    </div>
                 </div>
+
             </div>
             <div dir="ltr" className="mt-3.5 mb-5 mx-7">
                 {tag}

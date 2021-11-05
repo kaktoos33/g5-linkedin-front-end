@@ -9,12 +9,9 @@
                 font-family: $efontR;
             }
             
-            .container_like {
-                width: 10%;
-                &:hover>#like_svg {
-                    path {
-                        fill: $blueColor;
-                    }
+            .container_like:hover>#like_svg {
+                path {
+                    fill: $blueColor;
                 }
             }
             

@@ -26,12 +26,12 @@ export const FollowReq = ({ connecetlist , title , type , butname }: ConnectProp
         innerdivclass: `${type}_innerdiv_class`
     }
     
-    const connect = React.useMemo(() => connecetlist.slice(0, 3).map((req) =>
+    const connect = React.useMemo(() => connecetlist.slice(0, 3).map((req , index) =>
 
-        <FollowCard req={req} classname={classname} page={type} butname={butname}  />), [connecetlist]);
+        <FollowCard req={req} key={index.toString()} classname={classname} page={type} butname={butname}  />), [connecetlist]);
 
-    const extraConnect = React.useMemo(() => connecetlist.slice(3, 6).map((req) =>
-        <FollowCard req={req} classname={classname} page={type} butname={butname} />), [connecetlist]);
+    const extraConnect = React.useMemo(() => connecetlist.slice(3, 6).map((req , index) =>
+        <FollowCard req={req} key={index.toString()} classname={classname} page={type} butname={butname} />), [connecetlist]);
 
     const linkName = readMore ? "کمتر" : "بیشتر"
 
