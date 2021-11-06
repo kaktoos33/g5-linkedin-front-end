@@ -1,5 +1,8 @@
 .card {
   position: absolute;
+  // position: relative;
+
+  margin-right: -18%;
   width: 320px;
   height: 174px;
   top: 60px;
@@ -7,8 +10,10 @@
 }
 .cardMessageWrapper {
   background-color: white;
+  // border: solid red;
   border-radius: 20px;
   padding: 5px;
+  box-shadow: 30px 30px 40px #8888;
 }
 
 .cardMessage {

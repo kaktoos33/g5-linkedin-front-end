@@ -1,0 +1,32 @@
+@import "./src/variables/variables.scss";
+
+.notificationMessage {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 2px solid $grayColor;
+  margin-left: 16px;
+  margin-right: 16px;
+  margin-bottom: 9px;
+}
+.notificationMessageBody {
+  display: flex;
+  flex-direction: column;
+
+  width: 66%;
+}
+.notificationMessageTitle {
+  padding-right: 18px;
+}
+.notificationMessageContent {
+  padding-right: 14px;
+}
+.notificationMessageDate {
+  display: flex;
+  width: 34%;
+  justify-content: left;
+  align-items: center;
+
+  //   justify-items: flex-end;
+  color: red;
+  //   direction: ltr;
+}

@@ -19,11 +19,10 @@ export const FollowReq = ({
   type,
   butname,
 }: ConnectProps) => {
-    
   const [seeMore, setSeeMore] = useState(false);
 
-
-  const connect = React.useCallback((min:number , max:number) =>
+  const connect = React.useCallback(
+    (min: number, max: number) =>
       connecetlist
         .slice(min, max)
         .map((req, index) => (
@@ -44,17 +43,14 @@ export const FollowReq = ({
   };
   return (
     <div className="overflow-hidden">
-      
       <Card classname={`${type}`}>
-
         <div className={`flex mb-6 ${type}_Title`}>{title}</div>
 
-        {connect(0,3)}
+        {connect(0, 3)}
 
-        {seeMore && connect(3,6)}
+        {seeMore && connect(3, 6)}
 
         <SeeMore linkName={linkName} onclick={onclick} />
-        
       </Card>
     </div>
   );

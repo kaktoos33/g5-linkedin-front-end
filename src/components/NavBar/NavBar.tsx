@@ -6,8 +6,11 @@ import { Icon, Logo } from "./components/NavBarIcon";
 import "./NavBar.style.scss";
 import { MessageNotifications } from "../MessageNotifications/MessageNotifications";
 // import { Message } from "../MessageNotifications/Message";
-import { Message } from "./../MessageNotifications/Message";
+import { NotificationMessage } from "../MessageNotifications/NotificationMessage";
 import { useHistory } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { NavBarItem } from "./components/NavBarItem";
+import { setLocale } from "yup";
 
 type message = {
   id: number;
@@ -16,8 +19,21 @@ type message = {
   date: string;
 };
 
+const saveCurPage = (curPage: string) => {
+  localStorage.setItem("curPage", curPage);
+};
+const loadCurPage = () => {
+  return localStorage.getItem("curPage") === "null"
+    ? "/home"
+    : localStorage.getItem("curPage");
+};
+
 export default function Navbar() {
   const history = useHistory();
+  const [location, setLocation] = useState(useLocation());
+  console.log(location);
+
+  console.log(location);
   const [formState, setFormState] = useState({
     homeSelected: true,
     alarmSelected: false,
@@ -34,30 +50,18 @@ export default function Navbar() {
   };
 
   return (
-    <div className="navbar">
-      <Logo className="logo"></Logo>
-
-      <div className="vl"></div>
-
-      <div className="icon">
-        <Icon
-          {...(formState.homeSelected
-            ? { className: "selected" }
-            : { className: "notSelected" })}
-          onClick={() => {
-            setFormState({
-              homeSelected: true,
-              alarmSelected: false,
-              userSelected: false,
-            });
-            history.push("/home");
-          }}
-          selected={formState.homeSelected}
-        >
+    <div className="navbar ">
+      <div className="flex flex-row w-1/5 max-w-xs ">
+        <Logo className="flex items-center align-middle logo"></Logo>
+        <div className=" vl"></div>
+      </div>
+      <div className="w-3/5 max-w-xl mx-3.5 flex items-center align-middle">
+        <NavBarItem referTo="/home">
           <FontAwesomeIcon className="far homeIcon hoverItem" icon={faHome} />
-        </Icon>
-
-        <Icon
+        </NavBarItem>
+        <NavBarItem
+          referTo="/message"
+          alarmBadge
           onMouseEnter={() => {
             if (notificationNumber > 0) {
               setNotificationState("");
@@ -66,18 +70,6 @@ export default function Navbar() {
           onMouseLeave={() => {
             setNotificationState("hidden");
           }}
-          {...(formState.alarmSelected
-            ? { className: "alarmSelected" }
-            : { className: "alarmNotSelected" })}
-          onClick={() => {
-            setFormState({
-              homeSelected: false,
-              alarmSelected: true,
-              userSelected: false,
-            });
-            history.push("/notification");
-          }}
-          selected={formState.alarmSelected}
         >
           <FontAwesomeIcon
             className="far fa-2x hoverItem alarm"
@@ -86,38 +78,28 @@ export default function Navbar() {
           <span className={notificationNumber === 0 ? "hidden-badge" : "badge"}>
             +{notificationNumber}
           </span>
-        </Icon>
+        </NavBarItem>
 
-        <Icon
-          {...(formState.userSelected
-            ? { className: "selected" }
-            : { className: "notSelected" })}
-          onClick={() => {
-            setFormState({
-              homeSelected: false,
-              alarmSelected: false,
-              userSelected: true,
-            });
-          }}
-          selected={formState.userSelected}
-        >
+        <NavBarItem referTo="/follow">
           <FontAwesomeIcon className="far userIcon hoverItem" icon={faUsers} />
-        </Icon>
-        <MessageNotifications
-          onMouseEnter={() => {
-            if (notificationNumber > 0) setNotificationState("");
-          }}
-          onMouseLeave={() => {
-            setNotificationState("hidden");
-          }}
-          className={notificationState}
-        >
-          <Message message={message1}></Message>
-          <Message message={message1}></Message>
-          <Message message={message1}></Message>
-          <Message message={message1}></Message>
-        </MessageNotifications>
+        </NavBarItem>
       </div>
+      <div className="w-1/5 max-w-xs"></div>
+
+      <MessageNotifications
+        onMouseEnter={() => {
+          if (notificationNumber > 0) setNotificationState("");
+        }}
+        onMouseLeave={() => {
+          setNotificationState("hidden");
+        }}
+        className={notificationState}
+      >
+        <NotificationMessage key="1" message={message1}></NotificationMessage>
+        <NotificationMessage key="2" message={message1}></NotificationMessage>
+        <NotificationMessage key="3" message={message1}></NotificationMessage>
+        <NotificationMessage key="4" message={message1}></NotificationMessage>
+      </MessageNotifications>
     </div>
   );
 }

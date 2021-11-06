@@ -7,7 +7,7 @@ import {
 } from "react";
 import logo from "../../../resources/logo.svg";
 import logoin from "../../../resources/in.svg";
-import "./NavBarIcon.stryle.scss";
+// import "./NavBarIcon.stryle.scss";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -41,7 +41,7 @@ interface LogoProps extends HTMLProps<HTMLDivElement> {
 export const Logo: FC<LogoProps> = (props: LogoProps) => {
   return (
     <div {...props}>
-      <img src={logo} style={{ height: 40, width: 148 }} />
+      <img src={logo} alt="" style={{ height: 40, width: 148 }} />
     </div>
   );
 };

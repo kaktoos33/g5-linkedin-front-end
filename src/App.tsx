@@ -1,16 +1,11 @@
 import React from "react";
-import { Switch, Route, Redirect, useHistory } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import { Home } from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import { Follow } from "./pages/Follow/Follow";
-// import NavBar from "./components/NavBar";
 import { Register } from "./pages/Register/Register";
-// import Register from "./components/Register";
-import { Form } from "formik";
 import NavBar from "./components/NavBar/NavBar";
-import { createBrowserHistory } from "history";
-import { NotificationPage } from "./pages/Notification/NotificationPage";
-
+import { MessagePage } from "./pages/Message/MessagePage";
 
 interface AppProps {}
 
@@ -21,18 +16,11 @@ export const PrivateRoute: React.FC<{
   component: React.FC;
   path: string;
   exact: boolean;
+  private?: boolean;
 }> = (props) => {
   const loginState = sessionStorage.getItem("loginState");
-  let condition = false;
-  if (loginState === "loggedIn") {
-    condition = true;
-  } else if (props.path === "/") {
-    return <Route path={props.path} exact={props.exact} component={Login} />;
-  } else {
-    condition = false;
-  }
 
-  return condition ? (
+  return loginState === "loggedIn" ? (
     <>
       <NavBar />
       <Route
@@ -41,6 +29,8 @@ export const PrivateRoute: React.FC<{
         component={props.component}
       />
     </>
+  ) : props.private ? (
+    <Route path={props.path} exact={props.exact} component={Login} />
   ) : (
     <Route path={props.path} exact={props.exact} component={props.component} />
   );
@@ -51,17 +41,13 @@ class App extends React.Component<AppProps, AppState> {
     return (
       <div dir="rtl" className="bg-backGroundColor">
         <Switch>
-          <PrivateRoute exact path="/" component={Home} />
+          <PrivateRoute private exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
           <PrivateRoute exact path="/home" component={Home} />
+          <PrivateRoute exact path="/message" component={MessagePage} />
           <PrivateRoute exact path="/follow" component={Follow} />
 
-          <PrivateRoute
-            exact
-            path="/notification"
-            component={NotificationPage}
-          />
           {/*
             <Route exact path="/profile" component={Profile} /> */}
         </Switch>

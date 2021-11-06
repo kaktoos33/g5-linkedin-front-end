@@ -9,12 +9,12 @@ import { UserPost } from "./components/UserPost";
 interface HomeProps {}
 
 const fetechedUser: User = {
-    name: "farzaneh",
-    role: "Developer",
-    img: "https://picsum.photos/id/1005/40",
-  };
-export const Home =() => {
-    const user = fetechedUser;
+  name: "farzaneh",
+  role: "Developer",
+  img: "https://picsum.photos/id/1005/40",
+};
+export const Home = () => {
+  const user = fetechedUser;
 
   // const { loading, error, data } = useQuery<Array<Post>>(GET_POSTS);
 
