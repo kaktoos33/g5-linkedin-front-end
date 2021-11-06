@@ -2,11 +2,12 @@ import { FC } from "react";
 import { UserProfile } from "../../components/UserProfile/UserProfile";
 
 import { User } from "../../components/UserCard/types/User.types";
-import { message, UserMessages } from "./components/UserMessages";
+
 import { FollowReq } from "../../components/FollowReq/FollowReq";
 import { Tag } from "../../components/Tag/Tag.types";
 import { Tags } from "../../components/Tag/Tags";
 import "./MessagePage.style.scss";
+import { UserMessages } from "./UserMessagePage/UserMessages";
 
 interface MessagePageProps {}
 export type MessageType = {
@@ -42,6 +43,17 @@ const fetechedMessages: Array<MessageType> = [
   },
   {
     messageId: 3,
+    user: {
+      name: "Mehdi",
+      role: "FrontEnd Developer",
+      img: "",
+    },
+    messageBody: "body3",
+    messageDate: "date3",
+    messageType: "type3",
+  },
+  {
+    messageId: 4,
     user: {
       name: "Mehdi",
       role: "FrontEnd Developer",

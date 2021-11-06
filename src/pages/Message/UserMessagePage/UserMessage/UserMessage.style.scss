@@ -1,13 +1,19 @@
 @import "./src/variables/variables.scss";
 
+.userMessageCard {
+  border-bottom: 1px solid #dfdfdf;
+}
+.userMessageCard:last-child {
+  border-bottom: 0px;
+}
 .userMessageBody {
   height: 134px;
 }
 .userMessageDate {
-  // display: flex;
+  display: flex;
   // width: 34%;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-end;
+  // align-items: flex-end;
 }
 
 .userMessageButton {

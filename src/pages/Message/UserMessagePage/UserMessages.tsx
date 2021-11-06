@@ -3,6 +3,7 @@ import { FC, HTMLProps } from "react";
 import { Card } from "../../../components/Card/Card";
 import { MessageType } from "../MessagePage";
 import { UserMessage } from "./UserMessage/UserMessage";
+
 import "./UserMessages.style.scss";
 
 interface UserMessagesProps extends HTMLProps<HTMLDivElement> {
@@ -24,8 +25,9 @@ export const UserMessages: FC<UserMessagesProps> = (
 
   console.log(messagesList);
   return (
-    <div className={`userMessagesBody ${props.className || ""}`}>
-      {messages}
+    <div className={`userMessagesCard ${props.className || ""}`}>
+      <div className="userMessagesHeader">اعلان ها</div>
+      <div className="mb-6">{messages}</div>
     </div>
   );
 };
