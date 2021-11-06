@@ -10,7 +10,6 @@ const fetechedUser: User = {
   role: "Developer",
   img: "https://picsum.photos/id/1005/40",
 };
-
 const fetechedTag: Array<Tag> = [
   { name: "work" },
   { name: "business" },

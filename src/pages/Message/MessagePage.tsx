@@ -3,11 +3,11 @@ import { FC } from "react";
 import { User } from "../../components/UserCard/types/User.types";
 
 import "./MessagePage.style.scss";
-import { UserMessages } from "./UserMessagePage/UserMessages";
 import { CardContainerWithFollow } from "../../components/Card/CardContainer";
 import { CompanyMessages } from "./CompanyMessagePage/CompanyMessages";
 
 interface MessagePageProps {}
+
 export type MessageType = {
   messageId: number;
   user: User;
@@ -115,11 +115,6 @@ const fetchedMessages: Array<MessageType> = [
 // ];
 
 export const MessagePage: FC<MessagePageProps> = () => {
-  // const messages: Array<message> = [
-  //   { id: 1, title: "title", body: "body", date: "date" },
-  //   { id: 1, title: "title", body: "body", date: "date" },
-  // ];
-
   return (
     <CardContainerWithFollow>
       {/* <UserMessages messagesList={fetchedMessages} className="mt-9" /> */}
