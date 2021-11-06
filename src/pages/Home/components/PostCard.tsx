@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useMutation } from "react-apollo";
 import { Card } from "../../../components/Card/Card";
 import { ReadMore } from "../../../components/MoreLink/ReadMore";
-import { UserClass } from "../../../components/UserCard/types/UserClass.type";
 import { UserCard } from "../../../components/UserCard/UserCard";
 import { ReactComponent as LikeSVG } from "../../../images/like.svg";
 import { UPDATE_LIKE_MUTATION } from "../graphql/mutations";
@@ -45,7 +44,7 @@ export const PostCard = ({ post, status }: PostCardProps) => {
   }, [currentLike, isliked, updatelike]);
 
   return (
-    <Card classname="post">
+    <Card classname="Post">
       <UserCard user={user} componentname="Post" image_size="L" />
 
       <div>

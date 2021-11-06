@@ -4,7 +4,7 @@ import { User } from "../UserCard/types/User.types";
 import { SeeMore } from "../MoreLink/SeeMore";
 import { FollowCard } from "./FollowCard";
 import "../Responsive.Style.scss";
-import "./Follow.style.scss";
+import "./Follow.Style.scss";
 
 interface ConnectProps {
   connecetlist: Array<User>;
@@ -31,9 +31,10 @@ export const FollowReq = ({
             req={req}
             key={index.toString()}
             butname={butname}
+            type={type}
           />
         )),
-    [butname, connecetlist]
+    [butname, connecetlist, type]
   );
 
   const linkName = seeMore ? "کمتر" : "بیشتر";
@@ -43,8 +44,10 @@ export const FollowReq = ({
   };
   return (
     <div className="overflow-hidden">
+      
       <Card classname={`${type}`}>
-        <div className={`flex mb-6 ${type}-title`}>{title}</div>
+
+        <div className={`flex mb-6 ${type}_Title`}>{title}</div>
 
         {connect(0,3)}
 
