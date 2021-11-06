@@ -10,7 +10,6 @@ import { Formik, Form, Field } from "formik";
 import yup from "yup";
 import EditIcon from "../../../images/Vector.svg";
 import { Card } from "../../../components/Card/Card";
-import { UserClass } from "../../../components/UserCard/types/UserClass.type";
 import { Button } from "../../../components/Buttun/Button";
 
 interface CreatePostProps {
@@ -53,7 +52,7 @@ export const CreatePost = ({ user }: CreatePostProps) => {
   return (
     <Formik initialValues={initialValues} onSubmit={onSubmit}>
       <Form>
-        <Card classname="createpost">
+        <Card classname="Create_Post">
           
           <UserCard user={user} componentname="Create_Post" image_size="M" />
 
@@ -63,7 +62,7 @@ export const CreatePost = ({ user }: CreatePostProps) => {
               as="textarea"
               id="text"
               name="text"
-              className="w-full ml-2 mr-3 overflow-hidden text-base text-black outline-none resize-none focus:text-black-600"
+              className="w-full ml-2 mr-3 overflow-hidden text-base font-light text-black outline-none resize-none focus:text-black-600"
               placeholder="چیزی بنویس ..."
             />
           </div>

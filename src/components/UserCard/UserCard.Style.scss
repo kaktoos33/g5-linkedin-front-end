@@ -1,5 +1,5 @@
 @import "../../variables/variables.scss";
-.Create_Post_Image_Div {
+.Create_Post_Container_Div {
   margin-top: 20px;
   margin-right: 28px;
   margin-bottom: 19.5px;
@@ -11,13 +11,13 @@
 
 .Post_Container_Div {
   display: flex;
-  margin-top: 1.5rem /* 24px */;
-  margin-bottom: 1rem /* 16px */;
-  margin-right: 2.25rem /* 36px */;
+  margin-top: 14px;
+  margin-bottom: 15px;
+  margin-right: 36px;
 }
 
-.Post_Inner_Inf_Div {
-  margin-right: 0.875rem;
+.Post_Info_Div {
+  margin-right: 14px;
 }
 
 .Post_Name {
@@ -51,16 +51,11 @@
 
 .Connect_Image_Div {
   width: 33.333333%;
-  margin-left: 8px;
 }
 
-.Connect_Outer_Inf_Div {
+.Connect_Info_Div {
   width: 66.666667%;
-}
-
-.Connect_Inner_Inf_Div {
-  padding-left: 13px;
-  margin-left: 2px;
+  margin-right: 6.16px;
 }
 
 .Connect_Name {
@@ -90,6 +85,7 @@
 
 .Profile_Container_Div {
   display: flex;
+  row-gap: 8px;
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
@@ -101,6 +97,7 @@
 }
 
 .Profile_Name {
+  margin-bottom: 8px;
   font-family: $efontM;
   font-style: normal;
   font-weight: normal;
@@ -130,9 +127,8 @@
   margin-right: 15.42px;
 }
 
-.Follow_Inner_Inf_Div {
+.Follow_Info_Div {
   padding-right: 6.16px;
-  padding-left: 11px;
 }
 
 .Follow_Name {

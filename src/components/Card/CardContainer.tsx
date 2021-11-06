@@ -88,7 +88,7 @@ export const CardContainerWithFollow = ({
         <FollowReq
           connecetlist={fetechedConnectReq}
           title="ارتباطات خود را گسترش دهید"
-          type="connect"
+          type="Connect"
           butname="Connect"
         />
       </div>
