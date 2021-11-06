@@ -32,7 +32,7 @@ export const UserProfile = ({ user, page }: UserProfileProps) => {
                 </div>
             </div>
             <div className="flex items-end justify-center mb-4">
-                <a className="logout hover:underline" href="#" >logout</a>
+                <a href=" " className="logout hover:underline" >logout</a>
             </div>
 
 
