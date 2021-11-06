@@ -7,10 +7,10 @@ import { CREATE_POST_MUTATION } from "../graphql/mutations";
 import { Uploader } from "./Uploader";
 import { UserCard } from "../../../components/UserCard/UserCard";
 import { Formik, Form, Field } from "formik";
-import yup from "yup";
 import EditIcon from "../../../images/Vector.svg";
 import { Card } from "../../../components/Card/Card";
 import { Button } from "../../../components/Buttun/Button";
+import { ValuesOfCorrectTypeRule } from "graphql";
 
 interface CreatePostProps {
   user: User;
@@ -32,7 +32,7 @@ export const CreatePost = ({ user }: CreatePostProps) => {
     useMutation(CREATE_POST_MUTATION);
 
   const onSubmit = (values: FormValues) => {
-    console.log(values);
+    console.log(URL.createObjectURL(values.photo));
     //addpost(values);
   };
 
@@ -53,7 +53,6 @@ export const CreatePost = ({ user }: CreatePostProps) => {
     <Formik initialValues={initialValues} onSubmit={onSubmit}>
       <Form>
         <Card classname="Create_Post">
-          
           <UserCard user={user} componentname="Create_Post" image_size="M" />
 
           <div className="flex items-start mr-9">
@@ -66,7 +65,7 @@ export const CreatePost = ({ user }: CreatePostProps) => {
               placeholder="چیزی بنویس ..."
             />
           </div>
-
+          
           <div dir="ltr" className="py-2.5 px-7 rounded-b-3xl send-box">
             <Button type="submit" gruop="Primary" lang="fa" size="M">
               ارسال
