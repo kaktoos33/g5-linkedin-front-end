@@ -7,7 +7,7 @@ import {
 } from "react";
 import logo from "../../../resources/logo.svg";
 import logoin from "../../../resources/in.svg";
-import "./NavBarIcon.stryle.scss";
+// import "./NavBarIcon.stryle.scss";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 

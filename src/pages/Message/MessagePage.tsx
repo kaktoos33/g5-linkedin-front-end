@@ -112,7 +112,7 @@ export const MessagePage: FC<MessagePageProps> = () => {
   // ];
 
   return (
-    <div className="flex justify-center bg-backGroundColor ">
+    <div className="flex justify-center main ">
       <div className="w-1/5 max-w-xs ">
         <UserProfile user={user} page="userprofile" />
         <FollowReq

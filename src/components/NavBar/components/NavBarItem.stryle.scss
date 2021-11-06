@@ -1,0 +1,11 @@
+@import "./src/variables/variables.scss";
+
+.iconItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+
+  margin-right: 33px;
+  margin-left: 33px;
+}

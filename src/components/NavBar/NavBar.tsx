@@ -8,6 +8,9 @@ import { MessageNotifications } from "../MessageNotifications/MessageNotificatio
 // import { Message } from "../MessageNotifications/Message";
 import { NotificationMessage } from "../MessageNotifications/NotificationMessage";
 import { useHistory } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { NavBarItem } from "./components/NavBarItem";
+import { setLocale } from "yup";
 
 type message = {
   id: number;
@@ -27,7 +30,10 @@ const loadCurPage = () => {
 
 export default function Navbar() {
   const history = useHistory();
+  const [location, setLocation] = useState(useLocation());
+  console.log(location);
 
+  console.log(location);
   const [formState, setFormState] = useState({
     homeSelected: true,
     alarmSelected: false,
@@ -35,32 +41,6 @@ export default function Navbar() {
   });
   const [notificationState, setNotificationState] = useState("hidden");
   const [notificationNumber, setNotificationNumber] = useState(5);
-
-  useEffect(() => {
-    let lastCurPage = String(loadCurPage());
-    console.log(lastCurPage);
-    if (lastCurPage === "/home" || lastCurPage === "null") {
-      setFormState({
-        homeSelected: true,
-        alarmSelected: false,
-        userSelected: false,
-      });
-    } else if (lastCurPage === "/message") {
-      setFormState({
-        homeSelected: false,
-        alarmSelected: true,
-        userSelected: false,
-      });
-    } else if (lastCurPage === "/follow") {
-      setFormState({
-        homeSelected: false,
-        alarmSelected: false,
-        userSelected: true,
-      });
-    }
-    console.log(window.location.href);
-    history.push(lastCurPage);
-  }, [history]);
 
   const message1: message = {
     id: 1,
@@ -76,25 +56,12 @@ export default function Navbar() {
         <div className=" vl"></div>
       </div>
       <div className="w-3/5 max-w-xl mx-3.5 flex items-center align-middle">
-        <Icon
-          {...(formState.homeSelected
-            ? { className: "selected" }
-            : { className: "notSelected" })}
-          onClick={() => {
-            setFormState({
-              homeSelected: true,
-              alarmSelected: false,
-              userSelected: false,
-            });
-            saveCurPage("/home");
-            history.push("/home");
-          }}
-          selected={formState.homeSelected}
-        >
+        <NavBarItem referTo="/home">
           <FontAwesomeIcon className="far homeIcon hoverItem" icon={faHome} />
-        </Icon>
-
-        <Icon
+        </NavBarItem>
+        <NavBarItem
+          referTo="/message"
+          alarmBadge
           onMouseEnter={() => {
             if (notificationNumber > 0) {
               setNotificationState("");
@@ -103,19 +70,6 @@ export default function Navbar() {
           onMouseLeave={() => {
             setNotificationState("hidden");
           }}
-          {...(formState.alarmSelected
-            ? { className: "alarmSelected" }
-            : { className: "alarmNotSelected" })}
-          onClick={() => {
-            setFormState({
-              homeSelected: false,
-              alarmSelected: true,
-              userSelected: false,
-            });
-            saveCurPage("/message");
-            history.push("/message");
-          }}
-          selected={formState.alarmSelected}
         >
           <FontAwesomeIcon
             className="far fa-2x hoverItem alarm"
@@ -124,25 +78,11 @@ export default function Navbar() {
           <span className={notificationNumber === 0 ? "hidden-badge" : "badge"}>
             +{notificationNumber}
           </span>
-        </Icon>
+        </NavBarItem>
 
-        <Icon
-          {...(formState.userSelected
-            ? { className: "selected" }
-            : { className: "notSelected" })}
-          onClick={() => {
-            setFormState({
-              homeSelected: false,
-              alarmSelected: false,
-              userSelected: true,
-            });
-            saveCurPage("/follow");
-            history.push("/follow");
-          }}
-          selected={formState.userSelected}
-        >
+        <NavBarItem referTo="/follow">
           <FontAwesomeIcon className="far userIcon hoverItem" icon={faUsers} />
-        </Icon>
+        </NavBarItem>
       </div>
       <div className="w-1/5 max-w-xs"></div>
 

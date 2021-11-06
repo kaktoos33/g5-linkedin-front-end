@@ -18,10 +18,7 @@ export const UserMessages: FC<UserMessagesProps> = (
   props: UserMessagesProps
 ) => {
   const messages = React.useMemo(
-    () =>
-      messagesList
-        .slice(0, 3)
-        .map((message) => <UserMessage message={message} />),
+    () => messagesList.map((message) => <UserMessage message={message} />),
     [messagesList]
   );
 
