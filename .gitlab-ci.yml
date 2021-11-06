@@ -7,6 +7,8 @@ stages:
 
 build-job:
   stage: build
+  tags:
+    - g5
   script:
     - echo "build stage devops"
     - date
@@ -14,12 +16,16 @@ build-job:
 
 test-job:
   stage: test
+  tags:
+    - g5
   script:
     - echo "test stage devops"
     - date
 
 deploy-job:
   stage: deploy
+  tags:
+    - g5
   script:
     - echo "deploy stage devops"
     - date
