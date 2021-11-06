@@ -7,7 +7,6 @@ import { UserMessage } from "./UserMessage/UserMessage";
 import "./UserMessages.style.scss";
 
 interface UserMessagesProps extends HTMLProps<HTMLDivElement> {
-  test1: string;
   messagesList: Array<MessageType>;
   children?: React.ReactNode;
 }
@@ -15,7 +14,7 @@ interface UserMessagesProps extends HTMLProps<HTMLDivElement> {
 export type message = { id: number; title: string; body: string; date: string };
 
 export const UserMessages: FC<UserMessagesProps> = (
-  { test1, messagesList }: UserMessagesProps,
+  { messagesList }: UserMessagesProps,
   props: UserMessagesProps
 ) => {
   const messages = React.useMemo(
