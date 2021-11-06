@@ -1,23 +1,22 @@
 @import "../../variables/variables.scss";
-.createpost {
-    margin-top: 38px;
+.Create_Post {
     height: auto;
 }
 
-.post {
+.Post {
     margin-top: 20px;
     margin-bottom: 20px;
     height: auto;
 }
 
-.userInfo {
+.User_Profile {
     margin-top: 38px;
     height: 194px;
     background-image: linear-gradient(top, $lightBlue, $lightBlue 45%, transparent 45%, transparent 100%);
     background-image: -webkit-linear-gradient(top, $lightBlue, $lightBlue 45%, transparent 45%, transparent 100%)
 }
 
-.connect {
+.Connect {
     margin-top: 24px;
     height: auto;
     background-color: $blueGrayColor;
@@ -29,7 +28,7 @@
     color: #212121;
 }
 
-.follow {
+.Follow {
     height: auto;
     background-color: $blueGrayColor;
     font-family: $fontM;
@@ -41,7 +40,7 @@
     margin-bottom: 16px;
 }
 
-.tag {
+.Tag {
     margin-top: 38px;
     height: auto;
     min-height: 188px;

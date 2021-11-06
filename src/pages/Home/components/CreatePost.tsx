@@ -1,106 +1,81 @@
+import React from "react";
 import "../../../variables/variables.scss";
-import { useMutation } from 'react-apollo';
-import { gql } from 'apollo-boost';
-import { useFormik } from 'formik';
-import { User } from '../../../components/UserCard/types/User.types';
+import { useMutation } from "react-apollo";
+import { gql } from "apollo-boost";
+import { User } from "../../../components/UserCard/types/User.types";
 import { CREATE_POST_MUTATION } from "../graphql/mutations";
-import { Uploader } from './Uploader';
+import { Uploader } from "./Uploader";
 import { UserCard } from "../../../components/UserCard/UserCard";
-import { render } from 'react-dom';
-import { Formik } from "formik";
+import { Formik, Form, Field } from "formik";
 import yup from "yup";
-import PhotoIcon from "../../../images/pic.svg"
-import VideoIcon from "../../../images/video.svg"
-import EditIcon from "../../../images/Vector.svg"
+import EditIcon from "../../../images/Vector.svg";
 import { Card } from "../../../components/Card/Card";
-import { UserClass } from "../../../components/UserCard/types/UserClass.type";
-import { PrimaryButtun } from "../../../components/Buttun/PrimaryButtun";
+import { Button } from "../../../components/Buttun/Button";
 
 interface CreatePostProps {
-    user: User;
-
+  user: User;
 }
+const initialValues = {
+  text: "",
+  video: "",
+  photo: "",
+};
+
+type FormValues = {
+  text: string;
+  video: string;
+  photo: string;
+};
 
 export const CreatePost = ({ user }: CreatePostProps) => {
-    const [createpost, { data, loading, error }] = useMutation(CREATE_POST_MUTATION);
+  const [createpost, { data, loading, error }] =
+    useMutation(CREATE_POST_MUTATION);
 
-    const classname: UserClass = {
-        nameclass: "",
-        roleclass: "",
-        outerdivclass: "",
-        innerdivclass: ""
-    }
+  const onSubmit = (values: FormValues) => {
+    console.log(values);
+    //addpost(values);
+  };
 
-    const formpost = useFormik({
-        initialValues: {
-            text: '',
-            photo: '',
-            video: ''
-        },
-        onSubmit: () => {
-            addpost();
-        },
-    });
-    const addpost = () => {
-        createpost({
-            variables: {
-                text: formpost.values.text,
-                like: 0
-            }
-        });
-        console.log(`this is text ${formpost.values.text}`)
-        if (error) {
-            console.log(error);
-        }
+  //   const addpost = (values: any) => {
+  //     createpost({
+  //       variables: {
+  //         text: values.text,
+  //         like: 0,
+  //       },
+  //     });
+  //     console.log(`this is text ${values.text}`);
+  //     if (error) {
+  //       console.log(error);
+  //     }
+  //   };
 
-    };
+  return (
+    <Formik initialValues={initialValues} onSubmit={onSubmit}>
+      <Form>
+        <Card classname="Create_Post">
+          
+          <UserCard user={user} componentname="Create_Post" image_size="M" />
 
-    //@ts-ignore
-    // handleSubmit = (values) => {
-    //     let data = new FormData();
-    //     data.append("photo1", values.photo1);
-    //     //@ts-ignore
-    //     return fetch(baseUrl, {
-    //         method: "post",
-    //         headers: new Headers({
-    //             Accept: "application/json",
-    //             //@ts-ignore
-    //             Authorization: "Bearer " + token,
-    //         }),
-    //         body: data,
-    //     })
-    //         .then((response) => response.json())
-    //         .catch((error) => console.log(error));
-    // };
+          <div className="flex items-start mr-9">
+            <img src={EditIcon} alt="" />
+            <Field
+              as="textarea"
+              id="text"
+              name="text"
+              className="w-full ml-2 mr-3 overflow-hidden text-base font-light text-black outline-none resize-none focus:text-black-600"
+              placeholder="چیزی بنویس ..."
+            />
+          </div>
 
-
-    return (
-
-        <form onSubmit={formpost.handleSubmit}>
-            <Card classname="createpost">
-
-                <UserCard user={user} page={"createpost"} calssnames={classname} />
-
-                <div className="flex mt-2 mr-9">
-                    <img src={EditIcon} alt="" />
-                    <textarea id="text"
-                        name="text"
-                        onChange={formpost.handleChange}
-                        value={formpost.values.text} className="w-full mt-6 ml-2 mr-3 text-base text-black outline-none resize-none focus:text-black-600" placeholder="چیزی بنویس ..." />
-                </div>
-
-                <div dir="ltr" className="py-2.5 px-7 rounded-b-3xl send-box">
-                    
-                     <PrimaryButtun type="submit" name="ارسال" />
-                      <Uploader formpost={formpost} icon={VideoIcon} name="Video" typeacc="video/*" />
-                     <Uploader formpost={formpost} icon={PhotoIcon} name="Photo" typeacc="image/*" />
-
-                </div>
-            </Card>
-
-        </form>
-
-
-    )
-}
-
+          <div dir="ltr" className="py-2.5 px-7 rounded-b-3xl send-box">
+            <Button type="submit" gruop="Primary" lang="fa" size="M">
+              ارسال
+            </Button>
+            <Uploader name="video" labelname="Video" typeacc="video/*" />
+            <Uploader name="photo" labelname="Photo" typeacc="image/*" />
+          </div>
+        </Card>
+      </Form>
+    </Formik>
+  );
+};

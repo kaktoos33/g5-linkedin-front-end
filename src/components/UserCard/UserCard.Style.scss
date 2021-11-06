@@ -1,19 +1,26 @@
 @import "../../variables/variables.scss";
-.user_outerdiv_class {
+.Create_Post_Container_Div {
+    margin-top: 20px;
+    margin-right: 28px;
+    margin-bottom: 19.5px;
+}
+
+.Create_Post_Info_Div {
+    display: none;
+}
+
+.Post_Container_Div {
     display: flex;
-    margin-top: 1.5rem/* 24px */
-    ;
-    margin-bottom: 1rem/* 16px */
-    ;
-    margin-right: 2.25rem/* 36px */
-    ;
+    margin-top: 14px;
+    margin-bottom: 15px;
+    margin-right: 36px;
 }
 
-.user_innerdiv_class {
-    margin-right: 0.875rem;
+.Post_Info_Div {
+    margin-right: 14px;
 }
 
-.user_name {
+.Post_Name {
     font-family: $efontM;
     font-style: normal;
     font-weight: normal;
@@ -26,7 +33,7 @@
     }
 }
 
-.user_role {
+.Post_Role {
     font-family: $efontR;
     font-style: normal;
     font-weight: normal;
@@ -36,18 +43,22 @@
     cursor: pointer;
 }
 
-.connect_outerdiv_class {
+.Connect_Container_Div {
     display: flex;
     margin-bottom: 23px;
     margin-right: 15.42px;
 }
 
-.connect_innerdiv_class {
-    padding-left: 13px;
-    margin-left: 2px;
+.Connect_Image_Div {
+    width: 33.333333%;
 }
 
-.connect_name {
+.Connect_Info_Div {
+    width: 66.666667%;
+    margin-right: 6.16px;
+}
+
+.Connect_Name {
     font-family: $efontM;
     font-style: normal;
     font-weight: 500;
@@ -62,7 +73,7 @@
     }
 }
 
-.connect_role {
+.Connect_Role {
     font-family: $efontL;
     font-style: normal;
     font-weight: 300;
@@ -72,7 +83,21 @@
     cursor: pointer;
 }
 
-.profile_name {
+.Profile_Container_Div {
+    display: flex;
+    row-gap: 8px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    height: 100%;
+}
+
+.Profile_Image_Div {
+    margin-bottom: 8px;
+}
+
+.Profile_Name {
+    margin-bottom: 8px;
     font-family: $efontM;
     font-style: normal;
     font-weight: normal;
@@ -86,7 +111,7 @@
     }
 }
 
-.profile_role {
+.Profile_Role {
     font-family: $efontR;
     font-style: normal;
     font-weight: normal;
@@ -96,18 +121,17 @@
     cursor: pointer;
 }
 
-.follow_outerdiv_class {
+.Follow_Container_Div {
     display: flex;
     margin-bottom: 23px;
     margin-right: 15.42px;
 }
 
-.follow_innerdiv_class {
+.Follow_Info_Div {
     padding-right: 6.16px;
-    padding-left: 11px;
 }
 
-.follow_name {
+.Follow_Name {
     font-family: $efontM;
     font-style: normal;
     font-weight: 500;
@@ -121,7 +145,7 @@
     }
 }
 
-.follow_role {
+.Follow_Role {
     font-family: $efontL;
     font-style: normal;
     font-weight: 300;
@@ -129,4 +153,19 @@
     line-height: 13px;
     color: #212121;
     cursor: pointer;
+}
+
+.Image_S {
+    width: 37px;
+    height: 40px;
+}
+
+.Image_M {
+    width: 40px;
+    height: 40px;
+}
+
+.Image_L {
+    width: 44px;
+    height: 44px;
 }
