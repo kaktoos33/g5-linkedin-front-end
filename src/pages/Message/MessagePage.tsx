@@ -114,7 +114,7 @@ export const MessagePage: FC<MessagePageProps> = () => {
   return (
     <div className="flex justify-center main ">
       <div className="w-1/5 max-w-xs ">
-        <UserProfile user={user} page="userprofile" />
+        <UserProfile user={user} />
         <FollowReq
           connecetlist={fetechedConnectReq}
           title="ارتباطات خود را گسترش دهید"

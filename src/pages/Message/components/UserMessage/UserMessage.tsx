@@ -1,10 +1,10 @@
 import { FC } from "react";
 import "./UserMessage.style.scss";
 import { UserCard } from "./../../../../components/UserCard/UserCard";
-import { User } from "../../../../components/UserCard/types/User.types";
 import { UserClass } from "../../../../components/UserCard/types/UserClass.type";
 import { MessageType } from "../../MessagePage";
-import { PrimaryButtun } from "../../../../components/Buttun/PrimaryButtun";
+import { Button } from "../../../../components/Buttun/Button";
+
 export interface UserMessageProps {
   message: MessageType;
 }
@@ -25,8 +25,8 @@ export const UserMessage: FC<UserMessageProps> = (
         <div className="flex flex-col w-3/4">
           <UserCard
             user={message.message.user}
-            page={"message"}
-            calssnames={classname}
+            componentname={"message"}
+            image_size="S"
           />
           <div className="w-full">{message.message.messageBody}</div>
         </div>
@@ -38,7 +38,9 @@ export const UserMessage: FC<UserMessageProps> = (
           </div>
           <div></div>
           <div className="userMessageButton h/1/3">
-            <PrimaryButtun name="مشاهده" type="submit" />
+            <Button type="button" gruop="Primary" lang="en" size="M">
+              مشاهده
+            </Button>
           </div>
         </div>
       </div>
