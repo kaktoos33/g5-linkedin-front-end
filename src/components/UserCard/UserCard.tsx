@@ -1,6 +1,6 @@
 import { User } from "./types/User.types";
 import Usericon from "../../images/Usericon.svg";
-import "./UserCard.style.scss";
+import "./UserCard.Style.scss";
 
 type ImageSize = "S" | "M" | "L";
 
