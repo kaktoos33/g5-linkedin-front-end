@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Card } from "../Card/Card";
 import { ReactComponent as PlusSvg } from "../../images/Plus.svg";
-import "./Tag.Style.scss";
+import "./Tag.style.scss";
 import { Tag } from "./Tag.types";
 
 interface TagProps {

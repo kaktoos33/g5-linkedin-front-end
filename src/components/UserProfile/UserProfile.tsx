@@ -1,6 +1,6 @@
 import React from 'react'
 import { Card } from "../Card/Card";
-import './UserProfile.Style.scss'
+import './UserProfile.style.scss'
 import { UserCard } from "../UserCard/UserCard";
 import { User } from '../UserCard/types/User.types';
 import { ReactComponent as VectorSvg } from "../../images/Vector.svg";
