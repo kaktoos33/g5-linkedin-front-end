@@ -3,7 +3,7 @@ import { UserClass } from './types/UserClass.type'
 import Usericon from '../../images/Usericon.svg'
 import { UserPic } from "./UserPic";
 import { UserInfo } from "./UserInfo";
-import "./UserCard.style.scss"
+import "./UserCard.Style.scss"
 
 
 export const UserCard = (props:
