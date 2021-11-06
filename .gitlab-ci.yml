@@ -1,0 +1,25 @@
+
+stages:
+  - build
+  - test
+  - deploy
+
+
+build-job:
+  stage: build
+  script:
+    - echo "build stage devops"
+    - date
+
+
+test-job:
+  stage: test
+  script:
+    - echo "test stage devops"
+    - date
+
+deploy-job:
+  stage: deploy
+  script:
+    - echo "deploy stage devops"
+    - date
