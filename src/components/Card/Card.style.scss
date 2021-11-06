@@ -1,79 +1,54 @@
 @import "../../variables/variables.scss";
 .Create_Post {
-  height: auto;
+    height: auto;
 }
 
 .Post {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  height: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height: auto;
 }
 
 .User_Profile {
-  margin-top: 38px;
-  height: 194px;
-  background-image: linear-gradient(
-    top,
-    $lightBlue,
-    $lightBlue 45%,
-    transparent 45%,
-    transparent 100%
-  );
-  background-image: -webkit-linear-gradient(
-    top,
-    $lightBlue,
-    $lightBlue 45%,
-    transparent 45%,
-    transparent 100%
-  );
+    margin-top: 38px;
+    height: 194px;
+    background-image: linear-gradient(top, $lightBlue, $lightBlue 45%, transparent 45%, transparent 100%);
+    background-image: -webkit-linear-gradient(top, $lightBlue, $lightBlue 45%, transparent 45%, transparent 100%)
 }
 
 .Connect {
-  margin-top: 24px;
-  height: auto;
-  background-color: $blueGrayColor;
-  font-family: $fontM;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 22px;
-  color: #212121;
+    margin-top: 24px;
+    height: auto;
+    background-color: $blueGrayColor;
+    font-family: $fontM;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22px;
+    color: #212121;
 }
 
 .Follow {
-  height: auto;
-  background-color: $blueGrayColor;
-  font-family: $fontM;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 22px;
-  color: #212121;
-  margin-bottom: 16px;
+    height: auto;
+    background-color: $blueGrayColor;
+    font-family: $fontM;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22px;
+    color: #212121;
+    margin-bottom: 16px;
 }
 
 .Tag {
-  margin-top: 38px;
-  height: auto;
-  min-height: 188px;
-  background-color: $blueGrayColor;
-  font-family: $efontM;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 12px;
-  line-height: 150%;
-  color: #181818;
-}
-
-.shortTag {
-  margin-top: 5px;
-  height: auto;
-
-  background-color: $blueGrayColor;
-  font-family: $efontM;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 12px;
-  line-height: 150%;
-  color: #181818;
+    margin-top: 38px;
+    height: auto;
+    min-height: 188px;
+    background-color: $blueGrayColor;
+    font-family: $efontM;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 150%;
+    color: #181818;
 }
