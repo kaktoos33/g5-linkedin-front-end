@@ -1,15 +1,14 @@
 import React from 'react'
 import { Button } from '../Buttun/Button'
 import { User } from '../UserCard/types/User.types'
-import { UserClass } from '../UserCard/types/UserClass.type'
 import { UserCard } from '../UserCard/UserCard'
 
-export const FollowCard = ({ req, classname, page, butname }: { req: User, classname: UserClass, page: string, butname: string }) => {
+export const FollowCard = ({ req, butname }: { req: User, butname: string }) => {
    
     return (
         <div className="flex">
             <div className="w-2/3">
-                <UserCard user={req} page={page} calssnames={classname} />
+                <UserCard user={req} componentname="Connect" image_size="S"  />
             </div>
 
             <div dir="ltr" className="w-1/3 connect_innerdiv_class">

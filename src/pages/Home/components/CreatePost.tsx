@@ -32,18 +32,10 @@ export const CreatePost = ({ user }: CreatePostProps) => {
   const [createpost, { data, loading, error }] =
     useMutation(CREATE_POST_MUTATION);
 
-  const classname: UserClass = {
-    nameclass: "",
-    roleclass: "",
-    outerdivclass: "",
-    innerdivclass: "",
-  };
-
   const onSubmit = (values: FormValues) => {
     console.log(values);
     //addpost(values);
   };
-
 
   //   const addpost = (values: any) => {
   //     createpost({
@@ -62,21 +54,24 @@ export const CreatePost = ({ user }: CreatePostProps) => {
     <Formik initialValues={initialValues} onSubmit={onSubmit}>
       <Form>
         <Card classname="createpost">
-          <UserCard user={user} page={"createpost"} calssnames={classname} />
+          
+          <UserCard user={user} componentname="Create_Post" image_size="M" />
 
-          <div className="flex mt-2 mr-9">
+          <div className="flex items-start mr-9">
             <img src={EditIcon} alt="" />
             <Field
               as="textarea"
               id="text"
               name="text"
-              className="w-full mt-6 ml-2 mr-3 overflow-hidden text-base text-black outline-none resize-none focus:text-black-600"
+              className="w-full ml-2 mr-3 overflow-hidden text-base text-black outline-none resize-none focus:text-black-600"
               placeholder="چیزی بنویس ..."
             />
           </div>
 
           <div dir="ltr" className="py-2.5 px-7 rounded-b-3xl send-box">
-            <Button type="submit" gruop="Primary" lang="fa" size="M" >ارسال</Button>
+            <Button type="submit" gruop="Primary" lang="fa" size="M">
+              ارسال
+            </Button>
             <Uploader name="video" labelname="Video" typeacc="video/*" />
             <Uploader name="photo" labelname="Photo" typeacc="image/*" />
           </div>

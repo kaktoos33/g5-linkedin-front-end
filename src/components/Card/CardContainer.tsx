@@ -84,7 +84,7 @@ export const CardContainerWithFollow = ({
   <CardContainer
     right={
       <div id="right" className="w-1/5 max-w-xs ">
-        <UserProfile user={fetechedUser} page="userprofile" />
+        <UserProfile user={fetechedUser} />
         <FollowReq
           connecetlist={fetechedConnectReq}
           title="ارتباطات خود را گسترش دهید"
@@ -106,7 +106,7 @@ export const CardContainerWithoutFollow = ({
   <CardContainer
     right={
       <div id="right" className="w-1/5 max-w-xs ">
-        <UserProfile user={fetechedUser} page="userprofile" />
+        <UserProfile user={fetechedUser} />
       </div>
     }
   >

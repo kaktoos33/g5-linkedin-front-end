@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Card } from "../Card/Card";
 import { User } from "../UserCard/types/User.types";
-import { UserClass } from "../UserCard/types/UserClass.type";
 import { SeeMore } from "../MoreLink/SeeMore";
 import { FollowCard } from "./FollowCard";
 import "../Responsive.Style.scss";
@@ -23,15 +22,6 @@ export const FollowReq = ({
     
   const [seeMore, setSeeMore] = useState(false);
 
-  const classname: UserClass = React.useMemo(
-    () => ({
-      nameclass: `${type}_name`,
-      roleclass: `${type}_role`,
-      outerdivclass: `${type}_outerdiv_class`,
-      innerdivclass: `${type}_innerdiv_class`,
-    }),
-    [type]
-  );
 
   const connect = React.useCallback((min:number , max:number) =>
       connecetlist
@@ -40,12 +30,10 @@ export const FollowReq = ({
           <FollowCard
             req={req}
             key={index.toString()}
-            classname={classname}
-            page={type}
             butname={butname}
           />
         )),
-    [butname, classname, connecetlist, type]
+    [butname, connecetlist]
   );
 
   const linkName = seeMore ? "کمتر" : "بیشتر";

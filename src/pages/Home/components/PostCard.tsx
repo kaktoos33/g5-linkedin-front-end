@@ -15,12 +15,7 @@ interface PostCardProps {
 
 export const PostCard = ({ post, status }: PostCardProps) => {
   const { user, body, likes } = post;
-  const classname: UserClass = {
-    nameclass: "user_name",
-    roleclass: "user_role",
-    outerdivclass: "user_outerdiv_class",
-    innerdivclass: "user_innerdiv_class",
-  };
+
 
   const [updatelike, { data, loading, error }] =
     useMutation(UPDATE_LIKE_MUTATION);
@@ -51,7 +46,7 @@ export const PostCard = ({ post, status }: PostCardProps) => {
 
   return (
     <Card classname="post">
-      <UserCard user={user} page={"userpost"} calssnames={classname} />
+      <UserCard user={user} componentname="Post" image_size="L" />
 
       <div>
         <ReadMore text={body.text} />
