@@ -2,11 +2,6 @@
 .plus {
     cursor: pointer;
     margin-top: 10px;
-    height: 1.25rem;
-    width: 1.25rem;
-    path:hover {
-        fill: $blueColor;
-    }
 }
 
 .tag-span {
@@ -21,4 +16,10 @@
     font-size: 12px;
     line-height: 19px;
     color: #181818;
+}
+
+.container_plus:hover>#plus_svg {
+    path {
+        fill: $blueColor;
+    }
 }
