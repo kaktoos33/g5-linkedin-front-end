@@ -1,7 +1,7 @@
 import * as React from "react";
 import { CreatePost } from "./components/CreatePost";
 import { User } from "../../components/UserCard/types/User.types";
-import "./Home.style.scss";
+import "./Home.Style.scss";
 import "../../components/Responsive.Style.scss";
 import { CardContainerWithFollow } from "../../components/Card/CardContainer";
 import { UserPost } from "./components/UserPost";

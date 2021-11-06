@@ -1,8 +1,7 @@
 import React from "react";
 import { User } from "../../components/UserCard/types/User.types";
-import "../Home/Home.style.scss";
 import { FollowReq } from "../../components/FollowReq/FollowReq";
-import "../../components/FollowReq/Follow.style.scss";
+import "../../components/FollowReq/Follow.Style.scss";
 import { CardContainerWithoutFollow } from "../../components/Card/CardContainer";
 
 const fetechedConnectsug: Array<User> = [
@@ -77,13 +76,13 @@ export const Follow = () => {
       <FollowReq
         connecetlist={fetechedfollowReq}
         title="دعوت ها"
-        type="follow"
+        type="Follow"
         butname="Accept"
       />
       <FollowReq
         connecetlist={fetechedConnectsug}
         title="ارتباطات خود را گسترش دهید"
-        type="follow"
+        type="Follow"
         butname="Connect"
       />
     </CardContainerWithoutFollow>

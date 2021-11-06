@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Card } from "../Card/Card";
 import { ReactComponent as PlusSvg } from "../../images/Plus.svg";
-import "./Tag.style.scss";
+import "./Tag.Style.scss";
 import { Tag } from "./Tag.types";
 
 interface TagProps {
@@ -34,7 +34,7 @@ export const Tags = ({ Taglist }: TagProps) => {
   );
 
   return (
-    <Card classname="tag">
+    <Card classname="Tag">
       <div className="flex items-center border-b mx-7">
         <div className="w-3/4 mb-2 mt-3.5 tag-title">
           {visible ? (
