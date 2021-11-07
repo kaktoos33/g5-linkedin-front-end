@@ -1,5 +1,5 @@
 import { FC } from "react";
-import "./UserMessage.style.scss";
+import "./UserMessage.Style.scss";
 
 import { MessageType } from "../../MessagePage";
 import { Button } from "../../../../components/Buttun/Button";

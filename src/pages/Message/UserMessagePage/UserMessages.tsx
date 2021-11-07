@@ -4,7 +4,7 @@ import { Card } from "../../../components/Card/Card";
 import { MessageType } from "../MessagePage";
 import { UserMessage } from "./UserMessage/UserMessage";
 
-import "./UserMessages.style.scss";
+import "./UserMessages.Style.scss";
 
 interface UserMessagesProps extends HTMLProps<HTMLDivElement> {
   messagesList: Array<MessageType>;

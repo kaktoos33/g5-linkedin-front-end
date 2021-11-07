@@ -5,7 +5,7 @@ import {
   useEffect,
   useState,
 } from "react";
-import "./NavBarItem.stryle.scss";
+import "./NavBarItem.Style.scss";
 import { useHistory, useLocation } from "react-router-dom";
 
 interface NavBarItemProps

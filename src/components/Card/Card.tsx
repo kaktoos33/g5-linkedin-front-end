@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import "./Card.style.scss";
+import "./Card.Style.scss";
 //import classNames from 'classname';
 
 export function Card(props: {

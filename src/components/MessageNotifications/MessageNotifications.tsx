@@ -1,5 +1,5 @@
 import { FC, HTMLProps } from "react";
-import "./MessageNotificatons.style.scss";
+import "./MessageNotificatons.Style.scss";
 
 interface MessageNotificationsProps extends HTMLProps<HTMLDivElement> {
   children?: React.ReactNode;

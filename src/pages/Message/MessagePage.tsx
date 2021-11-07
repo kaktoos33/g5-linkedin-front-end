@@ -2,7 +2,7 @@ import { FC } from "react";
 
 import { User } from "../../components/UserCard/types/User.types";
 
-import "./MessagePage.style.scss";
+import "./MessagePage.Style.scss";
 import { CardContainerWithFollow } from "../../components/Card/CardContainer";
 import { CompanyMessages } from "./CompanyMessagePage/CompanyMessages";
 

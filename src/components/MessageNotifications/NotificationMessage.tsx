@@ -1,5 +1,5 @@
 import { FC } from "react";
-import "./NotificationMessage.style.scss";
+import "./NotificationMessage.Style.scss";
 
 interface NotificationMessageProps {
   message: {
