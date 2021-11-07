@@ -7,6 +7,8 @@ stages:
 
 build-job:
   stage: build
+  tags:
+    - g5
   before_script:
     - echo "Docker Login to registery"
     - docker login --username $HUB_USER --password $HUB_PASS https://$HUB_URL
@@ -21,12 +23,16 @@ build-job:
 
 test-job:
   stage: test
+  tags:
+    - g5
   script:
     - echo "test stage devops"
     - date
 
 deploy-job:
   stage: deploy
+  tags:
+    - g5
   trigger:
     project: amirbahador/devops
     branch: master
