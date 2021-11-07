@@ -3,7 +3,7 @@ import "./Card.style.scss";
 //import classNames from 'classname';
 
 export function Card(props: {
-  classname: string;
+  classname?: string;
   children?: ReactNode | undefined;
 }) {
   return (

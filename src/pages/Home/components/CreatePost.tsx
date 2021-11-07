@@ -10,7 +10,7 @@ import { Formik, Form, Field } from "formik";
 import EditIcon from "../../../images/Vector.svg";
 import { Card } from "../../../components/Card/Card";
 import { Button } from "../../../components/Buttun/Button";
-import { ValuesOfCorrectTypeRule } from "graphql";
+import { PostInput } from "./PostInput";
 
 interface CreatePostProps {
   user: User;
@@ -33,6 +33,7 @@ export const CreatePost = ({ user }: CreatePostProps) => {
 
   const onSubmit = (values: FormValues) => {
     console.log(URL.createObjectURL(values.photo));
+    console.log (values)
     //addpost(values);
   };
 
@@ -55,16 +56,7 @@ export const CreatePost = ({ user }: CreatePostProps) => {
         <Card classname="Create_Post">
           <UserCard user={user} componentname="Create_Post" image_size="M" />
 
-          <div className="flex items-start mr-9">
-            <img src={EditIcon} alt="" />
-            <Field
-              as="textarea"
-              id="text"
-              name="text"
-              className="w-full ml-2 mr-3 overflow-hidden text-base font-light text-black outline-none resize-none focus:text-black-600"
-              placeholder="چیزی بنویس ..."
-            />
-          </div>
+          <PostInput title="چیزی بنویس ..." />
           
           <div dir="ltr" className="py-2.5 px-7 rounded-b-3xl send-box">
             <Button type="submit" gruop="Primary" lang="fa" size="M">
