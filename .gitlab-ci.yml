@@ -15,6 +15,7 @@ build-job:
   before_script:
     - echo "Docker Login to registery"
     - docker login --username $HUB_USER --password $HUB_PASS https://$HUB_URL
+    - apk add --no-cache docker-compose
   script:
     - echo "build image"
     - docker build -t $HUB_URL/g5/dev_frontend:latest .
