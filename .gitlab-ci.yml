@@ -33,6 +33,6 @@ deploy-job:
   stage: deploy
   tags:
     - g5
-  script:
-    - echo "deploy stage devops"
-    - date
+  trigger:
+    project: amirbahador/devops
+    branch: master
