@@ -61,7 +61,7 @@ delivery_production:
 
 
 deploy_production:
-  stage: delivery
+  stage: deploy
   when: manual
   only:
     - master
