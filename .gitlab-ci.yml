@@ -44,6 +44,8 @@ deploy-job:
 deploy_production:
   stage: deploy
   when: manual
+  tags:
+    - g5
   before_script:
     - echo "Docker Login to registery"
     - docker login --username $HUB_USER --password $HUB_PASS https://$HUB_URL
