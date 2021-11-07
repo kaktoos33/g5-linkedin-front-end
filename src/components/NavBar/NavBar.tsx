@@ -3,29 +3,19 @@ import { faBell, faHome, faUsers } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { Icon, Logo } from "./components/NavBarIcon";
-import "./NavBar.style.scss";
+import "./NavBar.Style.scss";
 import { MessageNotifications } from "../MessageNotifications/MessageNotifications";
 // import { Message } from "../MessageNotifications/Message";
 import { NotificationMessage } from "../MessageNotifications/NotificationMessage";
 import { useHistory } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { NavBarItem } from "./components/NavBarItem";
-import { setLocale } from "yup";
 
 type message = {
   id: number;
   title: string;
   body: string;
   date: string;
-};
-
-const saveCurPage = (curPage: string) => {
-  localStorage.setItem("curPage", curPage);
-};
-const loadCurPage = () => {
-  return localStorage.getItem("curPage") === "null"
-    ? "/home"
-    : localStorage.getItem("curPage");
 };
 
 export default function Navbar() {
