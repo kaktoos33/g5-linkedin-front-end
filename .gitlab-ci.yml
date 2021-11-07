@@ -7,6 +7,8 @@ stages:
 
 build-job:
   stage: build
+  only:
+    - master
   tags:
     - g5
   before_script:
@@ -23,6 +25,8 @@ build-job:
 
 test-job:
   stage: test
+  only:
+    - master
   tags:
     - g5
   script:
@@ -31,6 +35,26 @@ test-job:
 
 deploy-job:
   stage: deploy
+  only:
+    - master
   trigger:
     project: amirbahador/devops
     branch: master
+
+deploy_production:
+  stage: deploy
+  when: manual
+  before_script:
+    - echo "Docker Login to registery"
+    - docker login --username $HUB_USER --password $HUB_PASS https://$HUB_URL
+  script:
+    - echo "build image"
+    - docker pull $HUB_URL/g5/dev_frontend:latest
+    - docker tag $HUB_URL/g5/dev_frontend:latest $HUB_URL/g5/frontend:latest
+    - docker push $HUB_URL/g5/frontend:latest
+  only:
+    - master
+  trigger:
+    project: amirbahador/devops
+    branch: master
+
