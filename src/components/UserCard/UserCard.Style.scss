@@ -86,15 +86,15 @@
 
 .Profile_Container_Div {
     display: grid;
-    row-gap: 8px;
-    // flex-direction: column;
     align-items: center;
     justify-items: center;
     height: 100%;
+    padding-top: 8px;
 }
 
 .Profile_Image_Div {
-    margin-bottom: 8px;
+    display: flex;
+    align-items: flex-end;
 }
 
 .Profile_Info_Div {
@@ -103,7 +103,8 @@
 }
 
 .Profile_Name {
-    margin-bottom: 8px;
+    margin-top: 5px;
+    margin-bottom: 5px;
     font-family: $efontM;
     font-style: normal;
     font-weight: normal;
@@ -159,10 +160,6 @@
     line-height: 13px;
     color: #212121;
     cursor: pointer;
-}
-
-.Profile_Image_Div {
-    margin-bottom: 8px;
 }
 
 .Message_Container_Div {

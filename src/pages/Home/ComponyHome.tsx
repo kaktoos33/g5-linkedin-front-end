@@ -6,7 +6,7 @@ import { CompanyCreatePost } from "./components/CompanyCreatePost";
 const fetechedUser: User = {
     name: "LinkedIn",
     role: "Internet sunnyvale,CA",
-    img:"http://localhost:3000/images/linkedin.png",
+    img:"https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png",
   };
   
 export const ComponyHome = () => {
