@@ -18,7 +18,7 @@ export const UserProfile = ({ user }: UserProfileProps) => {
                 <UserCard user={user} componentname="Profile" image_size="L" />
             </div>
             <div className="flex items-end justify-center ">
-                <div className="flex justify-center w-3 h-3 container_vector">
+                <div className="flex justify-center w-3 h-3 mb-2 container_vector">
                     <VectorSvg id="vector_svg" className="w-full h-full" />
                 </div>
             </div>

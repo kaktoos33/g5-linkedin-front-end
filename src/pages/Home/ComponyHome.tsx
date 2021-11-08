@@ -2,18 +2,20 @@ import React from "react";
 import { CardContainerWithFollow } from "../../components/Card/CardContainer";
 import { User } from "../../components/UserCard/types/User.types";
 import { CompanyCreatePost } from "./components/CompanyCreatePost";
+import { CompanyPost } from "./components/CompanyPost";
 
 const fetechedUser: User = {
-    name: "LinkedIn",
-    role: "Internet sunnyvale,CA",
-    img:"https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png",
-  };
-  
+  name: "LinkedIn",
+  role: "Internet sunnyvale,CA",
+  img: "https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png",
+};
+
 export const ComponyHome = () => {
-    const user = fetechedUser;
+  const user = fetechedUser;
   return (
-    <CardContainerWithFollow user={fetechedUser}> 
+    <CardContainerWithFollow user={fetechedUser}>
       <CompanyCreatePost user={user} />
+      <CompanyPost user={user} />
     </CardContainerWithFollow>
   );
 };

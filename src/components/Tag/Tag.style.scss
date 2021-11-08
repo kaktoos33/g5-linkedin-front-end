@@ -5,8 +5,32 @@
 }
 
 .tag-span {
-    background: #E9F0F8;
+    border: 1px solid #e8f0f8;
+    box-sizing: border-box;
     border-radius: 4px;
+    font-family: $efontM;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 150%;
+    &:hover {
+        background-color: #e9f0f8;
+    }
+}
+
+.tag-span-sidebar {
+    font-family: $efontM;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 150%;
+    color: #181818;
+    background: #e9f0f8;
+    border-radius: 4px;
+    &:hover {
+        color: $blueColor;
+        text-decoration: underline;
+    }
 }
 
 .tag-title {

@@ -50,7 +50,7 @@ export default function Navbar() {
   };
 
   return (
-    <div className="navbar ">
+    <div className="navbar">
       <div className="flex flex-row w-1/5 max-w-xs ">
         <Logo className="flex items-center align-middle logo"></Logo>
         <div className=" vl"></div>

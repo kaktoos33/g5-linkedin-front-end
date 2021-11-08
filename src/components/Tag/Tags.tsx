@@ -3,6 +3,7 @@ import { Card } from "../Card/Card";
 import { ReactComponent as PlusSvg } from "../../images/Plus.svg";
 import "./Tag.style.scss";
 import { Tag } from "./Tag.types";
+import { TagItem } from "./TagItem";
 
 interface TagProps {
   Taglist: Array<Tag>;
@@ -20,15 +21,10 @@ export const Tags = ({ Taglist }: TagProps) => {
     }
   };
 
-  const tag = React.useMemo(
+  const tags = React.useMemo(
     () =>
       Taglist.map((a, index) => (
-        <span
-          key={index.toString()}
-          className="inline-block tag-span mx-1 my-1 px-3 py-0.5"
-        >
-          #{a.name}
-        </span>
+       <TagItem tag={a} index={index} classname="tag-span-sidebar" />
       )),
     [Taglist]
   );
@@ -56,7 +52,7 @@ export const Tags = ({ Taglist }: TagProps) => {
         </div>
       </div>
       <div dir="ltr" className="mt-3.5 mb-5 mx-7">
-        {tag}
+        {tags}
       </div>
     </Card>
   );

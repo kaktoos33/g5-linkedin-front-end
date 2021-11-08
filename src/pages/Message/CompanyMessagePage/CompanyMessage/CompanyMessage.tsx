@@ -12,7 +12,7 @@ export const CompanyMessage: FC<CompanyMessageProps> = (
 ) => {
   return (
     <div className="companyMessageCard">
-      <div className="flex flex-row w-full px-6 mb-6 companyMessageBody ">
+      <div className="flex flex-row w-full px-6 companyMessageBody ">
         <div className="flex flex-col w-3/4">
           <UserCard
             user={message.message.user}
