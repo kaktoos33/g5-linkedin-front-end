@@ -54,7 +54,7 @@ export const CompanyMessages: FC<CompanyMessagesProps> = (
         <UserCard user={fetchedUser} componentname="Message" image_size="L" />
         <div>{jobTitle}</div>
         <Card classname="shortTag">
-          <div className="mt-3.5 mb-5 mx-7">{tag}</div>
+          <div className="mt-3.5 mb-5 mx-7 companyMessagesTag">{tag}</div>
         </Card>
 
         <hr className="w-90%" />

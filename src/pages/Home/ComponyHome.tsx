@@ -12,7 +12,7 @@ const fetechedUser: User = {
 export const ComponyHome = () => {
     const user = fetechedUser;
   return (
-    <CardContainerWithFollow>
+    <CardContainerWithFollow user={fetechedUser}> 
       <CompanyCreatePost user={user} />
     </CardContainerWithFollow>
   );

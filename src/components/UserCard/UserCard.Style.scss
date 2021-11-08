@@ -85,16 +85,21 @@
 }
 
 .Profile_Container_Div {
-    display: flex;
+    display: grid;
     row-gap: 8px;
-    flex-direction: column;
+    // flex-direction: column;
     align-items: center;
-    justify-content: flex-end;
+    justify-items: center;
     height: 100%;
 }
 
 .Profile_Image_Div {
     margin-bottom: 8px;
+}
+
+.Profile_Info_Div {
+    display: grid;
+    justify-items: center;
 }
 
 .Profile_Name {

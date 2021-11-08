@@ -23,7 +23,7 @@ export const Home = () => {
   //     [loading, data]
   // );
   return (
-    <CardContainerWithFollow>
+    <CardContainerWithFollow user={user}>
       <CreatePost user={user} />
       <UserPost />
     </CardContainerWithFollow>
