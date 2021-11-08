@@ -5,7 +5,6 @@ stages:
   - delivery
   - deploy
 
-
 build-job:
   stage: build
   only:
