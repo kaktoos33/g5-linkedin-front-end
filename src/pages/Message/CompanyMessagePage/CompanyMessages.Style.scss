@@ -1,15 +1,17 @@
 @import "./src/variables/variables.scss";
 .companyMessagesCard {
-  display: flex;
-  flex-direction: column;
-  border-radius: 24px;
-  background-color: white;
-  margin-top: 38px;
-  min-height: 451px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 24px;
+    background-color: white;
+    //margin-top: 38px;
+    min-height: 451px;
 }
+
 .companyMessagesHeader {
-  margin-right: 26px;
-  margin-top: 18px;
-  margin-bottom: 15px;
-  font-family: $fontM;
+    margin-right: 26px;
+    margin-top: 15px;
+    margin-bottom: 21px;
+    font-family: $fontM;
+    font-size: 14px;
 }
