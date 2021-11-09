@@ -1,5 +1,3 @@
-
-
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
@@ -13,6 +11,7 @@ import { ApolloClient } from "apollo-client";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import { createHttpLink } from "apollo-link-http";
 import { setContext } from "apollo-link-context";
+import { UserContextProvider } from "./UserContext";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -50,12 +49,13 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-
 ReactDOM.render(
-  <ApolloProvider client= {client}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+  <ApolloProvider client={client}>
+    <UserContextProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </UserContextProvider>
   </ApolloProvider>,
   document.getElementById("root")
 );
