@@ -5,11 +5,6 @@ import { Tags } from "../Tag/Tags";
 import { User } from "../UserCard/types/User.types";
 import { UserProfile } from "../UserProfile/UserProfile";
 
-const fetechedUser: User = {
-  name: "farzaneh",
-  role: "Developer",
-  img: "https://picsum.photos/id/1005/40",
-};
 const fetechedTag: Array<Tag> = [
   { name: "work" },
   { name: "business" },
@@ -77,13 +72,15 @@ const CardContainer = ({
 
 export const CardContainerWithFollow = ({
   children,
+  user
 }: {
   children: JSX.Element | JSX.Element[];
+  user: User;
 }) => (
   <CardContainer
     right={
       <div id="right" className="w-1/5 max-w-xs ">
-        <UserProfile user={fetechedUser} />
+        <UserProfile user={user} />
         <FollowReq
           connecetlist={fetechedConnectReq}
           title="ارتباطات خود را گسترش دهید"
@@ -99,13 +96,15 @@ export const CardContainerWithFollow = ({
 
 export const CardContainerWithoutFollow = ({
   children,
+  user
 }: {
   children: JSX.Element | JSX.Element[];
+  user: User;
 }) => (
   <CardContainer
     right={
       <div id="right" className="w-1/5 max-w-xs ">
-        <UserProfile user={fetechedUser} />
+        <UserProfile user={user} />
       </div>
     }
   >

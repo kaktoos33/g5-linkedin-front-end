@@ -1,5 +1,4 @@
 @import "./src/variables/variables.scss";
-
 // .companyMessageCard {
 //   border-bottom: 1px solid #dfdfdf;
 // }
@@ -10,15 +9,16 @@
 //   //   height: 134px;
 // }
 .companyMessageDate {
-  display: flex;
-  // width: 34%;
-  justify-content: flex-end;
-  // align-items: flex-end;
+    display: flex;
+    // width: 34%;
+    justify-content: flex-end;
+    // align-items: flex-end;
 }
 
 .companyMessageButton {
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
-  flex-direction: column;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    flex-direction: column;
+    margin-left: 10px;
 }

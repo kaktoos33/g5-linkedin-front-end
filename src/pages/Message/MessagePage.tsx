@@ -63,60 +63,16 @@ const fetchedMessages: Array<MessageType> = [
   },
 ];
 
-// const fetechedUser: User = {
-//   name: "farzaneh",
-//   role: "Developer",
-//   img: "https://picsum.photos/id/1005/40",
-// };
-
-// const fetechedConnectReq: Array<User> = [
-//   {
-//     name: "AmirBahador",
-//     role: "Devops",
-//     img: "https://picsum.photos/id/2/40",
-//   },
-//   {
-//     name: "Mehdi",
-//     role: "FrontEnd Developer",
-//     img: "",
-//   },
-//   {
-//     name: "Sina",
-//     role: "BackEnd Developer",
-//     img: "https://picsum.photos/id/175/40",
-//   },
-//   {
-//     name: "Mehrdad",
-//     role: "SEO",
-//     img: "https://picsum.photos/id/250/40",
-//   },
-//   {
-//     name: "Neda",
-//     role: "Manager",
-//     img: "",
-//   },
-//   {
-//     name: "Mahour",
-//     role: "UI/UX Designer",
-//     img: "https://picsum.photos/id/1014/40",
-//   },
-// ];
-
-// const fetechedTag: Array<Tag> = [
-//   { name: "work" },
-//   { name: "business" },
-//   { name: "hr" },
-//   { name: "userinterface" },
-//   { name: "digital" },
-//   { name: "userexperience" },
-//   { name: "ux" },
-//   { name: "ui" },
-//   { name: "freelance" },
-// ];
+const fetechedUser: User = {
+  name: "LinkedIn",
+  role: "Internet sunnyvale,CA",
+  img:"https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png",
+};
 
 export const MessagePage: FC<MessagePageProps> = () => {
+  const user = fetechedUser;
   return (
-    <CardContainerWithFollow>
+    <CardContainerWithFollow user={user}>
       {/* <UserMessages messagesList={fetchedMessages} className="mt-9" /> */}
       <CompanyMessages messagesList={fetchedMessages} className="mt-9" />
     </CardContainerWithFollow>

@@ -1,4 +1,5 @@
-import React, { MouseEventHandler } from "react";
+import { FormikFormProps, FormikValues, useFormikContext } from "formik";
+import React, { ButtonHTMLAttributes, MouseEventHandler } from "react";
 import "./Button.Style.scss";
 
 type GroupType = "Primary" | "Secondary";
@@ -16,6 +17,7 @@ export const Button = ({
   lang,
   size,
   on_Click,
+  disabled
 }: {
   children: JSX.Element | string;
   type: ButtonType;
@@ -23,12 +25,15 @@ export const Button = ({
   lang: LangType;
   size: SizeType;
   on_Click?: MouseEventHandler<HTMLButtonElement> | undefined;
+  disabled? :boolean
+
 }) => {
+ 
   return (
     <button
       type={type}
       className={`button button_${gruop} button_${lang} button_${size}`}
-      onClick={on_Click}
+      onClick={on_Click} disabled={disabled}
     >
       {children}
     </button>
