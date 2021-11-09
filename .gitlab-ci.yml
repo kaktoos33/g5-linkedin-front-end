@@ -2,8 +2,8 @@
 stages:
   - build
   - test
+  - delivery
   - deploy
-
 
 build-job:
   stage: build
@@ -14,6 +14,7 @@ build-job:
   before_script:
     - echo "Docker Login to registery"
     - docker login --username $HUB_USER --password $HUB_PASS https://$HUB_URL
+    
   script:
     - echo "build image"
     - docker build -t $HUB_URL/g5/dev_frontend:latest .
@@ -33,17 +34,19 @@ test-job:
     - echo "test stage devops"
     - date
 
-deploy-job:
-  stage: deploy
+deploy-development:
+  stage: delivery
   only:
     - master
   trigger:
     project: amirbahador/devops
     branch: master
 
-deploy_production:
-  stage: deploy
+delivery_production:
+  stage: delivery
   when: manual
+  tags:
+    - g5
   before_script:
     - echo "Docker Login to registery"
     - docker login --username $HUB_USER --password $HUB_PASS https://$HUB_URL
@@ -52,11 +55,17 @@ deploy_production:
     - docker pull $HUB_URL/g5/dev_frontend:latest
     - docker tag $HUB_URL/g5/dev_frontend:latest $HUB_URL/g5/frontend:latest
     - docker push $HUB_URL/g5/frontend:latest
-    - 'curl --request POST --form token=TOKEN --form ref=main "https://gitlab.rahnemacollege.com/amirbahador/devops/trigger/pipeline"'
 
   only:
     - master
-#   trigger:
-#     project: amirbahador/devops
-#     branch: master
+
+
+deploy_production:
+  stage: deploy
+  when: manual
+  only:
+    - master
+  trigger:
+    project: amirbahador/devops
+    branch: master
 
