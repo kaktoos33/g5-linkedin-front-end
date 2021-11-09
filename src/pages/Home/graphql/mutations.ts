@@ -1,10 +1,10 @@
 import { gql } from "apollo-boost";
 
 export const CREATE_POST_MUTATION = gql`
-  mutation createpost($text: String!, media: File) {
-    createpost(text: $text, media: $media) {
+  mutation createpost($text: String!, $file: Upload) {
+    createpost(text: $text, file: $file) {
       text
-      media
+      file
     }
   }
 `;
