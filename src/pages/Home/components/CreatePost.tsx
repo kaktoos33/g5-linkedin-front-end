@@ -57,8 +57,8 @@ export const CreatePost = ({ user }: CreatePostProps) => {
       initialValues={initialValues}
       onSubmit={onSubmit}
       validationSchema={validationschema}
-      // validateOnMount
-      // validateOnChange={false}
+      // validateOnMount={false}
+      validateOnChange={false}
       validateOnBlur={false}
     >
       {(formik) => {
@@ -87,7 +87,7 @@ export const CreatePost = ({ user }: CreatePostProps) => {
 
               <div dir="ltr" className="py-2.5 px-7 rounded-b-3xl send-box">
                 <Button
-                  disabled={formik.isSubmitting || !formik.isValid}
+                  disabled={formik.isSubmitting || !(formik.isValid && formik.dirty)}
                   type="submit"
                   gruop="Primary"
                   lang="fa"
