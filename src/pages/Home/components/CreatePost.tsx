@@ -30,27 +30,32 @@ const validationschema = Yup.object({
   text: Yup.string().required("لطفا چیزی بنویسید !"),
 });
 export const CreatePost = ({ user }: CreatePostProps) => {
-  const [createpost, { data, loading, error }] =
-    useMutation(CREATE_POST_MUTATION);
+  const [createpost, { error }] = useMutation(CREATE_POST_MUTATION);
   const [url, seturl] = useState("");
   const [video, setVideo] = useState("");
   const onSubmit = (values: FormValues) => {
     console.log(values);
-    //addpost(values);
+    if (values.photo || values.video) {
+      values.photo
+        ? addpost(values.text, values.photo)
+        : addpost(values.text, values.video);
+    } else {
+      addpost(values.text);
+    }
   };
 
-  //   const addpost = (values: any) => {
-  //     createpost({
-  //       variables: {
-  //         text: values.text,
-  //         like: 0,
-  //       },
-  //     });
-  //     console.log(`this is text ${values.text}`);
-  //     if (error) {
-  //       console.log(error);
-  //     }
-  //   };
+  const addpost = (text: any, media?: any) => {
+    createpost({
+      variables: {
+        text: text,
+        media: media,
+      },
+    });
+    console.log(`this is text ${text}`);
+    if (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <Formik
@@ -87,7 +92,9 @@ export const CreatePost = ({ user }: CreatePostProps) => {
 
               <div dir="ltr" className="py-2.5 px-7 rounded-b-3xl send-box">
                 <Button
-                  disabled={formik.isSubmitting || !(formik.isValid && formik.dirty)}
+                  disabled={
+                    formik.isSubmitting || !(formik.isValid && formik.dirty)
+                  }
                   type="submit"
                   gruop="Primary"
                   lang="fa"
