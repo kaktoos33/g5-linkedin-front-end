@@ -53,49 +53,68 @@ export const CreatePost = ({ user }: CreatePostProps) => {
   //   };
 
   return (
-    <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationschema}>
-      <Form>
-        <Card classname="Create_Post">
-          <UserCard user={user} componentname="Create_Post" image_size="M" />
+    <Formik
+      initialValues={initialValues}
+      onSubmit={onSubmit}
+      validationSchema={validationschema}
+      // validateOnMount
+      // validateOnChange={false}
+      validateOnBlur={false}
+    >
+      {(formik) => {
+        console.log(formik);
+        return (
+          <Form>
+            <Card classname="Create_Post">
+              <UserCard
+                user={user}
+                componentname="Create_Post"
+                image_size="M"
+              />
 
-          <PostInput title="چیزی بنویس ..." />
+              <PostInput title="چیزی بنویس ..." />
 
-          {url && (
-            <div className="flex justify-center my-5 mx-9 border-1 ">
-              <img className="rounded-3xl" src={url} alt="" />
-            </div>
-          )}
-          {video && (
-            <div className="flex justify-center my-5 mx-9 border-1">
-              <video className="rounded-3xl"
-                controls
-              >
-                <source src={video} />
-              </video>
-            </div>
-          )}
+              {(url || video) && (
+                <div className="flex justify-center my-5 mx-9 border-1 ">
+                  {url && <img className="rounded-3xl" src={url} alt="" />}
+                  {video && (
+                    <video className="rounded-3xl" controls>
+                      <source src={video} />
+                    </video>
+                  )}
+                </div>
+              )}
 
-          <div dir="ltr" className="py-2.5 px-7 rounded-b-3xl send-box">
-            <Button type="submit" gruop="Primary" lang="fa" size="M">
-              ارسال
-            </Button>
-            <Uploader
-              name="video"
-              labelname="Video"
-              typeacc="video/*"
-              seturl={seturl}
-              setvideo={setVideo}
-            />
-            <Uploader
-              name="photo"
-              labelname="Photo"
-              typeacc="image/*"
-              seturl={seturl}
-              setvideo={setVideo}
-            />
-          </div>
-        </Card>
-      </Form>
+              <div dir="ltr" className="py-2.5 px-7 rounded-b-3xl send-box">
+                <Button
+                  disabled={formik.isSubmitting || !formik.isValid}
+                  type="submit"
+                  gruop="Primary"
+                  lang="fa"
+                  size="M"
+                >
+                  ارسال
+                </Button>
+
+                <Uploader
+                  name="video"
+                  labelname="Video"
+                  typeacc="video/*"
+                  seturl={seturl}
+                  setvideo={setVideo}
+                />
+                <Uploader
+                  name="photo"
+                  labelname="Photo"
+                  typeacc="image/*"
+                  seturl={seturl}
+                  setvideo={setVideo}
+                />
+              </div>
+            </Card>
+          </Form>
+        );
+      }}
     </Formik>
   );
 };
