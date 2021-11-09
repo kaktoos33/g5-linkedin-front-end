@@ -86,10 +86,10 @@ const Login: FC<LoginProps> = () => {
             // alert(JSON.stringify(values, null, 2));
             console.log(values);
             setFormState({ email: values.email, password: values.password });
-            // login();
-            sessionStorage.setItem("loginState", "loggedIn");
-            window.location.reload();
-            history.push("/home");
+            login();
+            // sessionStorage.setItem("loginState", "loggedIn");
+            // window.location.reload();
+            // history.push("/home");
             //LoginQuery(values);
           }}
         >

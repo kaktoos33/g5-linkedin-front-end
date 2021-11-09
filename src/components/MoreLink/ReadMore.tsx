@@ -12,7 +12,7 @@ export const ReadMore = (props: { text: string }) => {
     <p className="text-sm leading-6 text-justify font-sm mx-9">
       {isReadMore ? text.slice(0, 300) : text}
       {text.length > 300 && (
-        <a className="readmore" onClick={toggleReadMore}>
+        <a href=" " className="readmore" onClick={toggleReadMore}>
           {isReadMore ? " بیشتر..." : " "}
         </a>
       )}

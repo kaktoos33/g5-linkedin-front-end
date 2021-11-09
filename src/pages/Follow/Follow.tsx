@@ -70,9 +70,15 @@ const fetechedfollowReq: Array<User> = [
   },
 ];
 
+const fetechedUser: User = {
+  name: "farzaneh",
+  role: "Developer",
+  img: "https://picsum.photos/id/1005/40",
+};
 export const Follow = () => {
+  const user = fetechedUser;
   return (
-    <CardContainerWithoutFollow>
+    <CardContainerWithoutFollow user={fetechedUser}>
       <FollowReq
         connecetlist={fetechedfollowReq}
         title="دعوت ها"
