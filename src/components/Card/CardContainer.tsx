@@ -17,33 +17,39 @@ const fetechedTag: Array<Tag> = [
   { name: "freelance" },
 ];
 
-const fetechedConnectReq: Array<User> = [
+const fetechedConnectReq: Array<User> =  [
   {
+    id:"2",
     name: "AmirBahador",
     role: "Devops",
     img: "https://picsum.photos/id/2/40",
   },
   {
+    id:"3",
     name: "Mehdi",
     role: "FrontEnd Developer",
     img: "",
   },
   {
+    id:"4",
     name: "Sina",
     role: "BackEnd Developer",
     img: "https://picsum.photos/id/175/40",
   },
   {
+    id:"5",
     name: "Mehrdad",
     role: "SEO",
     img: "https://picsum.photos/id/250/40",
   },
   {
+    id:"6",
     name: "Neda",
     role: "Manager",
     img: "",
   },
   {
+    id:"7",
     name: "Mahour",
     role: "UI/UX Designer",
     img: "https://picsum.photos/id/1014/40",

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useMutation } from "react-apollo";
 import { Card } from "../../../components/Card/Card";
 import { ReadMore } from "../../../components/MoreLink/ReadMore";
+import { User } from "../../../components/UserCard/types/User.types";
 import { UserCard } from "../../../components/UserCard/UserCard";
 import { ReactComponent as LikeSVG } from "../../../images/like.svg";
 import { UPDATE_LIKE_MUTATION } from "../graphql/mutations";
@@ -9,39 +10,40 @@ import { Post } from "../types/Post.type";
 
 interface PostCardProps {
   post: Post;
-  status: boolean;
+  currentUser: User;
 }
 
-export const PostCard = ({ post, status }: PostCardProps) => {
+export const PostCard = ({ post, currentUser }: PostCardProps) => {
   const { user, body, likes } = post;
-
 
   const [updatelike, { data, loading, error }] =
     useMutation(UPDATE_LIKE_MUTATION);
 
-  const [currentLike, setCurrentLike] = useState(likes);
-
-  const [isliked, setisliked] = useState(status);
+  const [currentLike, setCurrentLike] = useState(likes.length);
 
   const onLikeClick = React.useCallback(() => {
-    if (isliked === false) {
-      setCurrentLike(() => currentLike + 1);
-      setisliked(() => true);
-      updatelike({ variables: { like: currentLike } }).catch((x) => {
-        setCurrentLike((currentLike) => currentLike - 1);
-        setisliked(() => false);
-        console.log(`failed1 ${currentLike} , ${isliked} `);
-      });
-    } else if (isliked === true) {
-      setCurrentLike(() => currentLike - 1);
-      setisliked(() => false);
-      updatelike({ variables: { like: currentLike } }).catch((x) => {
-        setCurrentLike((currentLike) => currentLike + 1);
-        setisliked(() => true);
-        console.log(`failed2 ${currentLike} , ${isliked} `);
-      });
+    const likeList= likes;
+    const likecounter = likes.length;
+    let newlike = 0;
+    let fallBackLike = 0;
+    if (likes.includes(currentUser.id)) {
+      newlike = likecounter - 1;
+      fallBackLike = likecounter + 1;
+      const index = likes.indexOf(currentUser.id);
+      likeList.splice(index, 1);
+    } else {
+      newlike = likecounter + 1;
+      fallBackLike = likecounter - 1;
+      likeList.push(currentUser.id);
     }
-  }, [currentLike, isliked, updatelike]);
+
+    setCurrentLike(() => newlike);
+
+    updatelike({ variables: { like: likeList } }).catch((x) => {
+      console.log("error", x, likes , likeList);
+      setCurrentLike(fallBackLike);
+    });
+  }, [currentUser.id, likes, updatelike]);
 
   return (
     <Card classname="Post">

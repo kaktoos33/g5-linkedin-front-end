@@ -6,5 +6,5 @@ export type Post = {
     text: string;
     media?: string;
   };
-  likes: number;
+  likes:Array<string>;
 };
