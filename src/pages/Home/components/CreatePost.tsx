@@ -24,7 +24,6 @@ type FormValues = {
   video: string;
   photo: string;
 };
-
 export const CreatePost = ({ user }: CreatePostProps) => {
   const [createpost, { error }] = useMutation(CREATE_POST_MUTATION);
   const [url, seturl] = useState("");
