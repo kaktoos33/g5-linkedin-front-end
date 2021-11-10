@@ -20,6 +20,7 @@ const fetchedMessages: Array<MessageType> = [
   {
     messageId: 1,
     user: {
+      id:"1",
       name: "farzaneh",
       role: "Developer",
       img: "https://picsum.photos/id/1005/40",
@@ -31,6 +32,7 @@ const fetchedMessages: Array<MessageType> = [
   {
     messageId: 2,
     user: {
+      id:"2",
       name: "AmirBahador",
       role: "Devops",
       img: "https://picsum.photos/id/2/40",
@@ -42,6 +44,7 @@ const fetchedMessages: Array<MessageType> = [
   {
     messageId: 3,
     user: {
+      id:"3",
       name: "Mehdi",
       role: "FrontEnd Developer",
       img: "",
@@ -53,6 +56,7 @@ const fetchedMessages: Array<MessageType> = [
   {
     messageId: 4,
     user: {
+      id:"20",
       name: "Mehdi",
       role: "FrontEnd Developer",
       img: "",
@@ -64,6 +68,7 @@ const fetchedMessages: Array<MessageType> = [
 ];
 
 const fetechedUser: User = {
+  id:"101",
   name: "LinkedIn",
   role: "Internet sunnyvale,CA",
   img:"https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png",

@@ -15,11 +15,11 @@ export const PostInput = ({ title }: { title: string }) => {
           placeholder={title}
         />
       </div>
-      <ErrorMessage
+      {/* <ErrorMessage
         name="text"
         component="div"
         className="mb-2 text-xs text-red-600 mr-9"
-      />
+      /> */}
     </div>
   );
 };
