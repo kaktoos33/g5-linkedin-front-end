@@ -2,30 +2,70 @@
 stages:
   - build
   - test
+  - delivery
   - deploy
-
 
 build-job:
   stage: build
+  only:
+    - master
   tags:
     - g5
+  before_script:
+    - echo "Docker Login to registery"
+    - docker login --username $HUB_USER --password $HUB_PASS https://$HUB_URL
+    
   script:
-    - echo "build stage devops"
-    - date
+    - echo "build image"
+    - docker build -t $HUB_URL/g5/dev_frontend:latest .
+    - docker tag $HUB_URL/g5/dev_frontend:latest $HUB_URL/g5/frontend:$CI_COMMIT_SHORT_SHA
+    - echo "push images"
+    - docker push $HUB_URL/g5/frontend:$CI_COMMIT_SHORT_SHA
+    - docker push $HUB_URL/g5/dev_frontend:latest
 
 
 test-job:
   stage: test
+  only:
+    - master
   tags:
     - g5
   script:
     - echo "test stage devops"
     - date
 
-deploy-job:
-  stage: deploy
+deploy-development:
+  stage: delivery
+  only:
+    - master
+  trigger:
+    project: amirbahador/devops
+    branch: master
+
+delivery_production:
+  stage: delivery
+  when: manual
   tags:
     - g5
+  before_script:
+    - echo "Docker Login to registery"
+    - docker login --username $HUB_USER --password $HUB_PASS https://$HUB_URL
   script:
-    - echo "deploy stage devops"
-    - date
+    - echo "build image"
+    - docker pull $HUB_URL/g5/dev_frontend:latest
+    - docker tag $HUB_URL/g5/dev_frontend:latest $HUB_URL/g5/frontend:latest
+    - docker push $HUB_URL/g5/frontend:latest
+
+  only:
+    - master
+
+
+deploy_production:
+  stage: deploy
+  when: manual
+  only:
+    - master
+  trigger:
+    project: amirbahador/devops
+    branch: master
+
