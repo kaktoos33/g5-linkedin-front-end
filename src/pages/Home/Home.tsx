@@ -9,6 +9,7 @@ import { UserPost } from "./components/UserPost";
 interface HomeProps {}
 
 const fetechedUser: User = {
+  id:"1",
   name: "farzaneh",
   role: "Developer",
   img: "https://picsum.photos/id/1005/40",
@@ -25,7 +26,7 @@ export const Home = () => {
   return (
     <CardContainerWithFollow user={user}>
       <CreatePost user={user} />
-      <UserPost />
+      <UserPost currentUser={user} />
     </CardContainerWithFollow>
   );
 };
