@@ -28,9 +28,18 @@ export const CREATE_POST_MUTATION = gql`
 `;
 
 export const UPDATE_LIKE_MUTATION = gql`
-  mutation updatelike($like: number!) {
-    updatelike(like: $like) {
-      like
+  mutation updatelike($postId: String!) {
+    updatelike(postId: $postId) {
+      likes
+    }
+  }
+`;
+
+export const C_CREATE_POST_MUTATION = gql`
+  mutation createpost($text: String!, $tag:[String]) {
+    createpost(text: $text, tag: $tag) {
+      text
+      tag
     }
   }
 `;

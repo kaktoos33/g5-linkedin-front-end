@@ -20,6 +20,7 @@ const fetechedTag: Array<Tag> = [
   { name: "hr" },
 ];
 const fetchedUser: User = {
+  id:"1",
   name: "farzaneh",
   role: "Developer",
   img: "https://picsum.photos/id/1005/40",

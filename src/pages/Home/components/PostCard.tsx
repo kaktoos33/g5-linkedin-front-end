@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useMutation } from "react-apollo";
 import { Card } from "../../../components/Card/Card";
 import { ReadMore } from "../../../components/MoreLink/ReadMore";
+import { User } from "../../../components/UserCard/types/User.types";
 import { UserCard } from "../../../components/UserCard/UserCard";
 import { ReactComponent as LikeSVG } from "../../../images/like.svg";
 import { UPDATE_LIKE_MUTATION } from "../graphql/mutations";
@@ -9,39 +10,33 @@ import { Post } from "../types/Post.type";
 
 interface PostCardProps {
   post: Post;
-  status: boolean;
+  currentUser: User;
 }
 
-export const PostCard = ({ post, status }: PostCardProps) => {
-  const { user, body, likes } = post;
+export const PostCard = ({ post, currentUser }: PostCardProps) => {
+  const { id, user, body, likes } = post;
 
+  const [updatelike] = useMutation(UPDATE_LIKE_MUTATION);
 
-  const [updatelike, { data, loading, error }] =
-    useMutation(UPDATE_LIKE_MUTATION);
+  const [currentLike, setCurrentLike] = useState(likes.length);
 
-  const [currentLike, setCurrentLike] = useState(likes);
-
-  const [isliked, setisliked] = useState(status);
+  const isliked = React.useMemo(
+    () => likes.includes(currentUser.id),
+    [currentUser.id, likes]
+  );
 
   const onLikeClick = React.useCallback(() => {
-    if (isliked === false) {
-      setCurrentLike(() => currentLike + 1);
-      setisliked(() => true);
-      updatelike({ variables: { like: currentLike } }).catch((x) => {
-        setCurrentLike((currentLike) => currentLike - 1);
-        setisliked(() => false);
-        console.log(`failed1 ${currentLike} , ${isliked} `);
-      });
-    } else if (isliked === true) {
-      setCurrentLike(() => currentLike - 1);
-      setisliked(() => false);
-      updatelike({ variables: { like: currentLike } }).catch((x) => {
-        setCurrentLike((currentLike) => currentLike + 1);
-        setisliked(() => true);
-        console.log(`failed2 ${currentLike} , ${isliked} `);
-      });
-    }
-  }, [currentLike, isliked, updatelike]);
+    const like = likes.length;
+    const newlike = isliked ? like - 1 : like + 1;
+    const fallBacklike = !isliked ? newlike - 1 : newlike + 1;
+
+    setCurrentLike(() => newlike);
+
+    updatelike({ variables: { postId: id } }).catch((x) => {
+      console.log("error", x);
+      setCurrentLike(() => fallBacklike);
+    });
+  }, [id, isliked, likes.length, updatelike]);
 
   return (
     <Card classname="Post">
@@ -64,13 +59,24 @@ export const PostCard = ({ post, status }: PostCardProps) => {
         <label className="px-2 py-0.25 ml-3 text-xs text-white rounded-full like-box">
           {currentLike}+
         </label>
-        <div className="w-5 h-5 container_like">
-          <LikeSVG
-            id="like_svg"
-            onClick={onLikeClick}
-            className="w-full h-full cursor-pointer "
-          />
-        </div>
+
+        {isliked ? (
+          <div className="w-5 h-5 container_isliked">
+            <LikeSVG
+              id="liked_svg"
+              onClick={onLikeClick}
+              className="w-full h-full cursor-pointer "
+            />
+          </div>
+        ) : (
+          <div className="w-5 h-5 container_like">
+            <LikeSVG
+              id="like_svg"
+              onClick={onLikeClick}
+              className="w-full h-full cursor-pointer "
+            />
+          </div>
+        )}
       </div>
     </Card>
   );
