@@ -1,5 +1,4 @@
 
-
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
@@ -15,7 +14,7 @@ import { createHttpLink } from "apollo-link-http";
 import { setContext } from "apollo-link-context";
 
 const httpLink = createHttpLink({
-  uri: "https://api.g5.stagement.ir//graphql",
+  uri: "https://api.g5.stagement.ir/graphql",
 });
 
 const authLink = setContext((_, { headers }) => {
