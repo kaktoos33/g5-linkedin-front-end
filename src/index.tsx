@@ -15,7 +15,8 @@ import { setContext } from "apollo-link-context";
 import { UserContextProvider } from "./UserContext";
 
 const httpLink = createHttpLink({
-  uri: "https://api.g5.stagement.ir/graphql",
+  // uri: "https://api.g5.stagement.ir/graphql",
+  uri: "/graphql",
 });
 
 const authLink = setContext((_, { headers }) => {
