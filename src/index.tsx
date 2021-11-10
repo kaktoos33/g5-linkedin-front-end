@@ -15,8 +15,11 @@ import { setContext } from "apollo-link-context";
 import { UserContextProvider } from "./UserContext";
 
 const httpLink = createHttpLink({
-  // uri: "https://api.g5.stagement.ir/graphql",
-  uri: "/graphql",
+  uri: "https://api.g5.stagement.ir/graphql",
+  // uri: "/graphql",
+  fetchOptions: {
+    mode: 'no-cors',
+  },
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -46,9 +49,12 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 });
 
 const client = new ApolloClient({
-  // link: authLink.concat(httpLink).concat(errorLink),
-  link: ApolloLink.from([errorLink, authLink, httpLink]),
+
+  link: ApolloLink.from([errorLink, authLink, httpLink]
+
+  ),
   cache: new InMemoryCache(),
+
 });
 
 ReactDOM.render(
