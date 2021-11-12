@@ -1,8 +1,8 @@
 import { useFormikContext } from "formik";
 import React, { ChangeEvent } from "react";
 
-export const FileInput = (props: { name: string }) => {
-  const { name, ...rest } = props;
+export const FileInput = ({ name, ...rest }: { name: string }) => {
+ 
   const { setFieldValue, values } =
     useFormikContext<{ image: File; video: File }>();
 
@@ -10,11 +10,12 @@ export const FileInput = (props: { name: string }) => {
     try {
       if (e.target.files) {
         console.log(values);
-        setFieldValue("video", "");
-        setFieldValue("image", "");
+        setFieldValue("video", undefined);
+        setFieldValue("image", undefined);
         setFieldValue(name, e.target.files[0]);
-        console.log(name, values);
+        
       }
+      console.log(values.image , values.video);
     } catch (err) {
       console.log(err);
     }

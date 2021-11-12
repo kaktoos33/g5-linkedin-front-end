@@ -9,20 +9,21 @@ import { Formik, Form } from "formik";
 import { Card } from "../../../components/Card/Card";
 import { Button } from "../../../components/Buttun/Button";
 import { PostInput } from "./PostInput";
+import { ShowMedia } from "./ShowMedia";
 
 interface CreatePostProps {
   user: User;
 }
 const initialValues = {
   text: "",
-  video: "",
-  image: "",
+  video: undefined,
+  image: undefined,
 };
 
 type FormValues = {
   text: string;
-  video: string;
-  image: string;
+  video?: File;
+  image?: File;
 };
 
 export const CreatePost = ({ user }: CreatePostProps) => {
@@ -39,7 +40,7 @@ export const CreatePost = ({ user }: CreatePostProps) => {
     //   addpost(values.text);
     // }
     onSubmitProps.resetForm();
-    console.log(values);
+    console.log("after rest",values);
   };
 
   const addpost = (text: string, file?: any) => {
@@ -68,22 +69,7 @@ export const CreatePost = ({ user }: CreatePostProps) => {
               />
               <PostInput title="چیزی بنویس ..." />
 
-              {(formik.values.image || formik.values.video) && (
-                <div className="flex justify-center my-5 mx-9 border-1 ">
-                  {formik.values.image && (
-                    <img
-                      className="max-w-xl rounded-3xl max-h-80"
-                      src={URL.createObjectURL(formik.values.image)}
-                      alt=""
-                    />
-                  )}
-                  {formik.values.video && (
-                    <video className="rounded-3xl max-h-96" controls>
-                      <source src={URL.createObjectURL(formik.values.video)} />
-                    </video>
-                  )}
-                </div>
-              )}
+              <ShowMedia />
 
               <div dir="ltr" className="py-2.5 px-7 rounded-b-3xl send-box">
                 <Button
