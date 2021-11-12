@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { createContext, useMemo, useState } from "react";
 import "../../../variables/variables.scss";
 import { useMutation } from "react-apollo";
 import { User } from "../../../components/UserCard/types/User.types";
@@ -16,34 +16,33 @@ interface CreatePostProps {
 const initialValues = {
   text: "",
   video: "",
-  photo: "",
+  image: "",
 };
 
 type FormValues = {
   text: string;
   video: string;
-  photo: string;
+  image: string;
 };
+
 export const CreatePost = ({ user }: CreatePostProps) => {
   const [createpost, { error }] = useMutation(CREATE_POST_MUTATION);
-  const [url, seturl] = useState("");
-  const [video, setVideo] = useState("");
+
   const onSubmit = (values: FormValues, onSubmitProps: any) => {
     console.log(values);
 
-    if (values.photo || values.video) {
-      values.photo
-        ? addpost(values.text, values.photo)
-        : addpost(values.text, values.video);
-    } else {
-      addpost(values.text);
-    }
+    // if (values.image || values.video) {
+    //   values.image
+    //     ? addpost(values.text, values.image)
+    //     : addpost(values.text, values.video);
+    // } else {
+    //   addpost(values.text);
+    // }
     onSubmitProps.resetForm();
-    seturl("");
-    setVideo("");
+    console.log(values);
   };
 
-  const addpost = (text: any, file?: any) => {
+  const addpost = (text: string, file?: any) => {
     createpost({
       variables: {
         text: text,
@@ -67,15 +66,20 @@ export const CreatePost = ({ user }: CreatePostProps) => {
                 componentname="Create_Post"
                 image_size="M"
               />
-
               <PostInput title="چیزی بنویس ..." />
 
-              {(url || video) && (
+              {(formik.values.image || formik.values.video) && (
                 <div className="flex justify-center my-5 mx-9 border-1 ">
-                  {url && <img className="rounded-3xl" src={url} alt="" />}
-                  {video && (
-                    <video className="rounded-3xl" controls>
-                      <source src={video} />
+                  {formik.values.image && (
+                    <img
+                      className="max-w-xl rounded-3xl max-h-80"
+                      src={URL.createObjectURL(formik.values.image)}
+                      alt=""
+                    />
+                  )}
+                  {formik.values.video && (
+                    <video className="rounded-3xl max-h-96" controls>
+                      <source src={URL.createObjectURL(formik.values.video)} />
                     </video>
                   )}
                 </div>
@@ -92,7 +96,19 @@ export const CreatePost = ({ user }: CreatePostProps) => {
                   ارسال
                 </Button>
 
-                <Uploader
+                <Uploader label="Video" name="video" />
+                <Uploader label="Photo" name="image" />
+              </div>
+            </Card>
+          </Form>
+        );
+      }}
+    </Formik>
+  );
+};
+
+{
+  /* <Uploader
                   name="video"
                   labelname="Video"
                   typeacc="video/*"
@@ -105,12 +121,5 @@ export const CreatePost = ({ user }: CreatePostProps) => {
                   typeacc="image/*"
                   seturl={seturl}
                   setvideo={setVideo}
-                />
-              </div>
-            </Card>
-          </Form>
-        );
-      }}
-    </Formik>
-  );
-};
+                /> */
+}

@@ -17,12 +17,6 @@ const fetechedUser: User = {
 export const Home = () => {
   const user = fetechedUser;
 
-  // const { loading, error, data } = useQuery<Array<Post>>(GET_POSTS);
-
-  // const posts = React.useMemo(
-  //     () => !loading && data && data.map((a) => <UserPost post={a} />),
-  //     [loading, data]
-  // );
   return (
     <CardContainerWithFollow user={user}>
       <CreatePost user={user} />
