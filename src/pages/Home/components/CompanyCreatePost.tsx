@@ -9,42 +9,26 @@ import { TagItem } from "../../../components/Tag/TagItem";
 import { Tag } from "../../../components/Tag/Tag.types";
 import { useMutation } from "@apollo/react-hooks";
 import { C_CREATE_POST_MUTATION } from "../graphql/mutations";
+import SelectTag from "./SelectTag";
 
 interface CompanyCreatePostProps {
   user: User;
 }
 
-const fetechedTag: Array<Tag> = [
-  { name: "work" },
-  { name: "business" },
-  { name: "hr" },
-  { name: "userinterface" },
-  { name: "digital" },
-  { name: "userexperience" },
-  { name: "ux" },
-  { name: "ui" },
-  { name: "freelance" },
-];
 
 const initialValues = {
   text: "",
-  tags: []
+  tags: [],
 };
 
 type FormValues = {
   text: string;
-  tags:Array<string>;
+  tags: Array<string>;
 };
 
 export const CompanyCreatePost = ({ user }: CompanyCreatePostProps) => {
-  const Taglist = fetechedTag;
-  const tags = React.useMemo(
-    () =>
-      Taglist.map((a, index) => (
-        <TagItem tag={a} index={index} classname="tag-span" />
-      )),
-    [Taglist]
-  );
+
+  
   const [createpost, { error }] = useMutation(C_CREATE_POST_MUTATION);
   const onSubmit = (values: FormValues) => {
     //addpost(values);
@@ -75,11 +59,8 @@ export const CompanyCreatePost = ({ user }: CompanyCreatePostProps) => {
               />
 
               <PostInput title="درخواست نیرو ..." />
-              <div className="mb-4 mx-7">
-                {tags}
-                <span className="inline-block px-3 py-0.5 mx-1 mt-1 tag-span-fa">
-                  + اضافه کردن مهارت دیگر
-                </span>
+              <div dir="ltr" className="mb-4 mx-7">
+                <SelectTag />
               </div>
 
               <div
