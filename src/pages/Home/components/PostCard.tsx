@@ -14,36 +14,29 @@ interface PostCardProps {
 }
 
 export const PostCard = ({ post, currentUser }: PostCardProps) => {
-  const { user, body, likes } = post;
+  const { id, user, body, likes } = post;
 
-  const [updatelike, { data, loading, error }] =
-    useMutation(UPDATE_LIKE_MUTATION);
+  const [updatelike] = useMutation(UPDATE_LIKE_MUTATION);
 
   const [currentLike, setCurrentLike] = useState(likes.length);
 
+  const isliked = React.useMemo(
+    () => likes.includes(currentUser.id),
+    [currentUser.id, likes]
+  );
+
   const onLikeClick = React.useCallback(() => {
-    const likeList= likes;
-    const likecounter = likes.length;
-    let newlike = 0;
-    let fallBackLike = 0;
-    if (likes.includes(currentUser.id)) {
-      newlike = likecounter - 1;
-      fallBackLike = likecounter + 1;
-      const index = likes.indexOf(currentUser.id);
-      likeList.splice(index, 1);
-    } else {
-      newlike = likecounter + 1;
-      fallBackLike = likecounter - 1;
-      likeList.push(currentUser.id);
-    }
+    const like = likes.length;
+    const newlike = isliked ? like - 1 : like + 1;
+    const fallBacklike = !isliked ? newlike - 1 : newlike + 1;
 
     setCurrentLike(() => newlike);
 
-    updatelike({ variables: { like: likeList } }).catch((x) => {
-      console.log("error", x, likes , likeList);
-      setCurrentLike(fallBackLike);
+    updatelike({ variables: { postId: id } }).catch((x) => {
+      console.log("error", x);
+      setCurrentLike(() => fallBacklike);
     });
-  }, [currentUser.id, likes, updatelike]);
+  }, [id, isliked, likes.length, updatelike]);
 
   return (
     <Card classname="Post">
@@ -66,13 +59,24 @@ export const PostCard = ({ post, currentUser }: PostCardProps) => {
         <label className="px-2 py-0.25 ml-3 text-xs text-white rounded-full like-box">
           {currentLike}+
         </label>
-        <div className="w-5 h-5 container_like">
-          <LikeSVG
-            id="like_svg"
-            onClick={onLikeClick}
-            className="w-full h-full cursor-pointer "
-          />
-        </div>
+
+        {isliked ? (
+          <div className="w-5 h-5 container_isliked">
+            <LikeSVG
+              id="liked_svg"
+              onClick={onLikeClick}
+              className="w-full h-full cursor-pointer "
+            />
+          </div>
+        ) : (
+          <div className="w-5 h-5 container_like">
+            <LikeSVG
+              id="like_svg"
+              onClick={onLikeClick}
+              className="w-full h-full cursor-pointer "
+            />
+          </div>
+        )}
       </div>
     </Card>
   );

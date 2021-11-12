@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "../../../variables/variables.scss";
 import { useMutation } from "react-apollo";
-import { gql } from "apollo-boost";
 import { User } from "../../../components/UserCard/types/User.types";
 import { CREATE_POST_MUTATION } from "../graphql/mutations";
 import { Uploader } from "./Uploader";
@@ -10,7 +9,6 @@ import { Formik, Form } from "formik";
 import { Card } from "../../../components/Card/Card";
 import { Button } from "../../../components/Buttun/Button";
 import { PostInput } from "./PostInput";
-import * as Yup from "yup";
 
 interface CreatePostProps {
   user: User;
@@ -26,54 +24,41 @@ type FormValues = {
   video: string;
   photo: string;
 };
-// const validationschema = Yup.object({
-//   text: Yup.string().required("لطفا چیزی بنویسید !"),
-// });
 export const CreatePost = ({ user }: CreatePostProps) => {
   const [createpost, { error }] = useMutation(CREATE_POST_MUTATION);
   const [url, seturl] = useState("");
   const [video, setVideo] = useState("");
   const onSubmit = (values: FormValues, onSubmitProps: any) => {
     console.log(values);
+
+    if (values.photo || values.video) {
+      values.photo
+        ? addpost(values.text, values.photo)
+        : addpost(values.text, values.video);
+    } else {
+      addpost(values.text);
+    }
     onSubmitProps.resetForm();
     seturl("");
     setVideo("");
-    //onSubmitProps.setSubmitting(false);
-
-    // if (values.photo || values.video) {
-    //   values.photo
-    //     ? addpost(values.text, values.photo)
-    //     : addpost(values.text, values.video);
-    // } else {
-    //   addpost(values.text);
-    // }
   };
 
-  // const addpost = (text: any, file?: any) => {
-  //   createpost({
-  //     variables: {
-  //       text: text,
-  //       file: file,
-  //     },
-  //   });
-  //   console.log(`this is text ${text}`);
-  //   if (error) {
-  //     console.log(error);
-  //   }
-  // };
+  const addpost = (text: any, file?: any) => {
+    createpost({
+      variables: {
+        text: text,
+        file: file,
+      },
+    });
+    console.log(`this is text ${text}`);
+    if (error) {
+      console.log(error);
+    }
+  };
 
   return (
-    <Formik
-      initialValues={initialValues}
-      onSubmit={onSubmit}
-      //validationSchema={validationschema}
-      // validateOnMount={false}
-      // validateOnChange={false}
-      // validateOnBlur={false}
-    >
+    <Formik initialValues={initialValues} onSubmit={onSubmit}>
       {(formik) => {
-        console.log(formik);
-        console.log("disable: ", !(formik.isValid && formik.dirty));
         return (
           <Form>
             <Card classname="Create_Post">
@@ -98,7 +83,7 @@ export const CreatePost = ({ user }: CreatePostProps) => {
 
               <div dir="ltr" className="py-2.5 px-7 rounded-b-3xl send-box">
                 <Button
-                  disabled={formik.isSubmitting || !formik.dirty}
+                  disabled={!formik.dirty}
                   type="submit"
                   gruop="Primary"
                   lang="fa"

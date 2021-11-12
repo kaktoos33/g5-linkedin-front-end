@@ -15,6 +15,17 @@
     }
 }
 
+.container_isliked {
+    path {
+        fill: $blueColor;
+    }
+    &:hover>#liked_svg {
+        path {
+            fill: black;
+        }
+    }
+}
+
 .uploder {
     &:hover {
         color: $blueColor;
