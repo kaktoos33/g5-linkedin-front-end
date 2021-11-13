@@ -34,13 +34,13 @@ export const CreatePost = ({ user }: CreatePostProps) => {
   const onSubmit = (values: FormValues, onSubmitProps: any) => {
     console.log(values);
 
-    // if (values.image || values.video) {
-    //   values.image
-    //     ? addpost(values.text, values.image)
-    //     : addpost(values.text, values.video);
-    // } else {
-    //   addpost(values.text);
-    // }
+    if (values.image || values.video) {
+      values.image
+        ? addpost(values.text, values.image)
+        : addpost(values.text, values.video);
+    } else {
+      addpost(values.text);
+    }
     onSubmitProps.resetForm();
     console.log("after rest",values);
   };
