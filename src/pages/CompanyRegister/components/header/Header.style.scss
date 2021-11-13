@@ -9,3 +9,10 @@
   //margin-top: 20px;
   margin-bottom: 10%;
 }
+
+/* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
+@media screen and (max-width: 600px) {
+  .register-header-name {
+    font-size: 20px;
+  }
+}

@@ -1,10 +1,18 @@
 @import "./src/variables/variables.scss";
 .register-cart {
-    margin-top: 20px;
+    //margin-top: 20px;
     width: 498px;
     background: $whiteColor;
     border-radius: 0 24px 24px 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+/* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
+@media screen and (max-width: 600px) {
+    .register-cart {
+        width: 100%;
+        height: 100%;
+    }
 }
