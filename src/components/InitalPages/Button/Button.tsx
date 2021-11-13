@@ -16,7 +16,7 @@ export const ButtonPrimary = (props:ButtonPropsType) => {
 };
 
 
-export const ButtonSecondary = () => {
+export const ButtonSecondary = (props:ButtonPropsType) => {
 
     const history = useHistory();
 
@@ -26,7 +26,7 @@ export const ButtonSecondary = () => {
 
     return (
         <div className="w-full mx-auto text-center register-button">
-            <button onClick={handleClick} className="button button-secondary w-5/6">ورود</button>
+            <button onClick={handleClick} className="button button-secondary w-5/6">{ props.name }</button>
         </div>
     );
 };

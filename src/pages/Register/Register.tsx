@@ -13,6 +13,7 @@ import {useMutation} from "react-apollo";
 import {ErrorHandel} from "./components/error/Error";
 import {gql} from "apollo-boost";
 import {ErrorMessage, useField} from "formik";
+import {Status} from "../../components/InitalPages/Description/Description";
 
 interface RegisterQueryProps {
     email: string;
@@ -84,17 +85,14 @@ export const Register : FunctionComponent = () => {
                             <p>
                                 <ErrorMessage name={"password"} />
                             </p>
-
-                            {/*<ErrorMessage name={"password"} />*/}
                         </ErrorHandel>
                         <ButtonPrimary name={"ثبت نام"}/>
 
                     </Form>
                 </Formik>
-                <div className={"register_redirect_login"}>
-                    <p>عضو هستم</p>
-                </div>
-                <ButtonSecondary />
+
+                <Status name={"عضو هستم"} />
+                <ButtonSecondary name={"ورود"}/>
             </Cart>
 
         </div>
