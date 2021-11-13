@@ -37,22 +37,6 @@
     }
 }
 
-.tag-span-fa {
-    border: 1px solid #e8f0f8;
-    box-sizing: border-box;
-    border-radius: 4px;
-    font-family: $fontL;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 12px;
-    line-height: 150%;
-    color: $blueColor;
-    cursor: pointer;
-    &:hover {
-        text-decoration: underline;
-    }
-}
-
 .resume-box {
     background-color: #ff0000;
     width: 18px;
@@ -70,4 +54,16 @@
     path {
         fill: $blueColor;
     }
+}
+
+.Select_Tag {
+    font-family: "Roboto-Medium";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 150%;
+    color: #181818;
+    background: #e9f0f8;
+    border-radius: 4px;
+    z-index: 2;
 }

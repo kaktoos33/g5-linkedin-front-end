@@ -4,25 +4,25 @@ import { Post } from "../types/Post.type";
 import { User } from "../../../components/UserCard/types/User.types";
 
 interface UserPostProps {
-  currentUser:User;
+  currentUser: User;
 }
 const fetechedPost: Array<Post> = [
   {
-    id:"1",
+    id: "1",
     body: {
       text: "طبیعت گردی ...",
       media: "https://picsum.photos/id/1018/516/307",
     },
-    likes: ["2" ,"12","16","5","8","65","23"],
+    likes: ["2", "12", "16", "5", "8", "65", "23"],
     user: {
-      id:"56",
+      id: "56",
       name: "Karim",
       role: "ui/ux",
       img: "https://picsum.photos/id/1/40",
     },
   },
   {
-    id:"2",
+    id: "2",
     body: {
       text:
         "در آخرین کارگاه «با هم یاد بگیریم»، از سجاد احمدی روایت کار با ابزاری شگفت‌انگیز و پر از امکانات ویژه رو شنیدیم که به قول سجاد می‌تونیم با استفاده از اون بی‌نیاز از متخصصان داده، در کسب‌و‌کارمون داده‌ها رو تحلیل کنیم، گزارش‌های مو‌به‌مو بگیریم و با دقتی مثال‌زدنی مقایسه‌های جزیی انجام بدیم." +
@@ -32,29 +32,42 @@ const fetechedPost: Array<Post> = [
 
       media: "https://picsum.photos/516/307",
     },
-    likes: ["1" ,"12","16","5","8","65","23","85","89","11","55","24"],
+    likes: [
+      "1",
+      "12",
+      "16",
+      "5",
+      "8",
+      "65",
+      "23",
+      "85",
+      "89",
+      "11",
+      "55",
+      "24",
+    ],
     user: {
-      id:"14",
+      id: "14",
       name: "Yasin",
       role: "Developer",
     },
   },
 ];
 
-// const likeFromBack = () =>
-//     new Promise<number>((resolve, reject) => {
-//         setTimeout(() => {
-//             resolve(1);
-//         }, 1000);
-//     });
+export const UserPost = ({ currentUser }: UserPostProps) => {
+  // const { loading, error, data } = useQuery<Array<Post>>(GET_POSTS);
 
-export const UserPost = ({currentUser}:UserPostProps) => {
+  // const posts = React.useMemo(
+  //     () => !loading && data && data.map((a) => <UserPost post={a} />),
+  //     [loading, data]
+  // );
+  const post = fetechedPost;
   const posts = React.useMemo(
     () =>
-      fetechedPost.map((a, index) => (
+      post.map((a, index) => (
         <PostCard key={index.toString()} post={a} currentUser={currentUser} />
       )),
-    [fetechedPost]
+    [currentUser, post]
   );
 
   return <div>{posts}</div>;
