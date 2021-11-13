@@ -100,7 +100,7 @@ const Login: FC<LoginProps> = () => {
                 const userResponse = data.data.login.user;
                 if (loginResponse.success) {
                   sessionStorage.setItem(
-                    "accessTtoken",
+                    "accessToken",
                     loginResponse.accessToken
                   );
                   sessionStorage.setItem(
