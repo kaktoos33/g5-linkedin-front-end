@@ -22,7 +22,6 @@ export const StringInput = (props:StringInputType) => {
     );
 };
 
-
 export const Input = (labelProp: { input_holder: string }) => {
     return (
         <div>
@@ -32,3 +31,66 @@ export const Input = (labelProp: { input_holder: string }) => {
     );
 };
 
+
+export const EmailInput = () => {
+    return (
+        <div className={"email_input"}>
+            <i className="mx-2">
+                <FontAwesomeIcon icon={faEnvelope}></FontAwesomeIcon>
+            </i>
+
+            <Field type="text" dir={"ltr"} placeholder={"Email"}
+                   id={"email"} name={"email"}/>
+
+        </div>
+    );
+};
+
+const usePasswordToggle = () => {
+
+    const [visible, setVisibility] = useState(false);
+    const Icon = (
+        <FontAwesomeIcon icon={visible ? faEye : faEyeSlash}
+                         onClick={() => setVisibility(visible => !visible)}
+        ></FontAwesomeIcon>
+
+    )
+    const InputType = visible ? "text" : "password";
+    return [InputType, Icon]
+
+};
+export const PassInput = () => {
+
+    const [PasswordInputType, ToggleIcon] = usePasswordToggle();
+
+    return (
+        <div className={"password_input"}>
+
+            <i className="mx-2 lockIcon">
+                <FontAwesomeIcon icon={faLock}></FontAwesomeIcon>
+            </i>
+
+            <Field type={PasswordInputType} dir={"ltr"}  placeholder={"Password"} id={"password"} name={"password"}/>
+
+            <i className="eyeIcon">
+                {ToggleIcon}
+            </i>
+
+
+        </div>
+    );
+};
+
+export const CheckBoxInput = () => {
+
+    return (
+        <div className={"checkbox_input"}>
+
+            <label htmlFor={"is_vendor"}>
+                <Field type="checkbox"  id={"is_vendor"} name={"is_vendor"} />
+                <span>اکانت شرکتی</span>
+            </label>
+
+        </div>
+    );
+};

@@ -1,4 +1,18 @@
 @import "./src/variables/variables.scss";
+
+.cart-container{
+    height: 100vh;
+    width: 100vw;
+    //left: 0;
+    //top: 0;
+    overflow: hidden;
+    //position: fixed;
+    background: $backGroundColor;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .cart-initial-pages {
     //margin-top: 20px;
     margin: 0;
@@ -10,6 +24,7 @@
     flex-direction: column;
     justify-content: center;
 }
+
 
 /* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
 @media screen and (max-width: 600px) {

@@ -14,7 +14,25 @@
   border-radius: 40px;
 }
 
+.button-secondary{
+  //display: block;
+  font-family: $font;
+  font-size: 14px;
+  margin-top: 15px;
+  width: 370px;
+  height: 40px;
+  background-color: $whiteColor;
+  color: $blueColor;
+  border: 1px solid $blueColor;
+  border-radius: 40px;
+}
 
+
+.button-secondary:hover{
+  color: $whiteColor;
+  background-color: $blueColorHover;
+  border-color: $blueColorHover;
+}
 
 .button-primary:hover{
   background-color: $blueColorHover;

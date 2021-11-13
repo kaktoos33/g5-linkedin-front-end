@@ -2,17 +2,11 @@ import React, {useState} from 'react';
 import { FunctionComponent } from 'react';
 import {Cart} from "../../components/InitalPages/Cart/Cart";
 import {Header} from "../../components/InitalPages/Header/Header";
-// import {Cart} from "./components/cart/Cart";
-// import {Header} from "./components/header/Header";
 import {StringInput} from "../../components/InitalPages/Input/Input";
-// import {StringInput} from "./components/input/Input";
 import {ButtonPrimary} from "../../components/InitalPages/Button/Button";
-// import {ButtonPrimary} from "./components/button/Button";
 import "./CompanyRegister.Style.scss"
 import { Formik, Field, Form , FormikHelpers} from 'formik';
 import {RegisterFormInput} from './CompanyRegister.type';
-
-// import {registerValidateSchema} from "./Register.validation";
 import {useHistory} from "react-router-dom";
 import {useMutation} from "react-apollo";
 import {gql} from "apollo-boost";
@@ -52,7 +46,7 @@ export const CompanyRegister : FunctionComponent = () => {
     });
     return (
 
-        <div className="company-register">
+        <div className="company-register cart-container">
             <Cart>
                 <Header name={"پروفایل"}/>
 
@@ -77,7 +71,6 @@ export const CompanyRegister : FunctionComponent = () => {
                 </Formik>
 
             </Cart>
-            {/*<MyForm />*/}
 
         </div>
     );
