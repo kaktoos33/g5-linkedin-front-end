@@ -1,23 +1,14 @@
 @import "./src/variables/variables.scss";
 
-.register{
+.company-register{
+  height: 100vh;
+  width: 100vw;
+  //left: 0;
+  //top: 0;
+  overflow: hidden;
+  //position: fixed;
   background: $backGroundColor;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.register_redirect_login{
-  display: block;
-  font-family: $font;
-  font-weight: 300;
-  font-size: 14px;
-  outline: none;
-  text-decoration: none;
-  color: $grayColor;
-  text-align: center;
-  //padding-top: 20px;
-  margin-top: 20px;
-  //margin: 10px auto;
-
 }
