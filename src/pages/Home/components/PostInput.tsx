@@ -1,4 +1,4 @@
-import { Field, ErrorMessage } from "formik";
+import { Field } from "formik";
 import React from "react";
 import EditIcon from "../../../images/Vector.svg";
 
@@ -15,11 +15,6 @@ export const PostInput = ({ title }: { title: string }) => {
           placeholder={title}
         />
       </div>
-      {/* <ErrorMessage
-        name="text"
-        component="div"
-        className="mb-2 text-xs text-red-600 mr-9"
-      /> */}
     </div>
   );
 };

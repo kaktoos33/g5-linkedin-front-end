@@ -1,20 +1,17 @@
-import { Form, Formik } from "formik";
-import { FC, useEffect } from "react";
-import {
-  Card,
-  CardAction,
-  CardContent,
-  CardHeader,
-} from "./components/Card/Card";
-
-import { EmailInput, PasswordlInput } from "./components/Input/Input";
-import { PrimaryButton, SecondaryButton } from "./components/Button/Button";
+import {ErrorMessage, Form, Formik} from "formik";
+import React, { FC, useEffect } from "react";
+import {Cart} from "../../components/InitalPages/Cart/Cart";
+import {Header} from "../../components/InitalPages/Header/Header";
+import {EmailInput, PassInput} from "../../components/InitalPages/Input/Input";
+import {ButtonPrimary, ButtonSecondary} from "../../components/InitalPages/Button/Button";
+import {Status} from "../../components/InitalPages/Description/Description";
 import { gql } from "apollo-boost";
 import { useMutation } from "react-apollo";
 import { Link, useHistory } from "react-router-dom";
-import "./Login.style.scss";
+// import "./Login.style.scss";
 import { useUserContext } from "../../UserContext";
 import { User } from "../../models/User";
+import {ErrorHandel} from "../Register/components/error/Error";
 interface LoginProps {
   email?: string;
   password?: string;
@@ -55,6 +52,7 @@ const LOGIN_MUTATION =
       }
     }
   `;
+
 const Login: FC<LoginProps> = () => {
   const { user, setUser } = useUserContext();
 
@@ -75,14 +73,11 @@ const Login: FC<LoginProps> = () => {
   };
 
   return (
-    <div className="h-screen login">
+    <div className="login cart-container">
       {/*<div className="container flex flex-col items-center justify-around min-h-screen bg-primary login">*/}
-      <Card className="flex flex-col items-center justify-center w-1/3 mx-auto mt-5 bg-white rounded-xl">
-        <CardHeader className="px-10 ">
-          <h1 className="flex flex-row items-center content-center justify-center px-2 py-1 pb-12 mt-10 font-semibold rounded text-black-600">
-            ورود
-          </h1>
-        </CardHeader>
+      <Cart>
+        <Header name={"ورود"}/>
+
         <Formik
           initialValues={{
             email: "",
@@ -105,7 +100,7 @@ const Login: FC<LoginProps> = () => {
                 const userResponse = data.data.login.user;
                 if (loginResponse.success) {
                   sessionStorage.setItem(
-                    "accessTtoken",
+                    "accessToken",
                     loginResponse.accessToken
                   );
                   sessionStorage.setItem(
@@ -119,7 +114,7 @@ const Login: FC<LoginProps> = () => {
                   //console.log(user);
 
                   // setNewUser({userId:"r",isCompany:false});
-                  alert(data.data.login.success);
+                  //alert(data.data.login.success);
                   window.location.reload();
                   history.push("/home");
                   // history.replace("/home");
@@ -138,40 +133,17 @@ const Login: FC<LoginProps> = () => {
             //LoginQuery(values);
           }}
         >
-          <Form className="px-10 ">
-            <CardContent>
-              <EmailInput
-                id="email"
-                name="email"
-                type="text"
-                placeholder={"Username"}
-              ></EmailInput>
-              <PasswordlInput
-                id="password"
-                name="password"
-                type="password"
-                placeholder={"Password"}
-              ></PasswordlInput>
-              <div dir="ltr" className="flex flex-col items-start pb-10">
-                <p className="w-full font-semibold text-blue-600 uppercase rounded ">
-                  فراموشی رمز عبور
-                </p>
-              </div>
-            </CardContent>
-            <CardAction className="pt-12 pb-5">
-              <PrimaryButton />
-              <label className="flex items-center pb-0">
-                <p className="flex flex-row justify-center w-full pt-5 pb-3">
-                  <Link to="/register">عضو نیستید؟</Link>
-                </p>
-              </label>
-              <Link to="/register">
-                <SecondaryButton></SecondaryButton>
-              </Link>
-            </CardAction>
+          <Form>
+            <EmailInput />
+            <PassInput />
+            <ErrorHandel>
+            </ErrorHandel>
+            <ButtonPrimary name={"ورود"} />
           </Form>
         </Formik>
-      </Card>
+        <Status name={"عضو نیستید؟"} />
+        <ButtonSecondary name={"ثبت نام"}/>
+      </Cart>
     </div>
   );
 };

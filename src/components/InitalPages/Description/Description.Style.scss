@@ -1,0 +1,13 @@
+@import "./src/variables/variables.scss";
+
+.auth-status {
+  display: block;
+  font-family: $font;
+  font-weight: 300;
+  font-size: 14px;
+  outline: none;
+  text-decoration: none;
+  color: $grayColor;
+  text-align: center;
+  margin-top: 20px;
+}
