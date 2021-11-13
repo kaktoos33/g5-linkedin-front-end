@@ -119,7 +119,7 @@ const Login: FC<LoginProps> = () => {
                   //console.log(user);
 
                   // setNewUser({userId:"r",isCompany:false});
-                  alert(data.data.login.success);
+                  //alert(data.data.login.success);
                   window.location.reload();
                   history.push("/home");
                   // history.replace("/home");
