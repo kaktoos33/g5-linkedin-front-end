@@ -5,6 +5,8 @@ import { User } from "../../components/UserCard/types/User.types";
 import "./MessagePage.Style.scss";
 import { CardContainerWithFollow } from "../../components/Card/CardContainer";
 import { CompanyMessages } from "./CompanyMessagePage/CompanyMessages";
+import { useUserContext } from "../../UserContext";
+import MessageApp from "./message";
 
 interface MessagePageProps {}
 
@@ -20,7 +22,7 @@ const fetchedMessages: Array<MessageType> = [
   {
     messageId: 1,
     user: {
-      id:"1",
+      id: "1",
       name: "farzaneh",
       role: "Developer",
       img: "https://picsum.photos/id/1005/40",
@@ -32,7 +34,7 @@ const fetchedMessages: Array<MessageType> = [
   {
     messageId: 2,
     user: {
-      id:"2",
+      id: "2",
       name: "AmirBahador",
       role: "Devops",
       img: "https://picsum.photos/id/2/40",
@@ -44,7 +46,7 @@ const fetchedMessages: Array<MessageType> = [
   {
     messageId: 3,
     user: {
-      id:"3",
+      id: "3",
       name: "Mehdi",
       role: "FrontEnd Developer",
       img: "",
@@ -56,7 +58,7 @@ const fetchedMessages: Array<MessageType> = [
   {
     messageId: 4,
     user: {
-      id:"20",
+      id: "20",
       name: "Mehdi",
       role: "FrontEnd Developer",
       img: "",
@@ -68,17 +70,21 @@ const fetchedMessages: Array<MessageType> = [
 ];
 
 const fetechedUser: User = {
-  id:"101",
+  id: "101",
   name: "LinkedIn",
   role: "Internet sunnyvale,CA",
-  img:"https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png",
+  img: "https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png",
 };
 
 export const MessagePage: FC<MessagePageProps> = () => {
-  const user = fetechedUser;
+  const users = fetechedUser;
+  const { user } = useUserContext();
+  console.log(user);
+  // alert(user);
   return (
-    <CardContainerWithFollow user={user}>
+    <CardContainerWithFollow user={users}>
       {/* <UserMessages messagesList={fetchedMessages} className="mt-9" /> */}
+      {/* <MessageApp /> */}
       <CompanyMessages messagesList={fetchedMessages} className="mt-9" />
     </CardContainerWithFollow>
     // <div className="flex justify-center main ">

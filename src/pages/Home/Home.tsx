@@ -6,10 +6,10 @@ import "../../components/Responsive.Style.scss";
 import { CardContainerWithFollow } from "../../components/Card/CardContainer";
 import { UserPost } from "./components/UserPost";
 
-interface HomeProps {}
+// interface HomeProps {}
 
 const fetechedUser: User = {
-  id:"1",
+  id: "1",
   name: "farzaneh",
   role: "Developer",
   img: "https://picsum.photos/id/1005/40",
