@@ -26,6 +26,8 @@ type FormValues = {
   image?: File;
 };
 
+
+
 export const CreatePost = ({ user }: CreatePostProps) => {
   const [createpost, { error }] = useMutation(CREATE_POST_MUTATION);
 
@@ -93,19 +95,3 @@ export const CreatePost = ({ user }: CreatePostProps) => {
   );
 };
 
-{
-  /* <Uploader
-                  name="video"
-                  labelname="Video"
-                  typeacc="video/*"
-                  seturl={seturl}
-                  setvideo={setVideo}
-                />
-                <Uploader
-                  name="photo"
-                  labelname="Photo"
-                  typeacc="image/*"
-                  seturl={seturl}
-                  setvideo={setVideo}
-                /> */
-}

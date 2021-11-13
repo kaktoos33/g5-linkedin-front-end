@@ -3,8 +3,7 @@ import { ReactComponent as PhotoSVG } from "../../../images/pic.svg";
 import { ReactComponent as VideoSVG } from "../../../images/video.svg";
 import { FileInput } from "./FileInput";
 
-export const Uploader = (props: { label: string; name: string }) => {
-  const { label, name, ...rest } = props;
+export const Uploader = ({ label, name, ...rest }: { label: string; name: string }) => {
 
   return (
     <label className="inline-flex float-right p-2 text-base font-medium text-gray-600 cursor-pointer ml-11 rounded-xl uploder">

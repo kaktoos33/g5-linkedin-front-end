@@ -1,4 +1,4 @@
-import { Form, Formik } from "formik";
+import { Field, Form, Formik } from "formik";
 import React from "react";
 import { Button } from "../../../components/Buttun/Button";
 import { Card } from "../../../components/Card/Card";
@@ -9,12 +9,11 @@ import { TagItem } from "../../../components/Tag/TagItem";
 import { Tag } from "../../../components/Tag/Tag.types";
 import { useMutation } from "@apollo/react-hooks";
 import { C_CREATE_POST_MUTATION } from "../graphql/mutations";
-import SelectTag from "./SelectTag";
+import { SelectTag } from "./SelectTag";
 
 interface CompanyCreatePostProps {
   user: User;
 }
-
 
 const initialValues = {
   text: "",
@@ -26,12 +25,54 @@ type FormValues = {
   tags: Array<string>;
 };
 
-export const CompanyCreatePost = ({ user }: CompanyCreatePostProps) => {
+const fetechedTag: Array<Tag> = [
+  { name: "work" },
+  { name: "business" },
+  { name: "hr" },
+  { name: "userinterface" },
+  { name: "digital" },
+  { name: "userexperience" },
+  { name: "ux" },
+  { name: "ui" },
+  { name: "freelance" },
+];
+const TagOptions = [
+  {
+    label: "Chinese",
+    value: "zh-CN"
+  },
+  {
+    label: "English (US)",
+    value: "en-US"
+  },
+  {
+    label: "English (GB)",
+    value: "en-GB"
+  },
+  {
+    label: "French",
+    value: "fr-FR"
+  },
+  {
+    label: "Spanish",
+    value: "es-ES"
+  }
+];
+// interface TagOption {
+//   readonly value: string;
+//   readonly label: string;
+// }
+// const TagOptions: readonly TagOption[] = fetechedTag.map((a, index) => ({
+//   value: `${a.name}`,
+//   label: `#${a.name}`,
+// }));
 
-  
+export const CompanyCreatePost = ({ user }: CompanyCreatePostProps) => {
   const [createpost, { error }] = useMutation(C_CREATE_POST_MUTATION);
-  const onSubmit = (values: FormValues) => {
+  const onSubmit = (values: FormValues, onSubmitProps: any) => {
+    console.log(values);
     //addpost(values);
+    onSubmitProps.resetForm();
   };
 
   const addpost = (text: string, tags?: string) => {
@@ -60,7 +101,15 @@ export const CompanyCreatePost = ({ user }: CompanyCreatePostProps) => {
 
               <PostInput title="درخواست نیرو ..." />
               <div dir="ltr" className="mb-4 mx-7">
-                <SelectTag />
+                <Field 
+                  className="Select_Tag"
+                  name="tags"
+                  options={TagOptions}
+                  component={SelectTag}
+                  placeholder="Select..."
+                  isMulti={true}
+                />
+                
               </div>
 
               <div
