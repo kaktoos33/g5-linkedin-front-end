@@ -50,9 +50,7 @@ const usePasswordToggle = () => {
 
     const [visible, setVisibility] = useState(false);
     const Icon = (
-        <FontAwesomeIcon icon={visible ? faEye : faEyeSlash}
-                         onClick={() => setVisibility(visible => !visible)}
-        ></FontAwesomeIcon>
+        <FontAwesomeIcon icon={visible ? faEye : faEyeSlash} onClick={() => setVisibility(visible => !visible)}></FontAwesomeIcon>
 
     )
     const InputType = visible ? "text" : "password";
