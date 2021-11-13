@@ -25,7 +25,7 @@ export const ButtonSecondary = (props:ButtonPropsType) => {
     }
 
     return (
-        <div className="w-full mx-auto text-center register-button">
+        <div className="w-full mx-auto text-center button-secondary-container">
             <button onClick={handleClick} className="button button-secondary w-5/6">{ props.name }</button>
         </div>
     );
