@@ -18,8 +18,8 @@ export const UPDATE_LIKE_MUTATION = gql`
 `;
 
 export const C_CREATE_POST_MUTATION = gql`
-  mutation createpost($text: String!, $tag:[String]) {
-    createpost(text: $text, tag: $tag) {
+  mutation createpost($text: String!, $tags:String) {
+    createpost(text: $text, tag: $tags) {
       text
       tag
     }

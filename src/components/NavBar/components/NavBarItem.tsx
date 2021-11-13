@@ -2,6 +2,7 @@ import {
   AnchorHTMLAttributes,
   DetailedHTMLProps,
   FC,
+  useCallback,
   useEffect,
   useState,
 } from "react";
@@ -18,31 +19,34 @@ interface NavBarItemProps
   children?: React.ReactNode;
 }
 
-export const NavBarItem: FC<NavBarItemProps> = (props: NavBarItemProps) => {
+export const NavBarItem: FC<NavBarItemProps> = ({
+  referTo,
+  ...props
+}: NavBarItemProps) => {
   const history = useHistory();
-  let loc: string = useLocation().pathname;
-  if (loc.trim() === "/") loc = "/home";
+  const loc: string = useLocation().pathname;
+  const location = loc.trim() === "/" ? "/home" : loc;
   const [style, setStyle] = useState(
     props.alarmBadge ? "alarmNotSelected" : "notSelected"
   );
-  const setSel = () => {
-    loc.trim() === props.referTo.trim()
+  const setSel = useCallback(() => {
+    location.trim() === referTo.trim()
       ? setStyle(props.alarmBadge ? "alarmSelected" : "selected")
       : setStyle(props.alarmBadge ? "alarmNotSelected" : "notSelected");
     console.log(style);
     // console.log(props.referTo);
-  };
+  }, [location, props.alarmBadge, referTo, style]);
+
   useEffect(() => {
-    console.log("avaz shod be ");
     setSel();
     console.log(style);
-  }, [loc]);
+  }, [location, setSel, style]);
   return (
     <div className="iconItem">
       <a
         {...props}
         onClick={() => {
-          history.push(props.referTo);
+          history.push(referTo);
         }}
         className={`${style} ${props.className}`}
       >

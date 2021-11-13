@@ -6,10 +6,10 @@ import "../../components/Responsive.Style.scss";
 import { CardContainerWithFollow } from "../../components/Card/CardContainer";
 import { UserPost } from "./components/UserPost";
 
-interface HomeProps {}
+// interface HomeProps {}
 
 const fetechedUser: User = {
-  id:"1",
+  id: "1",
   name: "farzaneh",
   role: "Developer",
   img: "https://picsum.photos/id/1005/40",
@@ -17,12 +17,6 @@ const fetechedUser: User = {
 export const Home = () => {
   const user = fetechedUser;
 
-  // const { loading, error, data } = useQuery<Array<Post>>(GET_POSTS);
-
-  // const posts = React.useMemo(
-  //     () => !loading && data && data.map((a) => <UserPost post={a} />),
-  //     [loading, data]
-  // );
   return (
     <CardContainerWithFollow user={user}>
       <CreatePost user={user} />

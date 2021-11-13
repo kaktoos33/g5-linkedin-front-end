@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { createContext, useMemo, useState } from "react";
 import "../../../variables/variables.scss";
 import { useMutation } from "react-apollo";
 import { User } from "../../../components/UserCard/types/User.types";
@@ -9,41 +9,43 @@ import { Formik, Form } from "formik";
 import { Card } from "../../../components/Card/Card";
 import { Button } from "../../../components/Buttun/Button";
 import { PostInput } from "./PostInput";
+import { ShowMedia } from "./ShowMedia";
 
 interface CreatePostProps {
   user: User;
 }
 const initialValues = {
   text: "",
-  video: "",
-  photo: "",
+  video: undefined,
+  image: undefined,
 };
 
 type FormValues = {
   text: string;
-  video: string;
-  photo: string;
+  video?: File;
+  image?: File;
 };
+
+
+
 export const CreatePost = ({ user }: CreatePostProps) => {
   const [createpost, { error }] = useMutation(CREATE_POST_MUTATION);
-  const [url, seturl] = useState("");
-  const [video, setVideo] = useState("");
+
   const onSubmit = (values: FormValues, onSubmitProps: any) => {
     console.log(values);
 
-    if (values.photo || values.video) {
-      values.photo
-        ? addpost(values.text, values.photo)
-        : addpost(values.text, values.video);
-    } else {
-      addpost(values.text);
-    }
+    // if (values.image || values.video) {
+    //   values.image
+    //     ? addpost(values.text, values.image)
+    //     : addpost(values.text, values.video);
+    // } else {
+    //   addpost(values.text);
+    // }
     onSubmitProps.resetForm();
-    seturl("");
-    setVideo("");
+    console.log("after rest",values);
   };
 
-  const addpost = (text: any, file?: any) => {
+  const addpost = (text: string, file?: any) => {
     createpost({
       variables: {
         text: text,
@@ -67,19 +69,9 @@ export const CreatePost = ({ user }: CreatePostProps) => {
                 componentname="Create_Post"
                 image_size="M"
               />
-
               <PostInput title="چیزی بنویس ..." />
 
-              {(url || video) && (
-                <div className="flex justify-center my-5 mx-9 border-1 ">
-                  {url && <img className="rounded-3xl" src={url} alt="" />}
-                  {video && (
-                    <video className="rounded-3xl" controls>
-                      <source src={video} />
-                    </video>
-                  )}
-                </div>
-              )}
+              <ShowMedia />
 
               <div dir="ltr" className="py-2.5 px-7 rounded-b-3xl send-box">
                 <Button
@@ -92,20 +84,8 @@ export const CreatePost = ({ user }: CreatePostProps) => {
                   ارسال
                 </Button>
 
-                <Uploader
-                  name="video"
-                  labelname="Video"
-                  typeacc="video/*"
-                  seturl={seturl}
-                  setvideo={setVideo}
-                />
-                <Uploader
-                  name="photo"
-                  labelname="Photo"
-                  typeacc="image/*"
-                  seturl={seturl}
-                  setvideo={setVideo}
-                />
+                <Uploader label="Video" name="video" />
+                <Uploader label="Photo" name="image" />
               </div>
             </Card>
           </Form>
@@ -114,3 +94,4 @@ export const CreatePost = ({ user }: CreatePostProps) => {
     </Formik>
   );
 };
+
