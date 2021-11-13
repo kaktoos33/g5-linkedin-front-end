@@ -1,0 +1,10 @@
+@import "./src/variables/variables.scss";
+.register-cart {
+    margin-top: 20px;
+    width: 498px;
+    background: $whiteColor;
+    border-radius: 0 24px 24px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
