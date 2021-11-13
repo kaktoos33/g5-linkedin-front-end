@@ -15,7 +15,8 @@ import { UserContextProvider } from "./UserContext";
 
 const httpLink = createHttpLink({
   // uri: "https://test_backend:8080/graphql",
-  uri: "/graphql",
+  uri: "https://api.g5.stagement.ir/graphql",
+  // uri: "/graphql",
   // uri: "/graphql",
   fetchOptions: {
     mode: "no-cors",
