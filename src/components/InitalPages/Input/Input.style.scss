@@ -2,9 +2,9 @@
 
 //  ----------------------------------- STRING INPUT
 .string_input{
-  width: 75%;
+  //width: 75%;
   align-items: center;
-  margin: 15px auto;
+  margin-top: 15px;
 
 }
 
@@ -26,7 +26,7 @@
 
 // Email Input
 .email_input{
-  width: 75%;
+  //width: 75%;
   align-items: center;
   display: flex;
   position: relative;
@@ -60,13 +60,13 @@
 
 .password_input{
   //height: 40px;
-  width: 75%;
+  //width: 75%;
   align-items: center;
   display: flex;
   position: relative;
   //border: 1px solid #61dafb;
-  margin: 10px auto;
   //margin: 10px auto;
+  margin: 10px auto;
   //display: flex;
 }
 .password_input .eyeIcon{
@@ -106,23 +106,24 @@
 //  ----------------------------------- CHECK BOX
 
 .checkbox_input{
+  //text-align: center;
+}
+.checkbox_input label{
   text-align: center;
   display: flex;
-  position: relative;
-  padding-top: 10px;
+  flex-direction: row;
+  width: fit-content;
+  height: fit-content;
+  margin-top: 15px;
 }
-
 .checkbox_input input[type=checkbox] {
   -webkit-appearance: none;
   -moz-appearance: none;
-  //position: absolute;
-  //left: 50%;
   width: 29px;
   height: 29px;
   border: 1px solid #D0D0D0;
   border-radius: 8px;
-  position: absolute;
-  right: 65px;
+
 }
 
 .checkbox_input input[type=checkbox]:checked {
@@ -130,12 +131,8 @@
 }
 
 input[type=checkbox]:checked:after {
-  //margin-left: 100px;
   margin-right: 7px;
-  //margin-left: 10mm;
-  //margin-top: -4mm;
   margin-top: 1px;
-  //margin-top: -0.4mm;
   width: 3mm;
   height: 5mm;
   border: solid white;
@@ -154,8 +151,6 @@ input[type=checkbox]:checked:after {
   font-weight: 500;
   font-size: 14px;
   padding-right: 20px;
-  position: absolute;
-  right: 85px;
   margin-top: 7px;
 
 }

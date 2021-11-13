@@ -10,13 +10,14 @@
     background: $backGroundColor;
     display: flex;
     justify-content: center;
+
     align-items: center;
 }
 
 .cart-initial-pages {
     //margin-top: 20px;
     margin: 0;
-    padding: 0;
+    padding: 0 50px;
     width: 498px;
     background: $whiteColor;
     border-radius: 0 24px 24px 0;
