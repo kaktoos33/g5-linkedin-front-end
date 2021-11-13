@@ -1,5 +1,5 @@
 @import "./src/variables/variables.scss";
-.register-cart {
+.cart-initial-pages {
     //margin-top: 20px;
     margin: 0;
     padding: 0;
@@ -13,8 +13,9 @@
 
 /* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
 @media screen and (max-width: 600px) {
-    .register-cart {
+    .cart-initial-pages {
         width: 100%;
         height: 100%;
+        border-radius: 0;
     }
 }
