@@ -1,8 +1,9 @@
-import React, { createContext, useMemo, useState } from "react";
+import React from "react";
 import "../../../variables/variables.scss";
 import { useMutation } from "react-apollo";
 import { User } from "../../../components/UserCard/types/User.types";
 import { CREATE_POST_MUTATION } from "../graphql/mutations";
+import { UPLOAD_FILE_MUTATION } from "../graphql/mutations";
 import { Uploader } from "./Uploader";
 import { UserCard } from "../../../components/UserCard/UserCard";
 import { Formik, Form } from "formik";
@@ -15,13 +16,13 @@ interface CreatePostProps {
   user: User;
 }
 const initialValues = {
-  text: "",
+  content: "",
   video: undefined,
   image: undefined,
 };
 
 type FormValues = {
-  text: string;
+  content: string;
   video?: File;
   image?: File;
 };
@@ -30,33 +31,58 @@ type FormValues = {
 
 export const CreatePost = ({ user }: CreatePostProps) => {
   const [createpost, { error }] = useMutation(CREATE_POST_MUTATION);
+  const [uploadFile] = useMutation(UPLOAD_FILE_MUTATION, {
+    onCompleted:data => console.log(data)
+  })
 
   const onSubmit = (values: FormValues, onSubmitProps: any) => {
     console.log(values);
 
     // if (values.image || values.video) {
     //   values.image
-    //     ? addpost(values.text, values.image)
-    //     : addpost(values.text, values.video);
+    //     ? addpost(values.content, values.image)
+    //     : addpost(values.content, values.video);
     // } else {
-    //   addpost(values.text);
+    //   addpost(values.content);
     // }
+    //addpost(values.content);
+   values.image && addfile(values.image);
     onSubmitProps.resetForm();
-    console.log("after rest",values);
+    console.log("after reset",values);
   };
 
-  const addpost = (text: string, file?: any) => {
+  const addpost = (content: string) => {
     createpost({
       variables: {
-        text: text,
-        file: file,
+        content: content
       },
     });
-    console.log(`this is text ${text}`);
+    console.log(`this is content ${content}`);
     if (error) {
       console.log(error);
     }
   };
+
+  const addfile = (image: File) => {
+    uploadFile({variables:image})
+  ;
+    console.log("this is content image");
+    if (error) {
+      console.log(error);
+    }
+  };
+  // const addpost = (content: string, file?: any) => {
+  //   createpost({
+  //     variables: {
+  //       content: content,
+  //       file: file,
+  //     },
+  //   });
+  //   console.log(`this is content ${content}`);
+  //   if (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   return (
     <Formik initialValues={initialValues} onSubmit={onSubmit}>

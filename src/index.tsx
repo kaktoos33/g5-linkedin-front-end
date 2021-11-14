@@ -13,6 +13,8 @@ import { InMemoryCache } from "apollo-cache-inmemory";
 import { createHttpLink } from "apollo-link-http";
 import { setContext } from "apollo-link-context";
 import { UserContextProvider } from "./UserContext";
+//import { createUploadLink } from 'apollo-upload-client';
+
 
 const httpLink = createHttpLink({
   // uri: "https://api.g5.stagement.ir/graphql",

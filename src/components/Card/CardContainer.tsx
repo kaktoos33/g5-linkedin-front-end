@@ -69,7 +69,7 @@ const CardContainer = ({
       <div id="center" className="w-3/5 max-w-xl mx-3.5 mt-9">
         {children}
       </div>
-      <div id="left" className="w-1/5 max-w-xs">
+      <div id="left" className="w-1/5 max-w-xs mt-9">
         <Tags Taglist={fetechedTag} />
       </div>
     </div>

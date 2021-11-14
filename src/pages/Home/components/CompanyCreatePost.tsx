@@ -9,20 +9,20 @@ import { TagItem } from "../../../components/Tag/TagItem";
 import { Tag } from "../../../components/Tag/Tag.types";
 import { useMutation } from "@apollo/react-hooks";
 import { C_CREATE_POST_MUTATION } from "../graphql/mutations";
-import { SelectTag } from "./SelectTag";
+import  {CreatableMulti}  from "./SelectTag";
 
 interface CompanyCreatePostProps {
   user: User;
 }
 
 const initialValues = {
-  text: "",
+  content: "",
   tags: [],
 };
 
 type FormValues = {
-  text: string;
-  tags: Array<string>;
+  content: string;
+  tags:Array<string>;
 };
 
 const fetechedTag: Array<Tag> = [
@@ -36,36 +36,15 @@ const fetechedTag: Array<Tag> = [
   { name: "ui" },
   { name: "freelance" },
 ];
-const TagOptions = [
-  {
-    label: "Chinese",
-    value: "zh-CN"
-  },
-  {
-    label: "English (US)",
-    value: "en-US"
-  },
-  {
-    label: "English (GB)",
-    value: "en-GB"
-  },
-  {
-    label: "French",
-    value: "fr-FR"
-  },
-  {
-    label: "Spanish",
-    value: "es-ES"
-  }
-];
-// interface TagOption {
-//   readonly value: string;
-//   readonly label: string;
-// }
-// const TagOptions: readonly TagOption[] = fetechedTag.map((a, index) => ({
-//   value: `${a.name}`,
-//   label: `#${a.name}`,
-// }));
+
+interface TagOption {
+  readonly value: string;
+  readonly label: string;
+}
+const TagOptions: readonly TagOption[] = fetechedTag.map((a, index) => ({
+  value: `${a.name}`,
+  label: `#${a.name}`,
+}));
 
 export const CompanyCreatePost = ({ user }: CompanyCreatePostProps) => {
   const [createpost, { error }] = useMutation(C_CREATE_POST_MUTATION);
@@ -75,14 +54,14 @@ export const CompanyCreatePost = ({ user }: CompanyCreatePostProps) => {
     onSubmitProps.resetForm();
   };
 
-  const addpost = (text: string, tags?: string) => {
+  const addpost = (content: string, tags?:string) => {
     createpost({
       variables: {
-        text: text,
+        content: content,
         tags: tags,
       },
     });
-    console.log(`this is text ${text}`);
+    console.log(`this is content ${content}`);
     if (error) {
       console.log(error);
     }
@@ -105,9 +84,7 @@ export const CompanyCreatePost = ({ user }: CompanyCreatePostProps) => {
                   className="Select_Tag"
                   name="tags"
                   options={TagOptions}
-                  component={SelectTag}
-                  placeholder="Select..."
-                  isMulti={true}
+                  component={CreatableMulti}
                 />
                 
               </div>
