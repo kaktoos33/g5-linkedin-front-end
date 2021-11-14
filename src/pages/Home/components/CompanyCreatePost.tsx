@@ -9,22 +9,21 @@ import { TagItem } from "../../../components/Tag/TagItem";
 import { Tag } from "../../../components/Tag/Tag.types";
 import { useMutation } from "@apollo/react-hooks";
 import { C_CREATE_POST_MUTATION } from "../graphql/mutations";
-import  {CreatableMulti}  from "./SelectTag";
+import { CreatableMulti , Option } from "./SelectTag";
 
 interface CompanyCreatePostProps {
   user: User;
 }
 
+type FormValues = {
+  content: string;
+  tags: string[];
+};
+
 const initialValues = {
   content: "",
   tags: [],
 };
-
-type FormValues = {
-  content: string;
-  tags:Array<string>;
-};
-
 const fetechedTag: Array<Tag> = [
   { name: "work" },
   { name: "business" },
@@ -36,25 +35,33 @@ const fetechedTag: Array<Tag> = [
   { name: "ui" },
   { name: "freelance" },
 ];
-
-interface TagOption {
-  readonly value: string;
-  readonly label: string;
-}
-const TagOptions: readonly TagOption[] = fetechedTag.map((a, index) => ({
+const tagOptions: readonly Option[]= fetechedTag.map((a, index) => ({
   value: `${a.name}`,
   label: `#${a.name}`,
 }));
+// const tagOptions = [
+//   { value: "work", label: "#work" },
+//   { value: "business", label: "#business" },
+//   { value: "hr", label: "#hr" },
+//   { value: "userinterface", label: "#userinterface" },
+//   { value: "digital", label: "#digital" },
+//   { value: "userexperience", label: "#userexperience" },
+//   { value: "ux", label: "#ux" },
+//   { value: "ui", label: "#ui" },
+//   { value: "freelance", label: "#freelance" },
+// ];
 
 export const CompanyCreatePost = ({ user }: CompanyCreatePostProps) => {
   const [createpost, { error }] = useMutation(C_CREATE_POST_MUTATION);
   const onSubmit = (values: FormValues, onSubmitProps: any) => {
     console.log(values);
     //addpost(values);
+    console.log("fetech tag is:", fetechedTag)
+    console.log("option tag is:", tagOptions)
     onSubmitProps.resetForm();
   };
 
-  const addpost = (content: string, tags?:string) => {
+  const addpost = (content: string, tags?: string) => {
     createpost({
       variables: {
         content: content,
@@ -80,13 +87,12 @@ export const CompanyCreatePost = ({ user }: CompanyCreatePostProps) => {
 
               <PostInput title="درخواست نیرو ..." />
               <div dir="ltr" className="mb-4 mx-7">
-                <Field 
+                <Field
                   className="Select_Tag"
                   name="tags"
-                  options={TagOptions}
+                  options={tagOptions}
                   component={CreatableMulti}
                 />
-                
               </div>
 
               <div
@@ -110,3 +116,11 @@ export const CompanyCreatePost = ({ user }: CompanyCreatePostProps) => {
     </Formik>
   );
 };
+
+
+
+// interface TagOption {
+//   readonly value: string;
+//   readonly label: string;
+// }
+

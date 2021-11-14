@@ -45,8 +45,8 @@ export const CreatePost = ({ user }: CreatePostProps) => {
     // } else {
     //   addpost(values.content);
     // }
-    //addpost(values.content);
-   values.image && addfile(values.image);
+    addpost(values.content);
+   //values.image && addfile(values.image);
     onSubmitProps.resetForm();
     console.log("after reset",values);
   };

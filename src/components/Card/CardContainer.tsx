@@ -17,39 +17,39 @@ const fetechedTag: Array<Tag> = [
   { name: "freelance" },
 ];
 
-const fetechedConnectReq: Array<User> =  [
+const fetechedConnectReq: Array<User> = [
   {
-    id:"2",
+    id: "2",
     name: "AmirBahador",
     role: "Devops",
     img: "https://picsum.photos/id/2/40",
   },
   {
-    id:"3",
+    id: "3",
     name: "Mehdi",
     role: "FrontEnd Developer",
     img: "",
   },
   {
-    id:"4",
+    id: "4",
     name: "Sina",
     role: "BackEnd Developer",
     img: "https://picsum.photos/id/175/40",
   },
   {
-    id:"5",
+    id: "5",
     name: "Mehrdad",
     role: "SEO",
     img: "https://picsum.photos/id/250/40",
   },
   {
-    id:"6",
+    id: "6",
     name: "Neda",
     role: "Manager",
     img: "",
   },
   {
-    id:"7",
+    id: "7",
     name: "Mahour",
     role: "UI/UX Designer",
     img: "https://picsum.photos/id/1014/40",
@@ -78,14 +78,14 @@ const CardContainer = ({
 
 export const CardContainerWithFollow = ({
   children,
-  user
+  user,
 }: {
   children: JSX.Element | JSX.Element[];
   user: User;
 }) => (
   <CardContainer
     right={
-      <div id="right" className="w-1/5 max-w-xs ">
+      <div id="right" className="w-1/5 max-w-xs mt-9 ">
         <UserProfile user={user} />
         <FollowReq
           connecetlist={fetechedConnectReq}
@@ -102,14 +102,14 @@ export const CardContainerWithFollow = ({
 
 export const CardContainerWithoutFollow = ({
   children,
-  user
+  user,
 }: {
   children: JSX.Element | JSX.Element[];
   user: User;
 }) => (
   <CardContainer
     right={
-      <div id="right" className="w-1/5 max-w-xs ">
+      <div id="right" className="w-1/5 max-w-xs mt-9">
         <UserProfile user={user} />
       </div>
     }
