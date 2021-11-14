@@ -5,7 +5,6 @@ import { Card } from "../../../components/Card/Card";
 import { User } from "../../../components/UserCard/types/User.types";
 import { UserCard } from "../../../components/UserCard/UserCard";
 import { PostInput } from "./PostInput";
-import { TagItem } from "../../../components/Tag/TagItem";
 import { Tag } from "../../../components/Tag/Tag.types";
 import { useMutation } from "@apollo/react-hooks";
 import { C_CREATE_POST_MUTATION } from "../graphql/mutations";
@@ -39,17 +38,6 @@ const tagOptions: readonly Option[]= fetechedTag.map((a, index) => ({
   value: `${a.name}`,
   label: `#${a.name}`,
 }));
-// const tagOptions = [
-//   { value: "work", label: "#work" },
-//   { value: "business", label: "#business" },
-//   { value: "hr", label: "#hr" },
-//   { value: "userinterface", label: "#userinterface" },
-//   { value: "digital", label: "#digital" },
-//   { value: "userexperience", label: "#userexperience" },
-//   { value: "ux", label: "#ux" },
-//   { value: "ui", label: "#ui" },
-//   { value: "freelance", label: "#freelance" },
-// ];
 
 export const CompanyCreatePost = ({ user }: CompanyCreatePostProps) => {
   const [createpost, { error }] = useMutation(C_CREATE_POST_MUTATION);
@@ -116,11 +104,3 @@ export const CompanyCreatePost = ({ user }: CompanyCreatePostProps) => {
     </Formik>
   );
 };
-
-
-
-// interface TagOption {
-//   readonly value: string;
-//   readonly label: string;
-// }
-
