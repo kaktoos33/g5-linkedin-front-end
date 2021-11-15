@@ -10,8 +10,8 @@ import { LoginQuery } from "./Login.query";
 
 import { EmailInput, PasswordlInput } from "./components/Input/Input";
 import { PrimaryButton, SecondaryButton } from "./components/Button/Button";
-import { gql } from "apollo-boost";
-import { useMutation } from "react-apollo";
+import { gql } from  "@apollo/client"
+import { useMutation } from  "@apollo/client"
 import { Link, useHistory } from "react-router-dom";
 import "./Login.style.scss";
 interface LoginProps {

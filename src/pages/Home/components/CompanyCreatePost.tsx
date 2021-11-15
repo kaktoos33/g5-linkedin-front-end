@@ -6,7 +6,7 @@ import { User } from "../../../components/UserCard/types/User.types";
 import { UserCard } from "../../../components/UserCard/UserCard";
 import { PostInput } from "./PostInput";
 import { Tag } from "../../../components/Tag/Tag.types";
-import { useMutation } from "@apollo/react-hooks";
+import { useMutation } from "@apollo/client";
 import { C_CREATE_POST_MUTATION } from "../graphql/mutations";
 import { CreatableMulti , Option } from "./SelectTag";
 
@@ -16,7 +16,7 @@ interface CompanyCreatePostProps {
 
 type FormValues = {
   content: string;
-  tags: string[];
+  tags?: string[];
 };
 
 const initialValues = {
@@ -43,13 +43,11 @@ export const CompanyCreatePost = ({ user }: CompanyCreatePostProps) => {
   const [createpost, { error }] = useMutation(C_CREATE_POST_MUTATION);
   const onSubmit = (values: FormValues, onSubmitProps: any) => {
     console.log(values);
-    //addpost(values);
-    console.log("fetech tag is:", fetechedTag)
-    console.log("option tag is:", tagOptions)
+    addpost(values.content,values.tags);
     onSubmitProps.resetForm();
   };
 
-  const addpost = (content: string, tags?: string) => {
+  const addpost = (content: string, tags?: string[]) => {
     createpost({
       variables: {
         content: content,

@@ -1,8 +1,8 @@
-import { gql } from "apollo-boost";
+import { gql } from  "@apollo/client";
 
 export const CREATE_POST_MUTATION = gql`
-  mutation createpost ($content: String!) {
-    newUserPost(newUserPostRequest:{content:$content}){
+  mutation newUserPost ($content:String,$file:Upload) {
+    newUserPost(newUserPostRequest:{content:$content , file:$file}){
     success
     message
   }
@@ -26,7 +26,7 @@ export const UPDATE_LIKE_MUTATION = gql`
 `;
 
 export const C_CREATE_POST_MUTATION = gql`
-  mutation createpost($content: String!, $tags:String) {
+  mutation companypost($content: String!, $tags:[String]!) {
     newCompanyPost(newCompanyPostRequest:{content:$content,tags:$tags}){
     success
     message

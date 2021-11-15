@@ -1,6 +1,6 @@
 import React from "react";
 import CreatableSelect from "react-select/creatable";
-import { ActionMeta, OnChangeValue } from "react-select";
+import { ActionMeta, OnChangeValue, StylesConfig } from "react-select";
 import { FieldProps } from "formik";
 
 export interface Option {
@@ -13,6 +13,17 @@ interface CreatableMultiProps extends FieldProps {
   className?: string;
 }
 
+const Style: StylesConfig<Option, true> = {
+  multiValue: (styles, { data }) => ({
+      ...styles,
+      backgroundColor: "#e9f0f8",
+
+  }),
+  multiValueLabel: (styles, { data }) => ({
+    ...styles,
+    fontSize:"12px"
+  })
+};
 export const CreatableMulti = ({
   className,
   field,
@@ -40,7 +51,7 @@ export const CreatableMulti = ({
       isMulti
       onChange={handleChange}
       options={options}
+      styles={Style}
     />
   );
 };
-
