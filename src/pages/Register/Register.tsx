@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import { FunctionComponent } from 'react';
-import {Cart} from "./components/cart/Cart";
-import {Header} from "./components/header/Header";
-import {CheckBoxInput, EmailInput, PassInput} from "./components/input/Input";
-import {ButtonPrimary, ButtonSecondary} from "./components/button/Button";
+import {Cart} from "../../components/InitalPages/Cart/Cart";
+import {Header} from "../../components/InitalPages/Header/Header";
+import {CheckBoxInput, EmailInput, PassInput} from "../../components/InitalPages/Input/Input";
+import {ButtonPrimary, ButtonSecondary} from "../../components/InitalPages/Button/Button";
 import "./Register.style.scss"
 import { Formik, Field, Form , FormikHelpers} from 'formik';
 import {RegisterFormInput} from './Register.type';
@@ -13,6 +13,7 @@ import {useMutation} from "react-apollo";
 import {ErrorHandel} from "./components/error/Error";
 import {gql} from "apollo-boost";
 import {ErrorMessage, useField} from "formik";
+import {Status} from "../../components/InitalPages/Description/Description";
 
 interface RegisterQueryProps {
     email: string;
@@ -54,9 +55,9 @@ export const Register : FunctionComponent = () => {
     });
     return (
 
-        <div className="h-screen register">
+        <div className="register cart-container">
             <Cart>
-                <Header />
+                <Header name={"ثبت نام"}/>
 
                 <Formik
                     initialValues={{
@@ -84,19 +85,15 @@ export const Register : FunctionComponent = () => {
                             <p>
                                 <ErrorMessage name={"password"} />
                             </p>
-
-                            {/*<ErrorMessage name={"password"} />*/}
                         </ErrorHandel>
-                        <ButtonPrimary />
+                        <ButtonPrimary name={"ثبت نام"}/>
 
                     </Form>
                 </Formik>
-                <div className={"register_redirect_login"}>
-                    <p>عضو هستم</p>
-                </div>
-                <ButtonSecondary />
+
+                <Status name={"عضو هستم"} />
+                <ButtonSecondary name={"ورود"}/>
             </Cart>
-            {/*<MyForm />*/}
 
         </div>
     );

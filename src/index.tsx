@@ -1,4 +1,3 @@
-
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
@@ -18,8 +17,9 @@ const httpLink = createHttpLink({
   // uri: "https://test_backend:8080/graphql",
   uri: "https://api.g5.stagement.ir/graphql",
   // uri: "/graphql",
+  // uri: "/graphql",
   fetchOptions: {
-    mode: 'no-cors',
+    mode: "no-cors",
   },
 });
 
@@ -50,12 +50,8 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 });
 
 const client = new ApolloClient({
-
-  link: ApolloLink.from([errorLink, authLink, httpLink]
-
-  ),
+  link: ApolloLink.from([errorLink, authLink, httpLink]),
   cache: new InMemoryCache(),
-
 });
 
 ReactDOM.render(

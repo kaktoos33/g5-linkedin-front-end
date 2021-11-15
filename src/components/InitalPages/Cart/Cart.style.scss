@@ -1,0 +1,37 @@
+@import "./src/variables/variables.scss";
+
+.cart-container{
+    height: 100vh;
+    width: 100vw;
+    //left: 0;
+    //top: 0;
+    overflow: hidden;
+    //position: fixed;
+    background: $backGroundColor;
+    display: flex;
+    justify-content: center;
+
+    align-items: center;
+}
+
+.cart-initial-pages {
+    //margin-top: 20px;
+    margin: 0;
+    padding: 0 50px;
+    width: 498px;
+    background: $whiteColor;
+    border-radius: 0 24px 24px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+///* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
+@media screen and (max-width: 498px) {
+    .cart-initial-pages {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+    }
+}
