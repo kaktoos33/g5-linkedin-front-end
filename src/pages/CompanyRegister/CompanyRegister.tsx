@@ -18,7 +18,7 @@ interface RegisterQueryProps {
 
 const COMPANY_REGISTER_MUTATION = gql`
     mutation CompanyRegisterMutation($name: String!, $description: String) {
-        signupCompany(CompanySignupRequest: { name: $name, description: $description}) {
+        companySignup(companySignupRequest: { name: $name, description: $description}) {
             success
             message
         }
@@ -32,13 +32,13 @@ export const CompanyRegister : FunctionComponent = () => {
         name: "",
         description: "",
     });
-    const [signupCompany] = useMutation(COMPANY_REGISTER_MUTATION, {
+    const [companySignup] = useMutation(COMPANY_REGISTER_MUTATION, {
         variables: {
             name: formState.name,
             description: formState.description,
         },
-        onCompleted: ({ register }) => {
-            history.push("/login");
+        onCompleted: ({ companySignup }) => {
+            history.push("/companyhome");
         },
         onError: (error) => {
             console.log(error.message);
@@ -61,7 +61,7 @@ export const CompanyRegister : FunctionComponent = () => {
                         { setSubmitting }: FormikHelpers<RegisterFormInput>
                     ) => {
                         setFormState({ name: values.name , description: values.description });
-                        signupCompany();
+                        companySignup();
                     }}
                 >
                     <Form>
