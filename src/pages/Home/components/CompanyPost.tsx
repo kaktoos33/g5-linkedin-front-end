@@ -1,5 +1,7 @@
+import { useQuery } from "@apollo/client";
 import React from "react";
 import { User } from "../../../models/User";
+import { GET_COMPANY_POSTS } from "../graphql/query";
 import { CPost } from "../types/CPost.type";
 import { CompanyPostCard } from "./CompanyPostCard";
 interface CompanyPostProps {
@@ -22,7 +24,11 @@ const fetechedPost: Array<CPost> = [
   },
 ];
 
+
+
 export const CompanyPost = ({ user }: CompanyPostProps) => {
+
+  const { data } = useQuery(GET_COMPANY_POSTS);
   const posts = React.useMemo(
     () =>
       fetechedPost.map((a, index) => (
