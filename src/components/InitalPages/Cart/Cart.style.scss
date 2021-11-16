@@ -14,6 +14,8 @@
 
 .cart-initial-pages {
     //margin-top: 20px;
+    //min-height: 75%;
+    min-height: 743px;
     margin-top: 50px;
     margin-bottom: 50px;
     padding: 0 50px 22.5px 50px;
@@ -29,6 +31,9 @@
 ///* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
 @media screen and (max-width: 498px) {
     .cart-initial-pages {
+        min-height: 100vh;
+        margin-top: 0;
+        margin-bottom: 0;
         width: 100%;
         height: 100%;
         border-radius: 0;
