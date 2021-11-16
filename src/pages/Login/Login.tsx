@@ -1,28 +1,18 @@
-import { Form, Formik } from "formik";
-import { FC, useEffect, useState } from "react";
-import {
-  Card,
-  CardAction,
-  CardContent,
-  CardHeader,
-} from "./components/Card/Card";
-import { LoginQuery } from "./Login.query";
-
-import { EmailInput, PasswordlInput } from "./components/Input/Input";
-import { PrimaryButton, SecondaryButton } from "./components/Button/Button";
-import { gql } from  "@apollo/client"
-import { useMutation } from  "@apollo/client"
+import {ErrorMessage, Form, Formik} from "formik";
+import React, { FC, useEffect } from "react";
+import {Cart} from "../../components/InitalPages/Cart/Cart";
+import {Header} from "../../components/InitalPages/Header/Header";
+import {EmailInput, PassInput} from "../../components/InitalPages/Input/Input";
+import {ButtonPrimary, ButtonSecondary} from "../../components/InitalPages/Button/Button";
+import {Status} from "../../components/InitalPages/Description/Description";
+import { gql } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import { Link, useHistory } from "react-router-dom";
 // import "./Login.style.scss";
 import { useUserContext } from "../../UserContext";
 import { User } from "../../models/User";
 import {ErrorHandel} from "../Register/components/error/Error";
 
-import { Header } from "../../components/InitalPages/Header/Header";
-import { PassInput } from "../../components/InitalPages/Input/Input";
-import { ButtonPrimary, ButtonSecondary } from "../../components/InitalPages/Button/Button";
-import { Status } from "../../components/InitalPages/Description/Description";
-import { Cart } from "../../components/InitalPages/Cart/Cart";
 interface LoginProps {
   email?: string;
   password?: string;

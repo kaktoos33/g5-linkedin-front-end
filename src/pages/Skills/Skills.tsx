@@ -2,18 +2,22 @@ import React, {useState} from 'react';
 import { FunctionComponent } from 'react';
 import {Cart} from "../../components/InitalPages/Cart/Cart";
 import {Header} from "../../components/InitalPages/Header/Header";
-import {StringInput} from "../../components/InitalPages/Input/Input";
-import {ButtonPrimary} from "../../components/InitalPages/Button/Button";
-import "./CompanyRegister.Style.scss"
+import {CheckBoxInput, EmailInput, PassInput, StringInput} from "../../components/InitalPages/Input/Input";
+import {ButtonPrimary, ButtonSecondary} from "../../components/InitalPages/Button/Button";
+import "./Skills.Style.scss"
 import { Formik, Field, Form , FormikHelpers} from 'formik';
-import {RegisterFormInput} from './CompanyRegister.type';
+import {RegisterFormInput} from './Skills.type';
+import {registerValidateSchema} from "./Skills.validation";
 import {useHistory} from "react-router-dom";
 import { gql } from "@apollo/client";
 import { useMutation } from "@apollo/client";
 import {ErrorMessage, useField} from "formik";
 
+
 interface RegisterQueryProps {
-    name: string;
+    email: string;
+    password: string;
+    isCompany: boolean;
 }
 
 const REGISTER_MUTATION = gql`
@@ -27,15 +31,19 @@ const REGISTER_MUTATION = gql`
     }
 `;
 
-export const CompanyRegister : FunctionComponent = () => {
-    // const validation = registerValidateSchema()
+export const Skills : FunctionComponent = () => {
+    const validation = registerValidateSchema()
     const history = useHistory();
     const [formState, setFormState] = useState<RegisterQueryProps>({
-        name: "",
+        email: "",
+        password: "",
+        isCompany: false,
     });
     const [register] = useMutation(REGISTER_MUTATION, {
         variables: {
-            name: formState.name,
+            email: formState.email,
+            password: formState.password,
+            isCompany: formState.isCompany,
         },
         onCompleted: ({ register }) => {
             history.push("/login");
@@ -46,27 +54,28 @@ export const CompanyRegister : FunctionComponent = () => {
     });
     return (
 
-        <div className="company-register cart-container">
+        <div className="register cart-container">
             <Cart>
-                <Header name={"پروفایل"}/>
+                <Header name={"مهارت ها"}/>
 
                 <Formik
                     initialValues={{
-                        name: '',
+                        password: '',
+                        email: '',
+                        is_vendor: false,
                     }}
-                    // validationSchema={validation}
+                    validationSchema={validation}
                     onSubmit={(
                         values: RegisterFormInput,
                         { setSubmitting }: FormikHelpers<RegisterFormInput>
                     ) => {
-                        setFormState({ name: values.name });
+                        setFormState({ email: values.email, password: values.password , isCompany: values.is_vendor});
                         register();
                     }}
                 >
                     <Form>
-                        <StringInput name={"CompanyName"} dir={"rtl"} placeholder={"نام شرکت"}/>
+                        <StringInput name={"skills"} dir={"rtl"} placeholder={"اضافه کردن مهارت"}/>
                         <ButtonPrimary name={"ثبت"}/>
-
                     </Form>
                 </Formik>
 

@@ -1,3 +1,4 @@
+
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
@@ -25,72 +26,9 @@ import {
 import { createUploadLink } from 'apollo-upload-client'
 
 
-
-// const httpLink = createUploadLink({ uri:"/graphql" });
-
-// const authLink = new ApolloLink((operation, forward) => {
-//   const token = sessionStorage.getItem("accessToken");
-//   // add the authorization to the headers
-//   operation.setContext(({ headers = {} }) => ({
-//     headers: {
-//       ...headers,
-//       authorization: token ?` Bearer ${token}` : "",
-//     }
-//   }));
-
-//   return forward(operation);
-// })
-
-
-// const errorLink = onError(({ graphQLErrors, networkError }) => {
-//   if (graphQLErrors) {
-//     graphQLErrors.map(({ message, locations, path }) => {
-//       if (message === "Unauthorized") {
-//         // every 401/unauthorized error will be caught here and update the global local state
-//         localStorage.removeItem("accessToken");
-//         localStorage.setItem("loginState", "loggedOut");
-//         console.log("khataye barname");
-//       }
-//     });
-//     return;
-//   }
-// });
-
-// const client = new ApolloClient({
-//   link: from([authLink, httpLink]),
-//   cache: new InMemoryCache(),
-//   defaultOptions: {
-//       query: {
-//           fetchPolicy: 'no-cache'
-//       }
-//   }
-// })
-
-// ReactDOM.render(
-//   <ApolloProvider client={client}>
-//     <UserContextProvider>
-//       <BrowserRouter>
-//         <App />
-//       </BrowserRouter>
-//     </UserContextProvider>
-//   </ApolloProvider>,
-//   document.getElementById("root")
-// );
-
-// // If you want to start measuring performance in your app, pass a function
-// // to log results (for example: reportWebVitals(console.log))
-// // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-// reportWebVitals();
-
-
-const httpLink = createHttpLink({
-  // uri: "https://test_backend:8080/graphql",
-  uri: "https://api.g5.stagement.ir/graphql",
-  // uri: "/graphql",
-  // uri: "/graphql",
-  fetchOptions: {
-    mode: "no-cors",
-  },
+const httpLink = createUploadLink({
+  // uri: "https://api.g5.stagement.ir/graphql",
+  uri: "/graphql",
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -120,6 +58,7 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 });
 
 const client = new ApolloClient({
+  // link: authLink.concat(httpLink).concat(errorLink),
   link: ApolloLink.from([errorLink, authLink, httpLink]),
   cache: new InMemoryCache(),
 });
