@@ -20,16 +20,17 @@ interface RegisterQueryProps {
     isCompany: boolean;
 }
 
-const REGISTER_MUTATION = gql`
-    mutation RegisterMutation($email: String!, $password: String!, $isCompany: Boolean!) {
-        signup(signupRequest: { email: $email, password: $password, isCompany:$isCompany }) {
+const USER_REGISTER_MUTATION = gql`
+    mutation UserRegisterMutation($firstName: String! ,$lastName: String!, $username: String!, $description: String, 
+        $title: String, $company: String, $startedAtMonth: String, $startedAtYear: String, $finishedAtMonth: String, $finishedAtYear: String) {
+        signupUser(UserSignupRequest: { firstName: $firstName, lastName: $lastName, username: $username , description:$description,
+        title: $title, company: $company, startedAtMonth:$startedAtMonth , startedAtYear:$startedAtYear, finishedAtMonth:$finishedAtMonth , finishedAtYear:$finishedAtYear}) {
             success
             message
-            email
-            isCompany
         }
     }
 `;
+
 
 export const UserRegister : FunctionComponent = () => {
     const validation = registerValidateSchema()
@@ -39,7 +40,7 @@ export const UserRegister : FunctionComponent = () => {
         password: "",
         isCompany: false,
     });
-    const [register] = useMutation(REGISTER_MUTATION, {
+    const [signupUser] = useMutation(USER_REGISTER_MUTATION, {
         variables: {
             email: formState.email,
             password: formState.password,
@@ -70,21 +71,11 @@ export const UserRegister : FunctionComponent = () => {
                         { setSubmitting }: FormikHelpers<RegisterFormInput>
                     ) => {
                         setFormState({ email: values.email, password: values.password , isCompany: values.is_vendor});
-                        register();
+                        signupUser();
                     }}
                 >
                     <Form>
-                        {/*<EmailInput />*/}
-                        {/*<PassInput />*/}
-                        {/*<CheckBoxInput />*/}
-                        {/*<ErrorHandel>*/}
-                        {/*    <p>*/}
-                        {/*        <ErrorMessage name={"email"} />*/}
-                        {/*    </p>*/}
-                        {/*    <p>*/}
-                        {/*        <ErrorMessage name={"password"} />*/}
-                        {/*    </p>*/}
-                        {/*</ErrorHandel>*/}
+
                         <StringInput placeholder={"نام"} name={"name"} dir={"rtl"} />
                         <StringInput placeholder={"نام خانوادگی"} name={"last_name"} dir={"rtl"} />
                         <StringInput placeholder={"نام کاربری"} name={"user_name"} dir={"rtl"} />
@@ -94,8 +85,6 @@ export const UserRegister : FunctionComponent = () => {
                         <ChoiceTimeInput name={"تاریخ پایان"}/>
                         <PictureInput name={"+ اضافه کردن تصویر پروفایل"}/>
                         <ButtonPrimary name={"ثبت"}/>
-
-
 
                     </Form>
                 </Formik>

@@ -32,6 +32,7 @@ const REGISTER_MUTATION = gql`
     }
 `;
 
+
 export const Register : FunctionComponent = () => {
     const validation = registerValidateSchema()
     const history = useHistory();
