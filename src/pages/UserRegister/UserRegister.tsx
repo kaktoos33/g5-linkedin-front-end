@@ -15,9 +15,16 @@ import {ErrorMessage, useField} from "formik";
 import {Status} from "../../components/InitalPages/Description/Description";
 
 interface RegisterQueryProps {
-    email: string;
-    password: string;
-    isCompany: boolean;
+    firstName: string;
+    lastName: string;
+    username: string;
+    description: string;
+    title: string;
+    company: string;
+    startedAtMonth: string;
+    startedAtYear: string;
+    finishedAtMonth: string;
+    finishedAtYear: string;
 }
 
 const USER_REGISTER_MUTATION = gql`
@@ -36,15 +43,29 @@ export const UserRegister : FunctionComponent = () => {
     const validation = registerValidateSchema()
     const history = useHistory();
     const [formState, setFormState] = useState<RegisterQueryProps>({
-        email: "",
-        password: "",
-        isCompany: false,
+        firstName:"",
+        lastName: "",
+        username: "",
+        description:"",
+        title: "",
+        company: "",
+        startedAtMonth: "",
+        startedAtYear: "",
+        finishedAtMonth: "",
+        finishedAtYear: "",
     });
     const [signupUser] = useMutation(USER_REGISTER_MUTATION, {
         variables: {
-            email: formState.email,
-            password: formState.password,
-            isCompany: formState.isCompany,
+            firstName: formState.firstName,
+            lastName: formState.lastName,
+            username: formState.username,
+            description: formState.description,
+            title: formState.title,
+            company: formState.company,
+            startedAtMonth: formState.startedAtMonth,
+            startedAtYear: formState.startedAtYear,
+            finishedAtMonth: formState.finishedAtMonth,
+            finishedAtYear: formState.finishedAtYear,
         },
         onCompleted: ({ register }) => {
             history.push("/login");
@@ -61,16 +82,34 @@ export const UserRegister : FunctionComponent = () => {
 
                 <Formik
                     initialValues={{
-                        password: '',
-                        email: '',
-                        is_vendor: false,
+                        firstName:"",
+                        lastName: "",
+                        username: "",
+                        description:"",
+                        title: "",
+                        company: "",
+                        startedAtMonth: "",
+                        startedAtYear: "",
+                        finishedAtMonth: "",
+                        finishedAtYear: "",
                     }}
                     validationSchema={validation}
                     onSubmit={(
                         values: RegisterFormInput,
                         { setSubmitting }: FormikHelpers<RegisterFormInput>
                     ) => {
-                        setFormState({ email: values.email, password: values.password , isCompany: values.is_vendor});
+                        setFormState({
+                            firstName: values.firstName,
+                            lastName: values.lastName,
+                            username: values.username,
+                            description: values.description,
+                            title: values.title,
+                            company: values.company,
+                            startedAtMonth: values.startedAtMonth,
+                            startedAtYear: values.startedAtYear,
+                            finishedAtMonth: values.finishedAtMonth,
+                            finishedAtYear: values.finishedAtYear,
+                        });
                         signupUser();
                     }}
                 >
