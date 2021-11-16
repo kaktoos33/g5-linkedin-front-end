@@ -1,26 +1,33 @@
+
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import "./index.scss";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { ApolloProvider } from "react-apollo";
-import { fromPromise, ApolloLink } from "apollo-link";
-import { onError } from "apollo-link-error";
-import { ApolloClient } from "apollo-client";
-import { InMemoryCache } from "apollo-cache-inmemory";
-import { createHttpLink } from "apollo-link-http";
-import { setContext } from "apollo-link-context";
+// import { ApolloProvider } from "react-apollo";
+//import { fromPromise, ApolloLink } from "apollo-link";
+import { onError } from "@apollo/client/link/error";
+// import { ApolloClient } from "apollo-client";
+// import { InMemoryCache } from "apollo-cache-inmemory";
+// import  {createUploadLink}  from "apollo-upload-client";
+//import { createHttpLink } from "apollo-link-http";
+import { setContext } from "@apollo/client/link/context";
 import { UserContextProvider } from "./UserContext";
 
-const httpLink = createHttpLink({
-  // uri: "https://test_backend:8080/graphql",
-  uri: "https://api.g5.stagement.ir/graphql",
-  // uri: "/graphql",
-  // uri: "/graphql",
-  fetchOptions: {
-    mode: "no-cors",
-  },
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  ApolloLink,
+  HttpLink
+} from "@apollo/client";
+import { createUploadLink } from 'apollo-upload-client'
+
+
+const httpLink = createUploadLink({
+  // uri: "https://api.g5.stagement.ir/graphql",
+  uri: "/graphql",
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -50,6 +57,7 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 });
 
 const client = new ApolloClient({
+  // link: authLink.concat(httpLink).concat(errorLink),
   link: ApolloLink.from([errorLink, authLink, httpLink]),
   cache: new InMemoryCache(),
 });

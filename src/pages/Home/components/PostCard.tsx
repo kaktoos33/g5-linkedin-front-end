@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useMutation } from "react-apollo";
+import { useMutation } from "@apollo/client";
 import { Card } from "../../../components/Card/Card";
 import { ReadMore } from "../../../components/MoreLink/ReadMore";
 import { User } from "../../../components/UserCard/types/User.types";
