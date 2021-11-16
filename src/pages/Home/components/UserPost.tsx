@@ -17,6 +17,7 @@ const fetechedPost: Array<Post> = [
     user: {
       userId: "56",
       isCompany:false,
+      isActive: true,
       name: "Karim",
       description: "ui/ux",
       img: "https://picsum.photos/id/1/40",
@@ -50,6 +51,7 @@ const fetechedPost: Array<Post> = [
     user: {
       userId: "14",
       isCompany:false,
+      isActive: true,
       name: "Yasin",
       description: "Developer",
     },

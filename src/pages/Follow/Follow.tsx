@@ -12,12 +12,14 @@ const fetechedConnectsug: Array<User> = [
     name: "AmirBahador",
     description: "Devops",
     img: "https://picsum.photos/id/2/40",
+    isActive: true
   },
   {
     userId:"3",
     isCompany:false,
     name: "Mehdi",
     description: "FrontEnd Developer",
+    isActive: true,
     img: "",
   },
   {
@@ -26,6 +28,7 @@ const fetechedConnectsug: Array<User> = [
     name: "Sina",
     description: "BackEnd Developer",
     img: "https://picsum.photos/id/175/40",
+    isActive: true
   },
   {
     userId:"5",
@@ -33,6 +36,7 @@ const fetechedConnectsug: Array<User> = [
     name: "Mehrdad",
     description: "SEO",
     img: "https://picsum.photos/id/250/40",
+    isActive: true
   },
   {
     userId:"6",
@@ -40,6 +44,7 @@ const fetechedConnectsug: Array<User> = [
     name: "Neda",
     description: "Manager",
     img: "",
+    isActive: true
   },
   {
     userId:"7",
@@ -47,6 +52,7 @@ const fetechedConnectsug: Array<User> = [
     name: "Mahour",
     description: "UI/UX Designer",
     img: "https://picsum.photos/id/1014/40",
+    isActive: true
   },
 ];
 
@@ -57,6 +63,7 @@ const fetechedfollowReq: Array<User> = [
     name: "Navid",
     description: "Devops",
     img: "https://picsum.photos/id/319/40",
+    isActive: true
   },
   {
     userId:"9",
@@ -64,6 +71,7 @@ const fetechedfollowReq: Array<User> = [
     name: "Sara",
     description: "FrontEnd Developer",
     img: "https://picsum.photos/id/342/40",
+    isActive: true
   },
   {
     userId:"10",
@@ -71,6 +79,7 @@ const fetechedfollowReq: Array<User> = [
     name: "Mari",
     description: "BackEnd Developer",
     img: "https://picsum.photos/id/177/40",
+    isActive: true
   },
   {
     userId:"11",
@@ -78,6 +87,7 @@ const fetechedfollowReq: Array<User> = [
     name: "Mohammad",
     description: "SEO",
     img: "https://picsum.photos/id/180/40",
+    isActive: true
   },
   {
     userId:"12",
@@ -85,6 +95,7 @@ const fetechedfollowReq: Array<User> = [
     name: "Omid",
     description: "Manager",
     img: "https://picsum.photos/id/20/40",
+    isActive: true
   },
   {
     userId:"13",
@@ -92,6 +103,7 @@ const fetechedfollowReq: Array<User> = [
     name: "Sahar",
     description: "UI/UX Designer",
     img: "https://picsum.photos/id/30/40",
+    isActive: true
   },
 ];
 

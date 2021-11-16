@@ -24,6 +24,7 @@ const fetechedConnectReq: Array<User> = [
     name: "AmirBahador",
     description: "Devops",
     img: "https://picsum.photos/id/2/40",
+    isActive: true
   },
   {
     userId: "3",
@@ -31,6 +32,7 @@ const fetechedConnectReq: Array<User> = [
     name: "Mehdi",
     description: "FrontEnd Developer",
     img: "",
+    isActive: true
   },
   {
     userId: "4",
@@ -38,6 +40,7 @@ const fetechedConnectReq: Array<User> = [
     name: "Sina",
     description: "BackEnd Developer",
     img: "https://picsum.photos/id/175/40",
+    isActive: true
   },
   {
     userId: "5",
@@ -45,6 +48,7 @@ const fetechedConnectReq: Array<User> = [
     name: "Mehrdad",
     description: "SEO",
     img: "https://picsum.photos/id/250/40",
+    isActive: true
   },
   {
     userId: "6",
@@ -52,6 +56,7 @@ const fetechedConnectReq: Array<User> = [
     name: "Neda",
     description: "Manager",
     img: "",
+    isActive: true
   },
   {
     userId: "7",
@@ -59,6 +64,7 @@ const fetechedConnectReq: Array<User> = [
     name: "Mahour",
     description: "UI/UX Designer",
     img: "https://picsum.photos/id/1014/40",
+    isActive: true
   },
 ];
 

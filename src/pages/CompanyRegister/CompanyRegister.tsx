@@ -38,7 +38,7 @@ export const CompanyRegister : FunctionComponent = () => {
             description: formState.description,
         },
         onCompleted: ({ companySignup }) => {
-            history.push("/companyhome");
+            history.push("/home");
         },
         onError: (error) => {
             console.log(error.message);

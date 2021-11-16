@@ -109,9 +109,9 @@ const Login: FC<LoginProps> = () => {
                   //console.log(data.data.login);
                   // setNewUser(userResponse);
                   setUser(userResponse);
-                  console.log(userResponse)
-                  console.log(user)
-                  alert(user)
+                  // console.log(userResponse)
+                  // console.log(user)
+                  // alert(user)
 
                   // console.log(userResponse);
                   //console.log(user);
