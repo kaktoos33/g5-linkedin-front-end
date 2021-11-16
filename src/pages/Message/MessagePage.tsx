@@ -22,7 +22,7 @@ const fetchedMessages: Array<MessageType> = [
     messageId: 1,
     user: {
       userId: "1",
-      isCompany:false,
+      isCompany: false,
       name: "farzaneh",
       description: "Developer",
       isActive: true,
@@ -36,7 +36,7 @@ const fetchedMessages: Array<MessageType> = [
     messageId: 2,
     user: {
       userId: "2",
-      isCompany:false,
+      isCompany: false,
       name: "AmirBahador",
       isActive: true,
       description: "Devops",
@@ -50,7 +50,7 @@ const fetchedMessages: Array<MessageType> = [
     messageId: 3,
     user: {
       userId: "3",
-      isCompany:false,
+      isCompany: false,
       name: "Mehdi",
       isActive: true,
       description: "FrontEnd Developer",
@@ -64,7 +64,7 @@ const fetchedMessages: Array<MessageType> = [
     messageId: 4,
     user: {
       userId: "20",
-      isCompany:false,
+      isCompany: false,
       name: "Mehdi",
       isActive: true,
       description: "FrontEnd Developer",
@@ -85,7 +85,9 @@ const fetchedMessages: Array<MessageType> = [
 
 export const MessagePage: FC<MessagePageProps> = () => {
   //const users = fetechedUser;
-  const { user } = useUserContext();
+  // const { user } = useUserContext();
+  const userText = sessionStorage.getItem("user");
+  const user = userText && JSON.parse(userText);
   console.log(user);
   // alert(user);
   return (
