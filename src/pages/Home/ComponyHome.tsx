@@ -1,20 +1,21 @@
 import React from "react";
 import { CardContainerWithFollow } from "../../components/Card/CardContainer";
-import { User } from "../../components/UserCard/types/User.types";
+import { useUserContext } from "../../UserContext";
 import { CompanyCreatePost } from "./components/CompanyCreatePost";
 import { CompanyPost } from "./components/CompanyPost";
 
-const fetechedUser: User = {
-  id:"101",
-  name: "LinkedIn",
-  role: "Internet sunnyvale,CA",
-  img: "https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png",
-};
+// const fetechedUser: User = {
+//   id:"101",
+//   name: "LinkedIn",
+//   role: "Internet sunnyvale,CA",
+//   img: "https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png",
+// };
 
 export const ComponyHome = () => {
-  const user = fetechedUser;
+  //const user = fetechedUser;
+  const { user } = useUserContext();
   return (
-    <CardContainerWithFollow user={fetechedUser}>
+    <CardContainerWithFollow user={user}>
       <CompanyCreatePost user={user} />
       <CompanyPost user={user} />
     </CardContainerWithFollow>

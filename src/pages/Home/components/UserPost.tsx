@@ -1,7 +1,7 @@
 import React from "react";
 import { PostCard } from "./PostCard";
 import { Post } from "../types/Post.type";
-import { User } from "../../../components/UserCard/types/User.types";
+import { User } from "../../../models/User";
 
 interface UserPostProps {
   currentUser: User;
@@ -15,9 +15,10 @@ const fetechedPost: Array<Post> = [
     },
     likes: ["2", "12", "16", "5", "8", "65", "23"],
     user: {
-      id: "56",
+      userId: "56",
+      isCompany:false,
       name: "Karim",
-      role: "ui/ux",
+      description: "ui/ux",
       img: "https://picsum.photos/id/1/40",
     },
   },
@@ -47,9 +48,10 @@ const fetechedPost: Array<Post> = [
       "24",
     ],
     user: {
-      id: "14",
+      userId: "14",
+      isCompany:false,
       name: "Yasin",
-      role: "Developer",
+      description: "Developer",
     },
   },
 ];

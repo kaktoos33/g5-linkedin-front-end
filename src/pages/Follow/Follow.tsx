@@ -1,97 +1,110 @@
 import React from "react";
-import { User } from "../../components/UserCard/types/User.types";
+import { User } from "../../models/User";
 import { FollowReq } from "../../components/FollowReq/FollowReq";
 import "../../components/FollowReq/Follow.Style.scss";
 import { CardContainerWithoutFollow } from "../../components/Card/CardContainer";
+import { useUserContext } from "../../UserContext";
 
 const fetechedConnectsug: Array<User> = [
   {
-    id:"2",
+    userId:"2",
+    isCompany:false,
     name: "AmirBahador",
-    role: "Devops",
+    description: "Devops",
     img: "https://picsum.photos/id/2/40",
   },
   {
-    id:"3",
+    userId:"3",
+    isCompany:false,
     name: "Mehdi",
-    role: "FrontEnd Developer",
+    description: "FrontEnd Developer",
     img: "",
   },
   {
-    id:"4",
+    userId:"4",
+    isCompany:false,
     name: "Sina",
-    role: "BackEnd Developer",
+    description: "BackEnd Developer",
     img: "https://picsum.photos/id/175/40",
   },
   {
-    id:"5",
+    userId:"5",
+    isCompany:false,
     name: "Mehrdad",
-    role: "SEO",
+    description: "SEO",
     img: "https://picsum.photos/id/250/40",
   },
   {
-    id:"6",
+    userId:"6",
+    isCompany:false,
     name: "Neda",
-    role: "Manager",
+    description: "Manager",
     img: "",
   },
   {
-    id:"7",
+    userId:"7",
+    isCompany:false,
     name: "Mahour",
-    role: "UI/UX Designer",
+    description: "UI/UX Designer",
     img: "https://picsum.photos/id/1014/40",
   },
 ];
 
 const fetechedfollowReq: Array<User> = [
   {
-    id:"8",
+    userId:"8",
+    isCompany:false,
     name: "Navid",
-    role: "Devops",
+    description: "Devops",
     img: "https://picsum.photos/id/319/40",
   },
   {
-    id:"9",
+    userId:"9",
+    isCompany:false,
     name: "Sara",
-    role: "FrontEnd Developer",
+    description: "FrontEnd Developer",
     img: "https://picsum.photos/id/342/40",
   },
   {
-    id:"10",
+    userId:"10",
+    isCompany:false,
     name: "Mari",
-    role: "BackEnd Developer",
+    description: "BackEnd Developer",
     img: "https://picsum.photos/id/177/40",
   },
   {
-    id:"11",
+    userId:"11",
+    isCompany:false,
     name: "Mohammad",
-    role: "SEO",
+    description: "SEO",
     img: "https://picsum.photos/id/180/40",
   },
   {
-    id:"12",
+    userId:"12",
+    isCompany:false,
     name: "Omid",
-    role: "Manager",
+    description: "Manager",
     img: "https://picsum.photos/id/20/40",
   },
   {
-    id:"13",
+    userId:"13",
+    isCompany:false,
     name: "Sahar",
-    role: "UI/UX Designer",
+    description: "UI/UX Designer",
     img: "https://picsum.photos/id/30/40",
   },
 ];
 
-const fetechedUser: User = {
-  id:"1",
-  name: "farzaneh",
-  role: "Developer",
-  img: "https://picsum.photos/id/1005/40",
-};
+// const fetechedUser: User = {
+//   userId:"1",
+//   name: "farzaneh",
+//   description: "Developer",
+//   img: "https://picsum.photos/id/1005/40",
+// };
 export const Follow = () => {
-
+  const { user } = useUserContext();
   return (
-    <CardContainerWithoutFollow user={fetechedUser}>
+    <CardContainerWithoutFollow user={user}>
       <FollowReq
         connecetlist={fetechedfollowReq}
         title="دعوت ها"

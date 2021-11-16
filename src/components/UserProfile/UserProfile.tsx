@@ -2,7 +2,7 @@ import React from "react";
 import { Card } from "../Card/Card";
 import "./UserProfile.Style.scss";
 import { UserCard } from "../UserCard/UserCard";
-import { User } from "../UserCard/types/User.types";
+import { User } from "../../models/User";
 import { ReactComponent as VectorSvg } from "../../images/Vector.svg";
 
 interface UserProfileProps {

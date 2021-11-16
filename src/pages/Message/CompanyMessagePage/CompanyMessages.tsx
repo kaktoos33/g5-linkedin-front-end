@@ -3,12 +3,12 @@ import { FC, HTMLProps } from "react";
 import { MessageType } from "../MessagePage";
 import { CompanyMessage } from "./CompanyMessage/CompanyMessage";
 import "./CompanyMessages.Style.scss";
-import { User } from "../../../components/UserCard/types/User.types";
 import { UserCard } from "./../../../components/UserCard/UserCard";
 import { Tag } from "../../../components/Tag/Tag.types";
 import { Card } from "../../../components/Card/Card";
 import { TagItem } from "../../../components/Tag/TagItem";
 import { ReactComponent as ArrowSVG } from "../../../images/Arrow.svg";
+import { useUserContext } from "../../../UserContext";
 
 interface CompanyMessagesProps extends HTMLProps<HTMLDivElement> {
   messagesList: Array<MessageType>;
@@ -19,17 +19,18 @@ const fetechedTag: Array<Tag> = [
   { name: "business" },
   { name: "hr" },
 ];
-const fetchedUser: User = {
-  id:"1",
-  name: "farzaneh",
-  role: "Developer",
-  img: "https://picsum.photos/id/1005/40",
-};
+// const fetchedUser: User = {
+//   id:"1",
+//   name: "farzaneh",
+//   role: "Developer",
+//   img: "https://picsum.photos/id/1005/40",
+// };
 export type message = { id: number; title: string; body: string; date: string };
 export const CompanyMessages: FC<CompanyMessagesProps> = (
   { messagesList }: CompanyMessagesProps,
   props: CompanyMessagesProps
 ) => {
+  const { user } = useUserContext();
   const [seeMore, setSeeMore] = useState(false);
 
   const messages = React.useCallback(
@@ -56,7 +57,7 @@ export const CompanyMessages: FC<CompanyMessagesProps> = (
   return (
     <div className={`companyMessagesCard ${props.className || ""}`}>
       <div>
-        <UserCard user={fetchedUser} componentname="Message" image_size="L" />
+        <UserCard user={user} componentname="Message" image_size="L" />
         <div className="text-sm mr-7">{jobTitle}</div>
         <Card classname="shortTag">
           <div className="mt-3.5 mb-5 mx-7">{tag}</div>

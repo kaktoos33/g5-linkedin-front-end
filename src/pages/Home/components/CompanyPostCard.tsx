@@ -2,7 +2,7 @@ import React from "react";
 import { Card } from "../../../components/Card/Card";
 import { ReadMore } from "../../../components/MoreLink/ReadMore";
 import { TagItem } from "../../../components/Tag/TagItem";
-import { User } from "../../../components/UserCard/types/User.types";
+import { User } from "../../../models/User";
 import { UserCard } from "../../../components/UserCard/UserCard";
 import { CPost } from "../types/CPost.type";
 import { Button } from "../../../components/Buttun/Button";

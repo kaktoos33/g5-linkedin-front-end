@@ -2,7 +2,7 @@ import React from "react";
 import { FollowReq } from "../FollowReq/FollowReq";
 import { Tag } from "../Tag/Tag.types";
 import { Tags } from "../Tag/Tags";
-import { User } from "../UserCard/types/User.types";
+import { User } from "../../models/User";
 import { UserProfile } from "../UserProfile/UserProfile";
 
 const fetechedTag: Array<Tag> = [
@@ -19,39 +19,45 @@ const fetechedTag: Array<Tag> = [
 
 const fetechedConnectReq: Array<User> = [
   {
-    id: "2",
+    userId: "2",
+    isCompany:false,
     name: "AmirBahador",
-    role: "Devops",
+    description: "Devops",
     img: "https://picsum.photos/id/2/40",
   },
   {
-    id: "3",
+    userId: "3",
+    isCompany:false,
     name: "Mehdi",
-    role: "FrontEnd Developer",
+    description: "FrontEnd Developer",
     img: "",
   },
   {
-    id: "4",
+    userId: "4",
+    isCompany:false,
     name: "Sina",
-    role: "BackEnd Developer",
+    description: "BackEnd Developer",
     img: "https://picsum.photos/id/175/40",
   },
   {
-    id: "5",
+    userId: "5",
+    isCompany:false,
     name: "Mehrdad",
-    role: "SEO",
+    description: "SEO",
     img: "https://picsum.photos/id/250/40",
   },
   {
-    id: "6",
+    userId: "6",
+    isCompany:false,
     name: "Neda",
-    role: "Manager",
+    description: "Manager",
     img: "",
   },
   {
-    id: "7",
+    userId: "7",
+    isCompany:false,
     name: "Mahour",
-    role: "UI/UX Designer",
+    description: "UI/UX Designer",
     img: "https://picsum.photos/id/1014/40",
   },
 ];

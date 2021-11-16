@@ -1,7 +1,7 @@
 import React from "react";
 import "../../../variables/variables.scss";
 import { useMutation } from "@apollo/client";
-import { User } from "../../../components/UserCard/types/User.types";
+import { User } from "../../../models/User";
 import { CREATE_POST_MUTATION } from "../graphql/mutations";
 import { UPLOAD_FILE_MUTATION } from "../graphql/mutations";
 import { Uploader } from "./Uploader";

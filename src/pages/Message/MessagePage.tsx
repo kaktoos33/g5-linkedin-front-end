@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-import { User } from "../../components/UserCard/types/User.types";
+import { User } from "../../models/User";
 
 import "./MessagePage.Style.scss";
 import { CardContainerWithFollow } from "../../components/Card/CardContainer";
@@ -22,9 +22,10 @@ const fetchedMessages: Array<MessageType> = [
   {
     messageId: 1,
     user: {
-      id: "1",
+      userId: "1",
+      isCompany:false,
       name: "farzaneh",
-      role: "Developer",
+      description: "Developer",
       img: "https://picsum.photos/id/1005/40",
     },
     messageBody: "body1",
@@ -34,9 +35,10 @@ const fetchedMessages: Array<MessageType> = [
   {
     messageId: 2,
     user: {
-      id: "2",
+      userId: "2",
+      isCompany:false,
       name: "AmirBahador",
-      role: "Devops",
+      description: "Devops",
       img: "https://picsum.photos/id/2/40",
     },
     messageBody: "body2",
@@ -46,9 +48,10 @@ const fetchedMessages: Array<MessageType> = [
   {
     messageId: 3,
     user: {
-      id: "3",
+      userId: "3",
+      isCompany:false,
       name: "Mehdi",
-      role: "FrontEnd Developer",
+      description: "FrontEnd Developer",
       img: "",
     },
     messageBody: "body3",
@@ -58,9 +61,10 @@ const fetchedMessages: Array<MessageType> = [
   {
     messageId: 4,
     user: {
-      id: "20",
+      userId: "20",
+      isCompany:false,
       name: "Mehdi",
-      role: "FrontEnd Developer",
+      description: "FrontEnd Developer",
       img: "",
     },
     messageBody: "body3",
@@ -69,20 +73,20 @@ const fetchedMessages: Array<MessageType> = [
   },
 ];
 
-const fetechedUser: User = {
-  id: "101",
-  name: "LinkedIn",
-  role: "Internet sunnyvale,CA",
-  img: "https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png",
-};
+// const fetechedUser: User = {
+//   id: "101",
+//   name: "LinkedIn",
+//   role: "Internet sunnyvale,CA",
+//   img: "https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png",
+// };
 
 export const MessagePage: FC<MessagePageProps> = () => {
-  const users = fetechedUser;
+  //const users = fetechedUser;
   const { user } = useUserContext();
   console.log(user);
   // alert(user);
   return (
-    <CardContainerWithFollow user={users}>
+    <CardContainerWithFollow user={user}>
       {/* <UserMessages messagesList={fetchedMessages} className="mt-9" /> */}
       {/* <MessageApp /> */}
       <CompanyMessages messagesList={fetchedMessages} className="mt-9" />

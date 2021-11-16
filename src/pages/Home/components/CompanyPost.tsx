@@ -1,5 +1,5 @@
 import React from "react";
-import { User } from "../../../components/UserCard/types/User.types";
+import { User } from "../../../models/User";
 import { CPost } from "../types/CPost.type";
 import { CompanyPostCard } from "./CompanyPostCard";
 interface CompanyPostProps {

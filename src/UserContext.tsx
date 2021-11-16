@@ -10,6 +10,8 @@ interface IUserContext {
 const defaultUser: User = {
   userId: "",
   isCompany: false,
+  name: "",
+  description: "",
 };
 const defaultUserContext: IUserContext = {
   user: defaultUser,

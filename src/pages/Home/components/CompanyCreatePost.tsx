@@ -2,7 +2,7 @@ import { Field, Form, Formik } from "formik";
 import React from "react";
 import { Button } from "../../../components/Buttun/Button";
 import { Card } from "../../../components/Card/Card";
-import { User } from "../../../components/UserCard/types/User.types";
+import { User } from "../../../models/User";
 import { UserCard } from "../../../components/UserCard/UserCard";
 import { PostInput } from "./PostInput";
 import { Tag } from "../../../components/Tag/Tag.types";

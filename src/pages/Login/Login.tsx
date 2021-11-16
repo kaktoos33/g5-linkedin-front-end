@@ -1,17 +1,23 @@
-import {ErrorMessage, Form, Formik} from "formik";
+import { ErrorMessage, Form, Formik } from "formik";
 import React, { FC, useEffect } from "react";
-import {Cart} from "../../components/InitalPages/Cart/Cart";
-import {Header} from "../../components/InitalPages/Header/Header";
-import {EmailInput, PassInput} from "../../components/InitalPages/Input/Input";
-import {ButtonPrimary, ButtonSecondary} from "../../components/InitalPages/Button/Button";
-import {Status} from "../../components/InitalPages/Description/Description";
+import { Cart } from "../../components/InitalPages/Cart/Cart";
+import { Header } from "../../components/InitalPages/Header/Header";
+import {
+  EmailInput,
+  PassInput,
+} from "../../components/InitalPages/Input/Input";
+import {
+  ButtonPrimary,
+  ButtonSecondary,
+} from "../../components/InitalPages/Button/Button";
+import { Status } from "../../components/InitalPages/Description/Description";
 import { gql } from "@apollo/client";
 import { useMutation } from "@apollo/client";
 import { Link, useHistory } from "react-router-dom";
 // import "./Login.style.scss";
 import { useUserContext } from "../../UserContext";
 import { User } from "../../models/User";
-import {ErrorHandel} from "../Register/components/error/Error";
+import { ErrorHandel } from "../Register/components/error/Error";
 
 interface LoginProps {
   email?: string;
@@ -49,6 +55,8 @@ const LOGIN_MUTATION =
         user {
           userId
           isCompany
+          name
+          description
         }
       }
     }
@@ -77,7 +85,7 @@ const Login: FC<LoginProps> = () => {
     <div className="login cart-container">
       {/*<div className="container flex flex-col items-center justify-around min-h-screen bg-primary login">*/}
       <Cart>
-        <Header name={"ورود"}/>
+        <Header name={"ورود"} />
 
         <Formik
           initialValues={{
@@ -137,13 +145,12 @@ const Login: FC<LoginProps> = () => {
           <Form>
             <EmailInput />
             <PassInput />
-            <ErrorHandel>
-            </ErrorHandel>
+            <ErrorHandel></ErrorHandel>
             <ButtonPrimary name={"ورود"} />
           </Form>
         </Formik>
         <Status name={"عضو نیستید؟"} />
-        <ButtonSecondary name={"ثبت نام"}/>
+        <ButtonSecondary name={"ثبت نام"} />
       </Cart>
     </div>
   );
