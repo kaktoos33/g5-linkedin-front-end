@@ -29,7 +29,7 @@ interface RegisterQueryProps {
 const USER_REGISTER_MUTATION = gql`
     mutation UserRegisterMutation($firstName: String! ,$lastName: String!, $username: String!, $description: String, 
         $title: String, $company: String, $startedAtMonth: String, $startedAtYear: String, $finishedAtMonth: String, $finishedAtYear: String) {
-        signupUser(UserSignupRequest: { firstName: $firstName, lastName: $lastName, username: $username , description:$description,
+        userSignup(userSignupRequest: { firstName: $firstName, lastName: $lastName, username: $username , description:$description,
         title: $title, company: $company, startedAtMonth:$startedAtMonth , startedAtYear:$startedAtYear, finishedAtMonth:$finishedAtMonth , finishedAtYear:$finishedAtYear}) {
             success
             message
@@ -53,7 +53,7 @@ export const UserRegister : FunctionComponent = () => {
         finishedAtMonth: "",
         finishedAtYear: "",
     });
-    const [signupUser] = useMutation(USER_REGISTER_MUTATION, {
+    const [userSignup] = useMutation(USER_REGISTER_MUTATION, {
         variables: {
             firstName: formState.firstName,
             lastName: formState.lastName,
@@ -92,7 +92,7 @@ export const UserRegister : FunctionComponent = () => {
                         finishedAtMonth: "",
                         finishedAtYear: "",
                     }}
-                    validationSchema={validation}
+                    // validationSchema={validation}
                     onSubmit={(
                         values: RegisterFormInput,
                         { setSubmitting }: FormikHelpers<RegisterFormInput>
@@ -109,19 +109,20 @@ export const UserRegister : FunctionComponent = () => {
                             finishedAtMonth: values.finishedAtMonth,
                             finishedAtYear: values.finishedAtYear,
                         });
-                        signupUser();
+                        userSignup();
                     }}
                 >
                     <Form>
 
-                        <StringInput placeholder={"نام"} name={"name"} dir={"rtl"} />
-                        <StringInput placeholder={"نام خانوادگی"} name={"last_name"} dir={"rtl"} />
-                        <StringInput placeholder={"نام کاربری"} name={"user_name"} dir={"rtl"} />
-                        <StringInput placeholder={"آخرین عنوان شغلی"} name={"job_title"} dir={"rtl"} />
-                        <StringInput placeholder={"نام شرکت"} name={"company_name"} dir={"rtl"} />
-                        <ChoiceTimeInput name={"تاریخ شروع"}/>
-                        <ChoiceTimeInput name={"تاریخ پایان"}/>
-                        <PictureInput name={"+ اضافه کردن تصویر پروفایل"}/>
+                        <StringInput placeholder={"نام"} name={"firstName"} dir={"rtl"} />
+                        <StringInput placeholder={"نام خانوادگی"} name={"lastName"} dir={"rtl"} />
+                        <StringInput placeholder={"نام کاربری"} name={"username"} dir={"rtl"} />
+                        <StringInput placeholder={"توضیحات"} name={"description"} dir={"rtl"} />
+                        <StringInput placeholder={"آخرین عنوان شغلی"} name={"title"} dir={"rtl"} />
+                        <StringInput placeholder={"نام شرکت"} name={"company"} dir={"rtl"} />
+                        <ChoiceTimeInput name={"تاریخ شروع"} id={"startedAt"} />
+                        <ChoiceTimeInput name={"تاریخ پایان"} id={"finishedAt"}/>
+                        {/*<PictureInput name={"+ اضافه کردن تصویر پروفایل"}/>*/}
                         <ButtonPrimary name={"ثبت"}/>
 
                     </Form>

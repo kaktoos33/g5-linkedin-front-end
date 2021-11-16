@@ -35,24 +35,24 @@ export const PictureInput = (props:{name:string}) => {
 };
 
 
-const ChoiceYearInput = () => {
+const ChoiceYearInput = (props:{name:string;}) => {
     const years = []
     for (let year = 1340; year < 1400; year++) {
         years.push(<option value={ year }>{ year }</option>)
     }
     return (
         <div className={"choice_input input_time_year"}>
-            <Field as="select" name={"سال"}>
+            <Field as="select" name={props.name}>
                 { years }
             </Field>
         </div>
     );
 };
 
-const ChoiceMonthInput = () => {
+const ChoiceMonthInput = (props:{name:string;}) => {
     return (
         <div className={"choice_input input_time_month"}>
-            <Field as="select" name="ماه" className={"field_input"}>
+            <Field as="select"  name={props.name} className={"field_input"}>
                 <option value="فروردین">فروردین</option>
                 <option value="اردیبهشت">اردیبهشت</option>
                 <option value="خرداد">خرداد</option>
@@ -67,12 +67,12 @@ const ChoiceMonthInput = () => {
     );
 };
 
-export const ChoiceTimeInput = (props:{name:string;}) => {
+export const ChoiceTimeInput = (props:{name:string; id:string;}) => {
     return (
         <div className={"time_input"}>
             <span className={"input_time_title"}>{props.name}</span>
-            <ChoiceYearInput />
-            <ChoiceMonthInput />
+            <ChoiceYearInput name={props.id + "Year"} />
+            <ChoiceMonthInput name={props.id + "Month"} />
         </div>
 
 
