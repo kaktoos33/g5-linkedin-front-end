@@ -22,6 +22,19 @@ export const StringInput = (props:StringInputType) => {
     );
 };
 
+export const PictureInput = (props:{name:string}) => {
+    return (
+        <div className={"file_input"}>
+            <Field type={"file"} name={props.name}/>
+
+            {/*<Field type="text" dir={props.dir}  placeholder={props.placeholder}*/}
+            {/*       id={props.name} name={props.name} />*/}
+
+        </div>
+    );
+};
+
+
 const ChoiceYearInput = () => {
     const years = []
     for (let year = 1340; year < 1400; year++) {
