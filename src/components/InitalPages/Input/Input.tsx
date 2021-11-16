@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {ChangeEvent, useEffect, useRef, useState} from "react";
 import './Input.style.scss';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEnvelope} from "@fortawesome/free-regular-svg-icons";
@@ -22,19 +22,19 @@ export const StringInput = (props:StringInputType) => {
     );
 };
 
+
 export const PictureInput = (props:{name:string}) => {
+
     return (
         <div className={"file_input"}>
-            <Field type={"file"} name={props.name}/>
 
-            {/*<Field type="text" dir={props.dir}  placeholder={props.placeholder}*/}
-            {/*       id={props.name} name={props.name} />*/}
+            <Field
+                type={"file"} name={"user_picture"}
+            />
 
         </div>
     );
 };
-
-
 const ChoiceYearInput = (props:{name:string;}) => {
     const years = []
     for (let year = 1340; year < 1400; year++) {
