@@ -15,34 +15,37 @@ interface CreatableMultiProps extends FieldProps {
 
 const Style: StylesConfig<Option, true> = {
   multiValue: (styles, { data }) => ({
-      ...styles,
-      backgroundColor: "#e9f0f8",
-
+    ...styles,
+    backgroundColor: "#e9f0f8",
   }),
   multiValueLabel: (styles, { data }) => ({
     ...styles,
-    fontSize:"12px"
-  })
+    fontSize: "12px",
+  }),
 };
 export const CreatableMulti = ({
   className,
   field,
-  form,
+  form:{setFieldValue},
   options,
 }: CreatableMultiProps) => {
   const handleChange = (
     newValue: OnChangeValue<Option, true>,
     actionMeta: ActionMeta<Option>
   ) => {
-    console.group("Value Changed");
-    console.log(newValue);
-    console.log(`action: ${actionMeta.action}`);
-    console.groupEnd();
-    form.setFieldValue(
+    setFieldValue(
       field.name,
       (newValue as Option[]).map((item: Option) => item.value)
     );
   };
+
+  const values = React.useMemo(() =>
+    field.value.map((x: string) => ({
+      label: `#${x}`,
+      value: x,
+      key: x,
+    }))
+  , [field.value]);
 
   return (
     <CreatableSelect
@@ -52,6 +55,7 @@ export const CreatableMulti = ({
       onChange={handleChange}
       options={options}
       styles={Style}
+      value={values}
     />
   );
 };

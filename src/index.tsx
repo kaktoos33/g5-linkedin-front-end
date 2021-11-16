@@ -5,13 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import "./index.scss";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-// import { ApolloProvider } from "react-apollo";
-//import { fromPromise, ApolloLink } from "apollo-link";
 import { onError } from "@apollo/client/link/error";
-// import { ApolloClient } from "apollo-client";
-// import { InMemoryCache } from "apollo-cache-inmemory";
-// import  {createUploadLink}  from "apollo-upload-client";
-//import { createHttpLink } from "apollo-link-http";
 import { setContext } from "@apollo/client/link/context";
 import { UserContextProvider } from "./UserContext";
 import {
@@ -19,29 +13,24 @@ import {
   InMemoryCache,
   ApolloProvider,
   ApolloLink,
-  from,
-  HttpLink,
-  createHttpLink
+  from
 } from "@apollo/client";
 import { createUploadLink } from 'apollo-upload-client'
 
 
-const httpLink = createUploadLink({
-  // uri: "https://api.g5.stagement.ir/graphql",
-  uri: "/graphql",
-});
-
-const authLink = setContext((_, { headers }) => {
-  // get the authentication token from local storage if it exists
+const httpLink = createUploadLink({ uri:"/graphql" });
+const authLink = new ApolloLink((operation, forward) => {
   const token = sessionStorage.getItem("accessToken");
-  // return the headers to the context so httpLink can read them
-  return {
+  // add the authorization to the headers
+  operation.setContext(({ headers = {} }) => ({
     headers: {
       ...headers,
       authorization: token ? `Bearer ${token}` : "",
-    },
-  };
-});
+    }
+  }));
+
+  return forward(operation);
+})
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors) {
@@ -58,10 +47,14 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 });
 
 const client = new ApolloClient({
-  // link: authLink.concat(httpLink).concat(errorLink),
-  link: ApolloLink.from([errorLink, authLink, httpLink]),
+  link: from([authLink, httpLink]),
   cache: new InMemoryCache(),
-});
+  defaultOptions: {
+      query: {
+          fetchPolicy: 'no-cache'
+      }
+  }
+})
 
 ReactDOM.render(
   <ApolloProvider client={client}>
@@ -73,9 +66,4 @@ ReactDOM.render(
   </ApolloProvider>,
   document.getElementById("root")
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
 

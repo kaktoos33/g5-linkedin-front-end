@@ -1,26 +1,9 @@
-import * as React from "react";
-import { CreatePost } from "./components/CreatePost";
-import "./Home.Style.scss";
-import "../../components/Responsive.Style.scss";
-import { CardContainerWithFollow } from "../../components/Card/CardContainer";
-import { UserPost } from "./components/UserPost";
+import React from "react";
 import { useUserContext } from "../../UserContext";
+import { UserHome } from "./UserHome";
+import { CompanyHome } from "./CompanyHome";
 
-
-// const fetechedUser: User = {
-//   id: "1",
-//   name: "farzaneh",
-//   role: "Developer",
-//   img: "https://picsum.photos/id/1005/40",
-// };
 export const Home = () => {
   const { user } = useUserContext();
-  // const user = fetechedUser;
-
-  return (
-    <CardContainerWithFollow user={user}>
-      <CreatePost user={user} />
-      <UserPost currentUser={user} />
-    </CardContainerWithFollow>
-  );
+  return user.isCompany ? <CompanyHome /> : <UserHome />;
 };

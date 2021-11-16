@@ -1,7 +1,7 @@
 import { gql } from  "@apollo/client";
 
 export const CREATE_POST_MUTATION = gql`
-  mutation newUserPost ($content:String,$file:Upload) {
+  mutation newUserPost ($content:String!,$file:Upload) {
     newUserPost(newUserPostRequest:{content:$content , file:$file}){
     success
     message

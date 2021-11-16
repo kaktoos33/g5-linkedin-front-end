@@ -11,7 +11,7 @@ import { CompanyPost } from "./components/CompanyPost";
 //   img: "https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png",
 // };
 
-export const ComponyHome = () => {
+export const CompanyHome = () => {
   //const user = fetechedUser;
   const { user } = useUserContext();
   return (

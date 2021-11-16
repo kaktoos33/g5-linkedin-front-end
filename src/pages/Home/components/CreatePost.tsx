@@ -61,13 +61,17 @@ export const CreatePost = ({ user }: CreatePostProps) => {
   //   }
   // };
 
-  // const addfile = (image: File) => {
-  //   uploadFile({ variables: image });
-  //   console.log("this is content image");
-  //   if (error) {
-  //     console.log(error);
-  //   }
-  // };
+  const addfile = (image: File) => {
+    uploadFile({
+      variables: {
+        file: image
+      },
+    });
+    console.log("this is content image");
+    if (error) {
+      console.log(error);
+    }
+  };
   const addpost = (content: string, file?: File) => {
     createpost({
       variables: {

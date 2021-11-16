@@ -8,7 +8,7 @@ import { PostInput } from "./PostInput";
 import { Tag } from "../../../components/Tag/Tag.types";
 import { useMutation } from "@apollo/client";
 import { C_CREATE_POST_MUTATION } from "../graphql/mutations";
-import { CreatableMulti , Option } from "./SelectTag";
+import { CreatableMulti, Option } from "./SelectTag";
 
 interface CompanyCreatePostProps {
   user: User;
@@ -34,16 +34,23 @@ const fetechedTag: Array<Tag> = [
   { name: "ui" },
   { name: "freelance" },
 ];
-const tagOptions: readonly Option[]= fetechedTag.map((a, index) => ({
-  value: `${a.name}`,
-  label: `#${a.name}`,
-}));
+const makeTagOption = (x: Array<Tag>) =>
+  x.map(
+    (a) =>
+      ({
+        value: `${a.name}`,
+        label: `#${a.name}`,
+      } as Option)
+  );
 
 export const CompanyCreatePost = ({ user }: CompanyCreatePostProps) => {
   const [createpost, { error }] = useMutation(C_CREATE_POST_MUTATION);
+
+  const taged = React.useMemo(() => makeTagOption(fetechedTag), [fetechedTag]);
+
   const onSubmit = (values: FormValues, onSubmitProps: any) => {
     console.log(values);
-    addpost(values.content,values.tags);
+    addpost(values.content, values.tags);
     onSubmitProps.resetForm();
   };
 
@@ -76,7 +83,7 @@ export const CompanyCreatePost = ({ user }: CompanyCreatePostProps) => {
                 <Field
                   className="Select_Tag"
                   name="tags"
-                  options={tagOptions}
+                  options={taged}
                   component={CreatableMulti}
                 />
               </div>
