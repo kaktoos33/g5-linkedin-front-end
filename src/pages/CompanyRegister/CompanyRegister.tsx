@@ -5,24 +5,22 @@ import {Header} from "../../components/InitalPages/Header/Header";
 import {StringInput} from "../../components/InitalPages/Input/Input";
 import {ButtonPrimary} from "../../components/InitalPages/Button/Button";
 import "./CompanyRegister.Style.scss"
-import { Formik, Field, Form , FormikHelpers} from 'formik';
+import { Formik, Form , FormikHelpers} from 'formik';
 import {RegisterFormInput} from './CompanyRegister.type';
 import {useHistory} from "react-router-dom";
 import { gql } from "@apollo/client";
 import { useMutation } from "@apollo/client";
-import {ErrorMessage, useField} from "formik";
 
 interface RegisterQueryProps {
     name: string;
+    description: string;
 }
 
-const REGISTER_MUTATION = gql`
-    mutation RegisterMutation($email: String!, $password: String!, $isCompany: Boolean!) {
-        signup(signupRequest: { email: $email, password: $password, isCompany:$isCompany }) {
+const COMPANY_REGISTER_MUTATION = gql`
+    mutation CompanyRegisterMutation($name: String!, $description: String) {
+        companySignup(companySignupRequest: { name: $name, description: $description}) {
             success
             message
-            email
-            isCompany
         }
     }
 `;
@@ -32,13 +30,15 @@ export const CompanyRegister : FunctionComponent = () => {
     const history = useHistory();
     const [formState, setFormState] = useState<RegisterQueryProps>({
         name: "",
+        description: "",
     });
-    const [register] = useMutation(REGISTER_MUTATION, {
+    const [companySignup] = useMutation(COMPANY_REGISTER_MUTATION, {
         variables: {
             name: formState.name,
+            description: formState.description,
         },
-        onCompleted: ({ register }) => {
-            history.push("/login");
+        onCompleted: ({ companySignup }) => {
+            history.push("/companyhome");
         },
         onError: (error) => {
             console.log(error.message);
@@ -53,18 +53,20 @@ export const CompanyRegister : FunctionComponent = () => {
                 <Formik
                     initialValues={{
                         name: '',
+                        description: '',
                     }}
                     // validationSchema={validation}
                     onSubmit={(
                         values: RegisterFormInput,
                         { setSubmitting }: FormikHelpers<RegisterFormInput>
                     ) => {
-                        setFormState({ name: values.name });
-                        register();
+                        setFormState({ name: values.name , description: values.description });
+                        companySignup();
                     }}
                 >
                     <Form>
                         <StringInput name={"CompanyName"} dir={"rtl"} placeholder={"نام شرکت"}/>
+                        <StringInput name={"CompanyDescription"} dir={"rtl"} placeholder={"توضیحات"}/>
                         <ButtonPrimary name={"ثبت"}/>
 
                     </Form>

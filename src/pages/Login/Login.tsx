@@ -1,24 +1,17 @@
-import { ErrorMessage, Form, Formik } from "formik";
+import {Form, Formik} from "formik";
 import React, { FC, useEffect } from "react";
-import { Cart } from "../../components/InitalPages/Cart/Cart";
-import { Header } from "../../components/InitalPages/Header/Header";
-import {
-  EmailInput,
-  PassInput,
-} from "../../components/InitalPages/Input/Input";
-import {
-  ButtonPrimary,
-  ButtonSecondary,
-} from "../../components/InitalPages/Button/Button";
-import { Status } from "../../components/InitalPages/Description/Description";
+import {Cart} from "../../components/InitalPages/Cart/Cart";
+import {Header} from "../../components/InitalPages/Header/Header";
+import {EmailInput, PassInput} from "../../components/InitalPages/Input/Input";
+import {ButtonPrimary, ButtonSecondary} from "../../components/InitalPages/Button/Button";
+import {Status} from "../../components/InitalPages/Description/Description";
 import { gql } from "@apollo/client";
 import { useMutation } from "@apollo/client";
-import { Link, useHistory } from "react-router-dom";
+import {  useHistory } from "react-router-dom";
 // import "./Login.style.scss";
 import { useUserContext } from "../../UserContext";
 import { User } from "../../models/User";
-import { ErrorHandel } from "../Register/components/error/Error";
-
+import {ErrorHandel} from "../Register/components/error/Error";
 interface LoginProps {
   email?: string;
   password?: string;
@@ -55,6 +48,7 @@ const LOGIN_MUTATION =
         user {
           userId
           isCompany
+          isActive
           name
           description
         }
@@ -74,18 +68,13 @@ const Login: FC<LoginProps> = () => {
   });
 
   const [login] = useMutation(LOGIN_MUTATION);
-  const setNewUser = (newUser: User) => {
-    setUser(newUser);
 
-    console.log(user);
-    console.log("+++");
-  };
 
   return (
     <div className="login cart-container">
       {/*<div className="container flex flex-col items-center justify-around min-h-screen bg-primary login">*/}
       <Cart>
-        <Header name={"ورود"} />
+        <Header name={"ورود"}/>
 
         <Formik
           initialValues={{
@@ -96,7 +85,7 @@ const Login: FC<LoginProps> = () => {
             // alert(JSON.stringify(values, null, 2));
             //console.log(values);
             // setFormState({ email: values.email, password: values.password });
-            setUser({ userId: "mehdi", isCompany: true });
+            // setUser({ userId: "mehdi", isCompany: true });
 
             login({
               variables: {
@@ -118,14 +107,33 @@ const Login: FC<LoginProps> = () => {
                   );
                   sessionStorage.setItem("loginState", "loggedIn");
                   //console.log(data.data.login);
-                  setNewUser(userResponse);
+                  // setNewUser(userResponse);
+                  setUser(userResponse);
+                  console.log(userResponse)
+                  console.log(user)
+                  alert(user)
+
                   // console.log(userResponse);
                   //console.log(user);
 
                   // setNewUser({userId:"r",isCompany:false});
                   //alert(data.data.login.success);
-                  window.location.reload();
-                  history.push("/home");
+                  if (loginResponse.user.isActive) {
+                    // window.location.reload();
+                    history.push("/home");
+                  }
+                  else {
+                    if (loginResponse.user.isCompany) {
+                      // window.location.reload();
+                      history.push("/company_register");
+                    }
+                    else {
+                      // window.location.reload();
+                      history.push("/user_register");
+                    }
+
+                  }
+
                   // history.replace("/home");
                 } else {
                   alert("Email or password is incorrect!");
@@ -145,12 +153,13 @@ const Login: FC<LoginProps> = () => {
           <Form>
             <EmailInput />
             <PassInput />
-            <ErrorHandel></ErrorHandel>
+            <ErrorHandel>
+            </ErrorHandel>
             <ButtonPrimary name={"ورود"} />
           </Form>
         </Formik>
         <Status name={"عضو نیستید؟"} />
-        <ButtonSecondary name={"ثبت نام"} />
+        <ButtonSecondary name={"ثبت نام"} path={"/register"}/>
       </Cart>
     </div>
   );
