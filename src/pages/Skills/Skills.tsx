@@ -1,85 +1,86 @@
-import React, {useState} from 'react';
-import { FunctionComponent } from 'react';
-import {Cart} from "../../components/InitalPages/Cart/Cart";
-import {Header} from "../../components/InitalPages/Header/Header";
-import {StringInput} from "../../components/InitalPages/Input/Input";
-import {ButtonPrimary} from "../../components/InitalPages/Button/Button";
-import "./Skills.Style.scss"
-import { Formik, Form , FormikHelpers} from 'formik';
-import {RegisterFormInput} from './Skills.type';
-import {registerValidateSchema} from "./Skills.validation";
-import {useHistory} from "react-router-dom";
-import { gql } from "@apollo/client";
+import { Field, Form, Formik } from "formik";
+import React from "react";
+import {Tag} from "../../components/Tag/Tag.types";
 import { useMutation } from "@apollo/client";
+import { CREATE_TAG_MUTATION } from "./Skills.mutation";
+import {CreatableMulti, Option} from "../Home/components/SelectTag";
+import {Cart} from "../../components/InitalPages/Cart/Cart";
+import {Header, SubHeader} from "../../components/InitalPages/Header/Header";
+import {ButtonPrimary} from "../../components/InitalPages/Button/Button";
 
+type FormValues = {
+    tags?: string[];
+};
 
-interface RegisterQueryProps {
-    email: string;
-    password: string;
-    isCompany: boolean;
-}
+const initialValues = {
+    tags: [],
+};
+const fetechedTag: Array<Tag> = [
+    { name: "work" },
+    { name: "business" },
+    { name: "hr" },
+    { name: "userinterface" },
+    { name: "digital" },
+    { name: "userexperience" },
+    { name: "ux" },
+    { name: "ui" },
+    { name: "freelance" },
+];
+const makeTagOption = (x: Array<Tag>) =>
+    x.map(
+        (a) =>
+            ({
+                value: `${a.name}`,
+                label: `#${a.name}`,
+            } as Option)
+    );
 
-const REGISTER_MUTATION = gql`
-    mutation RegisterMutation($email: String!, $password: String!, $isCompany: Boolean!) {
-        signup(signupRequest: { email: $email, password: $password, isCompany:$isCompany }) {
-            success
-            message
-            email
-            isCompany
+export const Skills = () => {
+    const [create_tag, { error }] = useMutation(CREATE_TAG_MUTATION);
+
+    const taged = React.useMemo(() => makeTagOption(fetechedTag), [fetechedTag]);
+
+    const onSubmit = (values: FormValues, onSubmitProps: any) => {
+        console.log(values);
+        addtag(values.tags);
+        onSubmitProps.resetForm();
+    };
+
+    const addtag = (tags?: string[]) => {
+        create_tag({
+            variables: {
+                tags: tags,
+            },
+        });
+        if (error) {
+            console.log(error);
         }
-    }
-`;
-
-export const Skills : FunctionComponent = () => {
-    const validation = registerValidateSchema()
-    const history = useHistory();
-    const [formState, setFormState] = useState<RegisterQueryProps>({
-        email: "",
-        password: "",
-        isCompany: false,
-    });
-    const [register] = useMutation(REGISTER_MUTATION, {
-        variables: {
-            email: formState.email,
-            password: formState.password,
-            isCompany: formState.isCompany,
-        },
-        onCompleted: ({ register }) => {
-            history.push("/login");
-        },
-        onError: (error) => {
-            console.log(error.message);
-        },
-    });
+    };
     return (
+        <div className="create_tag cart-container">
+        <Cart>
+            <Header name={"مهارت ها"}/>
+            <SubHeader name={"مهارت هایی برای نشان دادن تخصص خود اضافه کنید"}/>
+        <Formik initialValues={initialValues} onSubmit={onSubmit}>
+            {(formik) => {
+                return (
+                            <Form>
 
-        <div className="register cart-container">
-            <Cart>
-                <Header name={"مهارت ها"}/>
+                            <div dir="ltr" className="mb-4 mx-7">
+                                <Field
+                                    className="Select_Tag"
+                                    name="tags"
+                                    options={taged}
+                                    component={CreatableMulti}
+                                />
+                            </div>
+                            <ButtonPrimary name={"ثبت"}/>
+                            </Form>
 
-                <Formik
-                    initialValues={{
-                        password: '',
-                        email: '',
-                        is_vendor: false,
-                    }}
-                    validationSchema={validation}
-                    onSubmit={(
-                        values: RegisterFormInput,
-                        { setSubmitting }: FormikHelpers<RegisterFormInput>
-                    ) => {
-                        setFormState({ email: values.email, password: values.password , isCompany: values.is_vendor});
-                        register();
-                    }}
-                >
-                    <Form>
-                        <StringInput name={"skills"} dir={"rtl"} placeholder={"اضافه کردن مهارت"}/>
-                        <ButtonPrimary name={"ثبت"}/>
-                    </Form>
-                </Formik>
-
-            </Cart>
-
+                );
+            }}
+        </Formik>
+        </Cart>
         </div>
     );
 };

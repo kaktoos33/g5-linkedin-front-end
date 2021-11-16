@@ -1,6 +1,21 @@
 @import "./src/variables/variables.scss";
 
 //  ----------------------------------- STRING INPUT
+//.string_input::-webkit-input-placeholder {
+//  font-family: 'myFont', Arial, Helvetica, sans-serif;
+//}
+//
+//.string_input:-ms-input-placeholder {
+//  font-family: 'myFont', Arial, Helvetica, sans-serif;
+//}
+//
+//.string_input:-moz-placeholder {
+//  font-family: 'myFont', Arial, Helvetica, sans-serif;
+//}
+//
+//.string_input::-moz-placeholder {
+//  font-family: 'myFont', Arial, Helvetica, sans-serif;
+//}
 .string_input{
   //width: 75%;
   align-items: center;
@@ -17,7 +32,7 @@
   border: 1px solid #D0D0D0;
   box-sizing: border-box;
   border-radius: 8px;
-  font-family: sans-serif;
+  font-family: $font;
   font-size: 14px;
   font-weight: 400;
   transition: all 0.3s ease;

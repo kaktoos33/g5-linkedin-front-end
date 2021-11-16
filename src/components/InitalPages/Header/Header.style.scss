@@ -6,10 +6,19 @@
     font-size: 24px;
     line-height: 38px;
     color: $blackColor;
-    margin-bottom: 25.5px;
+    margin-bottom: 15.5px;
 }
 
+.subheader-name{
+    font-family: $fontM;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 38px;
+    color: $blackColor;
+    margin-bottom: 50px;
+    //margin-bottom: 25.5px;
 
+}
 /* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
 
 @media screen and (max-width: 600px) {
