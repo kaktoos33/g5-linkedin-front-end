@@ -1,4 +1,4 @@
-import {ErrorMessage, Form, Formik} from "formik";
+import {Form, Formik} from "formik";
 import React, { FC, useEffect } from "react";
 import {Cart} from "../../components/InitalPages/Cart/Cart";
 import {Header} from "../../components/InitalPages/Header/Header";
@@ -7,7 +7,7 @@ import {ButtonPrimary, ButtonSecondary} from "../../components/InitalPages/Butto
 import {Status} from "../../components/InitalPages/Description/Description";
 import { gql } from "@apollo/client";
 import { useMutation } from "@apollo/client";
-import { Link, useHistory } from "react-router-dom";
+import {  useHistory } from "react-router-dom";
 // import "./Login.style.scss";
 import { useUserContext } from "../../UserContext";
 import { User } from "../../models/User";

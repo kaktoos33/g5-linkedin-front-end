@@ -2,16 +2,15 @@ import React, {useState} from 'react';
 import { FunctionComponent } from 'react';
 import {Cart} from "../../components/InitalPages/Cart/Cart";
 import {Header} from "../../components/InitalPages/Header/Header";
-import {CheckBoxInput, EmailInput, PassInput, StringInput} from "../../components/InitalPages/Input/Input";
-import {ButtonPrimary, ButtonSecondary} from "../../components/InitalPages/Button/Button";
+import {StringInput} from "../../components/InitalPages/Input/Input";
+import {ButtonPrimary} from "../../components/InitalPages/Button/Button";
 import "./Skills.Style.scss"
-import { Formik, Field, Form , FormikHelpers} from 'formik';
+import { Formik, Form , FormikHelpers} from 'formik';
 import {RegisterFormInput} from './Skills.type';
 import {registerValidateSchema} from "./Skills.validation";
 import {useHistory} from "react-router-dom";
 import { gql } from "@apollo/client";
 import { useMutation } from "@apollo/client";
-import {ErrorMessage, useField} from "formik";
 
 
 interface RegisterQueryProps {

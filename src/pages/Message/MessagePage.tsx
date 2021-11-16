@@ -6,7 +6,6 @@ import "./MessagePage.Style.scss";
 import { CardContainerWithFollow } from "../../components/Card/CardContainer";
 import { CompanyMessages } from "./CompanyMessagePage/CompanyMessages";
 import { useUserContext } from "../../UserContext";
-import MessageApp from "./message";
 
 interface MessagePageProps {}
 

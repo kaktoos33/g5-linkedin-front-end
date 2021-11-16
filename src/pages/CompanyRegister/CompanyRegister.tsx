@@ -5,12 +5,11 @@ import {Header} from "../../components/InitalPages/Header/Header";
 import {StringInput} from "../../components/InitalPages/Input/Input";
 import {ButtonPrimary} from "../../components/InitalPages/Button/Button";
 import "./CompanyRegister.Style.scss"
-import { Formik, Field, Form , FormikHelpers} from 'formik';
+import { Formik, Form , FormikHelpers} from 'formik';
 import {RegisterFormInput} from './CompanyRegister.type';
 import {useHistory} from "react-router-dom";
 import { gql } from "@apollo/client";
 import { useMutation } from "@apollo/client";
-import {ErrorMessage, useField} from "formik";
 
 interface RegisterQueryProps {
     name: string;
