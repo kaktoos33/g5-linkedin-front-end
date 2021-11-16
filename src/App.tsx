@@ -9,6 +9,7 @@ import { MessagePage } from "./pages/Message/MessagePage";
 import { ComponyHome } from "./pages/Home/ComponyHome";
 import {CompanyRegister} from "./pages/CompanyRegister/CompanyRegister";
 import {UserRegister} from "./pages/UserRegister/UserRegister";
+import {Skills} from "./pages/Skills/Skills";
 
 interface AppProps {}
 
@@ -49,6 +50,7 @@ class App extends React.Component<AppProps, AppState> {
           <Route exact path="/register" component={Register} />
           <Route exact path="/company_register" component={CompanyRegister} />
           <Route exact path="/user_register" component={UserRegister} />
+          <Route exact path="/skills" component={Skills} />
           <PrivateRoute exact path="/home" component={Home} />
           <PrivateRoute exact path="/companyhome" component={ComponyHome} />
           <PrivateRoute exact path="/message" component={MessagePage} />
