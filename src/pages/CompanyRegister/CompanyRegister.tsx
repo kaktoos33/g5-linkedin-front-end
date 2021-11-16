@@ -14,6 +14,7 @@ import {ErrorMessage, useField} from "formik";
 
 interface RegisterQueryProps {
     name: string;
+    description: string;
 }
 
 const COMPANY_REGISTER_MUTATION = gql`
@@ -30,10 +31,12 @@ export const CompanyRegister : FunctionComponent = () => {
     const history = useHistory();
     const [formState, setFormState] = useState<RegisterQueryProps>({
         name: "",
+        description: "",
     });
     const [signupCompany] = useMutation(COMPANY_REGISTER_MUTATION, {
         variables: {
             name: formState.name,
+            description: formState.description,
         },
         onCompleted: ({ register }) => {
             history.push("/login");
@@ -51,13 +54,14 @@ export const CompanyRegister : FunctionComponent = () => {
                 <Formik
                     initialValues={{
                         name: '',
+                        description: '',
                     }}
                     // validationSchema={validation}
                     onSubmit={(
                         values: RegisterFormInput,
                         { setSubmitting }: FormikHelpers<RegisterFormInput>
                     ) => {
-                        setFormState({ name: values.name });
+                        setFormState({ name: values.name , description: values.description });
                         signupCompany();
                     }}
                 >
