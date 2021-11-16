@@ -22,6 +22,49 @@ export const StringInput = (props:StringInputType) => {
     );
 };
 
+const ChoiceYearInput = () => {
+    const years = []
+    for (let year = 1340; year < 1400; year++) {
+        years.push(<option value={ year }>{ year }</option>)
+    }
+    return (
+        <div className={"choice_input input_time_year"}>
+            <Field as="select" name={"سال"}>
+                { years }
+            </Field>
+        </div>
+    );
+};
+
+const ChoiceMonthInput = () => {
+    return (
+        <div className={"choice_input input_time_month"}>
+            <Field as="select" name="ماه" className={"field_input"}>
+                <option value="فروردین">فروردین</option>
+                <option value="اردیبهشت">اردیبهشت</option>
+                <option value="خرداد">خرداد</option>
+                <option value="تیر">تیر</option>
+                <option value="مرداد">مرداد</option>
+                <option value="شهریور">شهریور</option>
+                <option value="دی">دی</option>
+                <option value="بهمن">بهمن</option>
+                <option value="اسفند">اسفند</option>
+            </Field>
+        </div>
+    );
+};
+
+export const ChoiceTimeInput = (props:{name:string;}) => {
+    return (
+        <div className={"time_input"}>
+            <span className={"input_time_title"}>{props.name}</span>
+            <ChoiceYearInput />
+            <ChoiceMonthInput />
+        </div>
+
+
+    )
+}
 export const Input = (labelProp: { input_holder: string }) => {
     return (
         <div>

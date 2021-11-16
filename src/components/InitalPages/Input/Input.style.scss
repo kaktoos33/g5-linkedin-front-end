@@ -155,6 +155,31 @@ input[type=checkbox]:checked:after {
 
 }
 
+//  ----------------------------------- Time INPUT
+
+.time_input{
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.input_time_title{
+  color: $grayColor;
+  font-family: $fontM;
+  font-weight: 500;
+  font-size: 16px;
+}
+.choice_input .field_input{
+  user-select: none;
+  box-sizing: border-box;
+  position: relative;
+  border-radius: 4px;
+  border-style: solid;
+  border-width: 0;
+  border-color: gray;
+  width: 50px;
+  display: inline-block;
+}
 
 //  ----------------------------------- FOCUS
 .password_input:focus-within i{

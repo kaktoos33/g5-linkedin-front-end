@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { FunctionComponent } from 'react';
 import {Cart} from "../../components/InitalPages/Cart/Cart";
 import {Header} from "../../components/InitalPages/Header/Header";
-import {CheckBoxInput, EmailInput, PassInput , StringInput} from "../../components/InitalPages/Input/Input";
+import {CheckBoxInput, ChoiceTimeInput , StringInput} from "../../components/InitalPages/Input/Input";
 import {ButtonPrimary, ButtonSecondary} from "../../components/InitalPages/Button/Button";
 import "./UserRegister.style.scss"
 import { Formik, Field, Form , FormikHelpers} from 'formik';
@@ -91,6 +91,9 @@ export const UserRegister : FunctionComponent = () => {
                         <StringInput placeholder={"نام کاربری"} name={"user_name"} dir={"rtl"} />
                         <StringInput placeholder={"آخرین عنوان شغلی"} name={"job_title"} dir={"rtl"} />
                         <StringInput placeholder={"نام شرکت"} name={"company_name"} dir={"rtl"} />
+                        <ChoiceTimeInput name={"تاریخ شروع"}/>
+                        <ChoiceTimeInput name={"تاریخ پایان"}/>
+
 
 
                         <ButtonPrimary name={"ثبت"}/>
