@@ -65,6 +65,7 @@ export const CompanyRegister : FunctionComponent = () => {
                 >
                     <Form>
                         <StringInput name={"CompanyName"} dir={"rtl"} placeholder={"نام شرکت"}/>
+                        <StringInput name={"CompanyDescription"} dir={"rtl"} placeholder={"توضیحات"}/>
                         <ButtonPrimary name={"ثبت"}/>
 
                     </Form>
