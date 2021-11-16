@@ -48,6 +48,9 @@ const LOGIN_MUTATION =
         user {
           userId
           isCompany
+          isActive
+          name
+          description
         }
       }
     }
@@ -65,12 +68,7 @@ const Login: FC<LoginProps> = () => {
   });
 
   const [login] = useMutation(LOGIN_MUTATION);
-  const setNewUser = (newUser: User) => {
-    setUser(newUser);
 
-    console.log(user);
-    console.log("+++");
-  };
 
   return (
     <div className="login cart-container">
@@ -87,7 +85,7 @@ const Login: FC<LoginProps> = () => {
             // alert(JSON.stringify(values, null, 2));
             //console.log(values);
             // setFormState({ email: values.email, password: values.password });
-            setUser({ userId: "mehdi", isCompany: true });
+            // setUser({ userId: "mehdi", isCompany: true });
 
             login({
               variables: {
@@ -109,14 +107,33 @@ const Login: FC<LoginProps> = () => {
                   );
                   sessionStorage.setItem("loginState", "loggedIn");
                   //console.log(data.data.login);
-                  setNewUser(userResponse);
+                  // setNewUser(userResponse);
+                  setUser(userResponse);
+                  console.log(userResponse)
+                  console.log(user)
+                  alert(user)
+
                   // console.log(userResponse);
                   //console.log(user);
 
                   // setNewUser({userId:"r",isCompany:false});
                   //alert(data.data.login.success);
-                  window.location.reload();
-                  history.push("/home");
+                  if (loginResponse.user.isActive) {
+                    // window.location.reload();
+                    history.push("/home");
+                  }
+                  else {
+                    if (loginResponse.user.isCompany) {
+                      // window.location.reload();
+                      history.push("/company_register");
+                    }
+                    else {
+                      // window.location.reload();
+                      history.push("/user_register");
+                    }
+
+                  }
+
                   // history.replace("/home");
                 } else {
                   alert("Email or password is incorrect!");
