@@ -159,7 +159,7 @@ const Login: FC<LoginProps> = () => {
           </Form>
         </Formik>
         <Status name={"عضو نیستید؟"} />
-        <ButtonSecondary name={"ثبت نام"}/>
+        <ButtonSecondary name={"ثبت نام"} path={"/register"}/>
       </Cart>
     </div>
   );

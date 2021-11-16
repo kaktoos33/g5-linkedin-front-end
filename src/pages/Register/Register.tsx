@@ -93,7 +93,7 @@ export const Register : FunctionComponent = () => {
                 </Formik>
 
                 <Status name={"عضو هستم"} />
-                <ButtonSecondary name={"ورود"}/>
+                <ButtonSecondary name={"ورود"} path={"/login"}/>
             </Cart>
 
         </div>
