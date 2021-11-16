@@ -66,8 +66,8 @@ export const UserRegister : FunctionComponent = () => {
             finishedAtMonth: formState.finishedAtMonth,
             finishedAtYear: formState.finishedAtYear,
         },
-        onCompleted: ({ register }) => {
-            history.push("/login");
+        onCompleted: ({ userSignup }) => {
+            history.push("/skills");
         },
         onError: (error) => {
             console.log(error.message);
