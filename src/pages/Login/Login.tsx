@@ -17,6 +17,12 @@ import { Link, useHistory } from "react-router-dom";
 import { useUserContext } from "../../UserContext";
 import { User } from "../../models/User";
 import {ErrorHandel} from "../Register/components/error/Error";
+
+import { Header } from "../../components/InitalPages/Header/Header";
+import { PassInput } from "../../components/InitalPages/Input/Input";
+import { ButtonPrimary, ButtonSecondary } from "../../components/InitalPages/Button/Button";
+import { Status } from "../../components/InitalPages/Description/Description";
+import { Cart } from "../../components/InitalPages/Cart/Cart";
 interface LoginProps {
   email?: string;
   password?: string;

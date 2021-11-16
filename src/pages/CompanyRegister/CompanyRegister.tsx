@@ -8,8 +8,8 @@ import "./CompanyRegister.Style.scss"
 import { Formik, Field, Form , FormikHelpers} from 'formik';
 import {RegisterFormInput} from './CompanyRegister.type';
 import {useHistory} from "react-router-dom";
-import {useMutation} from "react-apollo";
-import {gql} from "apollo-boost";
+import {useMutation} from "@apollo/client";
+import {gql} from "@apollo/client";
 import {ErrorMessage, useField} from "formik";
 
 interface RegisterQueryProps {
