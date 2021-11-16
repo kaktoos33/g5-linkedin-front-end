@@ -1,5 +1,5 @@
-import { gql } from "apollo-boost";
-import { useMutation } from "react-apollo";
+import { gql } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import { useHistory } from "react-router-dom";
 
 interface RegisterQueryProps {

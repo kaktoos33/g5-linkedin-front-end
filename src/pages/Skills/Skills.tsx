@@ -9,9 +9,8 @@ import { Formik, Field, Form , FormikHelpers} from 'formik';
 import {RegisterFormInput} from './Skills.type';
 import {registerValidateSchema} from "./Skills.validation";
 import {useHistory} from "react-router-dom";
-import {useMutation} from "react-apollo";
-// import {ErrorHandel} from "./components/error/Error";
-import {gql} from "apollo-boost";
+import { gql } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import {ErrorMessage, useField} from "formik";
 
 
