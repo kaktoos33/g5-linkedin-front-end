@@ -1,4 +1,5 @@
-import React, {ChangeEvent, useEffect, useRef, useState} from "react";
+import React, {useState} from "react";
+// import React from "react";
 import './Input.style.scss';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEnvelope} from "@fortawesome/free-regular-svg-icons";

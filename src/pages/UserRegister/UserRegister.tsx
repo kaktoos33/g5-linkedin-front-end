@@ -122,7 +122,7 @@ export const UserRegister : FunctionComponent = () => {
                         <StringInput placeholder={"نام شرکت"} name={"company"} dir={"rtl"} />
                         <ChoiceTimeInput name={"تاریخ شروع"} id={"startedAt"} />
                         <ChoiceTimeInput name={"تاریخ پایان"} id={"finishedAt"}/>
-                        <PictureInput name={"+ اضافه کردن تصویر پروفایل"}/>
+                        {/*<PictureInput name={"+ اضافه کردن تصویر پروفایل"}/>*/}
                         <ButtonPrimary name={"ثبت"}/>
 
                     </Form>
