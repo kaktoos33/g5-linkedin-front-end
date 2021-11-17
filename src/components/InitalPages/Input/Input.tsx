@@ -43,7 +43,7 @@ const ChoiceYearInput = (props:{name:string;}) => {
     }
     return (
         <div className={"choice_input input_time_year"}>
-            <Field as="select" name={props.name}>
+            <Field as="select" name={props.name} className={"field_choice_input"}>
                 { years }
             </Field>
         </div>
@@ -53,7 +53,7 @@ const ChoiceYearInput = (props:{name:string;}) => {
 const ChoiceMonthInput = (props:{name:string;}) => {
     return (
         <div className={"choice_input input_time_month"}>
-            <Field as="select"  name={props.name} className={"field_input"}>
+            <Field as="select"  name={props.name} className={"field_choice_input"}>
                 <option value="فروردین">فروردین</option>
                 <option value="اردیبهشت">اردیبهشت</option>
                 <option value="خرداد">خرداد</option>
