@@ -25,7 +25,7 @@ export const UserHome = () => {
     data: { getProfile: user }={}}= useQuery(GET_USER, { variables: { id: userId } });
 
  
-if (loading) return <div>"Loading..."</div>
+if (loading) return <></>
   return (
     <CardContainerWithFollow user={user}>
       <CreatePost user={user} />
