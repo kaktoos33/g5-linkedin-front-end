@@ -36,15 +36,15 @@ export const CreatePost = ({ user }: CreatePostProps) => {
   const onSubmit = (values: FormValues, onSubmitProps: any) => {
     console.log(values);
 
-    if (values.image || values.video) {
-      values.image
-        ? addpost(values.content, values.image)
-        : addpost(values.content, values.video);
-    } else {
-      addpost(values.content);
-    }
+    // if (values.image || values.video) {
+    //   values.image
+    //     ? addpost(values.content, values.image)
+    //     : addpost(values.content, values.video);
+    // } else {
+    //   addpost(values.content);
+    // }
     //addpost(values.content);
-    //values.image && addfile(values.image);
+    values.image && addfile(values.image);
     onSubmitProps.resetForm();
     console.log("after reset", values);
   };
@@ -64,7 +64,7 @@ export const CreatePost = ({ user }: CreatePostProps) => {
   const addfile = (image: File) => {
     uploadFile({
       variables: {
-        file: image
+        file: image,
       },
     });
     console.log("this is content image");
@@ -86,38 +86,40 @@ export const CreatePost = ({ user }: CreatePostProps) => {
   };
 
   return (
-    <Formik initialValues={initialValues} onSubmit={onSubmit}>
-      {(formik) => {
-        return (
-          <Form>
-            <Card classname="Create_Post">
-              <UserCard
-                user={user}
-                componentname="Create_Post"
-                image_size="M"
-              />
-              <PostInput title="چیزی بنویس ..." />
+    <React.Fragment>
+      <Formik initialValues={initialValues} onSubmit={onSubmit}>
+        {(formik) => {
+          return (
+            <Form>
+              <Card classname="Create_Post">
+                <UserCard
+                  user={user}
+                  componentname="Create_Post"
+                  image_size="M"
+                />
+                <PostInput title="چیزی بنویس ..." />
 
-              <ShowMedia />
+                <ShowMedia />
 
-              <div dir="ltr" className="py-2.5 px-7 rounded-b-3xl send-box">
-                <Button
-                  disabled={!formik.dirty}
-                  type="submit"
-                  gruop="Primary"
-                  lang="fa"
-                  size="M"
-                >
-                  ارسال
-                </Button>
+                <div dir="ltr" className="py-2.5 px-7 rounded-b-3xl send-box">
+                  <Button
+                    disabled={!formik.dirty}
+                    type="submit"
+                    gruop="Primary"
+                    lang="fa"
+                    size="M"
+                  >
+                    ارسال
+                  </Button>
 
-                <Uploader label="Video" name="video" />
-                <Uploader label="Photo" name="image" />
-              </div>
-            </Card>
-          </Form>
-        );
-      }}
-    </Formik>
+                  <Uploader label="Video" name="video" />
+                  <Uploader label="Photo" name="image" />
+                </div>
+              </Card>
+            </Form>
+          );
+        }}
+      </Formik>
+    </React.Fragment>
   );
 };

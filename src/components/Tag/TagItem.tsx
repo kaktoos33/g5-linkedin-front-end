@@ -14,8 +14,7 @@ export const TagItem = ({
     <span
       dir="ltr"
       key={index.toString()}
-      className={`inline-block mx-1 my-1 px-3 py-0.5 cursor-pointer ${classname} | ""`}
-      
+      className={`inline-block mx-1 my-1 px-3 py-0.5 cursor-pointer ${classname} | ""`} 
     >
       #{tag.name}
     </span>

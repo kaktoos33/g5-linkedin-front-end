@@ -11,8 +11,8 @@ export const GET_POSTS = gql`
 `;
 
 export const GET_COMPANY_POSTS = gql`
-  query GetPosts {
-    companyProfile(id: string) {
+  query GetPosts($id: ID!) {
+    companyProfile(id:$id) {
       name
       description
       posts {
@@ -24,3 +24,14 @@ export const GET_COMPANY_POSTS = gql`
     }
   }
 `;
+
+export const GET_USER = gql`
+query getProfile($id: ID!){
+  getProfile(id:$id){
+    userId
+    isActive
+    isCompany
+    name
+    description
+  }
+}`;

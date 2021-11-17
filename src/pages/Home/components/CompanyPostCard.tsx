@@ -9,24 +9,24 @@ import { Button } from "../../../components/Buttun/Button";
 
 interface CompanyPostCardProps {
   post: CPost;
-  user: User;
 }
-export const CompanyPostCard = ({ post, user }: CompanyPostCardProps) => {
-  const { body, resumeNumber } = post;
+export const CompanyPostCard = ({ post }: CompanyPostCardProps) => {
+  const {user,posts,resumeNumber } = post;
+
   const tags = React.useMemo(
     () =>
-      body.tags &&
-      body.tags.map((a, index) => (
+      posts.tags &&
+      posts.tags.map((a, index) => (
         <TagItem tag={a} index={index} classname="tag-span-sidebar" />
       )),
-    [body.tags]
+    [posts.tags]
   );
   return (
     <Card classname="Post">
       <UserCard user={user} componentname="Message" image_size="L" />
 
       <div>
-        <ReadMore text={body.text} />
+        <ReadMore text={posts.content} />
       </div>
       <div className="my-3 mx-9">{tags}</div>
 
