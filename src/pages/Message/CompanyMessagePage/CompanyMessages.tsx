@@ -54,7 +54,7 @@ export const CompanyMessages: FC<CompanyMessagesProps> = (
   const tag = React.useMemo(
     () =>
       Taglist.map((a, index) => (
-        <TagItem tag={a} index={index} classname="tag-span-sidebar" />
+        <TagItem tag={a.name} index={index} classname="tag-span-sidebar" />
       )),
     [Taglist]
   );

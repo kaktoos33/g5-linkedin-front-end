@@ -17,7 +17,7 @@ export const CompanyPostCard = ({ post }: CompanyPostCardProps) => {
     () =>
       posts.tags &&
       posts.tags.map((a, index) => (
-        <TagItem tag={a} index={index} classname="tag-span-sidebar" />
+        <TagItem tag={a.name.toString()} index={index} classname="tag-span-sidebar" />
       )),
     [posts.tags]
   );

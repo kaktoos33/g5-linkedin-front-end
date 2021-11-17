@@ -6,7 +6,7 @@ export const TagItem = ({
   index,
   classname,
 }: {
-  tag : Tag;
+  tag : string;
   index: number;
   classname: string;
 }) => {
@@ -16,7 +16,7 @@ export const TagItem = ({
       key={index.toString()}
       className={`inline-block mx-1 my-1 px-3 py-0.5 cursor-pointer ${classname} | ""`} 
     >
-      #{tag.name}
+      #{tag}
     </span>
   );
 };
