@@ -20,17 +20,25 @@ export const PrivateRoute: React.FC<{
   path: string;
   exact: boolean;
   private?: boolean;
+  skill?: boolean;
 }> = (props) => {
   const loginState = sessionStorage.getItem("loginState");
   const userText = sessionStorage.getItem("user");
   const user: User = userText && JSON.parse(userText);
 
   return user == null ? (
-          <Route path={props.path} exact={props.exact} component={Login} />
-  )
-  : loginState === "loggedIn" && user.isActive ? (
+    <Route path={props.path} exact={props.exact} component={Login} />
+  ) : loginState === "loggedIn" && user.isActive ? (
     <>
       <NavBar />
+      <Route
+        path={props.path}
+        exact={props.exact}
+        component={props.component}
+      />
+    </>
+  ) : loginState === "loggedIn" && !user.isActive && props.skill ? (
+    <>
       <Route
         path={props.path}
         exact={props.exact}
@@ -54,7 +62,7 @@ class App extends React.Component<AppProps, AppState> {
           <Route exact path="/register" component={Register} />
           <Route exact path="/company_register" component={CompanyRegister} />
           <Route exact path="/user_register" component={UserRegister} />
-          <PrivateRoute exact path="/skills" component={Skills} />
+          <PrivateRoute skill exact path="/skills" component={Skills} />
           <PrivateRoute exact path="/home" component={Home} />
           <PrivateRoute exact path="/message" component={MessagePage} />
           <PrivateRoute exact path="/follow" component={Follow} />

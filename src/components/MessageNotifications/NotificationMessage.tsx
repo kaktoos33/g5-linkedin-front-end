@@ -1,13 +1,9 @@
 import { FC } from "react";
+import { NoteMessage } from "../NavBar/NavBar";
 import "./NotificationMessage.Style.scss";
 
 interface NotificationMessageProps {
-  message: {
-    id: number;
-    title: string;
-    body: string;
-    date: string;
-  };
+  message: NoteMessage;
 }
 
 export const NotificationMessage: FC<NotificationMessageProps> = (
