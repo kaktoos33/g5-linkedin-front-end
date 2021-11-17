@@ -6,6 +6,8 @@ import "./MessagePage.Style.scss";
 import { CardContainerWithFollow } from "../../components/Card/CardContainer";
 import { CompanyMessages } from "./CompanyMessagePage/CompanyMessages";
 import { useUserContext } from "../../UserContext";
+import { useQuery } from "@apollo/client";
+import { GET_USER } from "../Home/graphql/query";
 
 interface MessagePageProps {}
 
@@ -85,8 +87,14 @@ const fetchedMessages: Array<MessageType> = [
 
 export const MessagePage: FC<MessagePageProps> = () => {
   //const users = fetechedUser;
-  const { user } = useUserContext();
-  console.log(user);
+  const userId = sessionStorage.getItem("id");
+
+  const {
+    loading,
+    data: { getProfile: user }={}}= useQuery(GET_USER, { variables: { id: userId } });
+
+ 
+if (loading) return <div>"Loading..."</div>
   // alert(user);
   return (
     <CardContainerWithFollow user={user}>

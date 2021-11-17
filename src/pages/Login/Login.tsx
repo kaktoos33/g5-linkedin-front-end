@@ -105,6 +105,11 @@ const Login: FC<LoginProps> = () => {
                     "refreshToken",
                     loginResponse.refreshToken
                   );
+                  sessionStorage.setItem(
+                    "id",
+                    userResponse.userId
+                  );
+
                   sessionStorage.setItem("loginState", "loggedIn");
                   //console.log(data.data.login);
                   // setNewUser(userResponse);

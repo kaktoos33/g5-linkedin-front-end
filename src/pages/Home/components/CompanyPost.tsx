@@ -2,40 +2,48 @@ import { useQuery } from "@apollo/client";
 import React from "react";
 import { User } from "../../../models/User";
 import { GET_COMPANY_POSTS } from "../graphql/query";
-import { CPost } from "../types/CPost.type";
 import { CompanyPostCard } from "./CompanyPostCard";
 interface CompanyPostProps {
   user: User;
 }
 
-const fetechedPost: Array<CPost> = [
-  {
-    body: {
-      text: "استخدام نیروی منابع انسانی در ایران",
-      tags: [{ name: "hr" }],
-    },
-    resumeNumber: 9,
-  },
-  {
-    body: {
-      text: "استخدام مدیر سئو",
-      tags: [{ name: "digital" }],
-    },
-  },
-];
-
-
+// const fetechedPost: Array<CPost> = [
+//   {
+//     body: {
+//       text: "استخدام نیروی منابع انسانی در ایران",
+//       tags: [{ name: "hr" }],
+//     },
+//     resumeNumber: 9,
+//   },
+//   {
+//     body: {
+//       text: "استخدام مدیر سئو",
+//       tags: [{ name: "digital" }],
+//     },
+//   },
+// ];
 
 export const CompanyPost = ({ user }: CompanyPostProps) => {
+  const id=user.userId;
+  const { error, data } = useQuery(GET_COMPANY_POSTS, {
+    variables: { id },
+    //pollInterval: 1000,
+  });
+  const onclick=()=> {
+    console.log(user);
+    console.log(data);
+  }
+ 
+  // const posts = React.useMemo(
+  //   () =>
+  //     data &&
+  //    [data].map((a: any, index: any) => (
+  //       <CompanyPostCard key={index.toString()} post={a} />
+  //     )),
+  //   [data]
+  // );
 
-  const { data } = useQuery(GET_COMPANY_POSTS);
-  const posts = React.useMemo(
-    () =>
-      fetechedPost.map((a, index) => (
-        <CompanyPostCard key={index.toString()} post={a} user={user} />
-      )),
-    [fetechedPost]
-  );
-
-  return <div>{posts}</div>;
+  if (error) return <div>`Error! ${error.message}`;</div>;
+  return<div><button onClick={onclick}>click</button></div>
+  // return <div>{posts}</div>;
 };
