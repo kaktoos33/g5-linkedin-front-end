@@ -72,10 +72,10 @@ const CardContainer = ({
 
   const {
     loading,
-    data: { getSkills: tag }={}}= useQuery(GET_SKILL, { variables: { id: user.userId } });
-  
-  
+    data: { getSkills: tag }={}}= useQuery(GET_SKILL, { variables: { id: user.userId } , pollInterval:2000});
+
   if (loading) return null;
+
 
   return (
     <div className="flex justify-center h-full main">
