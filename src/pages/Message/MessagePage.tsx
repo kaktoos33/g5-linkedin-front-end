@@ -5,7 +5,6 @@ import { User } from "../../models/User";
 import "./MessagePage.Style.scss";
 import { CardContainerWithFollow } from "../../components/Card/CardContainer";
 import { CompanyMessages } from "./CompanyMessagePage/CompanyMessages";
-import { useUserContext } from "../../UserContext";
 import { useQuery } from "@apollo/client";
 import { GET_USER } from "../Home/graphql/query";
 
