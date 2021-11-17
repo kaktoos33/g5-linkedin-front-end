@@ -7,6 +7,7 @@ import {CreatableMulti, Option} from "../Home/components/SelectTag";
 import {Cart} from "../../components/InitalPages/Cart/Cart";
 import {Header, SubHeader} from "../../components/InitalPages/Header/Header";
 import {ButtonPrimary} from "../../components/InitalPages/Button/Button";
+import {useHistory} from "react-router-dom";
 
 type FormValues = {
     tags?: string[];
@@ -37,6 +38,8 @@ const makeTagOption = (x: Array<Tag>) =>
 
 export const Skills = () => {
     const [create_tag, { error }] = useMutation(CREATE_TAG_MUTATION);
+    const history = useHistory();
+
 
     const taged = React.useMemo(() => makeTagOption(fetechedTag), [fetechedTag]);
 
@@ -44,6 +47,7 @@ export const Skills = () => {
         console.log(values);
         addtag(values.tags);
         onSubmitProps.resetForm();
+        history.push("/home");
     };
 
     const addtag = (tags?: string[]) => {

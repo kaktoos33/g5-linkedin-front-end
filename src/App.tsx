@@ -25,7 +25,10 @@ export const PrivateRoute: React.FC<{
   const userText = sessionStorage.getItem("user");
   const user: User = userText && JSON.parse(userText);
 
-  return loginState === "loggedIn" && user.isActive ? (
+  return user == null ? (
+          <Route path={props.path} exact={props.exact} component={Login} />
+  )
+  : loginState === "loggedIn" && user.isActive ? (
     <>
       <NavBar />
       <Route

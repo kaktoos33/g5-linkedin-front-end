@@ -66,12 +66,12 @@ const Login: FC<LoginProps> = () => {
   const { user, setUser } = useUserContext();
 
   const history = useHistory();
-  useEffect(() => {
-    const loginState = sessionStorage.getItem("loginState");
-    if (loginState === "loggedIn") {
-      history.push("/");
-    }
-  });
+  // useEffect(() => {
+  //   const loginState = sessionStorage.getItem("loginState");
+  //   if (loginState === "loggedIn" && user.isActive) {
+  //     history.push("/");
+  //   }
+  // });
 
   const [login] = useMutation(LOGIN_MUTATION);
 
