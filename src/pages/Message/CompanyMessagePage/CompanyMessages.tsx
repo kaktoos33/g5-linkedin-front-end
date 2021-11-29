@@ -9,6 +9,8 @@ import { Card } from "../../../components/Card/Card";
 import { TagItem } from "../../../components/Tag/TagItem";
 import { ReactComponent as ArrowSVG } from "../../../images/Arrow.svg";
 import { useUserContext } from "../../../UserContext";
+import { useQuery } from "@apollo/client";
+import { GET_USER } from "../../Home/graphql/query";
 
 interface CompanyMessagesProps extends HTMLProps<HTMLDivElement> {
   messagesList: Array<MessageType>;
@@ -30,7 +32,14 @@ export const CompanyMessages: FC<CompanyMessagesProps> = (
   { messagesList }: CompanyMessagesProps,
   props: CompanyMessagesProps
 ) => {
-  const { user } = useUserContext();
+  const userId = sessionStorage.getItem("id");
+
+  const {
+    loading,
+    data: { getProfile: user }={}}= useQuery(GET_USER, { variables: { id: userId } });
+
+ 
+
   const [seeMore, setSeeMore] = useState(false);
 
   const messages = React.useCallback(
@@ -45,7 +54,7 @@ export const CompanyMessages: FC<CompanyMessagesProps> = (
   const tag = React.useMemo(
     () =>
       Taglist.map((a, index) => (
-        <TagItem tag={a} index={index} classname="tag-span-sidebar" />
+        <TagItem tag={a.name} index={index} classname="tag-span-sidebar" />
       )),
     [Taglist]
   );
@@ -54,6 +63,8 @@ export const CompanyMessages: FC<CompanyMessagesProps> = (
   const onclick = () => {
     setSeeMore(!seeMore);
   };
+
+  if (loading) return <div>"Loading..."</div>
   return (
     <div className={`companyMessagesCard ${props.className || ""}`}>
       <div>

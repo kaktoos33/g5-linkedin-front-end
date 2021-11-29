@@ -1,21 +1,13 @@
 import React from "react";
 import { FollowReq } from "../FollowReq/FollowReq";
-import { Tag } from "../Tag/Tag.types";
+
 import { Tags } from "../Tag/Tags";
 import { User } from "../../models/User";
 import { UserProfile } from "../UserProfile/UserProfile";
+import { useQuery } from "@apollo/client";
+import { GET_SKILL } from "../../pages/Skills/Skills.query";
 
-const fetechedTag: Array<Tag> = [
-  { name: "work" },
-  { name: "business" },
-  { name: "hr" },
-  { name: "userinterface" },
-  { name: "digital" },
-  { name: "userexperience" },
-  { name: "ux" },
-  { name: "ui" },
-  { name: "freelance" },
-];
+// eslint-disable-next-line react-hooks/rules-of-hooks
 
 const fetechedConnectReq: Array<User> = [
   {
@@ -71,10 +63,20 @@ const fetechedConnectReq: Array<User> = [
 const CardContainer = ({
   children,
   right,
+  user
 }: {
   children: JSX.Element | JSX.Element[];
   right: JSX.Element | JSX.Element[];
+  user:User;
 }) => {
+
+  const {
+    loading,
+    data: { getSkills: tag }={}}= useQuery(GET_SKILL, { variables: { id: user.userId } , pollInterval:2000});
+
+  if (loading) return null;
+
+
   return (
     <div className="flex justify-center h-full main">
       {right}
@@ -82,7 +84,7 @@ const CardContainer = ({
         {children}
       </div>
       <div id="left" className="w-1/5 max-w-xs mt-9">
-        <Tags Taglist={fetechedTag} />
+        <Tags Taglist={tag.skill} /> 
       </div>
     </div>
   );
@@ -95,7 +97,7 @@ export const CardContainerWithFollow = ({
   children: JSX.Element | JSX.Element[];
   user: User;
 }) => (
-  <CardContainer
+  <CardContainer user={user}
     right={
       <div id="right" className="w-1/5 max-w-xs mt-9 ">
         <UserProfile user={user} />
@@ -119,7 +121,7 @@ export const CardContainerWithoutFollow = ({
   children: JSX.Element | JSX.Element[];
   user: User;
 }) => (
-  <CardContainer
+  <CardContainer user={user}
     right={
       <div id="right" className="w-1/5 max-w-xs mt-9">
         <UserProfile user={user} />

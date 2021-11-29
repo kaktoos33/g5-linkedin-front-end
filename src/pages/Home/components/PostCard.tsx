@@ -21,7 +21,7 @@ export const PostCard = ({ post, currentUser }: PostCardProps) => {
   const [currentLike, setCurrentLike] = useState(likes.length);
 
   const isliked = React.useMemo(
-    () => likes.includes(currentUser.userId),
+    () =>currentUser.userId&& likes.includes(currentUser.userId),
     [currentUser.userId, likes]
   );
 
