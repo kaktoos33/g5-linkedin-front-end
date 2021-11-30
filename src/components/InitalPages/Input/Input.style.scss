@@ -33,7 +33,7 @@
   box-sizing: border-box;
   border-radius: 8px;
   font-family: $font;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
   transition: all 0.3s ease;
 
@@ -173,9 +173,10 @@ input[type=checkbox]:checked:after {
 //  ----------------------------------- Time INPUT
 
 .time_input{
-  margin-top: 20px;
+  margin-top: 25px;
   display: flex;
   justify-content: space-between;
+
 }
 
 .input_time_title{
@@ -183,17 +184,36 @@ input[type=checkbox]:checked:after {
   font-family: $fontM;
   font-weight: 500;
   font-size: 16px;
+  padding-top: 7px;
+  //text-align: center;
 }
-.choice_input .field_input{
-  user-select: none;
-  box-sizing: border-box;
-  position: relative;
+.choice_input .field_choice_input{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  width: 100px;
+  padding-right: 5px;
+  height: 40px;
+  border: 1px solid #D0D0D0;
   border-radius: 4px;
-  border-style: solid;
-  border-width: 0;
-  border-color: gray;
-  width: 50px;
-  display: inline-block;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  color: $grayColor;
+  background-color: $whiteColor;
+
+  //background-color: #F07575; /* Fallback color if gradients are not supported */
+  background-image: url(down-arrow.svg), -webkit-linear-gradient(top, $whiteColor, $whiteColor); /* For Chrome and Safari */
+  background-image: url(down-arrow.svg), -moz-linear-gradient(top, $whiteColor, $whiteColor); /* For old Firefox (3.6 to 15) */
+  background-image: url(down-arrow.svg), -ms-linear-gradient(top, $whiteColor, $whiteColor); /* For pre-releases of Internet Explorer  10*/
+  background-image: url(down-arrow.svg), -o-linear-gradient(top, $whiteColor, $whiteColor); /* For old Opera (11.1 to 12.0) */
+  background-image: url(down-arrow.svg), linear-gradient(to bottom, $whiteColor, $whiteColor); /* Standard syntax; must be last */
+  background-size: 20px;
+  background-position: center left;
+  background-position-x: 3px;
+  background-repeat: no-repeat;
+  outline: none;
+
 }
 
 //  ----------------------------------- FOCUS
