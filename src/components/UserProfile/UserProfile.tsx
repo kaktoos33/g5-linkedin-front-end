@@ -11,28 +11,33 @@ interface UserProfileProps {
 }
 
 export const UserProfile = ({ user }: UserProfileProps) => {
-
-    const history = useHistory();
-    const onclick=()=>{
-        history.push("/user_register");
-    }
-    return (
-        <Card classname="User_Profile" >
-
-            <div className="mt-12">
-                <UserCard user={user} componentname="Profile" image_size="L" />
-            </div>
-            <div className="flex items-end justify-center ">
-                <div className="flex justify-center w-3 h-3 mb-2 container_vector">
-                    <VectorSvg id="vector_svg" className="w-full h-full" onClick={onclick} />
-                </div>
-            </div>
-            <div className="flex items-end justify-center mb-3.5">
-                <a href=" " className="logout hover:underline" >logout</a>
-            </div>
-
-
-        </Card>
-    )
-}
-
+  const history = useHistory();
+  const onclick = () => {
+    history.push("/user_register");
+  };
+  const logout = () => {
+    sessionStorage.clear();
+    history.push("/login");
+  };
+  return (
+    <Card classname="User_Profile">
+      <div className="mt-12">
+        <UserCard user={user} componentname="Profile" image_size="L" />
+      </div>
+      <div className="flex items-end justify-center ">
+        <div className="flex justify-center w-3 h-3 mb-2 container_vector">
+          <VectorSvg
+            id="vector_svg"
+            className="w-full h-full"
+            onClick={onclick}
+          />
+        </div>
+      </div>
+      <div className="flex items-end justify-center mb-3.5">
+        <a onClick={logout} href=" " className="logout hover:underline">
+          logout
+        </a>
+      </div>
+    </Card>
+  );
+};

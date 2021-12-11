@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useCallback, useEffect } from "react";
 import { FollowReq } from "../FollowReq/FollowReq";
 
 import { Tags } from "../Tag/Tags";
 import { User } from "../../models/User";
 import { UserProfile } from "../UserProfile/UserProfile";
-import { useQuery } from "@apollo/client";
+import { gql, useQuery } from "@apollo/client";
 import { GET_SKILL } from "../../pages/Skills/Skills.query";
 
 // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -12,70 +12,74 @@ import { GET_SKILL } from "../../pages/Skills/Skills.query";
 const fetechedConnectReq: Array<User> = [
   {
     userId: "2",
-    isCompany:false,
+    isCompany: false,
     name: "AmirBahador",
     description: "Devops",
     img: "https://picsum.photos/id/2/40",
-    isActive: true
+    isActive: true,
   },
   {
     userId: "3",
-    isCompany:false,
+    isCompany: false,
     name: "Mehdi",
     description: "FrontEnd Developer",
     img: "",
-    isActive: true
+    isActive: true,
   },
   {
     userId: "4",
-    isCompany:false,
+    isCompany: false,
     name: "Sina",
     description: "BackEnd Developer",
     img: "https://picsum.photos/id/175/40",
-    isActive: true
+    isActive: true,
   },
   {
     userId: "5",
-    isCompany:false,
+    isCompany: false,
     name: "Mehrdad",
     description: "SEO",
     img: "https://picsum.photos/id/250/40",
-    isActive: true
+    isActive: true,
   },
   {
     userId: "6",
-    isCompany:false,
+    isCompany: false,
     name: "Neda",
     description: "Manager",
     img: "",
-    isActive: true
+    isActive: true,
   },
   {
     userId: "7",
-    isCompany:false,
+    isCompany: false,
     name: "Mahour",
     description: "UI/UX Designer",
     img: "https://picsum.photos/id/1014/40",
-    isActive: true
+    isActive: true,
   },
 ];
-
+const GET_FRIENDS_SUGGESTION = gql`
+  query getFriendsSuggestion {
+    getFriendsSuggestion {
+      userId
+      name
+      description
+    }
+  }
+`;
 const CardContainer = ({
   children,
   right,
-  user
+  user,
 }: {
   children: JSX.Element | JSX.Element[];
   right: JSX.Element | JSX.Element[];
-  user:User;
+  user: User;
 }) => {
-
-  const {
-    loading,
-    data: { getSkills: tag }={}}= useQuery(GET_SKILL, { variables: { id: user.userId } , pollInterval:2000});
-
+  const { loading, data: { getSkills: tag } = {} } = useQuery(GET_SKILL);
+  console.log(tag);
   if (loading) return null;
-
 
   return (
     <div className="flex justify-center h-full main">
@@ -84,7 +88,7 @@ const CardContainer = ({
         {children}
       </div>
       <div id="left" className="w-1/5 max-w-xs mt-9">
-        <Tags Taglist={tag.skill} /> 
+        <Tags Taglist={tag} />
       </div>
     </div>
   );
@@ -96,23 +100,29 @@ export const CardContainerWithFollow = ({
 }: {
   children: JSX.Element | JSX.Element[];
   user: User;
-}) => (
-  <CardContainer user={user}
-    right={
-      <div id="right" className="w-1/5 max-w-xs mt-9 ">
-        <UserProfile user={user} />
-        <FollowReq
-          connecetlist={fetechedConnectReq}
-          title="ارتباطات خود را گسترش دهید"
-          type="Connect"
-          butname="Connect"
-        />
-      </div>
-    }
-  >
-    {children}
-  </CardContainer>
-);
+}) => {
+  const { data: { getFriendsSuggestion: friendsSuggestion } = {} } = useQuery(
+    GET_FRIENDS_SUGGESTION
+  );
+  return (
+    <CardContainer
+      user={user}
+      right={
+        <div id="right" className="w-1/5 max-w-xs mt-9 ">
+          <UserProfile user={user} />
+          <FollowReq
+            connecetlist={friendsSuggestion}
+            title="ارتباطات خود را گسترش دهید"
+            type="Connect"
+            butname="Connect"
+          />
+        </div>
+      }
+    >
+      {children}
+    </CardContainer>
+  );
+};
 
 export const CardContainerWithoutFollow = ({
   children,
@@ -121,7 +131,8 @@ export const CardContainerWithoutFollow = ({
   children: JSX.Element | JSX.Element[];
   user: User;
 }) => (
-  <CardContainer user={user}
+  <CardContainer
+    user={user}
     right={
       <div id="right" className="w-1/5 max-w-xs mt-9">
         <UserProfile user={user} />

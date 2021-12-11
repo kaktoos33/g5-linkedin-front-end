@@ -1,4 +1,3 @@
-
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
@@ -13,12 +12,11 @@ import {
   InMemoryCache,
   ApolloProvider,
   ApolloLink,
-  from
+  from,
 } from "@apollo/client";
-import { createUploadLink } from 'apollo-upload-client'
+import { createUploadLink } from "apollo-upload-client";
 
-
-const httpLink = createUploadLink({ uri:"/graphql" });
+const httpLink = createUploadLink({ uri: "/graphql" });
 const authLink = new ApolloLink((operation, forward) => {
   const token = sessionStorage.getItem("accessToken");
   // add the authorization to the headers
@@ -26,11 +24,11 @@ const authLink = new ApolloLink((operation, forward) => {
     headers: {
       ...headers,
       authorization: token ? `Bearer ${token}` : "",
-    }
+    },
   }));
 
   return forward(operation);
-})
+});
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors) {
@@ -48,13 +46,13 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 
 const client = new ApolloClient({
   link: from([authLink, httpLink]),
-  cache: new InMemoryCache(),
+  cache: new InMemoryCache({ addTypename: false }),
   defaultOptions: {
-      query: {
-          fetchPolicy: 'no-cache'
-      }
-  }
-})
+    query: {
+      fetchPolicy: "no-cache",
+    },
+  },
+});
 
 ReactDOM.render(
   <ApolloProvider client={client}>
@@ -66,4 +64,3 @@ ReactDOM.render(
   </ApolloProvider>,
   document.getElementById("root")
 );
-

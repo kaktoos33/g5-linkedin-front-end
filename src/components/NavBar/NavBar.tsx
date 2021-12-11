@@ -10,8 +10,10 @@ import { NotificationMessage } from "../MessageNotifications/NotificationMessage
 import { useHistory } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { NavBarItem } from "./components/NavBarItem";
+import useNotification, { NoteWebSocket } from "./useNotification";
+import { User } from "../../models/User";
 
-type message = {
+export type NoteMessage = {
   id: number;
   title: string;
   body: string;
@@ -20,6 +22,14 @@ type message = {
 
 export default function Navbar() {
   const history = useHistory();
+  const userText = sessionStorage.getItem("user");
+  const user: User = userText && JSON.parse(userText);
+  const noteWebSocket: NoteWebSocket = {
+    webSocketURL: "",
+    userId: user.userId ? user.userId : "0",
+  };
+  const messagess = useNotification(noteWebSocket);
+
   const [location, setLocation] = useState(useLocation());
   console.log(location);
 
@@ -30,14 +40,21 @@ export default function Navbar() {
     userSelected: false,
   });
   const [notificationState, setNotificationState] = useState("hidden");
-  const [notificationNumber, setNotificationNumber] = useState(0);
+  const [notificationNumber, setNotificationNumber] = useState(
+    messagess.length
+  );
 
-  const message1: message = {
-    id: 1,
-    title: "title1",
-    body: "body1",
-    date: "new Date()",
-  };
+  useEffect(() => {
+    setNotificationNumber(messagess.length);
+  }, [messagess]);
+
+  const noteMessages = React.useMemo(
+    () =>
+      messagess.map((message, index) => (
+        <NotificationMessage key={index} message={message} />
+      )),
+    [messagess]
+  );
 
   return (
     <div className="navbar">
@@ -75,7 +92,14 @@ export default function Navbar() {
         </NavBarItem>
       </div>
       <div className="w-1/5 max-w-xs"></div>
-
+      {/* <div>notifnumber : {notificationNumber}</div> */}
+      {/* <div>{message1}</div>
+      <div>messagess[2]</div> */}
+      {/* <div>
+        {messagess.map((message) => (
+          <div>{message}</div>
+        ))}
+      </div> */}
       <MessageNotifications
         onMouseEnter={() => {
           if (notificationNumber > 0) setNotificationState("");
@@ -85,8 +109,9 @@ export default function Navbar() {
         }}
         className={notificationState}
       >
-        {/* <NotificationMessage key="1" message={message1}></NotificationMessage>
-        <NotificationMessage key="2" message={message1}></NotificationMessage>
+        {noteMessages}
+        {/* <NotificationMessage key="1" message={message1}></NotificationMessage> */}
+        {/*<NotificationMessage key="2" message={message1}></NotificationMessage>
         <NotificationMessage key="3" message={message1}></NotificationMessage>
         <NotificationMessage key="4" message={message1}></NotificationMessage> */}
       </MessageNotifications>

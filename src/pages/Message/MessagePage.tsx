@@ -7,6 +7,7 @@ import { CardContainerWithFollow } from "../../components/Card/CardContainer";
 import { CompanyMessages } from "./CompanyMessagePage/CompanyMessages";
 import { useQuery } from "@apollo/client";
 import { GET_USER } from "../Home/graphql/query";
+import { UserMessages } from "./UserMessagePage/UserMessages";
 
 interface MessagePageProps {}
 
@@ -86,20 +87,18 @@ const fetchedMessages: Array<MessageType> = [
 
 export const MessagePage: FC<MessagePageProps> = () => {
   //const users = fetechedUser;
-  const userId = sessionStorage.getItem("id");
 
-  const {
-    loading,
-    data: { getProfile: user }={}}= useQuery(GET_USER, { variables: { id: userId } });
+  const { loading, data: { getProfile: user } = {} } = useQuery(GET_USER);
 
- 
-if (loading) return <div>"Loading..."</div>
+  if (loading) return <div>"Loading..."</div>;
   // alert(user);
   return (
     <CardContainerWithFollow user={user}>
-      {/* <UserMessages messagesList={fetchedMessages} className="mt-9" /> */}
-      {/* <MessageApp /> */}
-      <CompanyMessages messagesList={fetchedMessages} className="mt-9" />
+      {!user.isCompany ? (
+        <UserMessages messagesList={fetchedMessages} className="mt-9" />
+      ) : (
+        <CompanyMessages messagesList={fetchedMessages} className="mt-9" />
+      )}
     </CardContainerWithFollow>
     // <div className="flex justify-center main ">
     //   <div className="w-1/5 max-w-xs ">
