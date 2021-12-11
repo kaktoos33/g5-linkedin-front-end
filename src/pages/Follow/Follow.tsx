@@ -4,7 +4,7 @@ import { FollowReq } from "../../components/FollowReq/FollowReq";
 import "../../components/FollowReq/Follow.Style.scss";
 import { CardContainerWithoutFollow } from "../../components/Card/CardContainer";
 import { useUserContext } from "../../UserContext";
-import { useQuery } from "@apollo/client";
+import { gql, useQuery } from "@apollo/client";
 import { GET_USER } from "../Home/graphql/query";
 
 const fetechedConnectsug: Array<User> = [
@@ -115,28 +115,82 @@ const fetechedfollowReq: Array<User> = [
 //   description: "Developer",
 //   img: "https://picsum.photos/id/1005/40",
 // };
+const GET_FRIENDS_SUGGESTION = gql`
+  query getFriendsSuggestion {
+    getFriendsSuggestion {
+      userId
+      name
+      description
+      status
+    }
+  }
+`;
+const GET_EXISTING_SUGGESTION = gql`
+  query getMyExistingSuggestions {
+    getMyExistingSuggestions {
+      userId
+      name
+      description
+      status
+    }
+  }
+`;
+const GET_FRIENDS = gql`
+  query getFriends {
+    getFriends {
+      userId
+      name
+      description
+      status
+    }
+  }
+`;
 export const Follow = () => {
   const userId = sessionStorage.getItem("id");
 
-  const { loading, data: { getProfile: user } = {} } = useQuery(GET_USER, {
-    variables: { id: userId },
-  });
+  const { loading, data: { getProfile: user } = {} } = useQuery(GET_USER);
+
+  const { data: { getFriendsSuggestion: friendsSuggestion } = {} } = useQuery(
+    GET_FRIENDS_SUGGESTION
+  );
+  const { data: { getMyExistingSuggestions: existingSuggestion } = {} } =
+    useQuery(GET_EXISTING_SUGGESTION);
+  const { data: { getFriends: friends } = {} } = useQuery(GET_FRIENDS);
+  console.log(existingSuggestion, 46666);
 
   if (loading) return <div>"Loading..."</div>;
   return (
     <CardContainerWithoutFollow user={user}>
-      <FollowReq
-        connecetlist={fetechedfollowReq}
-        title="دعوت ها"
-        type="Follow"
-        butname="Accept"
-      />
-      <FollowReq
-        connecetlist={fetechedConnectsug}
-        title="ارتباطات خود را گسترش دهید"
-        type="Follow"
-        butname="Connect"
-      />
+      {existingSuggestion ? (
+        <FollowReq
+          connecetlist={existingSuggestion}
+          title="دعوت ها"
+          type="Follow"
+          butname="Accept"
+        />
+      ) : (
+        <div></div>
+      )}
+      {existingSuggestion ? (
+        <FollowReq
+          connecetlist={friends}
+          title="دوستان"
+          type="Follow"
+          butname="Delete"
+        />
+      ) : (
+        <div></div>
+      )}
+      {friendsSuggestion ? (
+        <FollowReq
+          connecetlist={friendsSuggestion}
+          title="ارتباطات خود را گسترش دهید"
+          type="Follow"
+          butname="Connect"
+        />
+      ) : (
+        <div></div>
+      )}
     </CardContainerWithoutFollow>
   );
 };

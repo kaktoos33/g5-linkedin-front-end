@@ -26,7 +26,7 @@ export default function Navbar() {
   const user: User = userText && JSON.parse(userText);
   const noteWebSocket: NoteWebSocket = {
     webSocketURL: "",
-    userId: user.userId,
+    userId: user.userId ? user.userId : "0",
   };
   const messagess = useNotification(noteWebSocket);
 

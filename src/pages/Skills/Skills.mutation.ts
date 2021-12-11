@@ -1,10 +1,13 @@
-import { gql } from  "@apollo/client";
+import { gql } from "@apollo/client";
+
+export const CREATE_SKILL_MUTATION = gql`
+  mutation addSkills($skills: [String]!) {
+    addSkills(skills: $skills)
+  }
+`;
 
 export const CREATE_TAG_MUTATION = gql`
-    mutation skill($tags:[String]!) {
-        setUserSkills(skill:{name:$tags}){
-            success
-            message
-        }
-    }
+  mutation addTags($tags: [String]!) {
+    addTags(tags: $tags)
+  }
 `;
