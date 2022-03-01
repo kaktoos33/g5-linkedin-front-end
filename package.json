@@ -22,6 +22,7 @@
         "@types/react-router-dom": "^5.3.1",
         "@types/react-select": "^5.0.1",
         "apollo-upload-client": "^16.0.0",
+        "axios": "^0.24.0",
         "formik": "^2.2.9",
         "graphql": "^16.0.1",
         "react": "^17.0.2",
@@ -72,5 +73,5 @@
         "postcss": "^7.0.39",
         "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17"
     },
-    "proxy": "http://localhost:8080/"
+    "proxy": "http://192.168.1.10:8080/linkedin/"
 }

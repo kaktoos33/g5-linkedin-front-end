@@ -65,6 +65,7 @@ const GET_FRIENDS_SUGGESTION = gql`
       userId
       name
       description
+      status
     }
   }
 `;

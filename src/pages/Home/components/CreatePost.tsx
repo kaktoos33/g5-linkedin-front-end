@@ -11,6 +11,7 @@ import { Card } from "../../../components/Card/Card";
 import { Button } from "../../../components/Buttun/Button";
 import { PostInput } from "./PostInput";
 import { ShowMedia } from "./ShowMedia";
+import UploadService from "../../../services/upload-files.service";
 
 interface CreatePostProps {
   user: User;
@@ -43,7 +44,11 @@ export const CreatePost = ({ user }: CreatePostProps) => {
     // } else {
     //   addpost(values.content);
     // }
-    addpost(values.content);
+    UploadService.upload(values.image, () => {}).then((res) => {
+      console.log(res);
+      addpost(values.content);
+    });
+
     // values.image && addfile(values.image);
     onSubmitProps.resetForm();
     console.log("after reset", values);
@@ -72,11 +77,10 @@ export const CreatePost = ({ user }: CreatePostProps) => {
       console.log(error);
     }
   };
-  const addpost = (content: string, file?: File) => {
+  const addpost = (content: string) => {
     createpost({
       variables: {
         content: content,
-        file: file,
       },
     });
     console.log(`this is content ${content}`);
