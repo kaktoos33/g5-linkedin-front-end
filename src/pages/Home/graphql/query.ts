@@ -1,11 +1,16 @@
 import { gql } from "@apollo/client";
 
 export const GET_POSTS = gql`
-  query GetPosts {
-    post {
-      user
-      body
-      likes
+  query getUserPost {
+    getUserPost {
+      postOwner {
+        userId
+        name
+        description
+        status
+      }
+      userPostId
+      content
     }
   }
 `;
