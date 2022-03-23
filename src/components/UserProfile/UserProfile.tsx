@@ -17,7 +17,7 @@ export const UserProfile = ({ user }: UserProfileProps) => {
   };
   const logout = () => {
     sessionStorage.clear();
-    history.push("/login");
+    history.push("/");
   };
   return (
     <Card classname="User_Profile">

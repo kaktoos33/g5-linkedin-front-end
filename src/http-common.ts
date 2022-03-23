@@ -1,7 +1,8 @@
 import axios from "axios";
 
+const api_url = process.env.REACT_APP_API_URL;
 export default axios.create({
-  baseURL: "http://192.168.1.10:8080/linkedin",
+  baseURL: api_url,
   headers: {
     "Content-type": "application/json",
   },
