@@ -52,6 +52,7 @@ export const PostCard = ({ post, currentUser }: PostCardProps) => {
       <div>
         <ReadMore text={post.content} />
       </div>
+      <div dir="ltr">{post.createdAt}</div>
       {/* <div className="my-4 bg-gray-100 mx-9 border-1 rounded-3xl">
         {body.media && (
           <img

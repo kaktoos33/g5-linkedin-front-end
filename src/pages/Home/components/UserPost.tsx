@@ -62,9 +62,10 @@ interface UserPostProps {
 
 export const UserPost = ({ currentUser }: UserPostProps) => {
   // const { loading, error, data } = useQuery<Array<Post>>(GET_POSTS);
+  console.log("user posts starts");
   const { loading, data: { getUserPost: userPosts } = {} } =
     useQuery(GET_POSTS);
-  console.log(userPosts);
+  console.log("user posts:" + userPosts);
 
   if (loading) {
     return <div>loading</div>;

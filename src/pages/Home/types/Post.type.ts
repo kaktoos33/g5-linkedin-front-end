@@ -15,4 +15,5 @@ export type UserPostType = {
   postId: string;
   postOwner: Friend;
   content: string;
+  createdAt: string;
 };

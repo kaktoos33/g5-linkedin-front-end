@@ -12,6 +12,7 @@ import { Button } from "../../../components/Buttun/Button";
 import { PostInput } from "./PostInput";
 import { ShowMedia } from "./ShowMedia";
 import UploadService from "../../../services/upload-files.service";
+import { useHistory } from "react-router-dom";
 
 interface CreatePostProps {
   user: User;
@@ -33,10 +34,10 @@ export const CreatePost = ({ user }: CreatePostProps) => {
   const [uploadFile] = useMutation(UPLOAD_FILE_MUTATION, {
     onCompleted: (data) => console.log(data),
   });
+  const history = useHistory();
 
   const onSubmit = (values: FormValues, onSubmitProps: any) => {
     console.log(values);
-
     // if (values.image || values.video) {
     //   values.image
     //     ? addpost(values.content, values.image)
@@ -44,14 +45,21 @@ export const CreatePost = ({ user }: CreatePostProps) => {
     // } else {
     //   addpost(values.content);
     // }
-    UploadService.upload(values.image, () => {}).then((res) => {
-      console.log(res);
+    if (values.image !== undefined) {
+      UploadService.upload(values.image, () => {}).then((res) => {
+        console.log("image and content : " + res);
+        addpost(values.content);
+      });
+    } else {
+      console.log("content only :");
       addpost(values.content);
-    });
+    }
 
     // values.image && addfile(values.image);
     onSubmitProps.resetForm();
     console.log("after reset", values);
+    history.push("/");
+    window.location.reload();
   };
 
   // const addpost = (content: string) => {
