@@ -65,7 +65,6 @@ const LOGIN_MUTATION =
 const Login: FC<LoginProps> = () => {
   const { user, setUser } = useUserContext();
 
- 
   const history = useHistory();
   // useEffect(() => {
   //   const loginState = sessionStorage.getItem("loginState");
@@ -78,6 +77,9 @@ const Login: FC<LoginProps> = () => {
 
   return (
     <div className="login cart-container">
+      <a href="http://localhost:8080/oauth2/authorization/google">
+        Login with Google
+      </a>
       {/*<div className="container flex flex-col items-center justify-around min-h-screen bg-primary login">*/}
       <Cart>
         <Header name={"ورود"} />
@@ -112,10 +114,7 @@ const Login: FC<LoginProps> = () => {
                     "refreshToken",
                     loginResponse.refreshToken
                   );
-                  sessionStorage.setItem(
-                    "id",
-                    userResponse.userId
-                  );
+                  sessionStorage.setItem("id", userResponse.userId);
 
                   sessionStorage.setItem("loginState", "loggedIn");
                   //console.log(data.data.login);

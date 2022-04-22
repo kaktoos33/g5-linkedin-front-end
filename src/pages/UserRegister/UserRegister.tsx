@@ -29,7 +29,7 @@ interface RegisterQueryProps {
 const USER_REGISTER_MUTATION = gql`
     mutation UserRegisterMutation($firstName: String! ,$lastName: String!, $username: String!, $description: String, 
         $title: String, $company: String, $startedAtMonth: String, $startedAtYear: String, $finishedAtMonth: String, $finishedAtYear: String) {
-        userSignup(userSignupRequest: { firstName: $firstName, lastName: $lastName, username: $username , description:$description,
+        userSignup(userProfileRequest: { firstName: $firstName, lastName: $lastName, username: $username , description:$description,
         title: $title, company: $company, startedAtMonth:$startedAtMonth , startedAtYear:$startedAtYear, finishedAtMonth:$finishedAtMonth , finishedAtYear:$finishedAtYear}) {
             success
             message
