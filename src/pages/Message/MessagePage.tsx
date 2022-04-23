@@ -88,7 +88,7 @@ const fetchedMessages: Array<MessageType> = [
 export const MessagePage: FC<MessagePageProps> = () => {
   //const users = fetechedUser;
 
-  const { loading, data: { getProfile: user } = {} } = useQuery(GET_USER);
+  const { loading, data: { getUser: user } = {} } = useQuery(GET_USER);
 
   if (loading) return <div>"Loading..."</div>;
   // alert(user);

@@ -148,7 +148,7 @@ const GET_FRIENDS = gql`
 export const Follow = () => {
   const userId = sessionStorage.getItem("id");
 
-  const { loading, data: { getProfile: user } = {} } = useQuery(GET_USER);
+  const { loading, data: { getUser: user } = {} } = useQuery(GET_USER);
 
   const { data: { getFriendsSuggestion: friendsSuggestion } = {} } = useQuery(
     GET_FRIENDS_SUGGESTION

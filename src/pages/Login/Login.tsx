@@ -11,13 +11,17 @@ import {
   ButtonSecondary,
 } from "../../components/InitalPages/Button/Button";
 import { Status } from "../../components/InitalPages/Description/Description";
-import { gql } from "@apollo/client";
+import { gql, useQuery } from "@apollo/client";
 import { useMutation } from "@apollo/client";
 import { useHistory } from "react-router-dom";
 // import "./Login.style.scss";
 import { useUserContext } from "../../UserContext";
 import { User } from "../../models/User";
 import { ErrorHandel } from "../Register/components/error/Error";
+import SocialLogin from "./SocialLogin";
+import { getUserI } from "../Home/Home";
+import { GET_USER } from "../Home/graphql/query";
+import { ACCESS_TOKEN } from "../../constants/constants";
 interface LoginProps {
   email?: string;
   password?: string;
@@ -62,8 +66,13 @@ const LOGIN_MUTATION =
     }
   `;
 
-const Login: FC<LoginProps> = () => {
-  const { user, setUser } = useUserContext();
+type loginProps = {
+  setUser?: () => User;
+  component?: JSX.Element;
+};
+
+const Login: FC<loginProps> = ({ setUser, component }: loginProps) => {
+  // const { user, setUser } = useUserContext();
 
   const history = useHistory();
   // useEffect(() => {
@@ -77,9 +86,6 @@ const Login: FC<LoginProps> = () => {
 
   return (
     <div className="login cart-container">
-      <a href="http://localhost:8080/oauth2/authorization/google">
-        Login with Google
-      </a>
       {/*<div className="container flex flex-col items-center justify-around min-h-screen bg-primary login">*/}
       <Cart>
         <Header name={"ورود"} />
@@ -104,23 +110,31 @@ const Login: FC<LoginProps> = () => {
               .then((data) => {
                 const loginResponse = data.data.login;
                 console.log(loginResponse);
+
                 const userResponse = data.data.login.user;
+
                 if (loginResponse.success) {
                   sessionStorage.setItem(
-                    "accessToken",
+                    ACCESS_TOKEN,
                     loginResponse.accessToken
                   );
-                  sessionStorage.setItem(
-                    "refreshToken",
-                    loginResponse.refreshToken
-                  );
-                  sessionStorage.setItem("id", userResponse.userId);
+                  // sessionStorage.setItem(
+                  //   "accessToken",
+                  //   loginResponse.accessToken
+                  // );
+                  // sessionStorage.setItem(
+                  //   "refreshToken",
+                  //   loginResponse.refreshToken
+                  // );
+                  // sessionStorage.setItem("id", userResponse.userId);
 
                   sessionStorage.setItem("loginState", "loggedIn");
                   //console.log(data.data.login);
                   // setNewUser(userResponse);
+
                   sessionStorage.setItem("user", JSON.stringify(userResponse));
-                  setUser(userResponse);
+
+                  // setUser(userResponse);
                   // console.log(userResponse);
                   // console.log(user)
                   // alert(user)
@@ -130,19 +144,20 @@ const Login: FC<LoginProps> = () => {
 
                   // setNewUser({userId:"r",isCompany:false});
                   // alert(data.data.login.success);
-                  if (loginResponse.user.isActive) {
-                    // window.location.reload();
-                    history.push("/home");
-                  } else {
-                    if (loginResponse.user.isCompany) {
-                      // window.location.reload();
-                      history.push("/company_register");
-                    } else {
-                      // window.location.reload();
-                      history.push("/user_register");
-                    }
-                  }
+                  // if (loginResponse.user.isActive) {
+                  //   // window.location.reload();
+                  //   history.push("/home");
+                  // } else {
+                  //   if (loginResponse.user.isCompany) {
+                  //     // window.location.reload();
+                  //     history.push("/company_register");
+                  //   } else {
+                  //     // window.location.reload();
+                  //     history.push("/user_register");
+                  //   }
+                  // }
 
+                  history.push("/home");
                   // history.replace("/home");
                 } else {
                   alert("Email or password is incorrect!");
@@ -160,6 +175,7 @@ const Login: FC<LoginProps> = () => {
           }}
         >
           <Form>
+            <SocialLogin />
             <EmailInput />
             <PassInput />
             <ErrorHandel></ErrorHandel>
@@ -174,3 +190,6 @@ const Login: FC<LoginProps> = () => {
 };
 
 export default Login;
+function setCurrentUser(): User {
+  throw new Error("Function not implemented.");
+}

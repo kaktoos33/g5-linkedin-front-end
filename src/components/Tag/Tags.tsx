@@ -22,7 +22,7 @@ export const Tags = ({ Taglist }: TagProps) => {
   const onclick = () => {
     history.push("/skills");
   };
-  console.log(Taglist);
+  console.log("inja chap mikone " + Taglist);
   return (
     <Card classname="Tag">
       <div className="flex items-center border-b mx-7">

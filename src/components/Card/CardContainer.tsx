@@ -79,7 +79,8 @@ const CardContainer = ({
   user: User;
 }) => {
   const { loading, data: { getSkills: tag } = {} } = useQuery(GET_SKILL);
-  console.log(tag);
+  // const { loading, data: tag } = useQuery(GET_SKILL);
+  console.log("tag skill45" + tag);
   if (loading) return null;
 
   return (

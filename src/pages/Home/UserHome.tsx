@@ -8,6 +8,7 @@ import { useUserContext } from "../../UserContext";
 import { useQuery } from "@apollo/client";
 import { GET_USER } from "./graphql/query";
 import { User } from "../../models/User";
+import { getUserI } from "./Home";
 
 // const fetechedUser: User = {
 //   id: "1",
@@ -19,8 +20,20 @@ import { User } from "../../models/User";
 export const UserHome = () => {
   const userId = sessionStorage.getItem("id");
 
-  const { loading, data: { getProfile: user } = {} } = useQuery(GET_USER);
+  const {
+    loading,
+    data: { getUser: user } = {},
+    error,
+  } = useQuery<getUserI>(GET_USER);
 
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+  if (error || !user) {
+    return <div>Error...</div>;
+  }
+  console.log("userHome");
+  console.log(user);
   if (loading) return <></>;
   return (
     <CardContainerWithFollow user={user}>
