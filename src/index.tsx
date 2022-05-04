@@ -15,13 +15,14 @@ import {
   from,
 } from "@apollo/client";
 import { createUploadLink } from "apollo-upload-client";
+import { ACCESS_TOKEN } from "./constants/constants";
 
-const api_url = process.env.REACT_APP_API_URL+"/graphql";
+const api_url = process.env.REACT_APP_API_URL + "/graphql";
 
 //const httpLink = createUploadLink({ uri: "http://tomcat8520.javahosting.ir/e6638705/graphql" });
 const httpLink = createUploadLink({ uri: api_url });
 const authLink = new ApolloLink((operation, forward) => {
-  const token = sessionStorage.getItem("accessToken");
+  const token = sessionStorage.getItem(ACCESS_TOKEN);
   // add the authorization to the headers
   operation.setContext(({ headers = {} }) => ({
     headers: {

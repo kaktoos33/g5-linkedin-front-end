@@ -11,13 +11,17 @@ import {
   ButtonSecondary,
 } from "../../components/InitalPages/Button/Button";
 import { Status } from "../../components/InitalPages/Description/Description";
-import { gql } from "@apollo/client";
+import { gql, useQuery } from "@apollo/client";
 import { useMutation } from "@apollo/client";
 import { useHistory } from "react-router-dom";
 // import "./Login.style.scss";
 import { useUserContext } from "../../UserContext";
 import { User } from "../../models/User";
 import { ErrorHandel } from "../Register/components/error/Error";
+import SocialLogin from "./SocialLogin";
+import { getUserI } from "../Home/Home";
+import { GET_USER } from "../Home/graphql/query";
+import { ACCESS_TOKEN } from "../../constants/constants";
 interface LoginProps {
   email?: string;
   password?: string;
@@ -62,11 +66,16 @@ const LOGIN_MUTATION =
     }
   `;
 
-const Login: FC<LoginProps> = () => {
-  const { user, setUser } = useUserContext();
+type loginProps = {
+  setUser?: () => User;
+  component?: JSX.Element;
+};
 
- 
+const Login: FC<loginProps> = ({ setUser, component }: loginProps) => {
+  // const { user, setUser } = useUserContext();
+
   const history = useHistory();
+
   // useEffect(() => {
   //   const loginState = sessionStorage.getItem("loginState");
   //   if (loginState === "loggedIn" && user.isActive) {
@@ -102,26 +111,32 @@ const Login: FC<LoginProps> = () => {
               .then((data) => {
                 const loginResponse = data.data.login;
                 console.log(loginResponse);
+
                 const userResponse = data.data.login.user;
+
                 if (loginResponse.success) {
+                  console.log(userResponse, "userRespons");
                   sessionStorage.setItem(
-                    "accessToken",
+                    ACCESS_TOKEN,
                     loginResponse.accessToken
                   );
-                  sessionStorage.setItem(
-                    "refreshToken",
-                    loginResponse.refreshToken
-                  );
-                  sessionStorage.setItem(
-                    "id",
-                    userResponse.userId
-                  );
+                  // sessionStorage.setItem(
+                  //   "accessToken",
+                  //   loginResponse.accessToken
+                  // );
+                  // sessionStorage.setItem(
+                  //   "refreshToken",
+                  //   loginResponse.refreshToken
+                  // );
+                  // sessionStorage.setItem("id", userResponse.userId);
 
                   sessionStorage.setItem("loginState", "loggedIn");
                   //console.log(data.data.login);
                   // setNewUser(userResponse);
+
                   sessionStorage.setItem("user", JSON.stringify(userResponse));
-                  setUser(userResponse);
+
+                  // setUser(userResponse);
                   // console.log(userResponse);
                   // console.log(user)
                   // alert(user)
@@ -133,24 +148,30 @@ const Login: FC<LoginProps> = () => {
                   // alert(data.data.login.success);
                   if (loginResponse.user.isActive) {
                     // window.location.reload();
+                    alert("User is active");
                     history.push("/home");
                   } else {
                     if (loginResponse.user.isCompany) {
+                      alert("company is not active");
                       // window.location.reload();
                       history.push("/company_register");
                     } else {
+                      alert("user is not active");
                       // window.location.reload();
                       history.push("/user_register");
                     }
                   }
 
+                  // history.push("/home");
                   // history.replace("/home");
+                  // console.log("after push");
                 } else {
                   alert("Email or password is incorrect!");
                   //   //history.push("/login");
                 }
               })
               .catch((error) => {
+                console.log("error occured");
                 console.log(error.message);
                 alert(error.message);
               });
@@ -161,6 +182,7 @@ const Login: FC<LoginProps> = () => {
           }}
         >
           <Form>
+            <SocialLogin />
             <EmailInput />
             <PassInput />
             <ErrorHandel></ErrorHandel>
@@ -175,3 +197,6 @@ const Login: FC<LoginProps> = () => {
 };
 
 export default Login;
+function useNavigate() {
+  throw new Error("Function not implemented.");
+}

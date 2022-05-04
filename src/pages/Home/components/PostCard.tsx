@@ -21,6 +21,11 @@ export const PostCard = ({ post, currentUser }: PostCardProps) => {
 
   const [currentLike, setCurrentLike] = useState(likes.length);
 
+  const mediaType = () => {
+    if (post.media.match("image")) return "image";
+    else if (post.media.match("video")) return "video";
+  };
+
   // const isliked = React.useMemo(
   //   () =>currentUser.userId&& likes.includes(currentUser.userId),
   //   [currentUser.userId, likes]
@@ -52,16 +57,23 @@ export const PostCard = ({ post, currentUser }: PostCardProps) => {
       <div>
         <ReadMore text={post.content} />
       </div>
-      <div dir="ltr">{post.createdAt}</div>
-      {/* <div className="my-4 bg-gray-100 mx-9 border-1 rounded-3xl">
-        {body.media && (
+
+      <div className="my-4 bg-gray-100 mx-9 border-1 rounded-3xl">
+        {post.media && mediaType() === "image" && (
           <img
             className="w-full h-full rounded-3xl"
-            src={body.media}
+            src={post.media}
             alt={"sth"}
           />
         )}
-      </div> */}
+        {post.media && mediaType() === "video" && (
+          <video key={post.postId} className="rounded-3xl max-h-96" controls>
+            <source src={post.media} />
+          </video>
+        )}
+      </div>
+
+      <div dir="ltr">{post.createdAt}</div>
 
       <div dir="ltr" className="grid justify-start mb-5 ml-5">
         {/* <label className="px-2 py-0.25 ml-3 text-xs text-white rounded-full like-box">

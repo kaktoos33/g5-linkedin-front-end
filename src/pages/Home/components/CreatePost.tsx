@@ -2,7 +2,7 @@ import React from "react";
 import "../../../variables/variables.scss";
 import { useMutation } from "@apollo/client";
 import { User } from "../../../models/User";
-import { CREATE_POST_MUTATION } from "../graphql/mutations";
+import { CREATE_POST_MUTATION, TEST_UPLOAD } from "../graphql/mutations";
 import { UPLOAD_FILE_MUTATION } from "../graphql/mutations";
 import { Uploader } from "./Uploader";
 import { UserCard } from "../../../components/UserCard/UserCard";
@@ -34,32 +34,31 @@ export const CreatePost = ({ user }: CreatePostProps) => {
   const [uploadFile] = useMutation(UPLOAD_FILE_MUTATION, {
     onCompleted: (data) => console.log(data),
   });
+  const [testUpload] = useMutation(UPLOAD_FILE_MUTATION);
   const history = useHistory();
 
   const onSubmit = (values: FormValues, onSubmitProps: any) => {
     console.log(values);
-    // if (values.image || values.video) {
-    //   values.image
-    //     ? addpost(values.content, values.image)
-    //     : addpost(values.content, values.video);
-    // } else {
-    //   addpost(values.content);
-    // }
-    if (values.image !== undefined) {
+    if (values.video !== undefined) {
+      UploadService.uploadVideo(values.video, () => {}).then((res) => {
+        console.log("image and content : " + res.data);
+        if (res.data !== "Error") addpost(values.content, res.data);
+      });
+    } else if (values.image !== undefined) {
       UploadService.upload(values.image, () => {}).then((res) => {
-        console.log("image and content : " + res);
-        addpost(values.content);
+        console.log("image and content : " + res.data);
+        if (res.data !== "Error") addpost(values.content, res.data);
       });
     } else {
       console.log("content only :");
-      addpost(values.content);
+      addpost(values.content, "");
     }
 
     // values.image && addfile(values.image);
-    onSubmitProps.resetForm();
-    console.log("after reset", values);
-    history.push("/");
-    window.location.reload();
+    // onSubmitProps.resetForm();
+    // console.log("after reset", values);
+    // history.push("/");
+    // window.location.reload();
   };
 
   // const addpost = (content: string) => {
@@ -85,11 +84,15 @@ export const CreatePost = ({ user }: CreatePostProps) => {
       console.log(error);
     }
   };
-  const addpost = (content: string) => {
+  const addpost = (content: string, media: string) => {
     createpost({
       variables: {
         content: content,
+        media: media,
       },
+    }).then((data) => {
+      history.push("/");
+      window.location.reload();
     });
     console.log(`this is content ${content}`);
     if (error) {
