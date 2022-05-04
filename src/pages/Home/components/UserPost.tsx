@@ -76,7 +76,7 @@ export const UserPost = ({ currentUser }: UserPostProps) => {
   // );
   const post: Array<UserPostType> = userPosts;
   console.log(userPosts, 123);
-  console.log(post, 345);
+  // console.log(post, 345);
 
   const posts = post.map((a, index) => (
     <PostCard key={index.toString()} post={a} currentUser={currentUser} />

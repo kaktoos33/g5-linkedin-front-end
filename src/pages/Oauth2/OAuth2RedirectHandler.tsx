@@ -8,6 +8,7 @@ import {
   useParams,
 } from "react-router-dom";
 import { ACCESS_TOKEN } from "../../constants/constants";
+import { useCurrentUser } from "../../hooks/useCurrentUser";
 import { GET_USER } from "../Home/graphql/query";
 import { getUserI, Home } from "../Home/Home";
 import Login from "../Login/Login";
@@ -39,11 +40,8 @@ const OAuth2RedirectHandler: FC = (props: any) => {
   sessionStorage.setItem(ACCESS_TOKEN, token);
   sessionStorage.setItem("loginState", "loggedIn");
   console.log("token set");
-  const {
-    loading: userLoading,
-    data: { getUser: user } = {},
-    error: userError,
-  } = useQuery<getUserI>(GET_USER);
+  const { userLoading, user, userError } = useCurrentUser();
+
   if (userLoading) {
     return <div>Loading...</div>;
   }

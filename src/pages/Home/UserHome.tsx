@@ -9,6 +9,7 @@ import { useQuery } from "@apollo/client";
 import { GET_USER } from "./graphql/query";
 import { User } from "../../models/User";
 import { getUserI } from "./Home";
+import { useCurrentUser } from "../../hooks/useCurrentUser";
 
 // const fetechedUser: User = {
 //   id: "1",
@@ -18,23 +19,15 @@ import { getUserI } from "./Home";
 // };
 
 export const UserHome = () => {
-  const userId = sessionStorage.getItem("id");
+  const { userLoading, user, userError } = useCurrentUser();
 
-  const {
-    loading,
-    data: { getUser: user } = {},
-    error,
-  } = useQuery<getUserI>(GET_USER);
-
-  if (loading) {
+  if (userLoading) {
     return <div>Loading...</div>;
   }
-  if (error || !user) {
+  if (userError || !user) {
     return <div>Error...</div>;
   }
-  console.log("userHome");
-  console.log(user);
-  if (loading) return <></>;
+
   return (
     <CardContainerWithFollow user={user}>
       <CreatePost user={user} />

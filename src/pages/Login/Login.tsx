@@ -75,6 +75,7 @@ const Login: FC<loginProps> = ({ setUser, component }: loginProps) => {
   // const { user, setUser } = useUserContext();
 
   const history = useHistory();
+
   // useEffect(() => {
   //   const loginState = sessionStorage.getItem("loginState");
   //   if (loginState === "loggedIn" && user.isActive) {
@@ -114,6 +115,7 @@ const Login: FC<loginProps> = ({ setUser, component }: loginProps) => {
                 const userResponse = data.data.login.user;
 
                 if (loginResponse.success) {
+                  console.log(userResponse, "userRespons");
                   sessionStorage.setItem(
                     ACCESS_TOKEN,
                     loginResponse.accessToken
@@ -144,27 +146,32 @@ const Login: FC<loginProps> = ({ setUser, component }: loginProps) => {
 
                   // setNewUser({userId:"r",isCompany:false});
                   // alert(data.data.login.success);
-                  // if (loginResponse.user.isActive) {
-                  //   // window.location.reload();
-                  //   history.push("/home");
-                  // } else {
-                  //   if (loginResponse.user.isCompany) {
-                  //     // window.location.reload();
-                  //     history.push("/company_register");
-                  //   } else {
-                  //     // window.location.reload();
-                  //     history.push("/user_register");
-                  //   }
-                  // }
+                  if (loginResponse.user.isActive) {
+                    // window.location.reload();
+                    alert("User is active");
+                    history.push("/home");
+                  } else {
+                    if (loginResponse.user.isCompany) {
+                      alert("company is not active");
+                      // window.location.reload();
+                      history.push("/company_register");
+                    } else {
+                      alert("user is not active");
+                      // window.location.reload();
+                      history.push("/user_register");
+                    }
+                  }
 
-                  history.push("/home");
+                  // history.push("/home");
                   // history.replace("/home");
+                  // console.log("after push");
                 } else {
                   alert("Email or password is incorrect!");
                   //   //history.push("/login");
                 }
               })
               .catch((error) => {
+                console.log("error occured");
                 console.log(error.message);
                 alert(error.message);
               });
@@ -190,6 +197,6 @@ const Login: FC<loginProps> = ({ setUser, component }: loginProps) => {
 };
 
 export default Login;
-function setCurrentUser(): User {
+function useNavigate() {
   throw new Error("Function not implemented.");
 }

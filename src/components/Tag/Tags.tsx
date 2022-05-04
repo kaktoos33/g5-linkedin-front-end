@@ -8,9 +8,10 @@ import { useHistory } from "react-router-dom";
 
 interface TagProps {
   Taglist: Array<Tag>;
+  onlyShowTags?: boolean;
 }
 
-export const Tags = ({ Taglist }: TagProps) => {
+export const Tags = ({ Taglist, onlyShowTags }: TagProps) => {
   const tags = React.useMemo(
     () =>
       Taglist.map((a, index) => (
@@ -25,16 +26,18 @@ export const Tags = ({ Taglist }: TagProps) => {
   console.log("inja chap mikone " + Taglist);
   return (
     <Card classname="Tag">
-      <div className="flex items-center border-b mx-7">
-        <div className="w-3/4 mb-2 mt-3.5 tag-title">
-          <label> هشتگ هایی که دنبال میکنید</label>
-        </div>
-        <div dir="ltr" className="w-1/4">
-          <div className="w-5 h-5 container_plus">
-            <PlusSvg id="plus_svg" className="plus" onClick={onclick} />
+      {!onlyShowTags && (
+        <div className="flex items-center border-b mx-7">
+          <div className="w-3/4 mb-2 mt-3.5 tag-title">
+            <label> هشتگ هایی که دنبال میکنید</label>
+          </div>
+          <div dir="ltr" className="w-1/4">
+            <div className="w-5 h-5 container_plus">
+              <PlusSvg id="plus_svg" className="plus" onClick={onclick} />
+            </div>
           </div>
         </div>
-      </div>
+      )}
       <div dir="ltr" className="mt-3.5 mb-5 mx-7">
         {tags}
       </div>

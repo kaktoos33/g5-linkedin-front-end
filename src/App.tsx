@@ -16,6 +16,7 @@ import { ACCESS_TOKEN } from "./constants/constants";
 import { GET_USER } from "./pages/Home/graphql/query";
 import { useQuery } from "@apollo/client";
 import console from "console";
+import { useCurrentUser } from "./hooks/useCurrentUser";
 
 interface AppProps {}
 
@@ -32,40 +33,6 @@ const PrivateRoute: React.FC<{
   const userText = sessionStorage.getItem("user");
   const user: User = userText && JSON.parse(userText);
   // const token = sessionStorage.getItem(ACCESS_TOKEN);
-
-  // if (loading) {
-  //   return <div>Loading...</div>;
-  // }
-  // if (error || !user) {
-  //   return <Route path={props.path} exact={props.exact} component={Login} />;
-  // }
-  // const user = useCurrentUser();
-  // const user: User = {
-  //   userId: "1",
-  //   isActive: true,
-  //   isCompany: false,
-  //   description: "no",
-  //   name: "no",
-  // };
-
-  // return user.isActive ? (
-  //   <>
-  //     <NavBar />
-  //     <Route
-  //       path={props.path}
-  //       exact={props.exact}
-  //       component={props.component}
-  //     />
-  //   </>
-  // ) : (
-  //   <>
-  //     <Route
-  //       path={props.path}
-  //       exact={props.exact}
-  //       component={props.component}
-  //     />
-  //   </>
-  // );
 
   return user == null ? (
     <Route path={props.path} exact={props.exact} component={Login} />
@@ -96,14 +63,6 @@ const PrivateRoute: React.FC<{
 const App: FC = () => {
   // class App extends React.Component<AppProps, AppState> {
   // render() {
-
-  // const {
-  //   loading,
-  //   data: { getUser: user3 } = {},
-  //   error,
-  // } = useQuery<getUserI>(GET_USER);
-  // console.log("APP");
-  // console.log(user3);
 
   return (
     <div dir="rtl" className="bg-backGroundColor">

@@ -8,7 +8,8 @@ import { Cart } from "../../components/InitalPages/Cart/Cart";
 import { Header, SubHeader } from "../../components/InitalPages/Header/Header";
 import { ButtonPrimary } from "../../components/InitalPages/Button/Button";
 import { useHistory } from "react-router-dom";
-import { GET_TAGS } from "./Skills.query";
+import { GET_SKILL, GET_TAGS } from "./Skills.query";
+import { Tags } from "../../components/Tag/Tags";
 
 type FormValues = {
   tags?: string[];
@@ -43,8 +44,10 @@ export const Skills = () => {
   const history = useHistory();
 
   const { data: { getTags: tag } = {} } = useQuery(GET_TAGS);
+  const { loading: skillsLoading, data: { getSkills: skills } = {} } =
+    useQuery(GET_SKILL);
 
-  console.log(tag, 45);
+  console.log(skills, 45);
   // console.log(tag, "44");
 
   const taged = React.useMemo(
@@ -83,11 +86,14 @@ export const Skills = () => {
       console.log(error);
     }
   };
+  if (skillsLoading) return <div>Loadnig</div>;
+  if (!Skills) return <div>Error</div>;
   return (
     <div className="create_tag cart-container">
       <Cart>
         <Header name={"مهارت ها"} />
         <SubHeader name={"مهارت هایی برای نشان دادن تخصص خود اضافه کنید"} />
+        <Tags Taglist={skills} onlyShowTags />
         <Formik initialValues={initialValues} onSubmit={onSubmit}>
           {(formik) => {
             return (
