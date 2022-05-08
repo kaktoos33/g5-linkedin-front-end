@@ -7,6 +7,8 @@ import { UserCard } from "../../../components/UserCard/UserCard";
 import { ReactComponent as LikeSVG } from "../../../images/like.svg";
 import { UPDATE_LIKE_MUTATION } from "../graphql/mutations";
 import { Post, UserPostType } from "../types/Post.type";
+import { API_BASE_URL } from "../../../constants/constants";
+import UploadService from "../../../services/upload-files.service";
 
 interface PostCardProps {
   post: UserPostType;
@@ -22,8 +24,8 @@ export const PostCard = ({ post, currentUser }: PostCardProps) => {
   const [currentLike, setCurrentLike] = useState(likes.length);
 
   const mediaType = () => {
-    if (post.media.match("image")) return "image";
-    else if (post.media.match("video")) return "video";
+    if (post.media.type.match("image")) return "image";
+    else if (post.media.type.match("video")) return "video";
   };
 
   // const isliked = React.useMemo(
@@ -62,13 +64,16 @@ export const PostCard = ({ post, currentUser }: PostCardProps) => {
         {post.media && mediaType() === "image" && (
           <img
             className="w-full h-full rounded-3xl"
-            src={post.media}
+            src={API_BASE_URL + "/file/download/" + post.media.fileName}
             alt={"sth"}
           />
         )}
         {post.media && mediaType() === "video" && (
           <video key={post.postId} className="rounded-3xl max-h-96" controls>
-            <source src={post.media} />
+            <source
+              src={API_BASE_URL + "/file/download/" + post.media.fileName}
+              type={post.media.type}
+            />
           </video>
         )}
       </div>

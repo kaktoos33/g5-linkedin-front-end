@@ -13,6 +13,7 @@ import { PostInput } from "./PostInput";
 import { ShowMedia } from "./ShowMedia";
 import UploadService from "../../../services/upload-files.service";
 import { useHistory } from "react-router-dom";
+import { UserPostMedia } from "../types/Post.type";
 
 interface CreatePostProps {
   user: User;
@@ -42,16 +43,26 @@ export const CreatePost = ({ user }: CreatePostProps) => {
     if (values.video !== undefined) {
       UploadService.uploadVideo(values.video, () => {}).then((res) => {
         console.log("image and content : " + res.data);
-        if (res.data !== "Error") addpost(values.content, res.data);
+        const tmpMedia: UserPostMedia = {
+          fileName: res.data,
+          type: !!values.video?.type ? values.video.type : "null",
+          size: !!values.video?.size ? values.video?.size.toString() : "0",
+        };
+        if (res.data !== "Error") addpost(values.content, tmpMedia);
       });
     } else if (values.image !== undefined) {
       UploadService.upload(values.image, () => {}).then((res) => {
         console.log("image and content : " + res.data);
-        if (res.data !== "Error") addpost(values.content, res.data);
+        const tmpMedia: UserPostMedia = {
+          fileName: res.data,
+          type: !!values.image?.type ? values.image.type : "null",
+          size: !!values.image?.size ? values.image?.size.toString() : "0",
+        };
+        if (res.data !== "Error") addpost(values.content, tmpMedia);
       });
     } else {
       console.log("content only :");
-      addpost(values.content, "");
+      addpost(values.content, { fileName: "", size: "", type: "" });
     }
 
     // values.image && addfile(values.image);
@@ -84,11 +95,15 @@ export const CreatePost = ({ user }: CreatePostProps) => {
       console.log(error);
     }
   };
-  const addpost = (content: string, media: string) => {
+  const addpost = (content: string, media: UserPostMedia) => {
     createpost({
       variables: {
         content: content,
-        media: media,
+        media: {
+          fileName: media.fileName,
+          type: media.type,
+          size: media.size,
+        },
       },
     }).then((data) => {
       history.push("/");

@@ -8,7 +8,7 @@ class UploadFilesService {
     formData.append("file", file);
     const token = sessionStorage.getItem(ACCESS_TOKEN);
 
-    return http.post("/upload", formData, {
+    return http.post("/file/upload", formData, {
       
       headers: {
         "Content-Type": "multipart/form-data",
@@ -24,7 +24,7 @@ class UploadFilesService {
     formData.append("file", file);
     const token = sessionStorage.getItem(ACCESS_TOKEN);
 
-    return http.post("/uploadVideo", formData, {
+    return http.post("/file/uploadVideo", formData, {
       
       headers: {
         "Content-Type": "multipart/form-data",
@@ -34,8 +34,8 @@ class UploadFilesService {
     });
   }
 
-  getFiles() {
-    return http.get("/files");
+  getFile(fileName:string) {
+    return http.get("/file/download/"+fileName);
   }
 }
 

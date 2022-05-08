@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
 export const CREATE_POST_MUTATION = gql`
-  mutation newUserPost($content: String!,$media: String) {
-    newUserPost(newUserPostRequest: { content: $content , media: $media }) {
+  mutation newUserPost($content: String!, $media: MediaInput) {
+    newUserPost(newUserPostRequest: { content: $content, media: $media }) {
       success
       message
     }
@@ -18,8 +18,8 @@ export const UPLOAD_FILE_MUTATION = gql`
 `;
 
 export const TEST_UPLOAD = gql`
-  mutation($files: [Upload!]!) {
-    testMultiFilesUpload(files:$files)
+  mutation ($files: [Upload!]!) {
+    testMultiFilesUpload(files: $files)
   }
 `;
 

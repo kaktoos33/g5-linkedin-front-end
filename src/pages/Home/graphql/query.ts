@@ -11,8 +11,13 @@ export const GET_POSTS = gql`
       }
       userPostId
       content
-      media
       createdAt
+      media {
+        id
+        fileName
+        size
+        type
+      }
     }
   }
 `;
@@ -31,9 +36,6 @@ export const GET_COMPANY_POSTS = gql`
     }
   }
 `;
-
-
-
 
 export const GET_USER = gql`
   query getUser {
