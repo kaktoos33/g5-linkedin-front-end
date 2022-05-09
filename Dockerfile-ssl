@@ -1,0 +1,10 @@
+# build environment
+FROM node:16.14.2 AS build
+WORKDIR /app
+ENV PATH /app/node_modules/.bin:$PATH
+COPY . .
+
+RUN yarn install --frozen-lockfile
+
+RUN yarn build
+
