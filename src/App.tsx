@@ -17,6 +17,7 @@ import { GET_USER } from "./pages/Home/graphql/query";
 import { useQuery } from "@apollo/client";
 import console from "console";
 import { useCurrentUser } from "./hooks/useCurrentUser";
+import Status from "./pages/status/Status";
 
 interface AppProps {}
 
@@ -73,6 +74,7 @@ const App: FC = () => {
           component={OAuth2RedirectHandler}
         ></Route>
         <Route exact path="/login" component={Login} />
+        <Route path="/status" component={Status} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/company_register" component={CompanyRegister} />
         <Route exact path="/user_register" component={UserRegister} />
